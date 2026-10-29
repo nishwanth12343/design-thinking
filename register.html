@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | FarmDirect Tamil Nadu Statewide Network</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#10b981">
+
+
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body style="background: linear-gradient(135deg, #ecfdf5 0%, #f1f5f9 100%);">
+
+    <header style="padding: 20px 7%; display: flex; justify-content: space-between; align-items: center;">
+        <a href="index.html" class="fd-brand">
+            <span>🌱 FarmDirect Tamil Nadu</span>
+            <span class="fd-brand-badge" style="background: #e0f2fe; color: #0369a1;">உழவர் பதிவு</span>
+        </a>
+        <a href="login.html" class="btn btn-secondary btn-sm"><i class="fas fa-sign-in-alt"></i> Already Registered?
+            Sign In</a>
+    </header>
+
+    <div class="container" style="max-width: 680px; margin: 20px auto 60px;">
+        <div class="card glass-card" style="padding: 40px; border-radius: 24px; box-shadow: var(--shadow-xl);">
+            <div style="text-align: center; margin-bottom: 22px;">
+                <h1 style="font-size: 26px; font-weight: 800; color: #064e3b; margin-bottom: 4px;">Join the Tamil Nadu
+                    Direct-Trade Network</h1>
+                <p style="font-size: 13.5px; color: #64748b;">Connecting certified farmers, FPOs, cold-chain fleets &
+                    buyers across all 38 districts</p>
+            </div>
+
+            <!-- Google One-Tap Sign Up -->
+            <div style="margin-bottom: 22px;">
+                <button type="button" onclick="handleGoogleRegister()" class="btn btn-block"
+                    style="background: #ffffff; border: 1.5px solid #cbd5e1; color: #1e293b; font-weight: 700; font-size: 14.5px; padding: 12px; border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.04);">
+                    <svg width="20" height="20" viewBox="0 0 48 48">
+                        <path fill="#EA4335"
+                            d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
+                        <path fill="#4285F4"
+                            d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z" />
+                        <path fill="#FBBC05"
+                            d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z" />
+                        <path fill="#34A853"
+                            d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
+                    </svg>
+                    Sign Up with Google (One-Click)
+                </button>
+                <div
+                    style="display: flex; align-items: center; margin: 18px 0; color: #94a3b8; font-size: 12px; text-transform: uppercase; font-weight: 700;">
+                    <div style="flex: 1; height: 1px; background: #e2e8f0;"></div>
+                    <span style="padding: 0 12px;">or register with details</span>
+                    <div style="flex: 1; height: 1px; background: #e2e8f0;"></div>
+                </div>
+            </div>
+
+            <!-- Role Selector Tabs -->
+            <div class="fd-tabs" style="justify-content: center; margin-bottom: 22px; flex-wrap: wrap; gap: 8px;">
+                <button type="button" class="fd-tab-btn active" id="tab-farmer"
+                    onclick="switchRegRole('farmer', this)"><i class="fas fa-tractor"></i> Farmer / உழவர்</button>
+                <button type="button" class="fd-tab-btn" id="tab-consumer" onclick="switchRegRole('consumer', this)"><i
+                        class="fas fa-user"></i> Consumer</button>
+                <button type="button" class="fd-tab-btn" id="tab-bulk" onclick="switchRegRole('bulk', this)"><i
+                        class="fas fa-building"></i> Bulk Buyer</button>
+                <button type="button" class="fd-tab-btn" id="tab-logistics"
+                    onclick="switchRegRole('logistics', this)"><i class="fas fa-truck"></i> Logistics Fleet</button>
+            </div>
+
+            <form id="regForm" onsubmit="handleRegister(event)">
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label class="form-label" id="nameLabel">Full Name / Authorized Signatory</label>
+                        <input type="text" id="regName" class="form-control" placeholder="e.g. M. Selvakumar" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" id="phoneLabel">Tamil Nadu Mobile Number</label>
+                        <input type="tel" id="regPhone" class="form-control" placeholder="+91 98421 11223" required>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label class="form-label" id="emailLabel">Email Address</label>
+                        <input type="email" id="regEmail" class="form-control" placeholder="name@farmdirect.io"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Tamil Nadu District (தமிழ்நாடு மாவட்டம்)</label>
+                        <select id="regDistrict" class="form-select tn-district-select" required>
+                            <!-- Auto-populated from 38 Districts array -->
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Farmer Specific Patta/Chitta Fields -->
+                <div id="farmer-fields"
+                    style="background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 16px; padding: 20px; margin-bottom: 20px;">
+                    <div style="font-weight: 700; color: #166534; margin-bottom: 12px; font-size: 14px;">
+                        <i class="fas fa-seedling"></i> Tamil Nadu Land Credentials (பட்டா / சிட்டா)
+                    </div>
+                    <div class="grid-2">
+                        <div class="form-group" style="margin-bottom: 10px;">
+                            <label class="form-label" style="font-size: 13px;">Patta / Chitta Land Record No.</label>
+                            <input type="text" id="regPatta" class="form-control" placeholder="e.g. TN-ERD-142/3B">
+                        </div>
+                        <div class="form-group" style="margin-bottom: 10px;">
+                            <label class="form-label" style="font-size: 13px;">FPO / Uzhavar Sandhai Cluster</label>
+                            <input type="text" id="regFPO" class="form-control"
+                                placeholder="e.g. Erode Organic Turmeric FPO">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" id="passwordFieldLabel">Create Password / Security Passcode</label>
+                    <input type="password" id="regPassword" class="form-control"
+                        placeholder="At least 8 characters (or district passcode e.g. TN-ERD-2026)" required>
+                </div>
+
+                <div style="margin-bottom: 20px; font-size: 12.5px; color: #64748b;">
+                    By registering, you agree to FarmDirect TN's <a href="terms.html"
+                        style="color: #059669; font-weight: 600;">Fair Direct-Trade Terms</a> & <a href="privacy.html"
+                        style="color: #059669; font-weight: 600;">Cold-Chain Standards</a>.
+                </div>
+
+                <button type="submit" id="submitRegBtn" class="btn btn-primary btn-lg btn-block">
+                    <i class="fas fa-user-plus"></i> Complete Free Registration
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script>
+        // If someone attempts admin registration on the general register page, redirect to the dedicated admin gateway
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('role') === 'admin') {
+            window.location.replace('admin-login.html?mode=register');
+        }
+
+        let currentRegRole = 'farmer';
+
+        function switchRegRole(role, btn) {
+            currentRegRole = role;
+            document.querySelectorAll('.fd-tab-btn').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+
+            const farmerFields = document.getElementById('farmer-fields');
+            const nameLabel = document.getElementById('nameLabel');
+            const regName = document.getElementById('regName');
+            const emailLabel = document.getElementById('emailLabel');
+            const regEmail = document.getElementById('regEmail');
+            const submitBtn = document.getElementById('submitRegBtn');
+
+            if (role === 'farmer') {
+                if (farmerFields) farmerFields.style.display = 'block';
+                if (nameLabel) nameLabel.textContent = 'Farmer Full Name';
+                if (regName) regName.placeholder = 'e.g. M. Selvakumar';
+                if (emailLabel) emailLabel.textContent = 'Email Address';
+                if (submitBtn) {
+                    submitBtn.innerHTML = '<i class="fas fa-user-plus"></i> Complete Free Farmer Registration';
+                    submitBtn.style.background = '';
+                }
+            } else {
+                if (farmerFields) farmerFields.style.display = 'none';
+                if (nameLabel) nameLabel.textContent = 'Full Name / Authorized Signatory';
+                if (regName) regName.placeholder = 'e.g. Kavitha Ramaswamy';
+                if (emailLabel) emailLabel.textContent = 'Email Address';
+                if (submitBtn) {
+                    submitBtn.innerHTML = `<i class="fas fa-user-plus"></i> Complete Free ${role.toUpperCase()} Registration`;
+                    submitBtn.style.background = '';
+                }
+            }
+        }
+
+        async function handleGoogleRegister() {
+            const district = document.getElementById('regDistrict').value || 'Erode';
+            const res = await FarmDirect.signInWithGoogle({ role: currentRegRole, district });
+            if (res && res.success) {
+                setTimeout(() => {
+                    if (currentRegRole === 'farmer') window.location.href = 'farmer-dashboard.html';
+                    else if (currentRegRole === 'bulk') window.location.href = 'bulk-buyers.html';
+                    else if (currentRegRole === 'logistics') window.location.href = 'delivery-management.html';
+                    else window.location.href = 'consumer-dashboard.html';
+                }, 400);
+            }
+        }
+
+        async function handleRegister(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitRegBtn');
+            const originalBtnHtml = '<i class="fas fa-user-plus"></i> Complete Free Registration';
+
+            const name = document.getElementById('regName').value.trim();
+            const phone = document.getElementById('regPhone').value.trim();
+            const email = document.getElementById('regEmail').value.trim();
+            const district = document.getElementById('regDistrict').value || 'Erode';
+            const password = document.getElementById('regPassword').value.trim();
+            const pattaChittaNumber = document.getElementById('regPatta') ? document.getElementById('regPatta').value.trim() : '';
+            const fpoAffiliation = document.getElementById('regFPO') ? document.getElementById('regFPO').value.trim() : '';
+
+            // Validation: Name
+            if (name.length < 2) {
+                FarmDirect.showToast('Please enter your full name.', 'error');
+                return;
+            }
+
+            // Validation: Mobile Number (10 digits)
+            const cleanPhone = phone.replace(/[^0-9]/g, '');
+            if (cleanPhone.length < 10) {
+                FarmDirect.showToast('Please enter a valid 10-digit mobile number.', 'error');
+                return;
+            }
+
+            // Validation: Email
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                FarmDirect.showToast('Please enter a valid email address.', 'error');
+                return;
+            }
+
+            // Validation: Password
+            if (password.length < 6) {
+                FarmDirect.showToast('Password should be at least 6 characters long.', 'error');
+                return;
+            }
+
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            btn.disabled = true;
+
+            // Clear any previous admin flags
+            sessionStorage.removeItem('fd_admin_authenticated');
+            sessionStorage.removeItem('fd_is_admin');
+            sessionStorage.removeItem('fd_admin_token');
+            localStorage.removeItem('fd_admin_authenticated');
+            localStorage.removeItem('fd_is_admin');
+            localStorage.removeItem('fd_admin_token');
+
+            try {
+                const res = await fetch(`${FarmDirect.API_BASE}/auth/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name, phone, email, district, password,
+                        role: currentRegRole,
+                        state: 'Tamil Nadu',
+                        pattaChittaNumber, fpoAffiliation
+                    })
+                });
+
+                const data = await res.json();
+                if (!res.ok) {
+                    FarmDirect.showToast(data.error || 'Registration failed. Please check your details.', 'error');
+                    btn.innerHTML = originalBtnHtml;
+                    btn.disabled = false;
+                    return;
+                }
+
+                sessionStorage.setItem('fd_user_logged_in', 'true');
+                localStorage.setItem('fd_user_logged_in', 'true');
+                sessionStorage.setItem('fd_user_name', name);
+                localStorage.setItem('fd_user_name', name);
+
+                FarmDirect.setUserRole(currentRegRole);
+                FarmDirect.setUserDistrict(district);
+                if (window.FarmDirect && typeof FarmDirect.setUserProfile === 'function') {
+                    await FarmDirect.setUserProfile(data.user);
+                }
+
+                btn.innerHTML = '<i class="fas fa-check-circle"></i> Submitted successfully!';
+                btn.style.background = '#059669';
+
+                if (window.FarmDirect && typeof FarmDirect.addNotification === 'function') {
+                    await FarmDirect.addNotification({
+                        title: `Submitted successfully!`,
+                        msg: `Account created successfully for ${name} in ${district}, Tamil Nadu!`,
+                        type: 'success',
+                        time: 'Just now'
+                    }, true);
+                }
+                FarmDirect.showToast(`Submitted successfully! Welcome to FarmDirect, ${name}.`, 'success', true);
+
+                setTimeout(() => {
+                    if (currentRegRole === 'farmer') window.location.href = 'farmer-dashboard.html';
+                    else if (currentRegRole === 'bulk') window.location.href = 'bulk-buyers.html';
+                    else if (currentRegRole === 'logistics') window.location.href = 'delivery-management.html';
+                    else window.location.href = 'consumer-dashboard.html';
+                }, 400);
+            } catch (err) {
+                console.error('Registration error:', err);
+                btn.innerHTML = originalBtnHtml;
+                btn.disabled = false;
+                FarmDirect.showToast('Could not register account. Server connection error: ' + (err.message || 'Please try again.'), 'error');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const roleParam = urlParams.get('role');
+            const distParam = urlParams.get('district');
+
+            if (distParam) {
+                const distSelect = document.getElementById('regDistrict');
+                if (distSelect) distSelect.value = distParam;
+            }
+
+            if (roleParam) {
+                const btn = document.getElementById(`tab-${roleParam}`);
+                if (btn) switchRegRole(roleParam, btn);
+            }
+        });
+    </script>
+</body>
+
+</html>

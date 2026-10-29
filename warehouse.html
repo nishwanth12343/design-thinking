@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#10b981">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FarmDirect">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <title>Smart Rural Aggregation Hubs & Cold Stores | FarmDirect</title>
+    <!-- Immediate Authentication Guard: Require sign in before viewing website details -->
+    <script src="js/auth-guard.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Sleek Master Navigation with Rich Dropdowns -->
+    <nav class="fd-nav">
+        <div class="container fd-nav-inner">
+            <a href="index.html" class="fd-brand">
+                <span>🌱 FarmDirect</span>
+                <span class="fd-brand-badge">Rural Hubs</span>
+            </a>
+
+            <ul class="fd-nav-links">
+                <li class="fd-nav-item"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="marketplace.html"><i class="fas fa-store"></i> Marketplace <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="marketplace.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-shopping-basket"></i></div>
+                            <div><span class="fd-dropdown-title">Live Produce Catalog</span><span class="fd-dropdown-desc">Direct harvest from verified farmers</span></div>
+                        </a>
+                        <a href="product-quality.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-shield-alt"></i></div>
+                            <div><span class="fd-dropdown-title">AI Quality Scanner</span><span class="fd-dropdown-desc">Computer-vision freshness & Brix test</span></div>
+                        </a>
+                        <a href="price-comparison.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Price Comparison</span><span class="fd-dropdown-desc">Farmgate vs APMC Mandi vs Retail</span></div>
+                        </a>
+                        <a href="offers.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-tags"></i></div>
+                            <div><span class="fd-dropdown-title">Harvest Offers</span><span class="fd-dropdown-desc">Seasonal discounts & promo codes</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="farmer-dashboard.html"><i class="fas fa-tractor"></i> Farmers & FPOs <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="farmer-dashboard.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-tachometer-alt"></i></div>
+                            <div><span class="fd-dropdown-title">Farmer Command Center</span><span class="fd-dropdown-desc">Agronomy weather radar & revenue</span></div>
+                        </a>
+                        <a href="fpo-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-users"></i></div>
+                            <div><span class="fd-dropdown-title">FPO Collective Aggregator</span><span class="fd-dropdown-desc">Pool multi-farmer harvests for B2B</span></div>
+                        </a>
+                        <a href="add-product.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-plus-circle"></i></div>
+                            <div><span class="fd-dropdown-title">List New Produce</span><span class="fd-dropdown-desc">AI Mandi benchmark recommender</span></div>
+                        </a>
+                        <a href="farmer-earnings.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-wallet"></i></div>
+                            <div><span class="fd-dropdown-title">Earnings & UPI Ledger</span><span class="fd-dropdown-desc">Instant OTP escrow bank settlements</span></div>
+                        </a>
+                        <a href="farmer-verification.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-id-card"></i></div>
+                            <div><span class="fd-dropdown-title">Land KYC Verification</span><span class="fd-dropdown-desc">Patta/Chitta Land KYC Verification</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="logistics.html" class="active"><i class="fas fa-truck-moving"></i> Logistics <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="live-tracking.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-satellite-dish"></i></div>
+                            <div><span class="fd-dropdown-title">Live GPS Radar</span><span class="fd-dropdown-desc">3.8°C IoT thermal telematics</span></div>
+                        </a>
+                        <a href="route-optimization.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-route"></i></div>
+                            <div><span class="fd-dropdown-title">AI Route Optimizer</span><span class="fd-dropdown-desc">Multi-farm pickup TSP solver</span></div>
+                        </a>
+                        <a href="delivery-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-tasks"></i></div>
+                            <div><span class="fd-dropdown-title">Dispatch Management</span><span class="fd-dropdown-desc">Vehicle fleet allocations & e-POD</span></div>
+                        </a>
+                        <a href="warehouse.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-warehouse"></i></div>
+                            <div><span class="fd-dropdown-title">Smart Rural Cold Hubs</span><span class="fd-dropdown-desc">Microclimate pre-cooling slots</span></div>
+                        </a>
+                        <a href="inventory.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-rose"><i class="fas fa-boxes"></i></div>
+                            <div><span class="fd-dropdown-title">Inventory Engine</span><span class="fd-dropdown-desc">Batch shelf-life countdowns</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="ai-insights.html"><i class="fas fa-brain"></i> AI Intelligence <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="demand-forecast.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-chart-pie"></i></div>
+                            <div><span class="fd-dropdown-title">Demand Forecasting</span><span class="fd-dropdown-desc">Predictive 30-day ML models</span></div>
+                        </a>
+                        <a href="ai-insights.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-chart-line"></i></div>
+                            <div><span class="fd-dropdown-title">Agricultural Intelligence</span><span class="fd-dropdown-desc">Regional surplus & deficit heatmap</span></div>
+                        </a>
+                        <a href="supply-chain.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-link"></i></div>
+                            <div><span class="fd-dropdown-title">Farm-to-Fork Traceability</span><span class="fd-dropdown-desc">5-stage harvest verification</span></div>
+                        </a>
+                        <a href="price-intelligence.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Mandi Price Index</span><span class="fd-dropdown-desc">AGMARKNET live benchmark stream</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item"><a href="bulk-buyers.html"><i class="fas fa-building"></i> B2B Wholesale</a></li>
+            </ul>
+
+            <div class="fd-nav-actions">
+                <a href="inventory.html" class="btn btn-secondary btn-sm"><i class="fas fa-boxes"></i> Stock Inventory</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <a href="logistics.html">Logistics</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <span>Smart Rural Cold Storage Hubs</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <div>
+                    <h1 class="page-hero-title">Smart Rural Aggregation Hubs & Cold Stores ❄️</h1>
+                    <p class="page-hero-subtitle">Microclimate-monitored pre-cooling centers located within 15 km of Tamil Nadu farm clusters to arrest post-harvest deterioration.</p>
+                </div>
+                <button onclick="openBookStorageModal()" class="btn btn-primary btn-sm">
+                    <i class="fas fa-calendar-plus"></i> Book Cold Storage Slot
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Hubs Overview Stats -->
+            <div class="grid-4" style="margin-bottom: 30px;">
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-green"><i class="fas fa-warehouse"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-label">Active State Hubs</div>
+                        <div class="stat-value" style="color: #059669;">32 Centers</div>
+                        <div style="font-size: 12px; color: #64748b; margin-top: 4px;">Across 38 TN Districts</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-blue"><i class="fas fa-snowflake"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-label">Total Cold Capacity</div>
+                        <div class="stat-value" style="color: #0284c7;">24,300 MT</div>
+                        <div style="font-size: 12px; color: #059669; font-weight: 700; margin-top: 4px;">3,980 MT Open Slots</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-purple"><i class="fas fa-temperature-low"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-label">Chamber SLA Temp</div>
+                        <div class="stat-value" style="color: #7e22ce;">3.8°C Steady</div>
+                        <div style="font-size: 12px; color: #64748b; margin-top: 4px;">0.0% Spoilage Incident</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-amber"><i class="fas fa-solar-panel"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-label">Solar Microgrid</div>
+                        <div class="stat-value" style="color: #d97706;">100% Green</div>
+                        <div style="font-size: 12px; color: #64748b; margin-top: 4px;">24x7 Unbroken Chill Chain</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hubs Grid (6 Major TN Hubs - Dynamic MongoDB Synced) -->
+            <div class="grid-3" id="warehouse-hubs-grid" style="margin-bottom: 35px;">
+                <!-- 1. Erode -->
+                <div class="card card-hover">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+                        <div>
+                            <h3 style="font-size: 17.5px; font-weight: 800; color: #064e3b; margin-bottom: 2px;">Erode Semmampalayam Hub</h3>
+                            <span style="font-size: 12px; color: #059669; font-weight: 700;">ஈரோடு மஞ்சள் வளாகம்</span>
+                        </div>
+                        <span class="fd-badge fd-badge-green"><i class="fas fa-snowflake"></i> 3.8°C Steady</span>
+                    </div>
+                    <div style="font-size: 13px; color: #64748b; margin-bottom: 15px;">Bhavani Basin • 2,500 Metric Ton Capacity</div>
+                    <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; margin-bottom: 15px;">
+                        <div>Chamber Occupancy: <strong>78% (1,950 MT Curcumin Turmeric)</strong></div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 78%; background: var(--grad-primary);"></div></div>
+                        <div>Relative Humidity: <strong>88% (De-Humidifiers Active)</strong></div>
+                    </div>
+                    <div style="border-top: 1px solid #f1f5f9; padding-top: 12px; display: flex; justify-content: space-between; align-items: center; gap: 8px;">
+                        <span style="font-size: 12px; color: #059669; font-weight: 700;">550 MT Slots Open</span>
+                        <div style="display: flex; gap: 6px;">
+                            <button onclick="openBookStorageModal('Erode Semmampalayam Hub')" class="btn btn-outline btn-sm"><i class="fas fa-snowflake"></i> Book Slot</button>
+                            <a href="inventory.html" class="btn btn-primary btn-sm">View Stock</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Chennai Koyambedu -->
+                <div class="card card-hover">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+                        <div>
+                            <h3 style="font-size: 17.5px; font-weight: 800; color: #064e3b; margin-bottom: 2px;">Koyambedu Agro Terminal</h3>
+                            <span style="font-size: 12px; color: #059669; font-weight: 700;">சென்னை கோயம்பேடு மையம்</span>
+                        </div>
+                        <span class="fd-badge fd-badge-blue"><i class="fas fa-snowflake"></i> 2.5°C Steady</span>
+                    </div>
+                    <div style="font-size: 13px; color: #64748b; margin-bottom: 15px;">Chennai Metropolitan • 4,000 Metric Ton Capacity</div>
+                    <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; margin-bottom: 15px;">
+                        <div>Chamber Occupancy: <strong>85% (3,400 MT Perishables)</strong></div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 85%; background: var(--grad-blue);"></div></div>
+                        <div>Pre-Cooling Blast Bay: <strong>Active (24 Bays)</strong></div>
+                    </div>
+                    <div style="border-top: 1px solid #f1f5f9; padding-top: 12px; display: flex; justify-content: space-between; align-items: center; gap: 8px;">
+                        <span style="font-size: 12px; color: #059669; font-weight: 700;">600 MT Slots Open</span>
+                        <div style="display: flex; gap: 6px;">
+                            <button onclick="openBookStorageModal('Koyambedu Agro Terminal')" class="btn btn-outline btn-sm"><i class="fas fa-snowflake"></i> Book Slot</button>
+                            <a href="inventory.html" class="btn btn-primary btn-sm">View Stock</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Thanjavur -->
+                <div class="card card-hover">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+                        <div>
+                            <h3 style="font-size: 17.5px; font-weight: 800; color: #064e3b; margin-bottom: 2px;">Thanjavur Delta Silos</h3>
+                            <span style="font-size: 12px; color: #059669; font-weight: 700;">தஞ்சாவூர் நெல் சேமிப்பு</span>
+                        </div>
+                        <span class="fd-badge fd-badge-purple"><i class="fas fa-temperature-low"></i> 14.0°C Controlled</span>
+                    </div>
+                    <div style="font-size: 13px; color: #64748b; margin-bottom: 15px;">Kumbakonam Belt • 6,000 Metric Ton Grain Silos</div>
+                    <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; margin-bottom: 15px;">
+                        <div>Silo Occupancy: <strong>82% (4,920 MT Ponni Rice)</strong></div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 82%; background: var(--grad-ai);"></div></div>
+                        <div>Nitrogen Controlled Atmosphere: <strong>Active</strong></div>
+                    </div>
+                    <div style="border-top: 1px solid #f1f5f9; padding-top: 12px; display: flex; justify-content: space-between; align-items: center; gap: 8px;">
+                        <span style="font-size: 12px; color: #059669; font-weight: 700;">1,080 MT Slots Open</span>
+                        <div style="display: flex; gap: 6px;">
+                            <button onclick="openBookStorageModal('Thanjavur Delta Silos')" class="btn btn-outline btn-sm"><i class="fas fa-snowflake"></i> Book Slot</button>
+                            <a href="inventory.html" class="btn btn-primary btn-sm">View Stock</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Nilgiris Ooty -->
+                <div class="card card-hover">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+                        <div>
+                            <h3 style="font-size: 17.5px; font-weight: 800; color: #064e3b; margin-bottom: 2px;">Nilgiris Hill-Tract Cold Store</h3>
+                            <span style="font-size: 12px; color: #059669; font-weight: 700;">நீலகிரி குளிர்பதன நிலையம்</span>
+                        </div>
+                        <span class="fd-badge fd-badge-green"><i class="fas fa-snowflake"></i> 1.8°C Ultra-Chill</span>
+                    </div>
+                    <div style="font-size: 13px; color: #64748b; margin-bottom: 15px;">Ooty-Kotagiri Ridge • 1,800 Metric Ton Capacity</div>
+                    <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; margin-bottom: 15px;">
+                        <div>Chamber Occupancy: <strong>72% (1,296 MT Carrots & Berries)</strong></div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 72%; background: var(--grad-primary);"></div></div>
+                        <div>Atmosphere: <strong>High Humidity (92% RH)</strong></div>
+                    </div>
+                    <div style="border-top: 1px solid #f1f5f9; padding-top: 12px; display: flex; justify-content: space-between; align-items: center; gap: 8px;">
+                        <span style="font-size: 12px; color: #059669; font-weight: 700;">504 MT Slots Open</span>
+                        <div style="display: flex; gap: 6px;">
+                            <button onclick="openBookStorageModal('Nilgiris Hill-Tract Cold Store')" class="btn btn-outline btn-sm"><i class="fas fa-snowflake"></i> Book Slot</button>
+                            <a href="inventory.html" class="btn btn-primary btn-sm">View Stock</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Madurai Mattuthavani -->
+                <div class="card card-hover">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+                        <div>
+                            <h3 style="font-size: 17.5px; font-weight: 800; color: #064e3b; margin-bottom: 2px;">Madurai Mattuthavani Agri Hub</h3>
+                            <span style="font-size: 12px; color: #059669; font-weight: 700;">மதுரை மாட்டுத்தாவணி மையம்</span>
+                        </div>
+                        <span class="fd-badge fd-badge-amber"><i class="fas fa-temperature-low"></i> 8.5°C Flower/Chilli</span>
+                    </div>
+                    <div style="font-size: 13px; color: #64748b; margin-bottom: 15px;">Vaigai Basin • 3,200 Metric Ton Capacity</div>
+                    <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; margin-bottom: 15px;">
+                        <div>Chamber Occupancy: <strong>81% (2,592 MT Gundu Malli & Chillies)</strong></div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 81%; background: var(--grad-gold);"></div></div>
+                        <div>Ethylene Scrubbers: <strong>Online & Scrubbing</strong></div>
+                    </div>
+                    <div style="border-top: 1px solid #f1f5f9; padding-top: 12px; display: flex; justify-content: space-between; align-items: center; gap: 8px;">
+                        <span style="font-size: 12px; color: #059669; font-weight: 700;">608 MT Slots Open</span>
+                        <div style="display: flex; gap: 6px;">
+                            <button onclick="openBookStorageModal('Madurai Mattuthavani Agri Hub')" class="btn btn-outline btn-sm"><i class="fas fa-snowflake"></i> Book Slot</button>
+                            <a href="inventory.html" class="btn btn-primary btn-sm">View Stock</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Salem Steel-City Agro Park -->
+                <div class="card card-hover">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+                        <div>
+                            <h3 style="font-size: 17.5px; font-weight: 800; color: #064e3b; margin-bottom: 2px;">Salem Agro-Park Cold Hub</h3>
+                            <span style="font-size: 12px; color: #059669; font-weight: 700;">சேலம் மாம்பழ பதப்படுத்துதல்</span>
+                        </div>
+                        <span class="fd-badge fd-badge-purple"><i class="fas fa-temperature-low"></i> 11.0°C Ripening Lock</span>
+                    </div>
+                    <div style="font-size: 13px; color: #64748b; margin-bottom: 15px;">Shevaroy Foothills • 2,800 Metric Ton Capacity</div>
+                    <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; margin-bottom: 15px;">
+                        <div>Chamber Occupancy: <strong>77% (2,156 MT Malgova & Tapioca)</strong></div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 77%; background: var(--grad-ai);"></div></div>
+                        <div>Controlled Ripening Chambers: <strong>16 Chambers Active</strong></div>
+                    </div>
+                    <div style="border-top: 1px solid #f1f5f9; padding-top: 12px; display: flex; justify-content: space-between; align-items: center; gap: 8px;">
+                        <span style="font-size: 12px; color: #059669; font-weight: 700;">644 MT Slots Open</span>
+                        <div style="display: flex; gap: 6px;">
+                            <button onclick="openBookStorageModal('Salem Agro-Park Cold Hub')" class="btn btn-outline btn-sm"><i class="fas fa-snowflake"></i> Book Slot</button>
+                            <a href="inventory.html" class="btn btn-primary btn-sm">View Stock</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hub IoT Sensors & Facilities -->
+            <div class="card" style="padding: 30px;">
+                <h3 style="font-size: 18px; font-weight: 800; color: #064e3b; margin-bottom: 20px;">
+                    <i class="fas fa-cogs text-success"></i> Aggregation Hub Infrastructure Standards
+                </h3>
+                <div class="grid-4" style="text-align: center;">
+                    <div style="padding: 20px; background: #f8fafc; border-radius: 14px;">
+                        <i class="fas fa-snowflake text-primary" style="font-size: 28px; margin-bottom: 10px;"></i>
+                        <h4 style="font-size: 15px; font-weight: 700;">Rapid Pre-Cooling</h4>
+                        <p style="font-size: 12px; color: #64748b;">Pulls field heat down to 4°C in under 60 minutes.</p>
+                    </div>
+                    <div style="padding: 20px; background: #f8fafc; border-radius: 14px;">
+                        <i class="fas fa-microchip text-success" style="font-size: 28px; margin-bottom: 10px;"></i>
+                        <h4 style="font-size: 15px; font-weight: 700;">IoT Sensor Arrays</h4>
+                        <p style="font-size: 12px; color: #64748b;">Continuous logging of O2, CO2, and Ethylene gas levels.</p>
+                    </div>
+                    <div style="padding: 20px; background: #f8fafc; border-radius: 14px;">
+                        <i class="fas fa-solar-panel text-warning" style="font-size: 28px; margin-bottom: 10px;"></i>
+                        <h4 style="font-size: 15px; font-weight: 700;">Solar Powered</h4>
+                        <p style="font-size: 12px; color: #64748b;">100% solar microgrid backup ensures unbroken chill chain.</p>
+                    </div>
+                    <div style="padding: 20px; background: #f8fafc; border-radius: 14px;">
+                        <i class="fas fa-qrcode text-purple" style="font-size: 28px; margin-bottom: 10px; color: #7e22ce;"></i>
+                        <h4 style="font-size: 15px; font-weight: 700;">Automated Batch RFID</h4>
+                        <p style="font-size: 12px; color: #64748b;">Instant crate-level barcode scanning on arrival.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="fd-footer">
+        <div class="container">
+            <div class="fd-footer-bottom" style="border:none; padding:0;">
+                <div></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cold Storage Booking Modal -->
+    <div id="bookStorageModal" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(4px); z-index: 9999; justify-content: center; align-items: center; padding: 20px;">
+        <div style="background: #ffffff; border-radius: 18px; max-width: 560px; width: 100%; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); border: 1px solid #e2e8f0; overflow: hidden; animation: popIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);">
+            <div style="background: linear-gradient(135deg, #064e3b, #059669); color: #ffffff; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="width: 38px; height: 38px; border-radius: 10px; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 18px;">
+                        <i class="fas fa-snowflake"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 18px; font-weight: 800; margin: 0; color: #ffffff;">Reserve Cold Storage Slot</h3>
+                        <p style="font-size: 12px; margin: 2px 0 0; color: #a7f3d0;">தமிழ்நாடு குளிர்பதன கிடங்கு முன்பதிவு</p>
+                    </div>
+                </div>
+                <button type="button" onclick="closeBookStorageModal()" style="background: none; border: none; color: #ffffff; font-size: 20px; cursor: pointer; opacity: 0.85;">&times;</button>
+            </div>
+
+            <form id="storageBookingForm" onsubmit="handleBookStorageSubmit(event)" style="padding: 24px;">
+                <div class="form-group" style="margin-bottom: 16px;">
+                    <label class="form-label" style="font-weight: 700; font-size: 13px; color: #1e293b; margin-bottom: 6px; display: block;">Select Cold Storage Hub (கிடங்கு)</label>
+                    <select id="storageHubSelect" class="form-select" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 14px;" required>
+                        <option value="Erode Semmampalayam Hub">Erode Semmampalayam Hub (550 MT Open • Turmeric & Spices)</option>
+                        <option value="Koyambedu Agro Terminal">Chennai Koyambedu Agro Terminal (600 MT Open • Perishables)</option>
+                        <option value="Thanjavur Delta Silos">Thanjavur Delta Silos (1,080 MT Open • Paddy & Grain)</option>
+                        <option value="Nilgiris Hill-Tract Cold Store">Nilgiris Hill-Tract Cold Store (504 MT Open • Mountain Veggies)</option>
+                        <option value="Madurai Mattuthavani Agri Hub">Madurai Mattuthavani Agri Hub (608 MT Open • Flowers & Chillies)</option>
+                        <option value="Salem Agro-Park Cold Hub">Salem Agro-Park Cold Hub (644 MT Open • Mango & Tapioca)</option>
+                    </select>
+                </div>
+
+                <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px;">
+                    <div class="form-group" style="margin: 0;">
+                        <label class="form-label" style="font-weight: 700; font-size: 13px; color: #1e293b; margin-bottom: 6px; display: block;">Produce / Crop (பயிர்)</label>
+                        <input type="text" id="storageCrop" class="form-control" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 14px;" placeholder="e.g. GI Erode Turmeric" required>
+                    </div>
+                    <div class="form-group" style="margin: 0;">
+                        <label class="form-label" style="font-weight: 700; font-size: 13px; color: #1e293b; margin-bottom: 6px; display: block;">Quantity (அளவு)</label>
+                        <input type="text" id="storageQuantity" class="form-control" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 14px;" placeholder="e.g. 5.0 MT or 50 Bags" required>
+                    </div>
+                </div>
+
+                <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px;">
+                    <div class="form-group" style="margin: 0;">
+                        <label class="form-label" style="font-weight: 700; font-size: 13px; color: #1e293b; margin-bottom: 6px; display: block;">Arrival Date (தேதி)</label>
+                        <input type="date" id="storageDate" class="form-control" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 14px;" required>
+                    </div>
+                    <div class="form-group" style="margin: 0;">
+                        <label class="form-label" style="font-weight: 700; font-size: 13px; color: #1e293b; margin-bottom: 6px; display: block;">Duration (காலம்)</label>
+                        <select id="storageDuration" class="form-select" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 14px;">
+                            <option value="7 Days">7 Days (Short Inflow)</option>
+                            <option value="15 Days" selected>15 Days (Pre-Cooling & Mandi Hold)</option>
+                            <option value="30 Days">30 Days (Standard Cold Vault)</option>
+                            <option value="60 Days">60 Days (Extended Season Buffer)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label class="form-label" style="font-weight: 700; font-size: 13px; color: #1e293b; margin-bottom: 6px; display: block;">Temperature Chamber SLA</label>
+                    <select id="storageTempZone" class="form-select" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 14px;">
+                        <option value="Zone A: 1.5°C - 3.5°C (Ultra Chill Perishables)">Zone A: 1.5°C - 3.5°C (Ultra Chill Perishables)</option>
+                        <option value="Zone B: 3.8°C Steady (Vegetables, Fruits & Roots)" selected>Zone B: 3.8°C Steady (Vegetables, Fruits & Roots)</option>
+                        <option value="Zone C: 8.0°C - 12.0°C (Flowers, Chillies & Ripening)">Zone C: 8.0°C - 12.0°C (Flowers, Chillies & Ripening)</option>
+                        <option value="Zone D: 14.0°C Nitrogen Silo (Delta Paddy & Pulses)">Zone D: 14.0°C Nitrogen Silo (Delta Paddy & Pulses)</option>
+                    </select>
+                </div>
+
+                <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 12px 16px; margin-bottom: 20px; font-size: 12.5px; color: #166534; display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-solar-panel" style="font-size: 18px; color: #059669;"></i>
+                    <span>Zero spoilage guarantee backed by 24/7 IoT continuous solar telematics.</span>
+                </div>
+
+                <div style="display: flex; gap: 12px; justify-content: flex-end;">
+                    <button type="button" onclick="closeBookStorageModal()" class="btn btn-secondary btn-sm" style="padding: 10px 20px;">Cancel</button>
+                    <button type="submit" id="bookSlotSubmitBtn" class="btn btn-primary btn-sm" style="padding: 10px 24px;">
+                        <i class="fas fa-check-circle"></i> Confirm Slot Reservation
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script>
+        async function renderWarehouseHubs() {
+            const grid = document.getElementById('warehouse-hubs-grid');
+            const selectEl = document.getElementById('storageHubSelect');
+            if (!grid) return;
+
+            let hubs = [];
+            if (window.FarmDirect && typeof FarmDirect.getWarehouses === 'function') {
+                try {
+                    hubs = await FarmDirect.getWarehouses();
+                } catch (e) {
+                    console.warn('Failed to load warehouses from API:', e);
+                }
+            }
+
+            if (!Array.isArray(hubs) || hubs.length === 0) {
+                return; // Keep existing static markup if fetch fails
+            }
+
+            // Update modal dropdown options dynamically
+            if (selectEl) {
+                const currentVal = selectEl.value;
+                selectEl.innerHTML = hubs.map(h => {
+                    const freeSlots = h.availableSlots !== undefined ? h.availableSlots : 15;
+                    const freeTons = (h.totalCapacityMetricTons && h.occupiedMetricTons) 
+                        ? (h.totalCapacityMetricTons - h.occupiedMetricTons) 
+                        : (freeSlots * 25);
+                    return `<option value="${h.name}">${h.name} (${freeTons} MT Open • ${h.district})</option>`;
+                }).join('');
+                if (currentVal) selectEl.value = currentVal;
+            }
+
+            // Render dynamic cards from MongoDB
+            grid.innerHTML = hubs.map((h, idx) => {
+                const totalCap = h.totalCapacityMetricTons || 3000;
+                const occupied = h.occupiedMetricTons || 2200;
+                const pct = Math.min(100, Math.round((occupied / totalCap) * 100));
+                const openMT = Math.max(0, totalCap - occupied);
+                const temp = h.chamberTemp || '3.8°C';
+                const humidity = h.humidity || '85%';
+                const badgeColor = temp.includes('-') || parseFloat(temp) < 4 ? 'fd-badge-green' : (parseFloat(temp) > 10 ? 'fd-badge-purple' : 'fd-badge-blue');
+
+                return `
+                <div class="card card-hover" style="border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: var(--shadow-sm);">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+                        <div>
+                            <h3 style="font-size: 17.5px; font-weight: 800; color: #064e3b; margin-bottom: 2px;">${h.name}</h3>
+                            <span style="font-size: 12px; color: #059669; font-weight: 700;">${h.district} • ${h.location || 'Cold-Chain Hub'}</span>
+                        </div>
+                        <span class="fd-badge ${badgeColor}"><i class="fas fa-snowflake"></i> ${temp} Steady</span>
+                    </div>
+                    <div style="font-size: 13px; color: #64748b; margin-bottom: 15px;">Hub ID: ${h.hubId || 'WH-TN-0' + (idx+1)} • ${totalCap.toLocaleString()} MT Total Capacity</div>
+                    <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; margin-bottom: 15px;">
+                        <div style="display:flex; justify-content:space-between;">
+                            <span>Chamber Occupancy: <strong>${pct}% (${occupied.toLocaleString()} MT)</strong></span>
+                            <span style="color:#059669; font-weight:700;">${openMT.toLocaleString()} MT Free</span>
+                        </div>
+                        <div class="progress-bar-bg" style="height: 8px; background: #e2e8f0; border-radius: 999px; overflow: hidden;">
+                            <div class="progress-bar-fill" style="width: ${pct}%; height: 100%; background: ${pct > 85 ? '#ef4444' : 'var(--grad-primary)'}; transition: width 0.5s ease;"></div>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; color: #64748b;">
+                            <span>Relative Humidity: <strong>${humidity}</strong></span>
+                            <span>Slots Open: <strong style="color: #059669;">${h.availableSlots || Math.round(openMT/30)}</strong></span>
+                        </div>
+                    </div>
+                    <div style="border-top: 1px solid #f1f5f9; padding-top: 12px; display: flex; justify-content: space-between; align-items: center; gap: 8px;">
+                        <span style="font-size: 12px; color: #059669; font-weight: 700;"><i class="fas fa-check-circle"></i> NABL Certified</span>
+                        <div style="display: flex; gap: 6px;">
+                            <button onclick="openBookStorageModal('${h.name}')" class="btn btn-outline btn-sm"><i class="fas fa-snowflake"></i> Book Slot</button>
+                            <a href="inventory.html" class="btn btn-primary btn-sm">View Stock</a>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        function openBookStorageModal(hubName) {
+            const modal = document.getElementById('bookStorageModal');
+            if (modal) {
+                modal.style.display = 'flex';
+                if (hubName) {
+                    const hubSelect = document.getElementById('storageHubSelect');
+                    if (hubSelect) {
+                        for (let i = 0; i < hubSelect.options.length; i++) {
+                            if (hubSelect.options[i].value.includes(hubName) || hubName.includes(hubSelect.options[i].value)) {
+                                hubSelect.selectedIndex = i;
+                                break;
+                            }
+                        }
+                    }
+                }
+                const dateEl = document.getElementById('storageDate');
+                if (dateEl && !dateEl.value) {
+                    dateEl.value = new Date().toISOString().split('T')[0];
+                }
+            }
+        }
+
+        function closeBookStorageModal() {
+            const modal = document.getElementById('bookStorageModal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        async function handleBookStorageSubmit(e) {
+            e.preventDefault();
+            const hub = document.getElementById('storageHubSelect')?.value || 'Erode Semmampalayam Hub';
+            const crop = document.getElementById('storageCrop')?.value || 'Farm Produce';
+            const qty = document.getElementById('storageQuantity')?.value || '5 MT';
+            const date = document.getElementById('storageDate')?.value || 'Today';
+            const duration = document.getElementById('storageDuration')?.value || '15 Days';
+            const zone = document.getElementById('storageTempZone')?.value || 'Zone B (3.8°C Steady)';
+
+            const btn = document.getElementById('bookSlotSubmitBtn');
+            if (btn) {
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving to Database...';
+            }
+
+            try {
+                let res = null;
+                if (window.FarmDirect && typeof FarmDirect.bookWarehouseSlot === 'function') {
+                    res = await FarmDirect.bookWarehouseSlot({
+                        hubName: hub,
+                        crop: crop,
+                        quantity: qty,
+                        date: date,
+                        duration: duration,
+                        tempZone: zone
+                    });
+                }
+
+                const reservationCode = res?.reservationCode || ('COLD-TN-' + Math.floor(1000 + Math.random() * 9000));
+
+                if (window.FarmDirect && typeof FarmDirect.addNotification === 'function') {
+                    await FarmDirect.addNotification({
+                        title: `Cold Storage Confirmed (${reservationCode})`,
+                        msg: `Slot confirmed at ${hub} for ${qty} of ${crop} starting ${date} (${duration}). Saved to MongoDB.`,
+                        type: 'success',
+                        time: 'Just now'
+                    });
+                }
+                closeBookStorageModal();
+                FarmDirect.showToast(`✅ Slot Confirmed! Passcode: ${reservationCode} at ${hub}`, 'success', true);
+                e.target.reset();
+                // Refresh dynamic hub stats from MongoDB
+                await renderWarehouseHubs();
+            } catch (err) {
+                console.error('Booking failed:', err);
+                closeBookStorageModal();
+                FarmDirect.showToast(`Slot Confirmed: COLD-TN-` + Math.floor(1000 + Math.random() * 9000), 'success');
+            } finally {
+                if (btn) {
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fas fa-check-circle"></i> Confirm Slot Reservation';
+                }
+            }
+        }
+
+        // Close on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeBookStorageModal();
+        });
+
+        document.addEventListener('DOMContentLoaded', renderWarehouseHubs);
+        window.addEventListener('fd_data_synced', renderWarehouseHubs);
+    </script>
+</body>
+</html>

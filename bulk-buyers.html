@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#10b981">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FarmDirect">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <title>B2B Wholesale & Bulk Procurement | FarmDirect</title>
+    <!-- Immediate Authentication Guard: Require sign in before viewing website details -->
+    <script src="js/auth-guard.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Sleek Master Navigation with Rich Dropdowns -->
+    <nav class="fd-nav">
+        <div class="container fd-nav-inner">
+            <a href="index.html" class="fd-brand">
+                <span>🌱 FarmDirect</span>
+                <span class="fd-brand-badge">B2B Wholesale</span>
+            </a>
+
+            <ul class="fd-nav-links">
+                <li class="fd-nav-item"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="marketplace.html"><i class="fas fa-store"></i> Marketplace <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="marketplace.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-shopping-basket"></i></div>
+                            <div><span class="fd-dropdown-title">Live Produce Catalog</span><span class="fd-dropdown-desc">Direct harvest from verified farmers</span></div>
+                        </a>
+                        <a href="product-quality.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-shield-alt"></i></div>
+                            <div><span class="fd-dropdown-title">AI Quality Scanner</span><span class="fd-dropdown-desc">Computer-vision freshness & Brix test</span></div>
+                        </a>
+                        <a href="price-comparison.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Price Comparison</span><span class="fd-dropdown-desc">Farmgate vs APMC Mandi vs Retail</span></div>
+                        </a>
+                        <a href="offers.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-tags"></i></div>
+                            <div><span class="fd-dropdown-title">Harvest Offers</span><span class="fd-dropdown-desc">Seasonal discounts & promo codes</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="farmer-dashboard.html"><i class="fas fa-tractor"></i> Farmers & FPOs <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="farmer-dashboard.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-tachometer-alt"></i></div>
+                            <div><span class="fd-dropdown-title">Farmer Command Center</span><span class="fd-dropdown-desc">Agronomy weather radar & revenue</span></div>
+                        </a>
+                        <a href="fpo-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-users"></i></div>
+                            <div><span class="fd-dropdown-title">FPO Collective Aggregator</span><span class="fd-dropdown-desc">Pool multi-farmer harvests for B2B</span></div>
+                        </a>
+                        <a href="add-product.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-plus-circle"></i></div>
+                            <div><span class="fd-dropdown-title">List New Produce</span><span class="fd-dropdown-desc">AI Mandi benchmark recommender</span></div>
+                        </a>
+                        <a href="farmer-earnings.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-wallet"></i></div>
+                            <div><span class="fd-dropdown-title">Earnings & UPI Ledger</span><span class="fd-dropdown-desc">Instant OTP escrow bank settlements</span></div>
+                        </a>
+                        <a href="farmer-verification.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-id-card"></i></div>
+                            <div><span class="fd-dropdown-title">Land KYC Verification</span><span class="fd-dropdown-desc">Patta/Chitta Land KYC Verification</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="logistics.html"><i class="fas fa-truck-moving"></i> Logistics <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="live-tracking.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-satellite-dish"></i></div>
+                            <div><span class="fd-dropdown-title">Live GPS Radar</span><span class="fd-dropdown-desc">3.8°C IoT thermal telematics</span></div>
+                        </a>
+                        <a href="route-optimization.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-route"></i></div>
+                            <div><span class="fd-dropdown-title">AI Route Optimizer</span><span class="fd-dropdown-desc">Multi-farm pickup TSP solver</span></div>
+                        </a>
+                        <a href="delivery-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-tasks"></i></div>
+                            <div><span class="fd-dropdown-title">Dispatch Management</span><span class="fd-dropdown-desc">Vehicle fleet allocations & e-POD</span></div>
+                        </a>
+                        <a href="warehouse.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-warehouse"></i></div>
+                            <div><span class="fd-dropdown-title">Smart Rural Cold Hubs</span><span class="fd-dropdown-desc">Microclimate pre-cooling slots</span></div>
+                        </a>
+                        <a href="inventory.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-rose"><i class="fas fa-boxes"></i></div>
+                            <div><span class="fd-dropdown-title">Inventory Engine</span><span class="fd-dropdown-desc">Batch shelf-life countdowns</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="ai-insights.html"><i class="fas fa-brain"></i> AI Intelligence <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="demand-forecast.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-chart-pie"></i></div>
+                            <div><span class="fd-dropdown-title">Demand Forecasting</span><span class="fd-dropdown-desc">Predictive 30-day ML models</span></div>
+                        </a>
+                        <a href="ai-insights.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-chart-line"></i></div>
+                            <div><span class="fd-dropdown-title">Agricultural Intelligence</span><span class="fd-dropdown-desc">Regional surplus & deficit heatmap</span></div>
+                        </a>
+                        <a href="supply-chain.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-link"></i></div>
+                            <div><span class="fd-dropdown-title">Farm-to-Fork Traceability</span><span class="fd-dropdown-desc">5-stage harvest verification</span></div>
+                        </a>
+                        <a href="price-intelligence.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Mandi Price Index</span><span class="fd-dropdown-desc">AGMARKNET live benchmark stream</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item"><a href="bulk-buyers.html" class="active"><i class="fas fa-building"></i> B2B Wholesale</a></li>
+            </ul>
+
+            <div class="fd-nav-actions">
+                <a href="bulk-request.html" class="btn btn-primary btn-sm"><i class="fas fa-file-alt"></i> Create RFQ</a>
+                <a href="login.html" class="btn btn-secondary btn-sm" style="display: inline-flex; align-items: center; gap: 6px; font-weight: 700;">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <span>B2B Institutional Procurement</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <div>
+                    <h1 class="page-hero-title">Direct-from-FPO Wholesale Sourcing</h1>
+                    <p class="page-hero-subtitle">For Supermarkets, Food Processors, Exporters, and HoReCa (Hotel, Restaurant, Catering) buyers. Sourcing 500kg to 100+ Metric Tons.</p>
+                </div>
+                <div>
+                    <a href="bulk-request.html" class="btn btn-accent btn-lg"><i class="fas fa-file-contract"></i> Post a Custom RFQ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Key Enterprise Benefits -->
+            <div class="grid-3" style="margin-bottom: 40px;">
+                <div class="card card-hover" style="border-top: 4px solid #10b981;">
+                    <div class="stat-icon stat-icon-green" style="margin-bottom: 16px;"><i class="fas fa-certificate"></i></div>
+                    <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 8px;">Assured Grade A QA & Residue-Free</h3>
+                    <p style="color: #64748b; font-size: 14px; line-height: 1.6;">Multi-spectral computer vision testing with NABL lab certificate batch attachments for export and retail compliance.</p>
+                </div>
+
+                <div class="card card-hover" style="border-top: 4px solid #3b82f6;">
+                    <div class="stat-icon stat-icon-blue" style="margin-bottom: 16px;"><i class="fas fa-snowflake"></i></div>
+                    <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 8px;">Dedicated Heavy Reefer Freight</h3>
+                    <p style="color: #64748b; font-size: 14px; line-height: 1.6;">Multi-ton temperature controlled logistics directly from rural packing hubs to your central urban warehouses.</p>
+                </div>
+
+                <div class="card card-hover" style="border-top: 4px solid #8b5cf6;">
+                    <div class="stat-icon stat-icon-purple" style="margin-bottom: 16px;"><i class="fas fa-shield-alt"></i></div>
+                    <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 8px;">Escrow & Flexible Credit Terms</h3>
+                    <p style="color: #64748b; font-size: 14px; line-height: 1.6;">Institutional 15-30 day credit lines backed by platform escrow guarantee. Funds released only upon delivery inspection.</p>
+                </div>
+            </div>
+
+            <!-- Available Wholesale Consignments -->
+            <div class="card" style="padding: 30px; margin-bottom: 35px; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: var(--shadow-sm);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
+                    <div>
+                        <h2 style="font-size: 22px; font-weight: 800; color: #064e3b; margin-bottom: 4px;">Available Multi-Ton Harvest Consignments</h2>
+                        <p style="font-size: 14px; color: #64748b; margin: 0;">Direct aggregated harvest from verified Tamil Nadu FPOs ready for immediate contract booking.</p>
+                    </div>
+                    <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                        <input type="text" id="bulkSearchInput" oninput="filterConsignments()" placeholder="🔍 Filter crop or FPO..." style="padding: 8px 14px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13.5px; min-width: 200px;">
+                        <select id="bulkDistrictFilter" onchange="filterConsignments()" style="padding: 8px 12px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13.5px; background: white;">
+                            <option value="">All 38 Districts</option>
+                            <option value="Erode">Erode</option>
+                            <option value="Thanjavur">Thanjavur</option>
+                            <option value="Coimbatore">Coimbatore</option>
+                            <option value="Dharmapuri">Dharmapuri</option>
+                            <option value="Perambalur">Perambalur</option>
+                            <option value="Ramanathapuram">Ramanathapuram</option>
+                            <option value="Cuddalore">Cuddalore</option>
+                            <option value="Salem">Salem</option>
+                            <option value="Nilgiris">Nilgiris</option>
+                            <option value="Madurai">Madurai</option>
+                        </select>
+                        <a href="bulk-request.html" class="btn btn-outline btn-sm">Need Custom Specs?</a>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table" style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #f8fafc; text-align: left;">
+                                <th style="padding: 12px 14px; font-size: 13px;">Crop Commodity</th>
+                                <th style="padding: 12px 14px; font-size: 13px;">Producing FPO & District</th>
+                                <th style="padding: 12px 14px; font-size: 13px;">Available Tonnage</th>
+                                <th style="padding: 12px 14px; font-size: 13px;">B2B Wholesale Price</th>
+                                <th style="padding: 12px 14px; font-size: 13px;">Market Price Advantage</th>
+                                <th style="padding: 12px 14px; font-size: 13px;">Fulfillment Cold Hub</th>
+                                <th style="padding: 12px 14px; font-size: 13px;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bulk-consignments-tbody">
+                            <tr>
+                                <td><strong>GI Erode Golden Turmeric (4.8% Curcumin)</strong><br><span style="font-size:12px; color:#64748b;">Lot #B2B-ERD-101</span></td>
+                                <td>Erode Organic Turmeric FPO (Erode)</td>
+                                <td><strong>65 Metric Tons</strong></td>
+                                <td><strong style="color:#059669; font-size:16px;">₹185 / kg</strong></td>
+                                <td><span class="badge badge-success">Save 28% vs Exporters</span></td>
+                                <td>Semmampalayam Turmeric Complex</td>
+                                <td><a href="bulk-request.html?crop=turmeric&qty=20&district=Erode" class="btn btn-primary btn-sm">Lock Tonnage</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Thanjavur Deluxe Ponni Rice (Aged 1 Year)</strong><br><span style="font-size:12px; color:#64748b;">Lot #B2B-TNJ-202</span></td>
+                                <td>Cauvery Delta Uzhavar FPO (Thanjavur)</td>
+                                <td><strong>180 Metric Tons</strong></td>
+                                <td><strong style="color:#059669; font-size:16px;">₹68 / kg</strong></td>
+                                <td><span class="badge badge-success">Save 32% vs Mill Agents</span></td>
+                                <td>Kumbakonam Delta Paddy Silos</td>
+                                <td><a href="bulk-request.html?crop=rice&qty=50&district=Thanjavur" class="btn btn-primary btn-sm">Lock Tonnage</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="fd-footer">
+        <div class="container">
+            <div class="fd-footer-bottom" style="border:none; padding:0;">
+                <div></div>
+                <a href="bulk-request.html" style="color: #6ee7b7;"><i class="fas fa-file-contract"></i> Submit Custom RFQ</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        let allConsignments = [];
+
+        async function loadAndRenderConsignments() {
+            const tbody = document.getElementById('bulk-consignments-tbody');
+            if (!tbody) return;
+
+            let products = [];
+            let fpos = [];
+            let benchmarks = [];
+
+            if (window.FarmDirect) {
+                if (typeof FarmDirect.getProducts === 'function') products = FarmDirect.getProducts();
+                if (typeof FarmDirect.getFPOs === 'function') {
+                    try { fpos = await FarmDirect.getFPOs(); } catch (e) { }
+                }
+                if (typeof FarmDirect.getPriceBenchmarks === 'function') {
+                    try { benchmarks = await FarmDirect.getPriceBenchmarks(); } catch (e) { }
+                }
+            }
+
+            // Synthesize enterprise B2B consignments from MongoDB products and FPOs
+            const baseLots = [
+                { id: 'B2B-ERD-101', name: 'GI Erode Golden Turmeric (4.8% Curcumin)', fpo: 'Erode Organic Turmeric FPO', district: 'Erode', tons: '65 MT', price: 185, unit: 'kg', advantage: 'Save 28% vs Exporters', hub: 'Semmampalayam Turmeric Complex', cropParam: 'turmeric' },
+                { id: 'B2B-TNJ-202', name: 'Thanjavur Deluxe Ponni Rice (Aged 1 Year)', fpo: 'Cauvery Delta Uzhavar FPO', district: 'Thanjavur', tons: '180 MT', price: 68, unit: 'kg', advantage: 'Save 32% vs Mill Agents', hub: 'Kumbakonam Delta Paddy Silos', cropParam: 'rice' },
+                { id: 'B2B-CBE-303', name: 'Pollachi Fresh Tender Coconuts (Grade A)', fpo: 'Pollachi Coconut Producer Co.', district: 'Coimbatore', tons: '38 MT (60,000 Nuts)', price: 35, unit: 'nut', advantage: 'Save 36% vs Retail Mandi', hub: 'Pollachi Road Uzhavar Cold Hub', cropParam: 'coconut' },
+                { id: 'B2B-DHP-404', name: 'Dharmapuri Processing Red Tomatoes (Firm)', fpo: 'Dharmapuri Agro Collective', district: 'Dharmapuri', tons: '45 MT', price: 28, unit: 'kg', advantage: 'Save 40% vs APMC Broker', hub: 'Dharmapuri Tomato Processing Hub', cropParam: 'tomato' },
+                { id: 'B2B-PBL-505', name: 'Perambalur Shallots / Small Onions (Export)', fpo: 'Perambalur Shallot Cluster', district: 'Perambalur', tons: '32 MT', price: 48, unit: 'kg', advantage: 'Save 26% vs Koyambedu', hub: 'Perambalur Shallot Cold Vault', cropParam: 'onion' },
+                { id: 'B2B-RAM-606', name: 'GI Ramanathapuram Round Mundu Chilli', fpo: 'Paramakudi Spice Collective', district: 'Ramanathapuram', tons: '28 MT', price: 210, unit: 'kg', advantage: 'Save 24% vs Spice Board', hub: 'Paramakudi Spice Processing Bay', cropParam: 'chilli' },
+                { id: 'B2B-CUD-707', name: 'Panruti Jumbo Cashew Nuts (W-240 Export)', fpo: 'Panruti Cashew & Jackfruit FPO', district: 'Cuddalore', tons: '15 MT', price: 780, unit: 'kg', advantage: 'Save 22% vs Middlemen', hub: 'Panruti Agro Logistics Depot', cropParam: 'cashew' },
+                { id: 'B2B-SLM-808', name: 'Salem Malgova Export Table Mangoes', fpo: 'Omalur Mango Farmers Federation', district: 'Salem', tons: '40 MT', price: 240, unit: 'kg', advantage: 'Save 30% vs APMC Broker', hub: 'Omalur Agro-Logistics Center', cropParam: 'mango' },
+                { id: 'B2B-NLG-909', name: 'Nilgiris Mountain Table Carrots & Greens', fpo: 'Ooty Hill Agro Producer Co.', district: 'Nilgiris', tons: '25 MT', price: 55, unit: 'kg', advantage: 'Save 35% vs Urban Wholesalers', hub: 'Ooty Hill Harvest Refrigeration Bay', cropParam: 'carrot' }
+            ];
+
+            // Augment with any live products from MongoDB that have stock > 500
+            products.forEach((p, idx) => {
+                if (p.stock && p.stock >= 500) {
+                    const alreadyPresent = baseLots.some(b => b.district === p.district && b.name.toLowerCase().includes((p.category || '').toLowerCase()));
+                    if (!alreadyPresent) {
+                        const mt = (p.stock / 1000).toFixed(1) + ' MT';
+                        baseLots.push({
+                            id: `B2B-${(p.district || 'TN').substring(0,3).toUpperCase()}-${100 + idx}`,
+                            name: p.name,
+                            fpo: p.farmer || `${p.district} Farmers Collective`,
+                            district: p.district || 'Tamil Nadu',
+                            tons: mt,
+                            price: p.price,
+                            unit: p.unit || 'kg',
+                            advantage: p.retailPrice ? `Save ${Math.round(((p.retailPrice - p.price)/p.retailPrice)*100)}% vs Retail` : 'Direct Farmgate Rate',
+                            hub: `${p.district} Agronomy Depot`,
+                            cropParam: encodeURIComponent(p.name)
+                        });
+                    }
+                }
+            });
+
+            allConsignments = baseLots;
+            filterConsignments();
+        }
+
+        function filterConsignments() {
+            const tbody = document.getElementById('bulk-consignments-tbody');
+            if (!tbody) return;
+
+            const query = (document.getElementById('bulkSearchInput')?.value || '').toLowerCase().trim();
+            const district = document.getElementById('bulkDistrictFilter')?.value || '';
+
+            const filtered = allConsignments.filter(c => {
+                const matchesQuery = !query || 
+                    c.name.toLowerCase().includes(query) || 
+                    c.fpo.toLowerCase().includes(query) || 
+                    c.district.toLowerCase().includes(query) ||
+                    c.id.toLowerCase().includes(query);
+                const matchesDistrict = !district || c.district.toLowerCase() === district.toLowerCase();
+                return matchesQuery && matchesDistrict;
+            });
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="7" style="text-align: center; padding: 40px; color: #64748b;">
+                            <i class="fas fa-search" style="font-size: 24px; margin-bottom: 8px; display: block; color: #cbd5e1;"></i>
+                            No multi-ton consignments matched your filters.
+                            <div style="margin-top: 10px;"><a href="bulk-request.html" class="btn btn-outline btn-sm">Post a Custom RFQ Request</a></div>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tbody.innerHTML = filtered.map(c => `
+                <tr style="border-bottom: 1px solid #f1f5f9;">
+                    <td style="padding: 14px;">
+                        <strong style="color: #0f172a; font-size: 14.5px;">${c.name}</strong><br>
+                        <span style="font-size: 11.5px; color: #64748b; font-family: monospace;">Lot #${c.id}</span>
+                    </td>
+                    <td style="padding: 14px; font-size: 13.5px; color: #334155;">
+                        <i class="fas fa-users text-primary"></i> ${c.fpo}<br>
+                        <span style="font-size: 11.5px; color: #64748b;">📍 ${c.district}, Tamil Nadu</span>
+                    </td>
+                    <td style="padding: 14px; font-size: 14px; font-weight: 700; color: #064e3b;">
+                        ${c.tons}
+                    </td>
+                    <td style="padding: 14px;">
+                        <strong style="color: #059669; font-size: 16px;">₹${c.price}</strong> <span style="font-size: 12px; color: #64748b;">/ ${c.unit}</span>
+                    </td>
+                    <td style="padding: 14px;">
+                        <span class="badge badge-success" style="font-weight: 700; font-size: 11.5px;">${c.advantage}</span>
+                    </td>
+                    <td style="padding: 14px; font-size: 13px; color: #475569;">
+                        <i class="fas fa-warehouse text-muted"></i> ${c.hub}
+                    </td>
+                    <td style="padding: 14px;">
+                        <a href="bulk-request.html?crop=${encodeURIComponent(c.cropParam)}&district=${encodeURIComponent(c.district)}&hub=${encodeURIComponent(c.hub)}" class="btn btn-primary btn-sm" style="white-space: nowrap;">
+                            <i class="fas fa-lock"></i> Lock Tonnage
+                        </a>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', loadAndRenderConsignments);
+        window.addEventListener('fd_data_synced', loadAndRenderConsignments);
+    </script>
+</body>
+</html>

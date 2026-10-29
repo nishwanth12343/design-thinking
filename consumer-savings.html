@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#10b981">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FarmDirect">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <title>Consumer Savings Tracker | FarmDirect</title>
+    <!-- Immediate Authentication Guard: Require sign in before viewing website details -->
+    <script src="js/auth-guard.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Sleek Master Navigation with Rich Dropdowns -->
+    <nav class="fd-nav">
+        <div class="container fd-nav-inner">
+            <a href="index.html" class="fd-brand">
+                <span>🌱 FarmDirect</span>
+                <span class="fd-brand-badge">Savings Hub</span>
+            </a>
+
+            <ul class="fd-nav-links">
+                <li class="fd-nav-item"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="marketplace.html"><i class="fas fa-store"></i> Marketplace <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="marketplace.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-shopping-basket"></i></div>
+                            <div><span class="fd-dropdown-title">Live Produce Catalog</span><span class="fd-dropdown-desc">Direct harvest from verified farmers</span></div>
+                        </a>
+                        <a href="product-quality.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-shield-alt"></i></div>
+                            <div><span class="fd-dropdown-title">AI Quality Scanner</span><span class="fd-dropdown-desc">Computer-vision freshness & Brix test</span></div>
+                        </a>
+                        <a href="price-comparison.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Price Comparison</span><span class="fd-dropdown-desc">Farmgate vs APMC Mandi vs Retail</span></div>
+                        </a>
+                        <a href="offers.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-tags"></i></div>
+                            <div><span class="fd-dropdown-title">Harvest Offers</span><span class="fd-dropdown-desc">Seasonal discounts & promo codes</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="farmer-dashboard.html"><i class="fas fa-tractor"></i> Farmers & FPOs <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="farmer-dashboard.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-tachometer-alt"></i></div>
+                            <div><span class="fd-dropdown-title">Farmer Command Center</span><span class="fd-dropdown-desc">Agronomy weather radar & revenue</span></div>
+                        </a>
+                        <a href="fpo-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-users"></i></div>
+                            <div><span class="fd-dropdown-title">FPO Collective Aggregator</span><span class="fd-dropdown-desc">Pool multi-farmer harvests for B2B</span></div>
+                        </a>
+                        <a href="add-product.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-plus-circle"></i></div>
+                            <div><span class="fd-dropdown-title">List New Produce</span><span class="fd-dropdown-desc">AI Mandi benchmark recommender</span></div>
+                        </a>
+                        <a href="farmer-earnings.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-wallet"></i></div>
+                            <div><span class="fd-dropdown-title">Earnings & UPI Ledger</span><span class="fd-dropdown-desc">Instant OTP escrow bank settlements</span></div>
+                        </a>
+                        <a href="farmer-verification.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-id-card"></i></div>
+                            <div><span class="fd-dropdown-title">Land KYC Verification</span><span class="fd-dropdown-desc">Patta/Chitta Land KYC Verification</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="logistics.html"><i class="fas fa-truck-moving"></i> Logistics <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="live-tracking.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-satellite-dish"></i></div>
+                            <div><span class="fd-dropdown-title">Live GPS Radar</span><span class="fd-dropdown-desc">3.8°C IoT thermal telematics</span></div>
+                        </a>
+                        <a href="route-optimization.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-route"></i></div>
+                            <div><span class="fd-dropdown-title">AI Route Optimizer</span><span class="fd-dropdown-desc">Multi-farm pickup TSP solver</span></div>
+                        </a>
+                        <a href="delivery-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-tasks"></i></div>
+                            <div><span class="fd-dropdown-title">Dispatch Management</span><span class="fd-dropdown-desc">Vehicle fleet allocations & e-POD</span></div>
+                        </a>
+                        <a href="warehouse.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-warehouse"></i></div>
+                            <div><span class="fd-dropdown-title">Smart Rural Cold Hubs</span><span class="fd-dropdown-desc">Microclimate pre-cooling slots</span></div>
+                        </a>
+                        <a href="inventory.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-rose"><i class="fas fa-boxes"></i></div>
+                            <div><span class="fd-dropdown-title">Inventory Engine</span><span class="fd-dropdown-desc">Batch shelf-life countdowns</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="ai-insights.html"><i class="fas fa-brain"></i> AI Intelligence <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="demand-forecast.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-chart-pie"></i></div>
+                            <div><span class="fd-dropdown-title">Demand Forecasting</span><span class="fd-dropdown-desc">Predictive 30-day ML models</span></div>
+                        </a>
+                        <a href="ai-insights.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-chart-line"></i></div>
+                            <div><span class="fd-dropdown-title">Agricultural Intelligence</span><span class="fd-dropdown-desc">Regional surplus & deficit heatmap</span></div>
+                        </a>
+                        <a href="supply-chain.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-link"></i></div>
+                            <div><span class="fd-dropdown-title">Farm-to-Fork Traceability</span><span class="fd-dropdown-desc">5-stage harvest verification</span></div>
+                        </a>
+                        <a href="price-intelligence.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Mandi Price Index</span><span class="fd-dropdown-desc">AGMARKNET live benchmark stream</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item"><a href="bulk-buyers.html"><i class="fas fa-building"></i> B2B Wholesale</a></li>
+            </ul>
+
+            <div class="fd-nav-actions">
+                <a href="wishlist.html" class="fd-icon-btn"><i class="far fa-heart"></i><span class="fd-badge-count" id="fd-wishlist-badge" style="display:none;">0</span></a>
+                <a href="cart.html" class="fd-icon-btn"><i class="fas fa-shopping-basket"></i><span class="fd-badge-count" id="fd-cart-badge" style="display:none;">0</span></a>
+                <a href="notifications.html" class="fd-icon-btn"><i class="far fa-bell"></i><span class="fd-badge-count" id="fd-notif-badge" style="display:none;">0</span></a>
+                <a href="profile.html" class="fd-role-pill"><i class="fas fa-user-check"></i> Consumer</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <a href="consumer-dashboard.html">Consumer Portal</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <span>Consumer Savings Analytics</span>
+            </div>
+            <h1 class="page-hero-title">Consumer Savings & Freshness Impact</h1>
+            <p class="page-hero-subtitle">Track how much your household saves by bypassing supermarket markups while securing 24-hr fresh organic produce.</p>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Cumulative Stats -->
+            <div class="grid-4" style="margin-bottom: 30px;">
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-green"><i class="fas fa-wallet"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-label">Total Saved (YTD)</div>
+                        <div class="stat-value" style="color:#059669;">₹18,420</div>
+                        <div class="stat-trend up"><i class="fas fa-arrow-up"></i> +32% avg savings</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-blue"><i class="fas fa-shopping-basket"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-label">Direct Farm Orders</div>
+                        <div class="stat-value">24 Orders</div>
+                        <div style="font-size:12px; color:#64748b; margin-top:4px;">100% On-Time Delivery</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-amber"><i class="fas fa-leaf"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-label">Carbon Offset</div>
+                        <div class="stat-value" style="color:#d97706;">142 kg CO2</div>
+                        <div style="font-size:12px; color:#64748b; margin-top:4px;">Via short-mile logistics</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-purple"><i class="fas fa-heartbeat"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-label">Nutrition Purity</div>
+                        <div class="stat-value" style="color:#7e22ce;">98%</div>
+                        <div style="font-size:12px; color:#64748b; margin-top:4px;">Residue-free certified</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Monthly Household Budget Calculator -->
+            <div class="card" style="padding: 35px; margin-bottom: 35px;">
+                <h3 style="font-size: 20px; font-weight: 800; color: #064e3b; margin-bottom: 20px;">
+                    <i class="fas fa-calculator text-success"></i> Monthly Household Grocery Savings Calculator
+                </h3>
+
+                <div class="grid-2" style="align-items: center; gap: 40px;">
+                    <div>
+                        <div class="form-group">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                                <label class="form-label" style="margin-bottom: 0;">Family Monthly Grocery & Produce Spend (₹)</label>
+                                <span id="spendLabel" style="font-weight: 800; color: #059669;">₹12,000 / month</span>
+                            </div>
+                            <input type="range" id="spendSlider" min="3000" max="35000" step="1000" value="12000" style="width: 100%; accent-color: #10b981;" oninput="updateHouseholdCalc(this.value)">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Household Size / Members</label>
+                            <select class="form-select" onchange="updateHouseholdCalc(document.getElementById('spendSlider').value)">
+                                <option value="2">2 Members (Couple)</option>
+                                <option value="4" selected>3-4 Members (Standard Family)</option>
+                                <option value="6">5+ Members (Joint Family)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div style="background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 16px; padding: 25px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px;">
+                            <span style="color: #64748b;">Supermarket Retail Annual Cost:</span>
+                            <strong id="annualRetail" style="text-decoration: line-through; color: #94a3b8;">₹1,44,000</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px;">
+                            <span style="color: #166534; font-weight: 700;">FarmDirect Annual Cost:</span>
+                            <strong id="annualFarmDirect" style="color: #059669; font-size: 18px;">₹96,480</strong>
+                        </div>
+                        <div style="padding-top: 15px; border-top: 1px dashed #86efac; display: flex; justify-content: space-between; align-items: baseline;">
+                            <span style="font-weight: 800; color: #064e3b; font-size: 16px;">Your Projected Annual Savings:</span>
+                            <span id="annualSavings" style="font-size: 26px; font-weight: 800; color: #059669;">₹47,520 / yr</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Orders Savings Log -->
+            <div class="card" style="padding: 30px;">
+                <h3 style="font-size: 18px; font-weight: 800; color: #064e3b; margin-bottom: 15px;">
+                    <i class="fas fa-history text-success"></i> Savings Breakdown on Your Recent Orders
+                </h3>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Order ID & Date</th>
+                                <th>Farm Origin</th>
+                                <th>Amount Paid</th>
+                                <th>Supermarket Retail Value</th>
+                                <th>Direct Savings</th>
+                                <th>Farmer Direct Payout</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>#TN-ORD-4491</strong><br><span style="font-size:12px; color:#64748b;">04 Sep 2026</span></td>
+                                <td>Semmampalayam Turmeric & Kumbakonam Delta FPO</td>
+                                <td><strong style="color:#064e3b;">₹1,050</strong></td>
+                                <td><span style="text-decoration:line-through; color:#94a3b8;">₹1,470</span></td>
+                                <td><span class="badge badge-success">Saved ₹420 (29%)</span></td>
+                                <td><span class="badge badge-info">₹924 direct to farmer</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>#TN-ORD-4494</strong><br><span style="font-size:12px; color:#64748b;">03 Sep 2026</span></td>
+                                <td>Pollachi Road Uzhavar Hub & Omalur Orchard</td>
+                                <td><strong style="color:#064e3b;">₹2,450</strong></td>
+                                <td><span style="text-decoration:line-through; color:#94a3b8;">₹3,480</span></td>
+                                <td><span class="badge badge-success">Saved ₹1,030 (30%)</span></td>
+                                <td><span class="badge badge-info">₹2,156 direct to farmer</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="fd-footer">
+        <div class="container">
+            <div class="fd-footer-bottom" style="border:none; padding:0;">
+                <div></div>
+                <a href="marketplace.html" style="color: #6ee7b7;"><i class="fas fa-shopping-basket"></i> Continue Shopping</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        function updateHouseholdCalc(monthlySpend) {
+            monthlySpend = Number(monthlySpend);
+            document.getElementById('spendLabel').textContent = '₹' + monthlySpend.toLocaleString('en-IN') + ' / month';
+
+            const annualRetail = monthlySpend * 12;
+            const savingsRate = 0.33; // 33% average savings
+            const annualSavings = Math.round(annualRetail * savingsRate);
+            const annualFarmDirect = annualRetail - annualSavings;
+
+            document.getElementById('annualRetail').textContent = '₹' + annualRetail.toLocaleString('en-IN');
+            document.getElementById('annualFarmDirect').textContent = '₹' + annualFarmDirect.toLocaleString('en-IN');
+            document.getElementById('annualSavings').textContent = '₹' + annualSavings.toLocaleString('en-IN') + ' / yr';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateHouseholdCalc(12000);
+        });
+    </script>
+</body>
+</html>

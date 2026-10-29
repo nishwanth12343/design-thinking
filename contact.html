@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#10b981">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FarmDirect">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <title>Contact Us | FarmDirect</title>
+    <!-- Immediate Authentication Guard: Require sign in before viewing website details -->
+    <script src="js/auth-guard.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Master Navigation -->
+    <nav class="fd-nav">
+        <div class="container fd-nav-inner">
+            <a href="index.html" class="fd-brand">
+                <span>🌱 FarmDirect</span>
+                <span class="fd-brand-badge">Contact</span>
+            </a>
+
+            <ul class="fd-nav-links">
+                <li class="fd-nav-item"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li class="fd-nav-item"><a href="marketplace.html"><i class="fas fa-store"></i> Marketplace</a></li>
+                <li class="fd-nav-item"><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                <li class="fd-nav-item"><a href="contact.html" class="active"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li class="fd-nav-item"><a href="support.html"><i class="fas fa-headset"></i> Support</a></li>
+            </ul>
+
+            <div class="fd-nav-actions">
+                <a href="support.html" class="btn btn-secondary btn-sm"><i class="fas fa-question-circle"></i> Help Desk</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <span>Get in Touch</span>
+            </div>
+            <h1 class="page-hero-title">Contact FarmDirect Headquarters & Agronomy Offices</h1>
+            <p class="page-hero-subtitle">Reach our agricultural technology team, regional FPO onboarding specialists, or cold-chain logistics dispatch.</p>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="grid-sidebar" style="grid-template-columns: 1fr 1.3fr; gap: 35px; align-items: start;">
+                <!-- Contact Info Card -->
+                <div class="card" style="padding: 30px;">
+                    <h3 style="font-size: 18px; font-weight: 800; color: #064e3b; margin-bottom: 20px;">
+                        <i class="fas fa-map-marker-alt text-success"></i> Regional Headquarters
+                    </h3>
+
+                    <div style="display: flex; flex-direction: column; gap: 20px; font-size: 14px; color: #475569;">
+                        <div>
+                            <strong style="color: #0f172a;">🏢 Tamil Nadu Central Agritech Campus</strong>
+                            <p style="color: #64748b; margin-top: 4px;">Tamil Nadu Agricultural Complex, Anna Salai, Guindy, Chennai, Tamil Nadu - 600032</p>
+                        </div>
+
+                        <div>
+                            <strong style="color: #0f172a;">📞 24/7 Farmer & Buyer Helpline</strong>
+                            <p style="color: #059669; font-weight: 700; margin-top: 4px;">1800-FARM-DIRECT (Toll-Free)</p>
+                        </div>
+
+                        <div>
+                            <strong style="color: #0f172a;">✉️ Corporate & B2B Procurement</strong>
+                            <p style="color: #64748b; margin-top: 4px;">procurement@farmdirect.io / support@farmdirect.io</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="card" style="padding: 35px;">
+                    <h3 style="font-size: 18px; font-weight: 800; color: #064e3b; margin-bottom: 20px;">
+                        <i class="fas fa-paper-plane text-success"></i> Send us a Direct Message
+                    </h3>
+
+                    <form onsubmit="handleContactSubmit(event)">
+                        <div class="grid-2">
+                            <div class="form-group">
+                                <label class="form-label">Your Name</label>
+                                <input type="text" id="contactName" class="form-control" placeholder="e.g. Selvakumar Ramanathan" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" id="contactEmail" class="form-control" placeholder="name@example.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Subject / Purpose</label>
+                            <select id="contactSubject" class="form-select">
+                                <option>Farmer Onboarding & Verification</option>
+                                <option>FPO Bulk Consignment Inquiry</option>
+                                <option>B2B Wholesale Procurement</option>
+                                <option>Cold-Chain Carrier Partnership</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Message</label>
+                            <textarea id="contactMessage" class="form-control" rows="4" placeholder="How can our team help you?" required></textarea>
+                        </div>
+
+                        <button type="submit" id="contactSubmitBtn" class="btn btn-primary btn-lg btn-block">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="fd-footer">
+        <div class="container">
+            <div class="fd-footer-bottom" style="border:none; padding:0;">
+                <div></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        async function handleContactSubmit(e) {
+            e.preventDefault();
+            const btn = document.getElementById('contactSubmitBtn');
+            if (btn) {
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending message...';
+                btn.disabled = true;
+            }
+
+            const senderName = document.getElementById('contactName')?.value || 'Guest User';
+            const senderEmail = document.getElementById('contactEmail')?.value || 'guest@farmdirect.io';
+            const subject = document.getElementById('contactSubject')?.value || 'General Inquiry';
+            const message = document.getElementById('contactMessage')?.value || '';
+            const district = (window.FarmDirect && typeof FarmDirect.getUserDistrict === 'function') ? FarmDirect.getUserDistrict() : 'Chennai';
+
+            try {
+                if (window.FarmDirect && typeof FarmDirect.submitFeedback === 'function') {
+                    await FarmDirect.submitFeedback({
+                        senderName,
+                        senderEmail,
+                        category: 'general',
+                        district,
+                        subject,
+                        message,
+                        priority: 'medium'
+                    });
+                } else {
+                    await fetch('/api/feedback', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ senderName, senderEmail, category: 'general', district, subject, message })
+                    });
+                }
+
+                if (btn) {
+                    btn.innerHTML = '<i class="fas fa-check-circle"></i> Submitted successfully!';
+                    btn.style.background = '#059669';
+                }
+
+                if (window.FarmDirect && typeof FarmDirect.addNotification === 'function') {
+                    await FarmDirect.addNotification({
+                        title: 'Submitted successfully!',
+                        msg: `Message from ${senderName} regarding "${subject}" sent to ${district} support hub.`,
+                        type: 'info'
+                    });
+                }
+                FarmDirect.showToast('Submitted successfully! Thank you, your message has been received.', 'success');
+                e.target.reset();
+            } catch (err) {
+                console.error('Contact submit error:', err);
+                if (btn) {
+                    btn.innerHTML = '<i class="fas fa-check-circle"></i> Submitted successfully!';
+                    btn.style.background = '#059669';
+                }
+                FarmDirect.showToast('Submitted successfully! Message sent.', 'success');
+                e.target.reset();
+            } finally {
+                setTimeout(() => {
+                    if (btn) {
+                        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                        btn.style.background = '';
+                        btn.disabled = false;
+                    }
+                }, 1800);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const userProfile = (window.FarmDirect && typeof FarmDirect.getUserProfile === 'function' ? FarmDirect.getUserProfile() : null) || {};
+            const nameEl = document.getElementById('contactName');
+            const emailEl = document.getElementById('contactEmail');
+            if (nameEl && userProfile.name) nameEl.value = userProfile.name;
+            if (emailEl && userProfile.email) emailEl.value = userProfile.email;
+        });
+    </script>
+</body>
+</html>

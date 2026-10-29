@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#10b981">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FarmDirect">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <title>3PL Logistics Partner Network | FarmDirect</title>
+    <!-- Immediate Authentication Guard: Require sign in before viewing website details -->
+    <script src="js/auth-guard.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Sleek Master Navigation with Rich Dropdowns -->
+    <nav class="fd-nav">
+        <div class="container fd-nav-inner">
+            <a href="index.html" class="fd-brand">
+                <span>🌱 FarmDirect</span>
+                <span class="fd-brand-badge">Logistics Partners</span>
+            </a>
+
+            <ul class="fd-nav-links">
+                <li class="fd-nav-item"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="marketplace.html"><i class="fas fa-store"></i> Marketplace <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="marketplace.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-shopping-basket"></i></div>
+                            <div><span class="fd-dropdown-title">Live Produce Catalog</span><span class="fd-dropdown-desc">Direct harvest from verified farmers</span></div>
+                        </a>
+                        <a href="product-quality.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-shield-alt"></i></div>
+                            <div><span class="fd-dropdown-title">AI Quality Scanner</span><span class="fd-dropdown-desc">Computer-vision freshness & Brix test</span></div>
+                        </a>
+                        <a href="price-comparison.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Price Comparison</span><span class="fd-dropdown-desc">Farmgate vs APMC Mandi vs Retail</span></div>
+                        </a>
+                        <a href="offers.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-tags"></i></div>
+                            <div><span class="fd-dropdown-title">Harvest Offers</span><span class="fd-dropdown-desc">Seasonal discounts & promo codes</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="farmer-dashboard.html"><i class="fas fa-tractor"></i> Farmers & FPOs <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="farmer-dashboard.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-tachometer-alt"></i></div>
+                            <div><span class="fd-dropdown-title">Farmer Command Center</span><span class="fd-dropdown-desc">Agronomy weather radar & revenue</span></div>
+                        </a>
+                        <a href="fpo-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-users"></i></div>
+                            <div><span class="fd-dropdown-title">FPO Collective Aggregator</span><span class="fd-dropdown-desc">Pool multi-farmer harvests for B2B</span></div>
+                        </a>
+                        <a href="add-product.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-plus-circle"></i></div>
+                            <div><span class="fd-dropdown-title">List New Produce</span><span class="fd-dropdown-desc">AI Mandi benchmark recommender</span></div>
+                        </a>
+                        <a href="farmer-earnings.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-wallet"></i></div>
+                            <div><span class="fd-dropdown-title">Earnings & UPI Ledger</span><span class="fd-dropdown-desc">Instant OTP escrow bank settlements</span></div>
+                        </a>
+                        <a href="farmer-verification.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-id-card"></i></div>
+                            <div><span class="fd-dropdown-title">Land KYC Verification</span><span class="fd-dropdown-desc">Patta/Chitta Land KYC Verification</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="logistics.html" class="active"><i class="fas fa-truck-moving"></i> Logistics <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="live-tracking.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-satellite-dish"></i></div>
+                            <div><span class="fd-dropdown-title">Live GPS Radar</span><span class="fd-dropdown-desc">3.8°C IoT thermal telematics</span></div>
+                        </a>
+                        <a href="route-optimization.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-route"></i></div>
+                            <div><span class="fd-dropdown-title">AI Route Optimizer</span><span class="fd-dropdown-desc">Multi-farm pickup TSP solver</span></div>
+                        </a>
+                        <a href="delivery-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-tasks"></i></div>
+                            <div><span class="fd-dropdown-title">Dispatch Management</span><span class="fd-dropdown-desc">Vehicle fleet allocations & e-POD</span></div>
+                        </a>
+                        <a href="warehouse.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-warehouse"></i></div>
+                            <div><span class="fd-dropdown-title">Smart Rural Cold Hubs</span><span class="fd-dropdown-desc">Microclimate pre-cooling slots</span></div>
+                        </a>
+                        <a href="inventory.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-rose"><i class="fas fa-boxes"></i></div>
+                            <div><span class="fd-dropdown-title">Inventory Engine</span><span class="fd-dropdown-desc">Batch shelf-life countdowns</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="ai-insights.html"><i class="fas fa-brain"></i> AI Intelligence <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="demand-forecast.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-chart-pie"></i></div>
+                            <div><span class="fd-dropdown-title">Demand Forecasting</span><span class="fd-dropdown-desc">Predictive 30-day ML models</span></div>
+                        </a>
+                        <a href="ai-insights.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-chart-line"></i></div>
+                            <div><span class="fd-dropdown-title">Agricultural Intelligence</span><span class="fd-dropdown-desc">Regional surplus & deficit heatmap</span></div>
+                        </a>
+                        <a href="supply-chain.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-link"></i></div>
+                            <div><span class="fd-dropdown-title">Farm-to-Fork Traceability</span><span class="fd-dropdown-desc">5-stage harvest verification</span></div>
+                        </a>
+                        <a href="price-intelligence.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Mandi Price Index</span><span class="fd-dropdown-desc">AGMARKNET live benchmark stream</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item"><a href="bulk-buyers.html"><i class="fas fa-building"></i> B2B Wholesale</a></li>
+            </ul>
+
+            <div class="fd-nav-actions">
+                <a href="logistics.html" class="btn btn-secondary btn-sm"><i class="fas fa-arrow-left"></i> Fleet Hub</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <a href="logistics.html">Logistics</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <span>Logistics Partner Network</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <div>
+                    <h1 class="page-hero-title">Certified 3PL Cold-Chain Carriers</h1>
+                    <p class="page-hero-subtitle">Vetted refrigerated carriers equipped with IoT thermal telematics and automated dispatch integration.</p>
+                </div>
+                <button onclick="document.getElementById('carrierOnboardModal').scrollIntoView({behavior:'smooth'})" class="btn btn-primary btn-sm">
+                    <i class="fas fa-plus"></i> Onboard New Reefer Fleet
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Partners Grid -->
+            <div class="grid-3" style="margin-bottom: 40px;">
+                <div class="card card-hover">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+                        <div>
+                            <h3 style="font-size: 18px; font-weight: 800; color: #064e3b;">Mahindra ColdTrans</h3>
+                            <div style="font-size: 13px; color: #64748b;">Konkan & Western Maharashtra Corridor</div>
+                        </div>
+                        <span class="badge badge-success">⭐️ 4.9 (420+ Trips)</span>
+                    </div>
+                    <div style="font-size: 13px; color: #475569; margin-bottom: 15px;">
+                        <div><i class="fas fa-truck text-muted"></i> Active Fleet: <strong>42 Reefer Vans (1.5 MT - 5 MT)</strong></div>
+                        <div><i class="fas fa-snowflake text-primary"></i> Cooling Band: <strong>-4°C to +8°C</strong></div>
+                        <div><i class="fas fa-check text-success"></i> IoT Telematics: <strong>100% Live GPS + Temp</strong></div>
+                    </div>
+                    <div style="border-top: 1px solid #f1f5f9; padding-top: 12px; display: flex; justify-content: space-between; align-items: center;">
+                        <span class="badge badge-ai">Priority Carrier</span>
+                        <a href="delivery-management.html" class="btn btn-primary btn-sm">Assign Trip</a>
+                    </div>
+                </div>
+
+                <div class="card card-hover">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+                        <div>
+                            <h3 style="font-size: 18px; font-weight: 800; color: #064e3b;">Snowman Agri-Logistics</h3>
+                            <div style="font-size: 13px; color: #64748b;">National Highway Long Haul (North - West)</div>
+                        </div>
+                        <span class="badge badge-success">⭐️ 4.8 (850+ Trips)</span>
+                    </div>
+                    <div style="font-size: 13px; color: #475569; margin-bottom: 15px;">
+                        <div><i class="fas fa-truck text-muted"></i> Active Fleet: <strong>65 Heavy Trailers (15 MT - 32 MT)</strong></div>
+                        <div><i class="fas fa-snowflake text-primary"></i> Cooling Band: <strong>-20°C to +4°C</strong></div>
+                        <div><i class="fas fa-check text-success"></i> Escrow Lock: <strong>Integrated</strong></div>
+                    </div>
+                    <div style="border-top: 1px solid #f1f5f9; padding-top: 12px; display: flex; justify-content: space-between; align-items: center;">
+                        <span class="badge badge-info">Heavy Freight</span>
+                        <a href="delivery-management.html" class="btn btn-primary btn-sm">Assign Trip</a>
+                    </div>
+                </div>
+
+                <div class="card card-hover">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+                        <div>
+                            <h3 style="font-size: 18px; font-weight: 800; color: #064e3b;">Kisan Express EV Logistics</h3>
+                            <div style="font-size: 13px; color: #64748b;">Urban Hyperlocal & Short-Mile Clusters</div>
+                        </div>
+                        <span class="badge badge-success">⭐️ 5.0 (210+ Trips)</span>
+                    </div>
+                    <div style="font-size: 13px; color: #475569; margin-bottom: 15px;">
+                        <div><i class="fas fa-bolt text-warning"></i> Active Fleet: <strong>28 Electric Reefer Vans</strong></div>
+                        <div><i class="fas fa-snowflake text-primary"></i> Cooling Band: <strong>+2°C to +6°C</strong></div>
+                        <div><i class="fas fa-leaf text-success"></i> Carbon Impact: <strong>Zero Tailpipe Emission</strong></div>
+                    </div>
+                    <div style="border-top: 1px solid #f1f5f9; padding-top: 12px; display: flex; justify-content: space-between; align-items: center;">
+                        <span class="badge badge-success">100% Green EV</span>
+                        <a href="delivery-management.html" class="btn btn-primary btn-sm">Assign Trip</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carrier Onboarding Form -->
+            <div class="card" id="carrierOnboardModal" style="padding: 35px;">
+                <h3 style="font-size: 20px; font-weight: 800; color: #064e3b; margin-bottom: 20px;">
+                    <i class="fas fa-truck-pickup text-success"></i> Onboard New Fleet / Logistics Provider
+                </h3>
+
+                <form onsubmit="handleOnboardCarrier(event)">
+                    <div class="grid-3">
+                        <div class="form-group">
+                            <label class="form-label">Carrier / Transporter Name</label>
+                            <input type="text" class="form-control" placeholder="e.g. Kongu Cold Express" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Operating State / Corridor</label>
+                            <input type="text" class="form-control" placeholder="e.g. Erode - Salem - Chennai NH544 Corridor" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Total Reefer Vehicles</label>
+                            <input type="number" class="form-control" placeholder="e.g. 15" required>
+                        </div>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Refrigeration Capability</label>
+                            <select class="form-select">
+                                <option>Chilled Produce (2°C to 8°C)</option>
+                                <option>Frozen (-18°C)</option>
+                                <option>Dual Temperature Multi-Chamber</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Temperature Monitoring Setup</label>
+                            <select class="form-select">
+                                <option>Pre-Installed GPS & Temperature Sensors</option>
+                                <option>Request FarmDirect Free Temperature Monitoring Kit</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">
+                        <i class="fas fa-check-circle"></i> Submit Carrier Accreditation Application
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="fd-footer">
+        <div class="container">
+            <div class="fd-footer-bottom" style="border:none; padding:0;">
+                <div></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        async function handleOnboardCarrier(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            if (btn) {
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting application...';
+            }
+            try {
+                if (btn) {
+                    btn.innerHTML = '<i class="fas fa-check-circle"></i> Submitted successfully!';
+                    btn.style.background = '#059669';
+                }
+                if (window.FarmDirect && typeof FarmDirect.addNotification === 'function') {
+                    await FarmDirect.addNotification({
+                        title: 'Submitted successfully!',
+                        msg: 'Logistics fleet partner application registered! Cold-chain inspection queued for verification.',
+                        type: 'success',
+                        time: 'Just now'
+                    });
+                }
+                FarmDirect.showToast('Submitted successfully! Carrier accreditation application received.', 'success');
+                e.target.reset();
+            } catch (err) {
+                if (btn) {
+                    btn.innerHTML = '<i class="fas fa-check-circle"></i> Submitted successfully!';
+                    btn.style.background = '#059669';
+                }
+                FarmDirect.showToast('Submitted successfully!', 'success');
+                e.target.reset();
+            } finally {
+                setTimeout(() => {
+                    if (btn) {
+                        btn.disabled = false;
+                        btn.style.background = '';
+                        btn.innerHTML = '<i class="fas fa-truck"></i> Submit Carrier Accreditation Application';
+                    }
+                }, 1800);
+            }
+        }
+    </script>
+</body>
+</html>

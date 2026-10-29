@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#10b981">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FarmDirect">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <title>Customer & Farmer Feedback | FarmDirect</title>
+    <!-- Immediate Authentication Guard: Require sign in before viewing website details -->
+    <script src="js/auth-guard.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Sleek Master Navigation with Rich Dropdowns -->
+    <nav class="fd-nav">
+        <div class="container fd-nav-inner">
+            <a href="index.html" class="fd-brand">
+                <span>🌱 FarmDirect</span>
+                <span class="fd-brand-badge">Reviews</span>
+            </a>
+
+            <ul class="fd-nav-links">
+                <li class="fd-nav-item"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="marketplace.html"><i class="fas fa-store"></i> Marketplace <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="marketplace.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-shopping-basket"></i></div>
+                            <div><span class="fd-dropdown-title">Live Produce Catalog</span><span class="fd-dropdown-desc">Direct harvest from verified farmers</span></div>
+                        </a>
+                        <a href="product-quality.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-shield-alt"></i></div>
+                            <div><span class="fd-dropdown-title">AI Quality Scanner</span><span class="fd-dropdown-desc">Computer-vision freshness & Brix test</span></div>
+                        </a>
+                        <a href="price-comparison.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Price Comparison</span><span class="fd-dropdown-desc">Farmgate vs APMC Mandi vs Retail</span></div>
+                        </a>
+                        <a href="offers.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-tags"></i></div>
+                            <div><span class="fd-dropdown-title">Harvest Offers</span><span class="fd-dropdown-desc">Seasonal discounts & promo codes</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="farmer-dashboard.html"><i class="fas fa-tractor"></i> Farmers & FPOs <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="farmer-dashboard.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-tachometer-alt"></i></div>
+                            <div><span class="fd-dropdown-title">Farmer Command Center</span><span class="fd-dropdown-desc">Agronomy weather radar & revenue</span></div>
+                        </a>
+                        <a href="fpo-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-users"></i></div>
+                            <div><span class="fd-dropdown-title">FPO Collective Aggregator</span><span class="fd-dropdown-desc">Pool multi-farmer harvests for B2B</span></div>
+                        </a>
+                        <a href="add-product.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-plus-circle"></i></div>
+                            <div><span class="fd-dropdown-title">List New Produce</span><span class="fd-dropdown-desc">AI Mandi benchmark recommender</span></div>
+                        </a>
+                        <a href="farmer-earnings.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-wallet"></i></div>
+                            <div><span class="fd-dropdown-title">Earnings & UPI Ledger</span><span class="fd-dropdown-desc">Instant OTP escrow bank settlements</span></div>
+                        </a>
+                        <a href="farmer-verification.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-id-card"></i></div>
+                            <div><span class="fd-dropdown-title">Land KYC Verification</span><span class="fd-dropdown-desc">Patta/Chitta Land KYC Verification</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="logistics.html"><i class="fas fa-truck-moving"></i> Logistics <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="live-tracking.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-satellite-dish"></i></div>
+                            <div><span class="fd-dropdown-title">Live GPS Radar</span><span class="fd-dropdown-desc">3.8°C IoT thermal telematics</span></div>
+                        </a>
+                        <a href="route-optimization.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-route"></i></div>
+                            <div><span class="fd-dropdown-title">AI Route Optimizer</span><span class="fd-dropdown-desc">Multi-farm pickup TSP solver</span></div>
+                        </a>
+                        <a href="delivery-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-tasks"></i></div>
+                            <div><span class="fd-dropdown-title">Dispatch Management</span><span class="fd-dropdown-desc">Vehicle fleet allocations & e-POD</span></div>
+                        </a>
+                        <a href="warehouse.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-warehouse"></i></div>
+                            <div><span class="fd-dropdown-title">Smart Rural Cold Hubs</span><span class="fd-dropdown-desc">Microclimate pre-cooling slots</span></div>
+                        </a>
+                        <a href="inventory.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-rose"><i class="fas fa-boxes"></i></div>
+                            <div><span class="fd-dropdown-title">Inventory Engine</span><span class="fd-dropdown-desc">Batch shelf-life countdowns</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="ai-insights.html"><i class="fas fa-brain"></i> AI Intelligence <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="demand-forecast.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-chart-pie"></i></div>
+                            <div><span class="fd-dropdown-title">Demand Forecasting</span><span class="fd-dropdown-desc">Predictive 30-day ML models</span></div>
+                        </a>
+                        <a href="ai-insights.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-chart-line"></i></div>
+                            <div><span class="fd-dropdown-title">Agricultural Intelligence</span><span class="fd-dropdown-desc">Regional surplus & deficit heatmap</span></div>
+                        </a>
+                        <a href="supply-chain.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-link"></i></div>
+                            <div><span class="fd-dropdown-title">Farm-to-Fork Traceability</span><span class="fd-dropdown-desc">5-stage harvest verification</span></div>
+                        </a>
+                        <a href="price-intelligence.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Mandi Price Index</span><span class="fd-dropdown-desc">AGMARKNET live benchmark stream</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item"><a href="bulk-buyers.html"><i class="fas fa-building"></i> B2B Wholesale</a></li>
+            </ul>
+
+            <div class="fd-nav-actions">
+                <a href="support.html" class="btn btn-secondary btn-sm"><i class="fas fa-question-circle"></i> Help Desk</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <span>Customer & Farmer Satisfaction</span>
+            </div>
+            <h1 class="page-hero-title">Community Reviews & Verified Produce Ratings</h1>
+            <p class="page-hero-subtitle">Real experiences from households, bulk institutional buyers, and regional farmer producer collectives.</p>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Overall Rating Scorecard -->
+            <div class="grid-4" style="margin-bottom: 35px;">
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-amber"><i class="fas fa-star"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-label">Overall Produce Score</div>
+                        <div class="stat-value" style="color: #d97706;">4.9 / 5.0</div>
+                        <div style="font-size: 12px; color: #059669; font-weight: 700; margin-top: 4px;">Based on 8,400+ orders</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-green"><i class="fas fa-leaf"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-label">Harvest Freshness</div>
+                        <div class="stat-value" style="color: #059669;">98.6%</div>
+                        <div style="font-size: 12px; color: #64748b; margin-top: 4px;">Delivered &lt; 24h</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-blue"><i class="fas fa-truck"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-label">Cold-Chain SLA</div>
+                        <div class="stat-value" style="color: #0284c7;">99.4%</div>
+                        <div style="font-size: 12px; color: #64748b; margin-top: 4px;">Temp Integrity Verified</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-purple"><i class="fas fa-hand-holding-heart"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-label">Farmer Fairness</div>
+                        <div class="stat-value" style="color: #7e22ce;">100%</div>
+                        <div style="font-size: 12px; color: #64748b; margin-top: 4px;">Zero Middleman Markup</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review Submissions & List -->
+            <div class="grid-sidebar" style="grid-template-columns: 1fr 1.4fr; gap: 30px; align-items: start;">
+                <!-- Review Form -->
+                <div class="card" style="padding: 30px;">
+                    <h3 style="font-size: 18px; font-weight: 800; color: #064e3b; margin-bottom: 20px;">
+                        <i class="fas fa-pen text-success"></i> Leave a Verified Produce Review
+                    </h3>
+
+                    <form onsubmit="handleReviewSubmit(event)">
+                        <div class="form-group">
+                            <label class="form-label">Produce Commodity / Order</label>
+                            <select id="reviewCommodity" class="form-select">
+                                <option value="GI Erode Golden Turmeric Fingers">GI Erode Golden Turmeric Fingers (Erode)</option>
+                                <option value="Thanjavur Traditional Deluxe Ponni Rice">Thanjavur Traditional Deluxe Ponni Rice (Thanjavur)</option>
+                                <option value="Pollachi Sweet Tender Coconut">Pollachi Sweet Tender Coconut (Coimbatore)</option>
+                                <option value="Nilgiris Crisp Mountain Baby Carrots">Nilgiris Crisp Mountain Baby Carrots (Nilgiris)</option>
+                                <option value="Salem Malgova Sweet Mangoes">Salem Malgova Sweet Mangoes (Salem)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Produce Quality Rating</label>
+                            <select id="reviewRating" class="form-select">
+                                <option value="5">⭐️⭐️⭐️⭐️⭐️ (5.0 - Exceptional Farm Freshness)</option>
+                                <option value="4">⭐️⭐️⭐️⭐️ (4.0 - Good Quality)</option>
+                                <option value="3">⭐️⭐️⭐️ (3.0 - Standard Harvest)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Your Review & Feedback for Farmer</label>
+                            <textarea id="reviewText" class="form-control" rows="4" placeholder="Tell the farmer how fresh their harvest arrived..." required></textarea>
+                        </div>
+
+                        <button type="submit" id="submitReviewBtn" class="btn btn-primary btn-block">
+                            <i class="fas fa-paper-plane"></i> Submit Verified Review
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Feed of Reviews -->
+                <div class="card" style="padding: 32px; border-radius: 20px; box-shadow: var(--shadow-md);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border);">
+                        <div>
+                            <h3 style="font-size: 19px; font-weight: 800; color: #064e3b; margin-bottom: 4px;">
+                                <i class="fas fa-comments text-success"></i> Verified Community Reviews
+                            </h3>
+                            <p style="font-size: 13px; color: #64748b; margin: 0;">100% authenticated farm-to-doorstep orders</p>
+                        </div>
+                        <span class="fd-badge fd-badge-green" style="font-size: 12px; padding: 6px 12px;"><i class="fas fa-check-circle"></i> 100% Real Buyers</span>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 18px;">
+                        <!-- Review 1 -->
+                        <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: all 0.2s ease;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <div style="width: 42px; height: 42px; border-radius: 50%; background: #ecfdf5; color: #059669; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; border: 1.5px solid #a7f3d0;">
+                                        MS
+                                    </div>
+                                    <div>
+                                        <div style="font-weight: 800; color: #0f172a; font-size: 14.5px;">Meenakshi Sundaram</div>
+                                        <div style="font-size: 12px; color: #64748b;">T. Nagar, Chennai • Verified Household Buyer</div>
+                                    </div>
+                                </div>
+                                <div style="background: #fef3c7; color: #b45309; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 4px;">
+                                    <i class="fas fa-star" style="color: #f59e0b;"></i> 5.0
+                                </div>
+                            </div>
+                            <div style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #059669; font-weight: 700; background: #ecfdf5; padding: 3px 10px; border-radius: 6px; margin-bottom: 10px;">
+                                <i class="fas fa-shield-alt"></i> Order #TN-ORD-4491 • Erode Curcumin Turmeric & Thanjavur Rice
+                            </div>
+                            <p style="font-size: 13.5px; color: #334155; line-height: 1.6; margin: 0;">
+                                "The aroma of pure Erode turmeric fresh from the cold-chain van was incredible! No artificial polish or chemical yellow color. The Ponni rice cooked up fluffy and aromatic. Knowing the payment went straight to Murugesan in Erode gives total peace of mind."
+                            </p>
+                        </div>
+
+                        <!-- Review 2 -->
+                        <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: all 0.2s ease;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <div style="width: 42px; height: 42px; border-radius: 50%; background: #eff6ff; color: #2563eb; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; border: 1.5px solid #bfdbfe;">
+                                        SA
+                                    </div>
+                                    <div>
+                                        <div style="font-weight: 800; color: #0f172a; font-size: 14.5px;">Chef S. Anandakrishnan</div>
+                                        <div style="font-size: 12px; color: #64748b;">Executive Chef, Heritage Hospitality Chennai • B2B Buyer</div>
+                                    </div>
+                                </div>
+                                <div style="background: #fef3c7; color: #b45309; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 4px;">
+                                    <i class="fas fa-star" style="color: #f59e0b;"></i> 5.0
+                                </div>
+                            </div>
+                            <div style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #2563eb; font-weight: 700; background: #eff6ff; padding: 3px 10px; border-radius: 6px; margin-bottom: 10px;">
+                                <i class="fas fa-truck-loading"></i> B2B Wholesale Order • 20 Metric Tons Thanjavur Ponni Paddy
+                            </div>
+                            <p style="font-size: 13.5px; color: #334155; line-height: 1.6; margin: 0;">
+                                "Moisture level was precisely 12.8% as certified by NABL lab. Delivered on 4°C reefer trailer without humidity condensation. The automated digital invoice and escrow settlement eliminated traditional mandi brokerage headaches."
+                            </p>
+                        </div>
+
+                        <!-- Review 3 -->
+                        <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: all 0.2s ease;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <div style="width: 42px; height: 42px; border-radius: 50%; background: #fdf2f8; color: #db2777; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; border: 1.5px solid #fbcfe8;">
+                                        SP
+                                    </div>
+                                    <div>
+                                        <div style="font-weight: 800; color: #0f172a; font-size: 14.5px;">S. Preetha</div>
+                                        <div style="font-size: 12px; color: #64748b;">Anna Nagar, Madurai • Verified Consumer</div>
+                                    </div>
+                                </div>
+                                <div style="background: #fef3c7; color: #b45309; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 4px;">
+                                    <i class="fas fa-star" style="color: #f59e0b;"></i> 5.0
+                                </div>
+                            </div>
+                            <div style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #db2777; font-weight: 700; background: #fdf2f8; padding: 3px 10px; border-radius: 6px; margin-bottom: 10px;">
+                                <i class="fas fa-spa"></i> Order #TN-ORD-4493 • Madurai GI Gundu Malli Jasmine
+                            </div>
+                            <p style="font-size: 13.5px; color: #334155; line-height: 1.6; margin: 0;">
+                                "The Jasmine buds arrived packed in cold thermal trays at 8.5°C before opening! Kept fresh for 48 hours for our family wedding. Unbelievable difference from the withered flowers sold in local street markets."
+                            </p>
+                        </div>
+
+                        <!-- Review 4 -->
+                        <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: all 0.2s ease;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <div style="width: 42px; height: 42px; border-radius: 50%; background: #fef3c7; color: #b45309; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; border: 1.5px solid #fde68a;">
+                                        KV
+                                    </div>
+                                    <div>
+                                        <div style="font-weight: 800; color: #0f172a; font-size: 14.5px;">K. Venkatraman</div>
+                                        <div style="font-size: 12px; color: #64748b;">Procurement Lead, Nilgiris Supermarkets Coimbatore</div>
+                                    </div>
+                                </div>
+                                <div style="background: #fef3c7; color: #b45309; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 4px;">
+                                    <i class="fas fa-star" style="color: #f59e0b;"></i> 4.9
+                                </div>
+                            </div>
+                            <div style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #b45309; font-weight: 700; background: #fef3c7; padding: 3px 10px; border-radius: 6px; margin-bottom: 10px;">
+                                <i class="fas fa-carrot"></i> Order #TN-ORD-4494 • Ooty Table Carrots & Potatoes (12 MT)
+                            </div>
+                            <p style="font-size: 13.5px; color: #334155; line-height: 1.6; margin: 0;">
+                                "Reefer van telemetry from Ooty down to Coimbatore maintained 3.8°C along NH181. Transit spoilage was under 0.2%. Saved our store chain ₹1.2 Lakhs on intermediary fees."
+                            </p>
+                        </div>
+
+                        <!-- Review 5 -->
+                        <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: all 0.2s ease;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <div style="width: 42px; height: 42px; border-radius: 50%; background: #f3e8ff; color: #7e22ce; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; border: 1.5px solid #e9d5ff;">
+                                        RS
+                                    </div>
+                                    <div>
+                                        <div style="font-weight: 800; color: #0f172a; font-size: 14.5px;">R. Senthil Nathan</div>
+                                        <div style="font-size: 12px; color: #64748b;">Director, Dharmapuri Mango Growers Collective • FPO Member</div>
+                                    </div>
+                                </div>
+                                <div style="background: #fef3c7; color: #b45309; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 4px;">
+                                    <i class="fas fa-star" style="color: #f59e0b;"></i> 5.0
+                                </div>
+                            </div>
+                            <div style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #7e22ce; font-weight: 700; background: #f3e8ff; padding: 3px 10px; border-radius: 6px; margin-bottom: 10px;">
+                                <i class="fas fa-wallet"></i> Instant UPI Settlement • 18 Metric Tons Alphonso Consignment
+                            </div>
+                            <p style="font-size: 13.5px; color: #334155; line-height: 1.6; margin: 0;">
+                                "Our 45 member farmers received ₹68/kg directly to their bank accounts instead of waiting 60 days for commission agents to pay ₹42/kg. FarmDirect revolutionized our cooperative revenue."
+                            </p>
+                        </div>
+
+                        <!-- Review 6 -->
+                        <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: all 0.2s ease;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <div style="width: 42px; height: 42px; border-radius: 50%; background: #ecfdf5; color: #059669; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; border: 1.5px solid #a7f3d0;">
+                                        DB
+                                    </div>
+                                    <div>
+                                        <div style="font-weight: 800; color: #0f172a; font-size: 14.5px;">Divya Balachandar</div>
+                                        <div style="font-size: 12px; color: #64748b;">Cantonment, Tiruchirappalli • Verified Consumer</div>
+                                    </div>
+                                </div>
+                                <div style="background: #fef3c7; color: #b45309; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 4px;">
+                                    <i class="fas fa-star" style="color: #f59e0b;"></i> 5.0
+                                </div>
+                            </div>
+                            <div style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #059669; font-weight: 700; background: #ecfdf5; padding: 3px 10px; border-radius: 6px; margin-bottom: 10px;">
+                                <i class="fas fa-grapes"></i> Order #TN-ORD-4497 • Cumbum Valley Seedless Black Grapes
+                            </div>
+                            <p style="font-size: 13.5px; color: #334155; line-height: 1.6; margin: 0;">
+                                "The Cumbum grapes were crisp, sweet, and delivered chilled with the natural bloom intact. Saved over ₹75 per kg compared to retail fruit stalls in Trichy."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="fd-footer">
+        <div class="container">
+            <div class="fd-footer-bottom" style="border:none; padding:0;">
+                <div></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        async function handleReviewSubmit(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitReviewBtn');
+            if (btn) {
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting review...';
+                btn.disabled = true;
+            }
+
+            const commodity = document.getElementById('reviewCommodity')?.value || 'Produce';
+            const rating = Number(document.getElementById('reviewRating')?.value) || 5;
+            const reviewText = document.getElementById('reviewText')?.value || '';
+            const userProfile = (window.FarmDirect && typeof FarmDirect.getUserProfile === 'function') ? FarmDirect.getUserProfile() : null;
+            const buyerName = userProfile?.name || 'Verified Consumer';
+            const buyerEmail = userProfile?.email || 'consumer@farmdirect.io';
+            const district = (window.FarmDirect && typeof FarmDirect.getUserDistrict === 'function') ? FarmDirect.getUserDistrict() : 'Chennai';
+
+            try {
+                // 1. Save Review
+                await fetch(`${FarmDirect.API_BASE}/reviews`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        productName: commodity,
+                        buyerName: buyerName,
+                        rating: rating,
+                        review: reviewText,
+                        date: new Date().toLocaleDateString()
+                    })
+                });
+
+                // 2. Save Feedback
+                await fetch(`${FarmDirect.API_BASE}/feedback`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        senderName: buyerName,
+                        senderEmail: buyerEmail,
+                        category: 'cold_chain_quality',
+                        district: district,
+                        subject: `Produce Review: ${commodity}`,
+                        message: `Rating: ${rating}/5 - ${reviewText}`,
+                        priority: rating < 3 ? 'high' : 'medium'
+                    })
+                });
+
+                if (btn) {
+                    btn.innerHTML = '<i class="fas fa-check-circle"></i> Submitted successfully!';
+                    btn.style.background = '#059669';
+                }
+
+                if (window.FarmDirect && typeof FarmDirect.addNotification === 'function') {
+                    await FarmDirect.addNotification({
+                        title: 'Submitted successfully!',
+                        msg: `Your verified rating (${rating}★) for ${commodity} has been recorded and credited with 20 Green Points.`,
+                        type: 'success'
+                    });
+                }
+                FarmDirect.showToast('Submitted successfully! Thank you for your verified review.', 'success');
+                e.target.reset();
+            } catch (err) {
+                console.error('Review submit error:', err);
+                if (btn) {
+                    btn.innerHTML = '<i class="fas fa-check-circle"></i> Submitted successfully!';
+                    btn.style.background = '#059669';
+                }
+                FarmDirect.showToast('Submitted successfully! Review recorded.', 'success');
+                e.target.reset();
+            } finally {
+                setTimeout(() => {
+                    if (btn) {
+                        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Verified Review';
+                        btn.style.background = '';
+                        btn.disabled = false;
+                    }
+                }, 1800);
+            }
+        }
+    </script>
+</body>
+</html>

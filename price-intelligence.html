@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#10b981">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FarmDirect">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <title>Price Intelligence & Mandi Benchmark Index | FarmDirect</title>
+    <!-- Immediate Authentication Guard: Require sign in before viewing website details -->
+    <script src="js/auth-guard.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Sleek Master Navigation with Rich Dropdowns -->
+    <nav class="fd-nav">
+        <div class="container fd-nav-inner">
+            <a href="index.html" class="fd-brand">
+                <span>🌱 FarmDirect</span>
+                <span class="fd-brand-badge">Price Index</span>
+            </a>
+
+            <ul class="fd-nav-links">
+                <li class="fd-nav-item"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="marketplace.html"><i class="fas fa-store"></i> Marketplace <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="marketplace.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-shopping-basket"></i></div>
+                            <div><span class="fd-dropdown-title">Live Produce Catalog</span><span class="fd-dropdown-desc">Direct harvest from verified farmers</span></div>
+                        </a>
+                        <a href="product-quality.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-shield-alt"></i></div>
+                            <div><span class="fd-dropdown-title">AI Quality Scanner</span><span class="fd-dropdown-desc">Computer-vision freshness & Brix test</span></div>
+                        </a>
+                        <a href="price-comparison.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Price Comparison</span><span class="fd-dropdown-desc">Farmgate vs APMC Mandi vs Retail</span></div>
+                        </a>
+                        <a href="offers.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-tags"></i></div>
+                            <div><span class="fd-dropdown-title">Harvest Offers</span><span class="fd-dropdown-desc">Seasonal discounts & promo codes</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="farmer-dashboard.html"><i class="fas fa-tractor"></i> Farmers & FPOs <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="farmer-dashboard.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-tachometer-alt"></i></div>
+                            <div><span class="fd-dropdown-title">Farmer Command Center</span><span class="fd-dropdown-desc">Agronomy weather radar & revenue</span></div>
+                        </a>
+                        <a href="fpo-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-users"></i></div>
+                            <div><span class="fd-dropdown-title">FPO Collective Aggregator</span><span class="fd-dropdown-desc">Pool multi-farmer harvests for B2B</span></div>
+                        </a>
+                        <a href="add-product.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-plus-circle"></i></div>
+                            <div><span class="fd-dropdown-title">List New Produce</span><span class="fd-dropdown-desc">AI Mandi benchmark recommender</span></div>
+                        </a>
+                        <a href="farmer-earnings.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-wallet"></i></div>
+                            <div><span class="fd-dropdown-title">Earnings & UPI Ledger</span><span class="fd-dropdown-desc">Instant OTP escrow bank settlements</span></div>
+                        </a>
+                        <a href="farmer-verification.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-id-card"></i></div>
+                            <div><span class="fd-dropdown-title">Land KYC Verification</span><span class="fd-dropdown-desc">Patta/Chitta Land KYC Verification</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="logistics.html"><i class="fas fa-truck-moving"></i> Logistics <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="live-tracking.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-satellite-dish"></i></div>
+                            <div><span class="fd-dropdown-title">Live GPS Radar</span><span class="fd-dropdown-desc">3.8°C IoT thermal telematics</span></div>
+                        </a>
+                        <a href="route-optimization.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-route"></i></div>
+                            <div><span class="fd-dropdown-title">AI Route Optimizer</span><span class="fd-dropdown-desc">Multi-farm pickup TSP solver</span></div>
+                        </a>
+                        <a href="delivery-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-tasks"></i></div>
+                            <div><span class="fd-dropdown-title">Dispatch Management</span><span class="fd-dropdown-desc">Vehicle fleet allocations & e-POD</span></div>
+                        </a>
+                        <a href="warehouse.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-warehouse"></i></div>
+                            <div><span class="fd-dropdown-title">Smart Rural Cold Hubs</span><span class="fd-dropdown-desc">Microclimate pre-cooling slots</span></div>
+                        </a>
+                        <a href="inventory.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-rose"><i class="fas fa-boxes"></i></div>
+                            <div><span class="fd-dropdown-title">Inventory Engine</span><span class="fd-dropdown-desc">Batch shelf-life countdowns</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="ai-insights.html" class="active"><i class="fas fa-brain"></i> AI Intelligence <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="demand-forecast.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-chart-pie"></i></div>
+                            <div><span class="fd-dropdown-title">Demand Forecasting</span><span class="fd-dropdown-desc">Predictive 30-day ML models</span></div>
+                        </a>
+                        <a href="ai-insights.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-chart-line"></i></div>
+                            <div><span class="fd-dropdown-title">Agricultural Intelligence</span><span class="fd-dropdown-desc">Regional surplus & deficit heatmap</span></div>
+                        </a>
+                        <a href="supply-chain.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-link"></i></div>
+                            <div><span class="fd-dropdown-title">Farm-to-Fork Traceability</span><span class="fd-dropdown-desc">5-stage harvest verification</span></div>
+                        </a>
+                        <a href="price-intelligence.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Mandi Price Index</span><span class="fd-dropdown-desc">AGMARKNET live benchmark stream</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item"><a href="bulk-buyers.html"><i class="fas fa-building"></i> B2B Wholesale</a></li>
+            </ul>
+
+            <div class="fd-nav-actions">
+                <a href="price-comparison.html" class="btn btn-primary btn-sm"><i class="fas fa-calculator"></i> Price Calculator</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <a href="ai-insights.html">AI Intelligence</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <span>Mandi Benchmark Index</span>
+            </div>
+            <h1 class="page-hero-title">Real-Time APMC Mandi vs FarmDirect Price Index</h1>
+            <p class="page-hero-subtitle">Aggregating live arrival data from 400+ government mandis to ensure fair farmgate pricing and eliminate middleman undercutting.</p>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Price Index Benchmark Table -->
+            <div class="card" style="padding: 30px; margin-bottom: 35px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
+                    <div>
+                        <h3 style="font-size: 18px; font-weight: 800; color: #064e3b;">
+                            <i class="fas fa-globe text-success"></i> National Agri Commodity Price Monitor (Live Mandi Sync)
+                        </h3>
+                        <p style="font-size: 13px; color: #64748b;">Updated every 15 minutes from AGMARKNET & FarmDirect IoT trade terminals.</p>
+                    </div>
+                    <span class="badge badge-success"><i class="fas fa-circle animate-pulse" style="font-size:8px;"></i> LIVE DATA SYNC</span>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Crop Commodity</th>
+                                <th>Primary Mandi Benchmark</th>
+                                <th>APMC Modal Price</th>
+                                <th>Supermarket Retail Price</th>
+                                <th>FarmDirect Farmgate Rate</th>
+                                <th>Farmer Realization %</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="benchmark-table-body">
+                            <tr>
+                                <td><strong>GI Erode Turmeric (Fingers)</strong><br><span style="font-size:11.5px; color:#059669;">ஈரோடு மஞ்சள்</span></td>
+                                <td>Semmampalayam Regulated Market (Erode)</td>
+                                <td>₹135 / kg</td>
+                                <td>₹260 / kg</td>
+                                <td><strong style="color: #059669; font-size: 16px;">₹185 / kg</strong></td>
+                                <td><span class="badge badge-success">88% (+37% vs Mandi)</span></td>
+                                <td><a href="marketplace.html?district=Erode" class="btn btn-primary btn-sm">Buy Direct</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Thanjavur Deluxe Ponni Rice</strong><br><span style="font-size:11.5px; color:#059669;">பொன்னி அரிசி</span></td>
+                                <td>Kumbakonam Delta Paddy Mandi (Thanjavur)</td>
+                                <td>₹48 / kg</td>
+                                <td>₹95 / kg</td>
+                                <td><strong style="color: #059669; font-size: 16px;">₹68 / kg</strong></td>
+                                <td><span class="badge badge-success">88% (+41% vs Mandi)</span></td>
+                                <td><a href="marketplace.html?district=Thanjavur" class="btn btn-primary btn-sm">Buy Direct</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Salem Malgova Sweet Mangoes</strong><br><span style="font-size:11.5px; color:#059669;">சேலம் மாம்பழம்</span></td>
+                                <td>Omalur Fruit Market (Salem)</td>
+                                <td>₹170 / kg</td>
+                                <td>₹340 / kg</td>
+                                <td><strong style="color: #059669; font-size: 16px;">₹240 / kg</strong></td>
+                                <td><span class="badge badge-success">88% (+41% vs Mandi)</span></td>
+                                <td><a href="marketplace.html?district=Salem" class="btn btn-primary btn-sm">Buy Direct</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Madurai GI Gundu Malli</strong><br><span style="font-size:11.5px; color:#059669;">மதுரை மல்லி</span></td>
+                                <td>Mattuthavani Flower Market (Madurai)</td>
+                                <td>₹310 / kg</td>
+                                <td>₹650 / kg</td>
+                                <td><strong style="color: #059669; font-size: 16px;">₹420 / kg</strong></td>
+                                <td><span class="badge badge-success">88% (+35% vs Mandi)</span></td>
+                                <td><a href="marketplace.html?district=Madurai" class="btn btn-primary btn-sm">Buy Direct</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Nilgiris Mountain Carrots</strong><br><span style="font-size:11.5px; color:#059669;">நீலகிரி மலை கேரட்</span></td>
+                                <td>Ooty Hill Agro Market (Nilgiris)</td>
+                                <td>₹38 / kg</td>
+                                <td>₹85 / kg</td>
+                                <td><strong style="color: #059669; font-size: 16px;">₹55 / kg</strong></td>
+                                <td><span class="badge badge-success">88% (+44% vs Mandi)</span></td>
+                                <td><a href="marketplace.html?district=Nilgiris" class="btn btn-primary btn-sm">Buy Direct</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Price Volatility & AI Stability Guarantee -->
+            <div class="grid-2">
+                <div class="card" style="padding: 25px;">
+                    <h3 style="font-size: 18px; font-weight: 800; color: #064e3b; margin-bottom: 15px;">
+                        <i class="fas fa-shield-alt text-success"></i> Farmgate Price Stability Lock
+                    </h3>
+                    <p style="font-size: 14px; color: #64748b; line-height: 1.6; margin-bottom: 16px;">
+                        In traditional mandis, price swings of 40-50% in a single day are common due to cartel bidding. FarmDirect's algorithmic floor prices ensure farmers are protected from flash price crashes.
+                    </p>
+                    <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px; padding: 14px; font-size: 13px; color: #166534;">
+                        <i class="fas fa-lock"></i> <strong>Minimum Fair Return Guarantee:</strong> FarmDirect prices are pegged at cost of cultivation + minimum 50% guaranteed profit margin.
+                    </div>
+                </div>
+
+                <div class="card" style="padding: 25px;">
+                    <h3 style="font-size: 18px; font-weight: 800; color: #064e3b; margin-bottom: 15px;">
+                        <i class="fas fa-coins text-success"></i> Value Chain Markup Comparison
+                    </h3>
+                    <div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px;">
+                        <div style="display: flex; justify-content: space-between; padding: 8px 12px; background: #fee2e2; border-radius: 8px; color: #991b1b; font-weight: 700;">
+                            <span>Traditional APMC Mandi System</span>
+                            <span>Middlemen Take 55 - 65%</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 8px 12px; background: #dcfce7; border-radius: 8px; color: #166534; font-weight: 700;">
+                            <span>FarmDirect AI Network</span>
+                            <span>Farmer Retains 86 - 90%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="fd-footer">
+        <div class="container">
+            <div class="fd-footer-bottom" style="border:none; padding:0;">
+                <div></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async function () {
+            if (window.FarmDirect && typeof FarmDirect.getPriceBenchmarks === 'function') {
+                const benchmarks = await FarmDirect.getPriceBenchmarks();
+                const tbody = document.getElementById('benchmark-table-body');
+                if (tbody && benchmarks && benchmarks.length > 0) {
+                    tbody.innerHTML = benchmarks.map(b => {
+                        const premiumPct = Math.round(((b.farmgateDirectPrice - b.apmcMandiRate) / b.apmcMandiRate) * 100);
+                        return `
+                            <tr>
+                                <td>
+                                    <strong>${b.commodity}</strong><br>
+                                    <span style="font-size:11.5px; color:#059669;">${b.tamilName || ''}</span>
+                                </td>
+                                <td>${b.mandiName} (${b.district})</td>
+                                <td>₹${b.apmcMandiRate} / ${b.unit}</td>
+                                <td>₹${b.retailMarketPrice} / ${b.unit}</td>
+                                <td><strong style="color: #059669; font-size: 16px;">₹${b.farmgateDirectPrice} / ${b.unit}</strong></td>
+                                <td><span class="badge badge-success">88% (+${premiumPct}% vs Mandi)</span></td>
+                                <td><a href="marketplace.html?district=${encodeURIComponent(b.district)}" class="btn btn-primary btn-sm">Buy Direct</a></td>
+                            </tr>
+                        `;
+                    }).join('');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

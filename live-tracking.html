@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#10b981">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FarmDirect">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <title>Live GPS & Cold-Chain Tracking | FarmDirect Tamil Nadu</title>
+    <!-- Immediate Authentication Guard: Require sign in before viewing website details -->
+    <script src="js/auth-guard.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <style>
+        #tn-live-map {
+            height: 480px;
+            width: 100%;
+            border-radius: 18px;
+            z-index: 10;
+            border: 1.5px solid #e2e8f0;
+            box-shadow: var(--shadow-md);
+        }
+        .custom-truck-icon {
+            background: #059669;
+            color: white;
+            border: 2px solid white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            box-shadow: 0 0 15px rgba(5, 150, 105, 0.8);
+        }
+        .custom-hub-icon {
+            background: #2563eb;
+            color: white;
+            border: 2px solid white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
+        }
+        .shipment-pill {
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1.5px solid var(--border);
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-bottom: 10px;
+        }
+        .shipment-pill:hover, .shipment-pill.active {
+            border-color: var(--primary);
+            background: #f0fdf4;
+            transform: translateX(4px);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sleek Master Navigation with Rich Dropdowns -->
+    <nav class="fd-nav">
+        <div class="container fd-nav-inner">
+            <a href="index.html" class="fd-brand">
+                <span>🌱 FarmDirect Tamil Nadu</span>
+                <span class="fd-brand-badge">Logistics Radar</span>
+            </a>
+
+            <ul class="fd-nav-links">
+                <li class="fd-nav-item"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="marketplace.html"><i class="fas fa-store"></i> Marketplace <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="marketplace.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-shopping-basket"></i></div>
+                            <div><span class="fd-dropdown-title">Live Produce Catalog</span><span class="fd-dropdown-desc">Direct harvest from Tamil Nadu farmers</span></div>
+                        </a>
+                        <a href="product-quality.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-shield-alt"></i></div>
+                            <div><span class="fd-dropdown-title">AI Quality Scanner</span><span class="fd-dropdown-desc">Computer-vision freshness & Brix test</span></div>
+                        </a>
+                        <a href="price-comparison.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Price Comparison</span><span class="fd-dropdown-desc">Farmgate vs APMC Uzhavar Sandhai</span></div>
+                        </a>
+                        <a href="offers.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-tags"></i></div>
+                            <div><span class="fd-dropdown-title">Harvest Offers</span><span class="fd-dropdown-desc">Seasonal discounts & promo codes</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="farmer-dashboard.html"><i class="fas fa-tractor"></i> Farmers & FPOs <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="farmer-dashboard.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-tachometer-alt"></i></div>
+                            <div><span class="fd-dropdown-title">Farmer Command Center</span><span class="fd-dropdown-desc">Tamil Nadu weather radar & revenue</span></div>
+                        </a>
+                        <a href="fpo-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-users"></i></div>
+                            <div><span class="fd-dropdown-title">FPO Collective Aggregator</span><span class="fd-dropdown-desc">Pool multi-district harvests for B2B</span></div>
+                        </a>
+                        <a href="add-product.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-plus-circle"></i></div>
+                            <div><span class="fd-dropdown-title">List New Produce</span><span class="fd-dropdown-desc">Mandi benchmark recommender</span></div>
+                        </a>
+                        <a href="farmer-earnings.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-wallet"></i></div>
+                            <div><span class="fd-dropdown-title">Earnings & UPI Ledger</span><span class="fd-dropdown-desc">Instant OTP escrow bank settlements</span></div>
+                        </a>
+                        <a href="farmer-verification.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-id-card"></i></div>
+                            <div><span class="fd-dropdown-title">Patta/Chitta Land KYC</span><span class="fd-dropdown-desc">TN e-Services land validation</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="logistics.html" class="active"><i class="fas fa-truck-moving"></i> Logistics <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="live-tracking.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-satellite-dish"></i></div>
+                            <div><span class="fd-dropdown-title">Live GPS Radar</span><span class="fd-dropdown-desc">3.8°C Temperature-Controlled Delivery</span></div>
+                        </a>
+                        <a href="route-optimization.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-route"></i></div>
+                            <div><span class="fd-dropdown-title">AI Route Optimizer</span><span class="fd-dropdown-desc">Smart Multi-Farm Route Optimizer</span></div>
+                        </a>
+                        <a href="delivery-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-tasks"></i></div>
+                            <div><span class="fd-dropdown-title">Dispatch Management</span><span class="fd-dropdown-desc">Fleet allocations & e-POD</span></div>
+                        </a>
+                        <a href="warehouse.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-warehouse"></i></div>
+                            <div><span class="fd-dropdown-title">Tamil Nadu Cold Hubs</span><span class="fd-dropdown-desc">38-district microclimate vaults</span></div>
+                        </a>
+                        <a href="inventory.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-rose"><i class="fas fa-boxes"></i></div>
+                            <div><span class="fd-dropdown-title">Inventory Engine</span><span class="fd-dropdown-desc">Batch shelf-life countdowns</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="ai-insights.html"><i class="fas fa-brain"></i> AI Intelligence <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="demand-forecast.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-chart-pie"></i></div>
+                            <div><span class="fd-dropdown-title">Demand Forecasting</span><span class="fd-dropdown-desc">Predictive 30-day ML models</span></div>
+                        </a>
+                        <a href="ai-insights.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-chart-line"></i></div>
+                            <div><span class="fd-dropdown-title">Agricultural Intelligence</span><span class="fd-dropdown-desc">38-district surplus & deficit heatmap</span></div>
+                        </a>
+                        <a href="supply-chain.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-link"></i></div>
+                            <div><span class="fd-dropdown-title">Farm-to-Fork Traceability</span><span class="fd-dropdown-desc">5-stage harvest verification</span></div>
+                        </a>
+                        <a href="price-intelligence.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Mandi Price Index</span><span class="fd-dropdown-desc">Uzhavar Sandhai live stream</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item"><a href="bulk-buyers.html"><i class="fas fa-building"></i> B2B Wholesale</a></li>
+            </ul>
+
+            <div class="fd-nav-actions">
+                <a href="wishlist.html" class="fd-icon-btn" title="Saved Wishlist"><i class="far fa-heart"></i><span class="fd-badge-count" id="fd-wishlist-badge" style="display:none;">0</span></a>
+                <a href="cart.html" class="fd-icon-btn" title="Shopping Cart"><i class="fas fa-shopping-basket"></i><span class="fd-badge-count" id="fd-cart-badge" style="display:none;">0</span></a>
+                <a href="notifications.html" class="fd-icon-btn"><i class="far fa-bell"></i><span class="fd-badge-count" id="fd-notif-badge" style="display:none;">0</span></a>
+                <a href="delivery-management.html" class="btn btn-secondary btn-sm"><i class="fas fa-tasks"></i> Dispatch</a>
+                <div id="fd-nav-auth-container"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <a href="logistics.html">Cold-Chain Logistics</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <span>Tamil Nadu GPS Radar</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <div>
+                    <h1 class="page-hero-title">Tamil Nadu Live GPS & Cold-Chain Radar 🛰️</h1>
+                    <p class="page-hero-subtitle">Continuous temperature-controlled monitoring across all 38 district rural hubs and highway cold-chain corridors.</p>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <a href="route-optimization.html" class="btn btn-ai btn-sm"><i class="fas fa-route"></i> AI Route Solver</a>
+                    <a href="warehouse.html" class="btn btn-secondary btn-sm"><i class="fas fa-warehouse"></i> 38 District Hubs</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logistics Tab Pills -->
+    <div class="container">
+        <div class="fd-tabs">
+            <a href="logistics.html" class="fd-tab-btn"><i class="fas fa-snowflake"></i> Fleet Specifications</a>
+            <a href="live-tracking.html" class="fd-tab-btn active"><i class="fas fa-satellite-dish"></i> Live GPS Radar</a>
+            <a href="delivery-management.html" class="fd-tab-btn"><i class="fas fa-tasks"></i> Dispatch Console</a>
+            <a href="route-optimization.html" class="fd-tab-btn"><i class="fas fa-route"></i> Route Optimization</a>
+            <a href="warehouse.html" class="fd-tab-btn"><i class="fas fa-warehouse"></i> Smart Rural Hubs</a>
+            <a href="inventory.html" class="fd-tab-btn"><i class="fas fa-boxes"></i> Inventory Engine</a>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="grid-sidebar" style="grid-template-columns: 2fr 1fr; gap: 25px; align-items: start;">
+                <!-- Left: Interactive OpenStreetMap with Exact Coordinates -->
+                <div class="card" style="padding: 24px; border-radius: 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+                        <div>
+                            <span class="fd-badge fd-badge-green"><i class="fas fa-circle animate-pulse" style="font-size: 8px;"></i> LIVE COLD-CHAIN RADAR</span>
+                            <h3 style="font-size: 18px; font-weight: 800; color: #064e3b; margin-top: 6px;" id="activeRouteTitle">
+                                Erode Turmeric Hub ➔ Koyambedu Terminal, Chennai
+                            </h3>
+                        </div>
+                    </div>
+
+                    <!-- Instant Order Tracking Search Bar -->
+                    <div style="margin-bottom: 14px; display: flex; gap: 8px; flex-wrap: wrap;">
+                        <input type="text" id="trackingOrderIdInput" class="form-control" placeholder="Search by Order ID (e.g. TN-ORD-1234) or Consignment #" style="flex: 1; min-width: 220px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 600;">
+                        <button type="button" onclick="searchOrderByTrackingId()" class="btn btn-primary" style="white-space: nowrap; border-radius: 10px; font-weight: 700;">
+                            <i class="fas fa-search"></i> Track Order
+                        </button>
+                    </div>
+
+                    <!-- Live GPS Detection & District Finder Bar -->
+                    <div style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 12px 16px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                            <button id="btnDetectLocation" onclick="detectMyLiveLocation()" class="btn btn-primary btn-sm" style="font-weight: 800; background: #059669; border-color: #059669;">
+                                <i class="fas fa-crosshairs"></i> Detect My GPS Location
+                            </button>
+                            <button id="btnSimulateTransit" onclick="toggleTransitSimulation()" class="btn btn-secondary btn-sm" style="font-weight: 700;">
+                                <i class="fas fa-play"></i> Simulate Transit
+                            </button>
+                            <button onclick="resetSimulationRoute()" class="btn btn-secondary btn-sm" title="Reset to Origin">
+                                <i class="fas fa-undo"></i> Reset
+                            </button>
+                            <span id="telemetryStatusBadge" class="fd-badge fd-badge-green" style="font-size: 11px;">
+                                <i class="fas fa-check-circle"></i> SATELLITE LOCK ACQUIRED
+                            </span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <label for="districtHubSelector" style="font-size: 12px; font-weight: 700; color: #475569; margin: 0;">District Hub:</label>
+                            <select id="districtHubSelector" onchange="locateDistrictHub(this.value)" class="form-control" style="width: 170px; padding: 4px 8px; font-size: 12px; height: 32px; border-radius: 8px; border: 1.5px solid #cbd5e1;">
+                                <option value="">-- Jump to District --</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Live User Detected GPS Banner -->
+                    <div id="userLocationBanner" style="display: none; background: #ecfdf5; border: 1.5px solid #10b981; border-radius: 12px; padding: 10px 16px; margin-bottom: 14px; align-items: center; justify-content: space-between; font-size: 12.5px; color: #064e3b; flex-wrap: wrap; gap: 8px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #10b981; box-shadow: 0 0 8px #10b981;"></span>
+                            <span><strong>Your Detected GPS:</strong> <span id="userGpsCoordinates">Fetching...</span> (<span id="userNearestHubText">Nearest Hub</span>)</span>
+                        </div>
+                        <span id="userHubDistanceBadge" style="background: #10b981; color: white; padding: 2px 10px; border-radius: 6px; font-weight: 700; font-size: 11px;">12 km</span>
+                    </div>
+
+                    <!-- Telemetry Live Metric Strip -->
+                    <div id="liveTelemetryStrip" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 14px; background: #064e3b; color: white; padding: 12px 16px; border-radius: 12px; font-size: 12px;">
+                        <div>
+                            <span style="color: #a7f3d0; font-size: 10.5px; text-transform: uppercase; font-weight: 700; display: block;">Current Waypoint</span>
+                            <strong id="stripWaypoint" style="font-size: 13px;">Erode Central Hub</strong>
+                        </div>
+                        <div>
+                            <span style="color: #a7f3d0; font-size: 10.5px; text-transform: uppercase; font-weight: 700; display: block;">GPS Coordinates</span>
+                            <strong id="stripCoords" style="font-size: 13px;">11.3410° N, 77.7172° E</strong>
+                        </div>
+                        <div>
+                            <span style="color: #a7f3d0; font-size: 10.5px; text-transform: uppercase; font-weight: 700; display: block;">Ground Speed</span>
+                            <strong id="stripSpeed" style="font-size: 13px;">64 km/h</strong>
+                        </div>
+                        <div>
+                            <span style="color: #a7f3d0; font-size: 10.5px; text-transform: uppercase; font-weight: 700; display: block;">Chamber Temp</span>
+                            <strong id="stripTemp" style="font-size: 13px; color: #34d399;">3.8°C Steady</strong>
+                        </div>
+                        <div>
+                            <span style="color: #a7f3d0; font-size: 10.5px; text-transform: uppercase; font-weight: 700; display: block;">Dist to Dest</span>
+                            <strong id="stripDist" style="font-size: 13px;">395 km</strong>
+                        </div>
+                    </div>
+
+                    <!-- Leaflet Map Container -->
+                    <div id="tn-live-map"></div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; font-size: 12.5px; color: #64748b;">
+                        <span><i class="fas fa-map-marker-alt text-primary"></i> Green Markers: Active Reefer Fleets</span>
+                        <span><i class="fas fa-warehouse text-blue"></i> Blue Markers: District Cold Storage Vaults</span>
+                    </div>
+                </div>
+
+                <!-- Right: Active Consignment Telemetry -->
+                <div>
+                    <!-- Active Carrier Switcher -->
+                    <div class="card" style="padding: 20px; border-radius: 18px; margin-bottom: 20px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                            <h4 style="font-size: 14px; font-weight: 800; text-transform: uppercase; color: #64748b; margin: 0;">
+                                Active Tamil Nadu Consignments (<span id="activeShipmentCount">8</span>)
+                            </h4>
+                            <span class="fd-badge fd-badge-green" style="font-size: 11px;"><i class="fas fa-satellite"></i> 100% Online</span>
+                        </div>
+                        
+                        <div id="shipmentsPillContainer" style="max-height: 280px; overflow-y: auto; padding-right: 4px;">
+                            <!-- Dynamically populated with all 8 shipments -->
+                        </div>
+                    </div>
+
+                    <!-- Temperature Gauge Card -->
+                    <div class="card" style="padding: 24px; border-radius: 18px; margin-bottom: 20px;">
+                        <h3 style="font-size: 15px; font-weight: 800; color: #064e3b; margin-bottom: 14px;">
+                            <i class="fas fa-temperature-low text-success"></i> Live Cold Storage Temperature Monitor
+                        </h3>
+
+                        <div style="background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 16px; padding: 18px; text-align: center; margin-bottom: 16px;">
+                            <div id="liveTempDisplay" style="font-size: 40px; font-weight: 800; color: #059669; font-family: 'Plus Jakarta Sans', sans-serif;">
+                                3.8°C
+                            </div>
+                            <span class="fd-badge fd-badge-green" style="font-size: 11.5px;"><i class="fas fa-check-circle"></i> ZERO TEMPERATURE BREACH</span>
+                            <div style="font-size: 12px; color: #64748b; margin-top: 6px;">Target: 2.0°C - 6.0°C • Humidity: 88% • Speed: <span id="carrierSpeed" style="font-weight:700; color:#064e3b;">64 km/h</span></div>
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-light); padding-bottom: 8px;">
+                                <span style="color: #64748b;">Carrier Pilot:</span>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <strong id="carrierDriver" style="cursor: pointer; color: #059669; text-decoration: underline;" onclick="openActiveDriverProfile()">K. Saravanan</strong>
+                                    <button class="btn btn-xs btn-primary" onclick="openActiveDriverProfile()" style="padding: 3px 8px; font-size: 11px;">
+                                        <i class="fas fa-phone-alt"></i> Call
+                                    </button>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-light); padding-bottom: 6px;">
+                                <span style="color: #64748b;">Highway Corridor:</span>
+                                <strong id="carrierCorridor">NH544 / NH44 (Salem-Chennai)</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-light); padding-bottom: 6px;">
+                                <span style="color: #64748b;">Origin Nodal Office:</span>
+                                <strong id="carrierOffice" style="cursor:pointer; color:#2563eb;" onclick="FarmDirect.showDistrictOfficeModal('Erode')">Erode Agri Complex <i class="fas fa-external-link-alt" style="font-size:10px;"></i></strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span style="color: #64748b;">Carbon Saved:</span>
+                                <strong style="color: #059669;" id="carrierCarbon">48.2 kg CO₂ Avoided</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Driver Bridge Button -->
+                    <div class="card" style="padding: 20px; border-radius: 18px; text-align: center;">
+                        <button onclick="openActiveDriverProfile()" class="btn btn-primary btn-block" style="margin-bottom: 10px;">
+                            <i class="fas fa-id-card"></i> View Pilot KYC & Call Driver
+                        </button>
+                        <a href="delivery-management.html" class="btn btn-secondary btn-block">
+                            <i class="fas fa-file-invoice"></i> View Manifest & e-POD
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="fd-footer">
+        <div class="container">
+            <div class="fd-footer-bottom" style="border:none; padding:0;">
+                <div></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="js/app.js"></script>
+    <script>
+        let map;
+        let truckMarkers = {};
+        let activeShipmentId = 'TN-SHP-8801';
+        let shipmentsData = {};
+        let simulationInterval = null;
+        let simulationIndex = 0;
+        let routePolyline = null;
+        let userLocationMarker = null;
+
+        const NH544_WAYPOINTS = [
+            { name: 'Erode Agricultural Central Hub', lat: 11.3410, lng: 77.7172, dist: 395, eta: '2 hrs 40 mins' },
+            { name: 'Sankari Toll & Cold Weighbridge', lat: 11.4880, lng: 77.8680, dist: 372, eta: '2 hrs 28 mins' },
+            { name: 'Salem Junction Perishable Depot', lat: 11.6643, lng: 78.1460, dist: 335, eta: '2 hrs 10 mins' },
+            { name: 'Omalur Highway Interchange (NH44)', lat: 11.7450, lng: 78.0400, dist: 318, eta: '1 hr 58 mins' },
+            { name: 'Dharmapuri Cold-Chain Checkpost', lat: 12.1211, lng: 78.1582, dist: 270, eta: '1 hr 38 mins' },
+            { name: 'Krishnagiri Mango Federation Hub', lat: 12.5186, lng: 78.2137, dist: 220, eta: '1 hr 15 mins' },
+            { name: 'Vaniyambadi Palar Valley Bypass', lat: 12.6900, lng: 78.6200, dist: 172, eta: '58 mins' },
+            { name: 'Ambur Toll & Cryo Sensor Check', lat: 12.7900, lng: 78.7100, dist: 154, eta: '49 mins' },
+            { name: 'Vellore Golden City Agri Depot', lat: 12.9165, lng: 79.1325, dist: 115, eta: '36 mins' },
+            { name: 'Ranipet Industrial Bypass NH48', lat: 12.9224, lng: 79.3328, dist: 94, eta: '28 mins' },
+            { name: 'Sriperumbudur Greenfield Corridor', lat: 12.9700, lng: 79.9400, dist: 42, eta: '14 mins' },
+            { name: 'Koyambedu Wholesale Terminal, Chennai', lat: 13.0694, lng: 80.1948, dist: 0, eta: 'ARRIVED' }
+        ];
+
+        function loadShipmentsFromStore() {
+            const rawShipments = (window.FarmDirect && typeof FarmDirect.getShipments === 'function') ? FarmDirect.getShipments() : [];
+            shipmentsData = {};
+            rawShipments.forEach(s => {
+                const originLabel = s.origin || s.originDistrict || s.district || 'Erode';
+                const destLabel = s.destination || s.destDistrict || 'Chennai Mega Hub';
+                shipmentsData[s.id] = {
+                    id: s.id,
+                    title: s.title || `${originLabel} ➔ ${destLabel}`,
+                    eta: s.eta || '1 hr 30 mins',
+                    temp: s.temp || '3.8°C',
+                    speed: s.speed || '62 km/h',
+                    district: s.district || s.originDistrict || 'Erode',
+                    driverName: s.driverName || (s.driver ? s.driver.split('(')[0].trim() : 'M. Saravanan'),
+                    driverPhone: s.driverPhone || (s.driver && s.driver.includes('+') ? '+' + s.driver.split('+')[1].replace(')', '').trim() : '+91 94432 10987'),
+                    vehicle: s.vehicle || s.vehicleNo || 'TN-33-AX-8801 (Reefer 4.5T)',
+                    corridor: s.corridor || s.highwayCorridor || 'NH544 / NH44 (Salem-Chennai Expressway)',
+                    carbon: s.co2Saved ? `${s.co2Saved} Avoided` : (s.carbon || '48.2 kg CO₂ Avoided'),
+                    lat: s.lat || 11.3410,
+                    lng: s.lng || 77.7172
+                };
+            });
+        }
+
+        function refreshTruckMarkers() {
+            loadShipmentsFromStore();
+            renderShipmentPills();
+            if (!map) return;
+            Object.values(truckMarkers).forEach(m => {
+                if (map.hasLayer(m)) map.removeLayer(m);
+            });
+            truckMarkers = {};
+            Object.values(shipmentsData).forEach(s => {
+                const truckIcon = L.divIcon({
+                    className: 'custom-truck-icon',
+                    html: '<i class="fas fa-truck"></i>',
+                    iconSize: [34, 34],
+                    iconAnchor: [17, 17]
+                });
+
+                const m = L.marker([s.lat, s.lng], { icon: truckIcon })
+                    .addTo(map)
+                    .bindPopup(getTruckPopupHtml(s));
+                
+                truckMarkers[s.id] = m;
+            });
+        }
+
+        function renderShipmentPills() {
+            const container = document.getElementById('shipmentsPillContainer');
+            if (!container) return;
+
+            const list = Object.values(shipmentsData);
+            const countEl = document.getElementById('activeShipmentCount');
+            if (countEl) countEl.textContent = list.length;
+
+            container.innerHTML = list.map((s, idx) => `
+                <div class="shipment-pill ${s.id === activeShipmentId ? 'active' : ''}" onclick="selectShipment('${s.id}', this)" id="pill-${s.id}">
+                    <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 13px; color: #0f172a;">
+                        <span>${s.id} • ${s.vehicle.split('(')[0]}</span>
+                        <span style="color: #059669;"><i class="fas fa-snowflake"></i> ${s.temp}</span>
+                    </div>
+                    <div style="font-size: 11.5px; color: #64748b; margin-top: 2px;">
+                        ${s.title}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function getTruckPopupHtml(s) {
+            return `
+                <div style="font-family: 'Plus Jakarta Sans', sans-serif; min-width: 240px; padding: 4px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1.5px solid #e2e8f0; padding-bottom: 6px; margin-bottom: 8px;">
+                        <span style="font-weight: 800; color: #064e3b; font-size: 14px;">🚚 ${s.id}</span>
+                        <span style="background: #ecfdf5; color: #059669; font-weight: 700; font-size: 11px; padding: 2px 6px; border-radius: 6px; border: 1px solid #a7f3d0;">${s.temp}</span>
+                    </div>
+                    <div style="font-size: 12px; font-weight: 700; color: #1e293b; margin-bottom: 6px;">${s.title}</div>
+                    <div style="font-size: 11.5px; color: #64748b; margin-bottom: 8px;">
+                        <div><strong>👤 Pilot:</strong> ${s.driverName}</div>
+                        <div><strong>📞 Phone:</strong> ${s.driverPhone}</div>
+                        <div><strong>⚡ Speed:</strong> ${s.speed || '62 km/h'} • <strong>Corridor:</strong> ${s.corridor.split('(')[0]}</div>
+                    </div>
+                    <div style="display: flex; gap: 6px;">
+                        <button onclick="FarmDirect.showPersonProfileModal({ name: '${s.driverName}', role: 'Reefer Van Pilot', phone: '${s.driverPhone}', district: '${s.district}', rating: 4.9, vehicle: '${s.vehicle}' })" style="flex: 1; background: #059669; color: white; border: none; padding: 6px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer;">
+                            <i class="fas fa-phone-alt"></i> Call Driver
+                        </button>
+                        <button onclick="FarmDirect.showDistrictOfficeModal('${s.district}')" style="background: #2563eb; color: white; border: none; padding: 6px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer;">
+                            <i class="fas fa-building"></i> Office
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function openActiveDriverProfile() {
+            const s = shipmentsData[activeShipmentId];
+            if (s) {
+                FarmDirect.showPersonProfileModal({
+                    name: s.driverName,
+                    role: 'Statewide Cold-Chain Pilot',
+                    phone: s.driverPhone,
+                    district: s.district,
+                    rating: 4.9,
+                    vehicle: s.vehicle,
+                    verified: true
+                });
+            }
+        }
+
+        function initTNMap() {
+            loadShipmentsFromStore();
+            renderShipmentPills();
+
+            // Center map on Tamil Nadu (11.1271, 78.6569)
+            map = L.map('tn-live-map').setView([11.1271, 78.6569], 7.5);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors | FarmDirect TN Telematics',
+                maxZoom: 18
+            }).addTo(map);
+
+            // Add Tamil Nadu District Hubs with Office info
+            const hubs = FarmDirect.getDistricts();
+            hubs.forEach(h => {
+                const hubIcon = L.divIcon({
+                    className: 'custom-hub-icon',
+                    html: '<i class="fas fa-warehouse"></i>',
+                    iconSize: [28, 28],
+                    iconAnchor: [14, 14]
+                });
+
+                const office = FarmDirect.getDistrictOffice(h.name);
+
+                const hubPopup = `
+                    <div style="font-family: 'Plus Jakarta Sans', sans-serif; min-width: 230px; padding: 4px;">
+                        <strong style="color: #1e3a8a; font-size: 14px;">🏢 ${h.name} (${h.tamilName || ''})</strong>
+                        <div style="color: #059669; font-weight: 700; font-size: 11.5px; margin: 3px 0;">Primary Crop: ${h.primaryCrop}</div>
+                        <div style="font-size: 11px; color: #64748b; margin-bottom: 6px;"><strong>Office:</strong> ${office.officeName}</div>
+                        <div style="font-size: 11px; color: #475569; margin-bottom: 8px;"><strong>Nodal Officer:</strong> ${office.officerName} (${office.officerDesignation})</div>
+                        <button onclick="FarmDirect.showDistrictOfficeModal('${h.name}')" style="width: 100%; background: #2563eb; color: white; border: none; padding: 6px 10px; border-radius: 6px; font-size: 11.5px; font-weight: 700; cursor: pointer;">
+                            <i class="fas fa-location-arrow"></i> View Office & GPS Directions
+                        </button>
+                    </div>
+                `;
+
+                L.marker([h.lat, h.lng], { icon: hubIcon })
+                    .addTo(map)
+                    .bindPopup(hubPopup);
+            });
+
+            // Add Active Moving Reefer Trucks
+            Object.values(shipmentsData).forEach(s => {
+                const truckIcon = L.divIcon({
+                    className: 'custom-truck-icon',
+                    html: '<i class="fas fa-truck"></i>',
+                    iconSize: [34, 34],
+                    iconAnchor: [17, 17]
+                });
+
+                const m = L.marker([s.lat, s.lng], { icon: truckIcon })
+                    .addTo(map)
+                    .bindPopup(getTruckPopupHtml(s));
+                
+                truckMarkers[s.id] = m;
+            });
+
+            // Populate District Dropdown
+            const distSelect = document.getElementById('districtHubSelector');
+            if (distSelect) {
+                distSelect.innerHTML = '<option value="">-- Jump to District --</option>' +
+                    hubs.slice().sort((a, b) => a.name.localeCompare(b.name)).map(h => `<option value="${h.name}">${h.name}</option>`).join('');
+            }
+
+            // Draw Highway Transit Polyline (Erode ➔ Salem ➔ Chennai Expressway)
+            routePolyline = L.polyline(NH544_WAYPOINTS.map(w => [w.lat, w.lng]), {
+                color: '#10b981',
+                weight: 4,
+                opacity: 0.85,
+                dashArray: '8, 8'
+            }).addTo(map);
+
+            // Check URL Query Parameters (e.g. ?order=... or ?id=... or ?district=Erode or ?lat=11.3410&lng=77.7172)
+            const urlParams = new URLSearchParams(window.location.search);
+            const queryOrder = urlParams.get('order') || urlParams.get('id') || urlParams.get('shipment');
+            const queryDistrict = urlParams.get('district');
+            const queryLat = parseFloat(urlParams.get('lat'));
+            const queryLng = parseFloat(urlParams.get('lng'));
+
+            if (queryOrder) {
+                if (shipmentsData[queryOrder]) {
+                    selectShipment(queryOrder);
+                    FarmDirect.showToast(`🚚 Tracking Active Reefer Consignment ${queryOrder}`, 'success');
+                } else {
+                    const orders = (window.FarmDirect && typeof FarmDirect.getOrders === 'function') ? FarmDirect.getOrders() : [];
+                    const cleanQ = queryOrder.toLowerCase().replace(/^(tn-)?ord-?/, '');
+                    const matchedOrder = orders.find(o => {
+                        const oClean = (o.id || '').toLowerCase().replace(/^(tn-)?ord-?/, '');
+                        return oClean === cleanQ || o.id === queryOrder;
+                    });
+
+                    if (matchedOrder) {
+                        const matchedShipment = Object.values(shipmentsData).find(s => 
+                            (matchedOrder.district && s.district && s.district.toLowerCase() === matchedOrder.district.toLowerCase()) ||
+                            (matchedOrder.originDistrict && s.district && s.district.toLowerCase() === matchedOrder.originDistrict.toLowerCase())
+                        ) || Object.values(shipmentsData)[0];
+
+                        if (matchedShipment) {
+                            selectShipment(matchedShipment.id);
+                            FarmDirect.showToast(`🚚 Live Reefer Telemetry linked to Order #${matchedOrder.id}`, 'success');
+                        }
+                    } else {
+                        const firstShip = Object.keys(shipmentsData)[0];
+                        if (firstShip) selectShipment(firstShip);
+                    }
+                }
+            } else if (queryDistrict) {
+                const matchedHub = hubs.find(h => h.name.toLowerCase() === queryDistrict.toLowerCase());
+                if (matchedHub) {
+                    map.flyTo([matchedHub.lat, matchedHub.lng], 11, { animate: true, duration: 1.5 });
+                    FarmDirect.showToast(`📍 Centered on ${matchedHub.name} District Agricultural Complex`, 'info');
+                }
+                const distShip = Object.values(shipmentsData).find(s => s.district && s.district.toLowerCase() === queryDistrict.toLowerCase());
+                if (distShip) selectShipment(distShip.id);
+            } else if (!isNaN(queryLat) && !isNaN(queryLng)) {
+                map.flyTo([queryLat, queryLng], 11, { animate: true, duration: 1.5 });
+            }
+        }
+
+        function locateDistrictHub(name) {
+            if (!name) return;
+            const hubs = FarmDirect.getDistricts();
+            const target = hubs.find(h => h.name.toLowerCase() === name.toLowerCase());
+            if (target && map) {
+                map.flyTo([target.lat, target.lng], 12, { animate: true, duration: 1.5 });
+                FarmDirect.showToast(`📍 Centered on ${target.name} Agricultural Hub Cold Storage`, 'info');
+            }
+        }
+
+        function calculateHaversineDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371; // Earth radius in km
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = 
+                Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            return R * c;
+        }
+
+        function detectMyLiveLocation() {
+            const btn = document.getElementById('btnDetectLocation');
+            const banner = document.getElementById('userLocationBanner');
+            const coordsText = document.getElementById('userGpsCoordinates');
+            const nearestHubText = document.getElementById('userNearestHubText');
+            const distanceBadge = document.getElementById('userHubDistanceBadge');
+
+            if (!navigator.geolocation) {
+                FarmDirect.showToast('Geolocation is not supported by your browser.', 'error');
+                return;
+            }
+
+            if (btn) btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Detecting GPS...';
+
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    if (btn) btn.innerHTML = '<i class="fas fa-crosshairs"></i> Detect My GPS Location';
+                    const lat = pos.coords.latitude;
+                    const lng = pos.coords.longitude;
+
+                    if (coordsText) coordsText.textContent = `${lat.toFixed(4)}° N, ${lng.toFixed(4)}° E`;
+
+                    // Find closest Tamil Nadu district hub
+                    const hubs = FarmDirect.getDistricts();
+                    let closestHub = null;
+                    let minDistance = Infinity;
+
+                    hubs.forEach(h => {
+                        const d = calculateHaversineDistance(lat, lng, h.lat, h.lng);
+                        if (d < minDistance) {
+                            minDistance = d;
+                            closestHub = h;
+                        }
+                    });
+
+                    if (banner) banner.style.display = 'flex';
+                    if (nearestHubText && closestHub) nearestHubText.textContent = `Nearest Hub: ${closestHub.name}`;
+                    if (distanceBadge) distanceBadge.textContent = `${minDistance.toFixed(1)} km away`;
+
+                    // Place or update user marker on map
+                    if (map) {
+                        const userIcon = L.divIcon({
+                            className: 'custom-truck-icon',
+                            html: '<i class="fas fa-street-view" style="font-size:16px; color:#ffffff;"></i>',
+                            iconSize: [36, 36],
+                            iconAnchor: [18, 18]
+                        });
+
+                        if (userLocationMarker) {
+                            userLocationMarker.setLatLng([lat, lng]);
+                        } else {
+                            userLocationMarker = L.marker([lat, lng], { icon: userIcon }).addTo(map);
+                        }
+
+                        userLocationMarker.bindPopup(`
+                            <div style="font-family:'Plus Jakarta Sans',sans-serif; min-width:200px; padding:4px;">
+                                <strong style="color:#059669; font-size:13px;"><i class="fas fa-map-marker-alt"></i> Your Live Location</strong>
+                                <div style="font-size:11.5px; color:#475569; margin:4px 0;">GPS: ${lat.toFixed(4)}° N, ${lng.toFixed(4)}° E</div>
+                                <div style="font-size:11.5px; color:#1e3a8a;"><strong>Nearest Hub:</strong> ${closestHub ? closestHub.name : 'Tamil Nadu Hub'} (${minDistance.toFixed(1)} km)</div>
+                            </div>
+                        `).openPopup();
+
+                        map.flyTo([lat, lng], 12, { animate: true, duration: 1.5 });
+                    }
+
+                    FarmDirect.showToast(`📍 Location detected! Nearest hub is ${closestHub ? closestHub.name : 'Tamil Nadu Central Hub'} (${minDistance.toFixed(1)} km away).`, 'success');
+                },
+                (err) => {
+                    if (btn) btn.innerHTML = '<i class="fas fa-crosshairs"></i> Detect My GPS Location';
+                    FarmDirect.showToast('Location access was denied or unavailable. Centering on Central Tamil Nadu.', 'info');
+                    if (map) {
+                        map.flyTo([10.7905, 78.7047], 9, { animate: true, duration: 1.2 });
+                    }
+                },
+                { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
+            );
+        }
+
+        function searchOrderByTrackingId() {
+            const input = document.getElementById('trackingOrderIdInput');
+            if (!input) return;
+            const query = input.value.trim();
+            if (!query) {
+                FarmDirect.showToast('Please enter an Order ID or Consignment number to track.', 'warning');
+                input.focus();
+                return;
+            }
+
+            // 1. Check direct shipment ID match
+            const exactShipment = Object.values(shipmentsData).find(s => s.id.toLowerCase() === query.toLowerCase());
+            if (exactShipment) {
+                selectShipment(exactShipment.id);
+                FarmDirect.showToast(`🚚 Found shipment ${exactShipment.id}: ${exactShipment.title}`, 'success');
+                return;
+            }
+
+            // 2. Check orders database
+            const orders = (window.FarmDirect && typeof FarmDirect.getOrders === 'function') ? FarmDirect.getOrders() : [];
+            const cleanQuery = query.toLowerCase().replace(/^(tn-)?ord-?/, '');
+            const matchedOrder = orders.find(o => {
+                const oClean = (o.id || '').toLowerCase().replace(/^(tn-)?ord-?/, '');
+                return oClean === cleanQuery || (o.id && o.id.toLowerCase() === query.toLowerCase());
+            });
+
+            if (matchedOrder) {
+                const matchedShipment = Object.values(shipmentsData).find(s => 
+                    (matchedOrder.district && s.district && s.district.toLowerCase() === matchedOrder.district.toLowerCase()) ||
+                    (matchedOrder.originDistrict && s.district && s.district.toLowerCase() === matchedOrder.originDistrict.toLowerCase())
+                ) || Object.values(shipmentsData)[0];
+
+                if (matchedShipment) {
+                    selectShipment(matchedShipment.id);
+                    FarmDirect.showToast(`🚚 Tracking live delivery for Order #${matchedOrder.id} (${matchedOrder.customerName || 'Customer'})`, 'success');
+                }
+            } else {
+                // Partial match across shipments
+                const partialShip = Object.values(shipmentsData).find(s => 
+                    s.id.toLowerCase().includes(query.toLowerCase()) ||
+                    s.title.toLowerCase().includes(query.toLowerCase()) ||
+                    s.district.toLowerCase().includes(query.toLowerCase())
+                );
+                if (partialShip) {
+                    selectShipment(partialShip.id);
+                    FarmDirect.showToast(`🚚 Showing active route for ${partialShip.title}`, 'info');
+                } else {
+                    FarmDirect.showToast(`No exact match for "${query}". Showing active statewide reefer fleet.`, 'info');
+                    const first = Object.keys(shipmentsData)[0];
+                    if (first) selectShipment(first);
+                }
+            }
+        }
+
+        function toggleTransitSimulation() {
+            const btn = document.getElementById('btnSimulateTransit');
+            const statusBadge = document.getElementById('telemetryStatusBadge');
+
+            if (simulationInterval) {
+                clearInterval(simulationInterval);
+                simulationInterval = null;
+                if (btn) btn.innerHTML = '<i class="fas fa-play"></i> Resume Transit Simulation';
+                if (statusBadge) {
+                    statusBadge.className = 'fd-badge fd-badge-amber';
+                    statusBadge.innerHTML = '<i class="fas fa-pause"></i> SIMULATION PAUSED';
+                }
+                FarmDirect.showToast('Transit simulation paused.', 'info');
+                return;
+            }
+
+            if (simulationIndex >= NH544_WAYPOINTS.length - 1) {
+                simulationIndex = 0;
+            }
+
+            if (statusBadge) {
+                statusBadge.className = 'fd-badge fd-badge-green';
+                statusBadge.innerHTML = '<i class="fas fa-satellite animate-pulse"></i> SATELLITE TRACKING ACTIVE';
+            }
+            if (btn) btn.innerHTML = '<i class="fas fa-pause"></i> Pause Live Simulation';
+            FarmDirect.showToast('🚚 Real-time Reefer Highway Transit Simulation Started!', 'success');
+
+            simulationInterval = setInterval(runSimulationStep, 1500);
+        }
+
+        function runSimulationStep() {
+            simulationIndex++;
+            if (simulationIndex >= NH544_WAYPOINTS.length) {
+                clearInterval(simulationInterval);
+                simulationInterval = null;
+                const btn = document.getElementById('btnSimulateTransit');
+                if (btn) btn.innerHTML = '<i class="fas fa-redo"></i> Restart Transit Simulation';
+                const statusBadge = document.getElementById('telemetryStatusBadge');
+                if (statusBadge) {
+                    statusBadge.className = 'fd-badge fd-badge-green';
+                    statusBadge.innerHTML = '<i class="fas fa-check-double"></i> CONSIGNMENT DELIVERED';
+                }
+
+                FarmDirect.showToast('🎉 Reefer Consignment arrived at Koyambedu Wholesale Terminal! e-POD Generated.', 'success', true);
+                return;
+            }
+
+            const w = NH544_WAYPOINTS[simulationIndex];
+            const currentTemp = (3.7 + Math.random() * 0.3).toFixed(1) + '°C';
+            const currentSpeed = (58 + Math.floor(Math.random() * 10)) + ' km/h';
+
+            // Update Active Truck Marker on Map
+            if (map && truckMarkers[activeShipmentId]) {
+                truckMarkers[activeShipmentId].setLatLng([w.lat, w.lng]);
+                map.panTo([w.lat, w.lng], { animate: true, duration: 1.0 });
+            }
+
+            // Update Telemetry Header & Cards
+            const stripWaypoint = document.getElementById('stripWaypoint');
+            if (stripWaypoint) stripWaypoint.textContent = w.name;
+
+            const stripCoords = document.getElementById('stripCoords');
+            if (stripCoords) stripCoords.textContent = `${w.lat.toFixed(4)}° N, ${w.lng.toFixed(4)}° E`;
+
+            const stripSpeed = document.getElementById('stripSpeed');
+            if (stripSpeed) stripSpeed.textContent = currentSpeed;
+
+            const stripTemp = document.getElementById('stripTemp');
+            if (stripTemp) stripTemp.textContent = `${currentTemp} Steady`;
+
+            const stripDist = document.getElementById('stripDist');
+            if (stripDist) stripDist.textContent = `${w.dist} km`;
+
+            const liveTempDisplay = document.getElementById('liveTempDisplay');
+            if (liveTempDisplay) liveTempDisplay.textContent = currentTemp;
+
+            const carrierSpeed = document.getElementById('carrierSpeed');
+            if (carrierSpeed) carrierSpeed.textContent = currentSpeed;
+
+            const activeRouteETA = document.getElementById('activeRouteETA');
+            if (activeRouteETA) activeRouteETA.innerHTML = `<i class="fas fa-clock"></i> ETA: ${w.eta}`;
+        }
+
+        function resetSimulationRoute() {
+            if (simulationInterval) {
+                clearInterval(simulationInterval);
+                simulationInterval = null;
+            }
+            simulationIndex = 0;
+            const w = NH544_WAYPOINTS[0];
+
+            if (map && truckMarkers[activeShipmentId]) {
+                truckMarkers[activeShipmentId].setLatLng([w.lat, w.lng]);
+                map.flyTo([w.lat, w.lng], 9, { animate: true, duration: 1.2 });
+            }
+
+            const btn = document.getElementById('btnSimulateTransit');
+            if (btn) btn.innerHTML = '<i class="fas fa-play"></i> Simulate Live Transit';
+
+            const statusBadge = document.getElementById('telemetryStatusBadge');
+            if (statusBadge) {
+                statusBadge.className = 'fd-badge fd-badge-green';
+                statusBadge.innerHTML = '<i class="fas fa-check-circle"></i> SATELLITE LOCK ACQUIRED';
+            }
+
+            const stripWaypoint = document.getElementById('stripWaypoint');
+            if (stripWaypoint) stripWaypoint.textContent = w.name;
+
+            const stripCoords = document.getElementById('stripCoords');
+            if (stripCoords) stripCoords.textContent = `${w.lat.toFixed(4)}° N, ${w.lng.toFixed(4)}° E`;
+
+            const stripSpeed = document.getElementById('stripSpeed');
+            if (stripSpeed) stripSpeed.textContent = '64 km/h';
+
+            const stripTemp = document.getElementById('stripTemp');
+            if (stripTemp) stripTemp.textContent = '3.8°C Steady';
+
+            const stripDist = document.getElementById('stripDist');
+            if (stripDist) stripDist.textContent = `${w.dist} km`;
+
+            const liveTempDisplay = document.getElementById('liveTempDisplay');
+            if (liveTempDisplay) liveTempDisplay.textContent = '3.8°C';
+
+            const carrierSpeed = document.getElementById('carrierSpeed');
+            if (carrierSpeed) carrierSpeed.textContent = '64 km/h';
+
+            const activeRouteETA = document.getElementById('activeRouteETA');
+            if (activeRouteETA) activeRouteETA.innerHTML = `<i class="fas fa-clock"></i> ETA: ${w.eta}`;
+
+            FarmDirect.showToast('Route simulation reset to origin (Erode Hub).', 'info');
+        }
+
+        function selectShipment(id, element) {
+            activeShipmentId = id;
+            document.querySelectorAll('.shipment-pill').forEach(p => p.classList.remove('active'));
+            if (element) {
+                element.classList.add('active');
+            } else {
+                const targetPill = document.getElementById(`pill-${id}`);
+                if (targetPill) targetPill.classList.add('active');
+            }
+
+            const s = shipmentsData[id];
+            if (s) {
+                document.getElementById('activeRouteTitle').textContent = s.title;
+                document.getElementById('activeRouteETA').innerHTML = `<i class="fas fa-clock"></i> ETA: ${s.eta}`;
+                document.getElementById('liveTempDisplay').textContent = s.temp;
+                document.getElementById('carrierDriver').textContent = s.driverName;
+                document.getElementById('carrierCorridor').textContent = s.corridor;
+                document.getElementById('carrierCarbon').textContent = s.carbon;
+                const speedEl = document.getElementById('carrierSpeed');
+                if (speedEl) speedEl.textContent = s.speed || '64 km/h';
+
+                const officeEl = document.getElementById('carrierOffice');
+                if (officeEl && s.district) {
+                    officeEl.innerHTML = `${s.district} Agri Complex <i class="fas fa-external-link-alt" style="font-size:10px;"></i>`;
+                    officeEl.setAttribute('onclick', `FarmDirect.showDistrictOfficeModal('${s.district}')`);
+                }
+
+                // Update Telemetry Readout Strip
+                const stripWaypoint = document.getElementById('stripWaypoint');
+                if (stripWaypoint) stripWaypoint.textContent = s.district + ' Cold Route';
+                const stripCoords = document.getElementById('stripCoords');
+                if (stripCoords && s.lat && s.lng) stripCoords.textContent = `${s.lat.toFixed(4)}° N, ${s.lng.toFixed(4)}° E`;
+                const stripSpeed = document.getElementById('stripSpeed');
+                if (stripSpeed) stripSpeed.textContent = s.speed || '64 km/h';
+                const stripTemp = document.getElementById('stripTemp');
+                if (stripTemp) stripTemp.textContent = `${s.temp} Steady`;
+
+                if (map && s.lat && s.lng) {
+                    map.flyTo([s.lat, s.lng], 9, { animate: true, duration: 1.2 });
+                    if (truckMarkers[id]) truckMarkers[id].openPopup();
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(initTNMap, 150);
+
+            const trackInput = document.getElementById('trackingOrderIdInput');
+            if (trackInput) {
+                trackInput.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        searchOrderByTrackingId();
+                    }
+                });
+            }
+
+            // Listen for MongoDB API sync completion
+            window.addEventListener('fd_data_synced', () => {
+                refreshTruckMarkers();
+            });
+
+            // Listen for Real-Time Telematics Pulse
+            window.addEventListener('fd_realtime_tick', (e) => {
+                if (e.detail && e.detail.activeShipments) {
+                    const activeShip = e.detail.activeShipments.find(s => s.id === activeShipmentId) || e.detail.activeShipments[0];
+                    if (activeShip) {
+                        const tempEl = document.getElementById('liveTempDisplay');
+                        if (tempEl) tempEl.textContent = activeShip.temp;
+
+                        // Update marker position dynamically on map
+                        if (map && truckMarkers[activeShip.id] && activeShip.lat && activeShip.lng) {
+                            truckMarkers[activeShip.id].setLatLng([activeShip.lat, activeShip.lng]);
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

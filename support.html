@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#10b981">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FarmDirect">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <title>Help & 24/7 Support Center | FarmDirect</title>
+    <!-- Immediate Authentication Guard: Require sign in before viewing website details -->
+    <script src="js/auth-guard.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Sleek Master Navigation with Rich Dropdowns -->
+    <nav class="fd-nav">
+        <div class="container fd-nav-inner">
+            <a href="index.html" class="fd-brand">
+                <span>🌱 FarmDirect</span>
+                <span class="fd-brand-badge">Support Desk</span>
+            </a>
+
+            <ul class="fd-nav-links">
+                <li class="fd-nav-item"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="marketplace.html"><i class="fas fa-store"></i> Marketplace <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="marketplace.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-shopping-basket"></i></div>
+                            <div><span class="fd-dropdown-title">Live Produce Catalog</span><span class="fd-dropdown-desc">Direct harvest from verified farmers</span></div>
+                        </a>
+                        <a href="product-quality.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-shield-alt"></i></div>
+                            <div><span class="fd-dropdown-title">AI Quality Scanner</span><span class="fd-dropdown-desc">Computer-vision freshness & Brix test</span></div>
+                        </a>
+                        <a href="price-comparison.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Price Comparison</span><span class="fd-dropdown-desc">Farmgate vs APMC Mandi vs Retail</span></div>
+                        </a>
+                        <a href="offers.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-tags"></i></div>
+                            <div><span class="fd-dropdown-title">Harvest Offers</span><span class="fd-dropdown-desc">Seasonal discounts & promo codes</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="farmer-dashboard.html"><i class="fas fa-tractor"></i> Farmers & FPOs <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="farmer-dashboard.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-tachometer-alt"></i></div>
+                            <div><span class="fd-dropdown-title">Farmer Command Center</span><span class="fd-dropdown-desc">Agronomy weather radar & revenue</span></div>
+                        </a>
+                        <a href="fpo-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-users"></i></div>
+                            <div><span class="fd-dropdown-title">FPO Collective Aggregator</span><span class="fd-dropdown-desc">Pool multi-farmer harvests for B2B</span></div>
+                        </a>
+                        <a href="add-product.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-plus-circle"></i></div>
+                            <div><span class="fd-dropdown-title">List New Produce</span><span class="fd-dropdown-desc">AI Mandi benchmark recommender</span></div>
+                        </a>
+                        <a href="farmer-earnings.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-wallet"></i></div>
+                            <div><span class="fd-dropdown-title">Earnings & UPI Ledger</span><span class="fd-dropdown-desc">Instant OTP escrow bank settlements</span></div>
+                        </a>
+                        <a href="farmer-verification.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-id-card"></i></div>
+                            <div><span class="fd-dropdown-title">Land KYC Verification</span><span class="fd-dropdown-desc">Patta/Chitta Land KYC Verification</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="logistics.html"><i class="fas fa-truck-moving"></i> Logistics <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="live-tracking.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-satellite-dish"></i></div>
+                            <div><span class="fd-dropdown-title">Live GPS Radar</span><span class="fd-dropdown-desc">3.8°C IoT thermal telematics</span></div>
+                        </a>
+                        <a href="route-optimization.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-route"></i></div>
+                            <div><span class="fd-dropdown-title">AI Route Optimizer</span><span class="fd-dropdown-desc">Multi-farm pickup TSP solver</span></div>
+                        </a>
+                        <a href="delivery-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-tasks"></i></div>
+                            <div><span class="fd-dropdown-title">Dispatch Management</span><span class="fd-dropdown-desc">Vehicle fleet allocations & e-POD</span></div>
+                        </a>
+                        <a href="warehouse.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-warehouse"></i></div>
+                            <div><span class="fd-dropdown-title">Smart Rural Cold Hubs</span><span class="fd-dropdown-desc">Microclimate pre-cooling slots</span></div>
+                        </a>
+                        <a href="inventory.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-rose"><i class="fas fa-boxes"></i></div>
+                            <div><span class="fd-dropdown-title">Inventory Engine</span><span class="fd-dropdown-desc">Batch shelf-life countdowns</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="ai-insights.html"><i class="fas fa-brain"></i> AI Intelligence <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="demand-forecast.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-chart-pie"></i></div>
+                            <div><span class="fd-dropdown-title">Demand Forecasting</span><span class="fd-dropdown-desc">Predictive 30-day ML models</span></div>
+                        </a>
+                        <a href="ai-insights.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-chart-line"></i></div>
+                            <div><span class="fd-dropdown-title">Agricultural Intelligence</span><span class="fd-dropdown-desc">Regional surplus & deficit heatmap</span></div>
+                        </a>
+                        <a href="supply-chain.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-link"></i></div>
+                            <div><span class="fd-dropdown-title">Farm-to-Fork Traceability</span><span class="fd-dropdown-desc">5-stage harvest verification</span></div>
+                        </a>
+                        <a href="price-intelligence.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Mandi Price Index</span><span class="fd-dropdown-desc">AGMARKNET live benchmark stream</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item"><a href="bulk-buyers.html"><i class="fas fa-building"></i> B2B Wholesale</a></li>
+            </ul>
+
+            <div class="fd-nav-actions">
+                <a href="support.html" class="btn btn-primary btn-sm"><i class="fas fa-headset"></i> 24/7 Helpline</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <span>Help Desk & Assistance</span>
+            </div>
+            <h1 class="page-hero-title">24/7 Farmer & Buyer Support Center</h1>
+            <p class="page-hero-subtitle">Dedicated agronomy advisory hotline, cold-chain dispute resolution, and instant AI guidance.</p>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Contact Channels -->
+            <div class="grid-3" style="margin-bottom: 35px;">
+                <div class="card" style="text-align: center; padding: 30px;">
+                    <div class="stat-icon stat-icon-green" style="margin: 0 auto 16px;"><i class="fas fa-phone-alt"></i></div>
+                    <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 6px;">Kisan Farmer Helpline</h3>
+                    <div style="font-size: 20px; font-weight: 800; color: #059669; margin-bottom: 6px;">1800-FARM-DIRECT</div>
+                    <p style="font-size: 12px; color: #64748b;">Toll-free in Hindi, Marathi, Kannada & English</p>
+                </div>
+
+                <div class="card" style="text-align: center; padding: 30px;">
+                    <div class="stat-icon stat-icon-blue" style="margin: 0 auto 16px;"><i class="fas fa-envelope"></i></div>
+                    <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 6px;">Escrow & Dispute Desk</h3>
+                    <div style="font-size: 16px; font-weight: 800; color: #0284c7; margin-bottom: 6px;">escrow@farmdirect.io</div>
+                    <p style="font-size: 12px; color: #64748b;">Guaranteed 2-hour SLA response</p>
+                </div>
+
+                <div class="card" style="text-align: center; padding: 30px;">
+                    <div class="stat-icon stat-icon-purple" style="margin: 0 auto 16px;"><i class="fas fa-robot"></i></div>
+                    <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 6px;">Agri AI Assistant</h3>
+                    <div style="font-size: 14px; font-weight: 800; color: #7e22ce; margin-bottom: 6px;">Instant Automated Query Solver</div>
+                    <button onclick="openChatBot()" class="btn btn-ai btn-sm" style="margin-top: 6px;">Chat with AI Bot</button>
+                </div>
+            </div>
+
+            <!-- FAQs & Ticket Creation -->
+            <div class="grid-2" style="gap: 30px; align-items: start;">
+                <!-- FAQ Accordion -->
+                <div class="card" style="padding: 30px;">
+                    <h3 style="font-size: 20px; font-weight: 800; color: #064e3b; margin-bottom: 20px;">
+                        <i class="fas fa-question-circle text-success"></i> Frequently Asked Questions
+                    </h3>
+
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <details style="background: #f8fafc; padding: 14px 18px; border-radius: 12px; border: 1px solid var(--border);" open>
+                            <summary style="font-weight: 700; color: #0f172a; cursor: pointer;">How does direct farmer payment work?</summary>
+                            <p style="font-size: 13px; color: #64748b; margin-top: 8px; line-height: 1.6;">
+                                When a buyer places an order, the payment is held in an encrypted digital escrow. As soon as the delivery is completed and verified via OTP, 85-90% of the funds are instantly transferred directly to the farmer's registered bank account via UPI.
+                            </p>
+                        </details>
+
+                        <details style="background: #f8fafc; padding: 14px 18px; border-radius: 12px; border: 1px solid var(--border);">
+                            <summary style="font-weight: 700; color: #0f172a; cursor: pointer;">How is cold-chain temperature guaranteed?</summary>
+                            <p style="font-size: 13px; color: #64748b; margin-top: 8px; line-height: 1.6;">
+                                Every vehicle and rural hub is fitted with IoT telematics sensors that log temperature every 60 seconds (maintained at 2°C - 6°C). If any thermal breach occurs, the platform automatically flags the batch for re-inspection.
+                            </p>
+                        </details>
+
+                        <details style="background: #f8fafc; padding: 14px 18px; border-radius: 12px; border: 1px solid var(--border);">
+                            <summary style="font-weight: 700; color: #0f172a; cursor: pointer;">How do FPOs aggregate crop consignments?</summary>
+                            <p style="font-size: 13px; color: #64748b; margin-top: 8px; line-height: 1.6;">
+                                FPO managers can use our FPO Hub to pool smallholder harvests into multi-ton consignments for B2B buyers like supermarket chains, ensuring small farmers receive high-volume bulk pricing.
+                            </p>
+                        </details>
+                    </div>
+                </div>
+
+                <!-- Ticket Form -->
+                <div class="card" style="padding: 30px;">
+                    <h3 style="font-size: 20px; font-weight: 800; color: #064e3b; margin-bottom: 20px;">
+                        <i class="fas fa-ticket-alt text-success"></i> Submit Support / Dispute Ticket
+                    </h3>
+
+                    <form onsubmit="handleTicketSubmit(event)">
+                        <div class="form-group">
+                            <label class="form-label">Related Order / Consignment ID</label>
+                            <input type="text" id="ticketOrderId" class="form-control" placeholder="e.g. #ORD-98214 or N/A">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Issue Category</label>
+                            <select id="ticketCategory" class="form-select">
+                                <option value="Cold-Chain Delivery & Tracking Inquiry">Cold-Chain Delivery & Tracking Inquiry</option>
+                                <option value="Farmer Payout Settlement / UPI Query">Farmer Payout Settlement / UPI Query</option>
+                                <option value="AI Quality & Grading Certification">AI Quality & Grading Certification</option>
+                                <option value="B2B Wholesale Contract & Escrow">B2B Wholesale Contract & Escrow</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Describe Your Request</label>
+                            <textarea id="ticketMessage" class="form-control" rows="4" placeholder="Provide details for rapid resolution..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <i class="fas fa-paper-plane"></i> Submit Ticket (2-Hr Response SLA)
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="fd-footer">
+        <div class="container">
+            <div class="fd-footer-bottom" style="border:none; padding:0;">
+                <div></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Agri AI Assistant Modal -->
+    <div id="aiAgriChatModal" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(4px); z-index: 9999; justify-content: center; align-items: center; padding: 20px;">
+        <div style="background: #ffffff; border-radius: 20px; max-width: 520px; width: 100%; height: 600px; display: flex; flex-direction: column; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); border: 1px solid #e2e8f0; overflow: hidden; animation: popIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);">
+            <!-- Chat Header -->
+            <div style="background: linear-gradient(135deg, #1e1b4b, #4338ca); color: #ffffff; padding: 18px 22px; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="width: 42px; height: 42px; border-radius: 12px; background: rgba(255,255,255,0.18); display: flex; align-items: center; justify-content: center; font-size: 20px;">
+                        🤖
+                    </div>
+                    <div>
+                        <h3 style="font-size: 16.5px; font-weight: 800; margin: 0; color: #ffffff;">Agri AI Assistant (விவசாய ஆலோசகர்)</h3>
+                        <p style="font-size: 11.5px; margin: 2px 0 0; color: #c7d2fe;">● Online • Instant Tamil Nadu Agro Advisory</p>
+                    </div>
+                </div>
+                <button type="button" onclick="closeChatBot()" style="background: none; border: none; color: #ffffff; font-size: 24px; cursor: pointer; opacity: 0.85;">&times;</button>
+            </div>
+
+            <!-- Chat Messages Body -->
+            <div id="aiChatBody" style="flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; background: #f8fafc;">
+                <!-- Initial Bot Message -->
+                <div style="display: flex; gap: 10px; align-items: flex-start;">
+                    <div style="width: 32px; height: 32px; border-radius: 50%; background: #4338ca; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0;">
+                        🤖
+                    </div>
+                    <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; border-top-left-radius: 2px; padding: 12px 16px; font-size: 13.5px; color: #1e293b; line-height: 1.5; max-width: 82%; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+                        <strong>வணக்கம்!</strong> I am your FarmDirect AI Agronomy & Logistics Guide. How can I assist you today?
+                        <div style="font-size: 11.5px; color: #64748b; margin-top: 6px;">Ask me about today's mandi rates, cold storage, order delivery, or farmer payouts.</div>
+                    </div>
+                </div>
+
+                <!-- Suggestion Chips -->
+                <div id="aiSuggestionChips" style="display: flex; flex-wrap: wrap; gap: 6px; margin-left: 42px;">
+                    <button type="button" onclick="sendAiPrompt('What are today\'s mandi prices?')" class="btn btn-outline btn-sm" style="font-size: 11.5px; padding: 4px 10px; border-radius: 20px; background: #ffffff;">🌾 Today's Mandi Rates</button>
+                    <button type="button" onclick="sendAiPrompt('How do I book cold storage?')" class="btn btn-outline btn-sm" style="font-size: 11.5px; padding: 4px 10px; border-radius: 20px; background: #ffffff;">❄️ Book Cold Storage</button>
+                    <button type="button" onclick="sendAiPrompt('How do farmer UPI payouts work?')" class="btn btn-outline btn-sm" style="font-size: 11.5px; padding: 4px 10px; border-radius: 20px; background: #ffffff;">💰 Direct UPI Escrow</button>
+                    <button type="button" onclick="sendAiPrompt('How do I track an active delivery?')" class="btn btn-outline btn-sm" style="font-size: 11.5px; padding: 4px 10px; border-radius: 20px; background: #ffffff;">🚚 Live GPS Tracking</button>
+                </div>
+            </div>
+
+            <!-- Chat Input Footer -->
+            <form id="aiChatForm" onsubmit="handleAiChatSubmit(event)" style="padding: 14px 18px; border-top: 1px solid #e2e8f0; background: #ffffff; display: flex; gap: 10px; align-items: center; flex-shrink: 0;">
+                <input type="text" id="aiChatInput" placeholder="Type your query (e.g. turmeric price, order status)..." style="flex: 1; padding: 10px 14px; border: 1.5px solid #cbd5e1; border-radius: 25px; font-size: 13.5px; outline: none;" required>
+                <button type="submit" class="btn btn-primary" style="border-radius: 50%; width: 40px; height: 40px; padding: 0; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <i class="fas fa-paper-plane" style="font-size: 14px;"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script>
+        function openChatBot() {
+            const modal = document.getElementById('aiAgriChatModal');
+            if (modal) {
+                modal.style.display = 'flex';
+                const input = document.getElementById('aiChatInput');
+                if (input) setTimeout(() => input.focus(), 150);
+            }
+        }
+
+        function closeChatBot() {
+            const modal = document.getElementById('aiAgriChatModal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        function appendMessage(sender, htmlContent) {
+            const body = document.getElementById('aiChatBody');
+            if (!body) return;
+
+            const div = document.createElement('div');
+            div.style.display = 'flex';
+            div.style.gap = '10px';
+            div.style.alignItems = 'flex-start';
+
+            if (sender === 'user') {
+                div.style.justifyContent = 'flex-end';
+                div.innerHTML = `
+                    <div style="background: #4338ca; color: #ffffff; border-radius: 14px; border-top-right-radius: 2px; padding: 10px 15px; font-size: 13.5px; line-height: 1.4; max-width: 82%;">
+                        ${htmlContent}
+                    </div>
+                `;
+            } else {
+                div.innerHTML = `
+                    <div style="width: 32px; height: 32px; border-radius: 50%; background: #4338ca; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0;">
+                        🤖
+                    </div>
+                    <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; border-top-left-radius: 2px; padding: 12px 16px; font-size: 13.5px; color: #1e293b; line-height: 1.5; max-width: 82%; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+                        ${htmlContent}
+                    </div>
+                `;
+            }
+
+            body.appendChild(div);
+            body.scrollTop = body.scrollHeight;
+        }
+
+        function getAiAnswer(question) {
+            const q = question.toLowerCase();
+
+            if (q.includes('price') || q.includes('rate') || q.includes('mandi') || q.includes('விலை')) {
+                return `<strong>📊 Live Tamil Nadu AGMARKNET Mandi Benchmarks:</strong><br>
+                • <strong>GI Erode Turmeric:</strong> ₹185/kg (Mandi: ₹155/kg • +19% Farmer Gain)<br>
+                • <strong>Thanjavur Ponni Rice:</strong> ₹68/kg (Mandi: ₹56/kg)<br>
+                • <strong>Pollachi Tender Coconut:</strong> ₹42/pc (Mandi: ₹32/pc)<br>
+                • <strong>Dharmapuri Red Tomato:</strong> ₹32/kg (Mandi: ₹24/kg)<br>
+                • <strong>Madurai Gundu Malli:</strong> ₹650/kg (Mandi: ₹520/kg)<br>
+                <em>Check our <a href="price-intelligence.html" style="color: #4338ca; font-weight: 700;">Price Intelligence Dashboard</a> for real-time 30-day graphs.</em>`;
+            }
+
+            if (q.includes('storage') || q.includes('cold') || q.includes('warehouse') || q.includes('குளிர்பதன')) {
+                return `<strong>❄️ Smart Rural Cold Hub Booking:</strong><br>
+                We have <strong>32 active cold hubs</strong> across 38 districts with <strong>3,980 MT open slots</strong>:<br>
+                • Erode Semmampalayam Hub (3.8°C Steady)<br>
+                • Thanjavur Delta Silos (14°C Controlled Atmosphere)<br>
+                • Ooty Mountain Cold Bay (1.8°C Ultra-Chill)<br>
+                • Koyambedu Agro Terminal (2.5°C Blast Pre-Cooling)<br>
+                You can reserve directly on the <a href="warehouse.html" style="color: #4338ca; font-weight: 700;">Cold Storage Hubs page</a>!`;
+            }
+
+            if (q.includes('pay') || q.includes('money') || q.includes('payout') || q.includes('upi') || q.includes('escrow') || q.includes('பணம்')) {
+                return `<strong>💰 Guaranteed Direct Farmer Payout:</strong><br>
+                When a buyer orders, funds are secured in an encrypted escrow. As soon as the delivery is confirmed via OTP e-POD, <strong>85% to 90% of the payment is instantly dispatched to your registered UPI / Bank account</strong> within 4 minutes. Zero middleman commissions!`;
+            }
+
+            if (q.includes('track') || q.includes('deliver') || q.includes('order') || q.includes('வழியில்')) {
+                return `<strong>🚚 Real-Time GPS Delivery Tracking:</strong><br>
+                Every reefer truck is equipped with IoT telemetry logging temperature and live location every 60 seconds.<br>
+                To track your active order or vehicle, visit the <a href="live-tracking.html" style="color: #4338ca; font-weight: 700;">Live GPS Radar Tracker</a>.`;
+            }
+
+            if (q.includes('patta') || q.includes('chitta') || q.includes('verify') || q.includes('kyc') || q.includes('பட்டா')) {
+                return `<strong>📜 Farmer KYC & Land Verification:</strong><br>
+                Submit your Patta/Chitta number and Aadhaar on our <a href="farmer-verification.html" style="color: #4338ca; font-weight: 700;">Land KYC Verification</a> page. Nodal agricultural officers approve records within 24 hours to award the verified producer badge.`;
+            }
+
+            return `<strong>🌿 FarmDirect Agronomy & Support Desk:</strong><br>
+            Thank you for your question regarding "<em>${question}</em>". Our 24/7 agricultural support team and district joint directors are available at toll-free <strong>1800-FARM-DIRECT</strong> or via support ticket on this page. All farmer queries receive guaranteed resolution within 2 hours.`;
+        }
+
+        function sendAiPrompt(promptText) {
+            const input = document.getElementById('aiChatInput');
+            if (input) {
+                input.value = promptText;
+                handleAiChatSubmit(new Event('submit'));
+            }
+        }
+
+        function handleAiChatSubmit(e) {
+            if (e && e.preventDefault) e.preventDefault();
+            const input = document.getElementById('aiChatInput');
+            if (!input) return;
+            const text = input.value.trim();
+            if (!text) return;
+
+            appendMessage('user', text);
+            input.value = '';
+
+            // Bot Typing Indicator
+            const body = document.getElementById('aiChatBody');
+            const typingDiv = document.createElement('div');
+            typingDiv.id = 'aiTypingIndicator';
+            typingDiv.style.display = 'flex';
+            typingDiv.style.gap = '10px';
+            typingDiv.style.alignItems = 'center';
+            typingDiv.innerHTML = `
+                <div style="width: 32px; height: 32px; border-radius: 50%; background: #4338ca; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px;">🤖</div>
+                <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 8px 14px; font-size: 12.5px; color: #64748b;">
+                    <i class="fas fa-spinner fa-spin"></i> Analyzing Tamil Nadu agricultural database...
+                </div>
+            `;
+            if (body) {
+                body.appendChild(typingDiv);
+                body.scrollTop = body.scrollHeight;
+            }
+
+            setTimeout(() => {
+                const indicator = document.getElementById('aiTypingIndicator');
+                if (indicator && indicator.parentNode) indicator.parentNode.removeChild(indicator);
+                const answer = getAiAnswer(text);
+                appendMessage('bot', answer);
+            }, 600);
+        }
+
+        async function handleTicketSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalBtnHtml = '<i class="fas fa-paper-plane"></i> Submit Ticket (2-Hr Response SLA)';
+            if (btn) {
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting ticket to database...';
+            }
+            const orderIdInput = document.getElementById('ticketOrderId');
+            const categoryInput = document.getElementById('ticketCategory');
+            const messageInput = document.getElementById('ticketMessage');
+
+            const orderRef = orderIdInput ? orderIdInput.value.trim() : '';
+            const category = categoryInput ? categoryInput.value : 'General Support';
+            const message = messageInput ? messageInput.value.trim() : '';
+
+            const userProfile = (window.FarmDirect && typeof FarmDirect.getUserProfile === 'function') ? FarmDirect.getUserProfile() : null;
+            const senderName = userProfile?.name || 'FarmDirect User';
+            const senderEmail = userProfile?.email || 'user@farmdirect.io';
+            const ticketId = 'TKT-TN-' + Math.floor(10000 + Math.random() * 90000);
+
+            try {
+                const res = await fetch(`${FarmDirect.API_BASE}/feedback`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        id: ticketId,
+                        senderName,
+                        senderEmail,
+                        category,
+                        subject: `Support Ticket: ${category} ${orderRef ? `(Ref: ${orderRef})` : ''}`,
+                        message: message + (orderRef ? `\nRelated Order: ${orderRef}` : '')
+                    })
+                });
+
+                if (!res.ok) {
+                    throw new Error('Failed to save ticket to database');
+                }
+
+                if (btn) {
+                    btn.innerHTML = '<i class="fas fa-check-circle"></i> Ticket Logged in MongoDB!';
+                    btn.style.background = '#059669';
+                }
+                if (window.FarmDirect && typeof FarmDirect.addNotification === 'function') {
+                    await FarmDirect.addNotification({
+                        title: `Ticket Submitted (#${ticketId})`,
+                        msg: `Dispute/inquiry ticket registered in MongoDB. Ticket ${ticketId} is queued under 2-Hr SLA desk.`,
+                        type: 'info',
+                        time: 'Just now'
+                    });
+                }
+                FarmDirect.showToast(`Submitted successfully! Assigned Ticket ID: ${ticketId}.`, 'success');
+                e.target.reset();
+            } catch (err) {
+                console.error('Ticket submit error:', err);
+                if (btn) {
+                    btn.disabled = false;
+                    btn.style.background = '';
+                    btn.innerHTML = originalBtnHtml;
+                }
+                FarmDirect.showToast('Could not save ticket. Please check server connection.', 'error');
+            } finally {
+                setTimeout(() => {
+                    if (btn) {
+                        btn.disabled = false;
+                        btn.style.background = '';
+                        btn.innerHTML = originalBtnHtml;
+                    }
+                }, 2000);
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeChatBot();
+        });
+    </script>
+</body>
+</html>

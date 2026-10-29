@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#10b981">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FarmDirect">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <title>Tamil Nadu 38 Districts Seasonal Offers & Harvest Deals | FarmDirect</title>
+    <!-- Immediate Authentication Guard: Require sign in before viewing website details -->
+    <script src="js/auth-guard.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .district-hero-deal {
+            background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #0f172a 100%);
+            border-radius: 24px;
+            padding: 32px 36px;
+            color: white;
+            box-shadow: 0 20px 40px -8px rgba(6, 78, 59, 0.35);
+            border: 1.5px solid rgba(52, 211, 153, 0.3);
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .district-hero-deal::after {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .coupon-code-pill {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1.5px dashed #34d399;
+            padding: 10px 18px;
+            border-radius: 12px;
+            font-family: monospace;
+            font-size: 17px;
+            font-weight: 800;
+            color: #6ee7b7;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .offer-card {
+            background: #ffffff;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-4px);
+            border-color: #10b981;
+            box-shadow: 0 12px 28px rgba(16, 185, 129, 0.15);
+        }
+
+        .district-tag-pill {
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 3px 10px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Master Navigation -->
+    <nav class="fd-nav">
+        <div class="container fd-nav-inner">
+            <a href="index.html" class="fd-brand">
+                <span>🌱 FarmDirect</span>
+                <span class="fd-brand-badge">Offers & Promos</span>
+            </a>
+
+            <ul class="fd-nav-links">
+                <li class="fd-nav-item"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="marketplace.html" class="active"><i class="fas fa-store"></i> Marketplace <i
+                            class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="marketplace.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-shopping-basket"></i></div>
+                            <div><span class="fd-dropdown-title">Live Produce Catalog</span><span
+                                    class="fd-dropdown-desc">Direct harvest from verified farmers</span></div>
+                        </a>
+                        <a href="product-quality.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-shield-alt"></i></div>
+                            <div><span class="fd-dropdown-title">AI Quality Scanner</span><span
+                                    class="fd-dropdown-desc">Computer-vision freshness & Brix test</span></div>
+                        </a>
+                        <a href="price-comparison.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Price Comparison</span><span
+                                    class="fd-dropdown-desc">Farmgate vs APMC Mandi vs Retail</span></div>
+                        </a>
+                        <a href="offers.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-tags"></i></div>
+                            <div><span class="fd-dropdown-title">Harvest Offers</span><span
+                                    class="fd-dropdown-desc">Seasonal discounts & promo codes</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="farmer-dashboard.html"><i class="fas fa-tractor"></i> Farmers & FPOs <i
+                            class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="farmer-dashboard.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-tachometer-alt"></i></div>
+                            <div><span class="fd-dropdown-title">Farmer Command Center</span><span
+                                    class="fd-dropdown-desc">Agronomy weather radar & revenue</span></div>
+                        </a>
+                        <a href="fpo-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-users"></i></div>
+                            <div><span class="fd-dropdown-title">FPO Collective Aggregator</span><span
+                                    class="fd-dropdown-desc">Pool multi-farmer harvests for B2B</span></div>
+                        </a>
+                        <a href="add-product.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-plus-circle"></i></div>
+                            <div><span class="fd-dropdown-title">List New Produce</span><span
+                                    class="fd-dropdown-desc">AI Mandi benchmark recommender</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item"><a href="bulk-buyers.html"><i class="fas fa-building"></i> B2B Wholesale</a>
+                </li>
+            </ul>
+
+            <div class="fd-nav-actions">
+                <a href="wishlist.html" class="fd-icon-btn"><i class="far fa-heart"></i><span
+                        class="fd-badge-count" id="fd-wishlist-badge" style="display:none;">0</span></a>
+                <a href="cart.html" class="fd-icon-btn"><i class="fas fa-shopping-basket"></i><span
+                        class="fd-badge-count" id="fd-cart-badge" style="display:none;">0</span></a>
+                <a href="notifications.html" class="fd-icon-btn"><i class="far fa-bell"></i><span
+                        class="fd-badge-count" id="fd-notif-badge" style="display:none;">0</span></a>
+                <a href="login.html" class="btn btn-primary btn-sm"><i class="fas fa-user-circle"></i> Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <a href="marketplace.html">Marketplace</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <span>Seasonal Harvest Deals & Promos</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
+                <div>
+                    <h1 class="page-hero-title">Tamil Nadu 38 Districts Harvest Deals & Offers</h1>
+                    <p class="page-hero-subtitle">Special seasonal discounts, real-time hub reserves, and promo codes tailored to every district of Tamil Nadu.</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.12); padding: 8px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-map-marker-alt text-warning"></i>
+                    <span style="font-size: 13px; font-weight: 700; color: white;">Explore District Hubs:</span>
+                    <select id="offersDistrictDropdown" onchange="onDistrictFilterChanged(this.value)" style="padding: 6px 12px; border-radius: 8px; border: 1px solid #10b981; background: white; font-weight: 700; font-size: 13px; color: #064e3b; outline: none; cursor: pointer;">
+                        <!-- Injected with 38 districts -->
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+
+            <!-- Active District Seasonal Harvest Hero Showcase -->
+            <div id="districtHeroDeal" class="district-hero-deal">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
+                    <div style="max-width: 680px;">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap;">
+                            <span id="hero-district-badge" class="district-tag-pill" style="background: rgba(255,255,255,0.2); color: #6ee7b7; border-color: rgba(52, 211, 153, 0.4); font-size: 12px;">
+                                <i class="fas fa-map-pin"></i> Erode District Hub
+                            </span>
+                            <span id="hero-discount-badge" style="background: #10b981; color: white; font-size: 12px; font-weight: 800; padding: 4px 12px; border-radius: 20px;">
+                                15% OFF
+                            </span>
+                            <span id="hero-stock-badge" style="background: rgba(0,0,0,0.3); color: #fde047; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 8px;">
+                                <i class="fas fa-cubes"></i> 4,850 kg In-Stock Live Hub Reserve
+                            </span>
+                        </div>
+
+                        <h2 id="hero-deal-title" style="font-size: 26px; font-weight: 800; margin: 0 0 8px; color: #ffffff; line-height: 1.3;">
+                            15% OFF on Bhavani Basin GI Golden Turmeric Fingers
+                        </h2>
+                        <div id="hero-deal-tamil" style="font-size: 15px; color: #6ee7b7; font-weight: 700; margin-bottom: 12px;">
+                            ஈரோடு மஞ்சள் 15% சிறப்பு சேமிப்பு
+                        </div>
+                        <p id="hero-deal-desc" style="font-size: 14px; color: #cbd5e1; margin-bottom: 20px; line-height: 1.5;">
+                            High-curcumin (4.8%) sun-dried Erode turmeric fingers and aromatic kitchen powder direct from Semmampalayam farmer collectives.
+                        </p>
+
+                        <!-- Promo Code & Actions -->
+                        <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+                            <div class="coupon-code-pill">
+                                <span id="hero-promo-code">ERD-TURMERIC-2026</span>
+                                <button onclick="copyCouponFromHero()" style="background: #ffffff; color: #064e3b; border: none; padding: 5px 12px; border-radius: 8px; font-size: 12px; cursor: pointer; font-weight: 800;">
+                                    <i class="fas fa-copy"></i> COPY
+                                </button>
+                            </div>
+                            <span id="hero-min-order" style="font-size: 13px; color: #a7f3d0; font-weight: 600;">Min Order: ₹400</span>
+                            <a id="hero-marketplace-link" href="marketplace.html?district=Erode" class="btn btn-primary" style="padding: 10px 18px; font-size: 13.5px; text-decoration: none; border-radius: 10px;">
+                                <i class="fas fa-shopping-basket"></i> Shop Erode Produce
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Government Office & Cold Hub Summary Box -->
+                    <div style="background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.15); border-radius: 16px; padding: 18px; min-width: 260px; max-width: 320px;">
+                        <div style="font-size: 11px; font-weight: 800; color: #6ee7b7; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+                            <i class="fas fa-building"></i> Designated Agricultural Command
+                        </div>
+                        <div id="hero-officer" style="font-size: 13.5px; font-weight: 700; color: #ffffff; margin-bottom: 4px;">
+                            Thiru. M. Selvam (Joint Director)
+                        </div>
+                        <div id="hero-hub" style="font-size: 12px; color: #cbd5e1; margin-bottom: 8px;">
+                            Semmampalayam Turmeric Complex
+                        </div>
+                        <div id="hero-crops" style="font-size: 12px; color: #fde047; font-weight: 600; margin-bottom: 12px;">
+                            <i class="fas fa-seedling"></i> GI Erode Turmeric, Sugarcane
+                        </div>
+                        <button onclick="showHeroDistrictOfficeModal()" style="width: 100%; background: rgba(16, 185, 129, 0.25); border: 1px solid #34d399; color: #6ee7b7; padding: 6px; border-radius: 8px; font-size: 11.5px; font-weight: 700; cursor: pointer;">
+                            <i class="fas fa-university"></i> Official Nodal Office Details 🏛️
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statewide 38 Districts Offers Catalog -->
+            <div class="section-header" style="margin-bottom: 20px;">
+                <div>
+                    <span class="badge badge-success" style="margin-bottom: 6px;">ALL 38 DISTRICTS CATALOG</span>
+                    <h2 class="section-title">Explore Dynamic Offers Across Tamil Nadu</h2>
+                    <p style="color: #64748b; font-size: 14px; margin: 0;">Click on any district deal to copy the promo code or view that district's real-time produce stock.</p>
+                </div>
+            </div>
+
+            <!-- 38 District Offers Grid -->
+            <div id="allDistrictOffersGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; margin-bottom: 50px;">
+                <!-- Dynamically populated -->
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="fd-footer">
+        <div class="container">
+            <div class="fd-footer-bottom" style="border:none; padding:0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                <div></div>
+                <a href="marketplace.html" style="color: #6ee7b7; font-weight: 700; text-decoration: none;"><i class="fas fa-arrow-left"></i> View Full Marketplace</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        let currentSelectedDistrict = 'Erode';
+
+        function copyCoupon(code) {
+            navigator.clipboard.writeText(code);
+            if (window.FarmDirect && typeof FarmDirect.showToast === 'function') {
+                FarmDirect.showToast(`🎉 Coupon ${code} copied! Auto-discount active.`, 'success');
+            }
+        }
+
+        function copyCouponFromHero() {
+            const promo = document.getElementById('hero-promo-code');
+            if (promo) copyCoupon(promo.textContent.trim());
+        }
+
+        function showHeroDistrictOfficeModal() {
+            if (window.FarmDirect && typeof FarmDirect.showDistrictOfficeModal === 'function') {
+                FarmDirect.showDistrictOfficeModal(currentSelectedDistrict);
+            }
+        }
+
+        function populateDistrictDropdown() {
+            const select = document.getElementById('offersDistrictDropdown');
+            if (!select || !window.FarmDirect) return;
+
+            const districts = FarmDirect.getDistricts ? FarmDirect.getDistricts() : [];
+            const userDistrict = FarmDirect.getUserDistrict ? FarmDirect.getUserDistrict() : 'Erode';
+            currentSelectedDistrict = userDistrict;
+
+            select.innerHTML = districts.map(d => `
+                <option value="${d.name}" ${d.name === currentSelectedDistrict ? 'selected' : ''}>
+                    📍 ${d.name} (${d.tamilName || d.name})
+                </option>
+            `).join('');
+
+            updateHeroShowcase(currentSelectedDistrict);
+        }
+
+        function onDistrictFilterChanged(districtName) {
+            currentSelectedDistrict = districtName;
+            if (window.FarmDirect && typeof FarmDirect.setUserDistrict === 'function') {
+                FarmDirect.setUserDistrict(districtName);
+            }
+            updateHeroShowcase(districtName);
+        }
+
+        function updateHeroShowcase(districtName) {
+            if (!window.FarmDirect) return;
+
+            const offer = FarmDirect.getDistrictOffer ? FarmDirect.getDistrictOffer(districtName) : null;
+            const profile = FarmDirect.getDistrictProfileData ? FarmDirect.getDistrictProfileData(districtName) : null;
+
+            if (offer && profile) {
+                document.getElementById('hero-district-badge').innerHTML = `<i class="fas fa-map-pin"></i> ${profile.district} (${profile.tamil || profile.district}) Hub`;
+                document.getElementById('hero-discount-badge').textContent = offer.discount || 'SPECIAL OFFER';
+                document.getElementById('hero-stock-badge').innerHTML = `<i class="fas fa-cubes"></i> ${(offer.stockKg || 4500).toLocaleString()} kg In-Stock Live Hub Reserve`;
+                document.getElementById('hero-deal-title').textContent = offer.title || `${districtName} Harvest Special`;
+                document.getElementById('hero-deal-tamil').textContent = offer.tamilTitle || `${profile.tamil} சிறப்பு சலுகை`;
+                document.getElementById('hero-deal-desc').textContent = offer.desc || `Direct farmgate discount on produce from ${districtName}.`;
+                document.getElementById('hero-promo-code').textContent = offer.code || `OFFER-${districtName.toUpperCase()}`;
+                document.getElementById('hero-min-order').textContent = `Min Order: ${offer.minOrder || '₹350'}`;
+                
+                const shopLink = document.getElementById('hero-marketplace-link');
+                if (shopLink) {
+                    shopLink.href = `marketplace.html?district=${encodeURIComponent(districtName)}`;
+                    shopLink.innerHTML = `<i class="fas fa-shopping-basket"></i> Shop ${districtName} Produce`;
+                }
+
+                document.getElementById('hero-officer').textContent = profile.adminName || `Nodal Office (${districtName})`;
+                document.getElementById('hero-hub').textContent = profile.hub || `${districtName} Agro Storage Depot`;
+                document.getElementById('hero-crops').innerHTML = `<i class="fas fa-seedling"></i> ${profile.primaryCrop || 'Farmgate Harvest'}`;
+            }
+        }
+
+        function renderAllDistrictOffers() {
+            const grid = document.getElementById('allDistrictOffersGrid');
+            if (!grid || !window.FarmDirect) return;
+
+            let offers = FarmDirect.getAllDistrictOffers ? FarmDirect.getAllDistrictOffers() : [];
+            if (!Array.isArray(offers)) {
+                offers = Object.entries(offers).map(([district, item]) => ({
+                    district,
+                    tamil: (item && item.tamil) || district,
+                    ...item
+                }));
+            }
+
+            grid.innerHTML = offers.map(item => `
+                <div class="offer-card">
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+                            <span class="district-tag-pill">
+                                <i class="fas fa-map-marker-alt text-danger"></i> ${item.district} (${item.tamil || item.district})
+                            </span>
+                            <span style="background: #10b981; color: white; font-size: 11px; font-weight: 800; padding: 3px 9px; border-radius: 20px;">
+                                ${item.discount}
+                            </span>
+                        </div>
+
+                        <h3 style="font-size: 15px; font-weight: 800; color: #064e3b; margin: 0 0 4px; line-height: 1.3;">
+                            ${item.title}
+                        </h3>
+                        <div style="font-size: 12.5px; color: #059669; font-weight: 700; margin-bottom: 6px;">
+                            ${item.tamilTitle}
+                        </div>
+                        <p style="font-size: 12px; color: #64748b; margin-bottom: 12px; line-height: 1.4;">
+                            ${item.desc}
+                        </p>
+
+                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 8px 10px; margin-bottom: 12px; font-size: 11.5px; display: flex; justify-content: space-between;">
+                            <span><i class="fas fa-cubes text-success"></i> Stock: <strong>${(item.stockKg || 4000).toLocaleString()} kg</strong></span>
+                            <span>Min: <strong>${item.minOrder}</strong></span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; background: #ecfdf5; border: 1px dashed #34d399; padding: 6px 10px; border-radius: 8px; margin-bottom: 8px;">
+                            <strong style="font-family: monospace; font-size: 12.5px; color: #064e3b;">${item.code}</strong>
+                            <button onclick="copyCoupon('${item.code}')" style="background: #059669; color: white; border: none; padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer;">
+                                Copy
+                            </button>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                            <button onclick="onDistrictFilterChanged('${item.district}'); window.scrollTo({top: 0, behavior: 'smooth'});" class="btn btn-secondary btn-sm" style="padding: 6px; font-size: 11.5px; justify-content: center;">
+                                <i class="fas fa-eye"></i> View Deal
+                            </button>
+                            <a href="marketplace.html?district=${encodeURIComponent(item.district)}" class="btn btn-primary btn-sm" style="padding: 6px; font-size: 11.5px; text-decoration: none; justify-content: center;">
+                                <i class="fas fa-shopping-basket"></i> Browse Hub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            populateDistrictDropdown();
+            renderAllDistrictOffers();
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const distParam = urlParams.get('district');
+            if (distParam) {
+                const select = document.getElementById('offersDistrictDropdown');
+                if (select) select.value = distParam;
+                onDistrictFilterChanged(distParam);
+            }
+        });
+    </script>
+</body>
+
+</html>

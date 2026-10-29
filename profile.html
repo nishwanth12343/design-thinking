@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#10b981">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FarmDirect">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <title>User Profile & Settings | FarmDirect</title>
+    <!-- Immediate Authentication Guard: Require sign in before viewing website details -->
+    <script src="js/auth-guard.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Sleek Master Navigation with Rich Dropdowns -->
+    <nav class="fd-nav">
+        <div class="container fd-nav-inner">
+            <a href="index.html" class="fd-brand">
+                <span>🌱 FarmDirect</span>
+                <span class="fd-brand-badge">User Profile</span>
+            </a>
+
+            <ul class="fd-nav-links">
+                <li class="fd-nav-item"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="marketplace.html"><i class="fas fa-store"></i> Marketplace <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="marketplace.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-shopping-basket"></i></div>
+                            <div><span class="fd-dropdown-title">Live Produce Catalog</span><span class="fd-dropdown-desc">Direct harvest from verified farmers</span></div>
+                        </a>
+                        <a href="product-quality.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-shield-alt"></i></div>
+                            <div><span class="fd-dropdown-title">AI Quality Scanner</span><span class="fd-dropdown-desc">Computer-vision freshness & Brix test</span></div>
+                        </a>
+                        <a href="price-comparison.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Price Comparison</span><span class="fd-dropdown-desc">Farmgate vs APMC Mandi vs Retail</span></div>
+                        </a>
+                        <a href="offers.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-tags"></i></div>
+                            <div><span class="fd-dropdown-title">Harvest Offers</span><span class="fd-dropdown-desc">Seasonal discounts & promo codes</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="farmer-dashboard.html"><i class="fas fa-tractor"></i> Farmers & FPOs <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="farmer-dashboard.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-tachometer-alt"></i></div>
+                            <div><span class="fd-dropdown-title">Farmer Command Center</span><span class="fd-dropdown-desc">Agronomy weather radar & revenue</span></div>
+                        </a>
+                        <a href="fpo-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-users"></i></div>
+                            <div><span class="fd-dropdown-title">FPO Collective Aggregator</span><span class="fd-dropdown-desc">Pool multi-farmer harvests for B2B</span></div>
+                        </a>
+                        <a href="add-product.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-plus-circle"></i></div>
+                            <div><span class="fd-dropdown-title">List New Produce</span><span class="fd-dropdown-desc">AI Mandi benchmark recommender</span></div>
+                        </a>
+                        <a href="farmer-earnings.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-wallet"></i></div>
+                            <div><span class="fd-dropdown-title">Earnings & UPI Ledger</span><span class="fd-dropdown-desc">Instant OTP escrow bank settlements</span></div>
+                        </a>
+                        <a href="farmer-verification.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-id-card"></i></div>
+                            <div><span class="fd-dropdown-title">Land KYC Verification</span><span class="fd-dropdown-desc">Patta/Chitta Land KYC Verification</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="logistics.html"><i class="fas fa-truck-moving"></i> Logistics <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="live-tracking.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-satellite-dish"></i></div>
+                            <div><span class="fd-dropdown-title">Live GPS Radar</span><span class="fd-dropdown-desc">3.8°C Temperature-Controlled Delivery</span></div>
+                        </a>
+                        <a href="route-optimization.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-route"></i></div>
+                            <div><span class="fd-dropdown-title">AI Route Optimizer</span><span class="fd-dropdown-desc">Smart Multi-Farm Route Optimizer</span></div>
+                        </a>
+                        <a href="delivery-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-tasks"></i></div>
+                            <div><span class="fd-dropdown-title">Dispatch Management</span><span class="fd-dropdown-desc">Vehicle fleet allocations & e-POD</span></div>
+                        </a>
+                        <a href="warehouse.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-warehouse"></i></div>
+                            <div><span class="fd-dropdown-title">Smart Rural Cold Hubs</span><span class="fd-dropdown-desc">Microclimate pre-cooling slots</span></div>
+                        </a>
+                        <a href="inventory.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-rose"><i class="fas fa-boxes"></i></div>
+                            <div><span class="fd-dropdown-title">Inventory Engine</span><span class="fd-dropdown-desc">Batch shelf-life countdowns</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="ai-insights.html"><i class="fas fa-brain"></i> AI Intelligence <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="demand-forecast.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-chart-pie"></i></div>
+                            <div><span class="fd-dropdown-title">Demand Forecasting</span><span class="fd-dropdown-desc">Predictive 30-day ML models</span></div>
+                        </a>
+                        <a href="ai-insights.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-chart-line"></i></div>
+                            <div><span class="fd-dropdown-title">Agricultural Intelligence</span><span class="fd-dropdown-desc">Regional surplus & deficit heatmap</span></div>
+                        </a>
+                        <a href="supply-chain.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-link"></i></div>
+                            <div><span class="fd-dropdown-title">Farm-to-Fork Traceability</span><span class="fd-dropdown-desc">5-stage harvest verification</span></div>
+                        </a>
+                        <a href="price-intelligence.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Mandi Price Index</span><span class="fd-dropdown-desc">Live Government Mandi Prices</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item"><a href="bulk-buyers.html"><i class="fas fa-building"></i> B2B Wholesale</a></li>
+            </ul>
+
+            <div class="fd-nav-actions">
+                <a href="wishlist.html" class="fd-icon-btn"><i class="far fa-heart"></i><span class="fd-badge-count" id="fd-wishlist-badge" style="display:none;">0</span></a>
+                <a href="cart.html" class="fd-icon-btn"><i class="fas fa-shopping-basket"></i><span class="fd-badge-count" id="fd-cart-badge" style="display:none;">0</span></a>
+                <a href="notifications.html" class="fd-icon-btn"><i class="far fa-bell"></i><span class="fd-badge-count" id="fd-notif-badge" style="display:none;">0</span></a>
+                <a href="profile.html" class="btn btn-secondary btn-sm active"><i class="fas fa-user"></i> Profile</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <span>User Account & Security Settings</span>
+            </div>
+            <h1 class="page-hero-title">Account Profile & Role Configuration</h1>
+            <p class="page-hero-subtitle">Switch active roles, manage escrow bank accounts, delivery addresses, and security credentials.</p>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container" style="max-width: 960px;">
+            <div class="grid-sidebar" style="grid-template-columns: 280px 1fr; gap: 30px; align-items: start;">
+                <!-- Left Sidebar -->
+                <div class="card" style="padding: 25px; text-align: center;">
+                    <div id="profileAvatar" style="width: 80px; height: 80px; border-radius: 50%; background: #dcfce7; color: #15803d; font-size: 28px; display: grid; place-items: center; margin: 0 auto 15px; font-weight: 800;">
+                        MS
+                    </div>
+                    <h3 id="profileDisplayName" style="font-size: 18px; font-weight: 800; color: #064e3b; margin-bottom: 4px;">M. Selvakumar</h3>
+                    <div id="profileLocationText" style="font-size: 13px; color: #64748b; margin-bottom: 15px;">Erode, Tamil Nadu</div>
+                    <span id="profileRoleBadge" class="badge badge-success" style="margin-bottom: 20px;"><i class="fas fa-check-circle"></i> Certified Farmer Producer</span>
+
+                    <div style="border-top: 1px solid var(--border); padding-top: 15px; text-align: left;">
+                        <label class="form-label" style="font-size: 12px; text-transform: uppercase;">Quick Switch Persona / Role</label>
+                        <select id="roleSwitcher" class="form-select" onchange="handleRoleSwitch(this.value)">
+                            <option value="farmer">🌾 Farmer / FPO</option>
+                            <option value="consumer">🛒 Retail Consumer</option>
+                            <option value="bulk">🏢 B2B Bulk Buyer</option>
+                            <option value="logistics">🚚 Logistics Carrier</option>
+                        </select>
+                    </div>
+
+                    <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border);">
+                        <button type="button" onclick="handleUserLogout(event)" class="btn btn-sm" style="width: 100%; background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; font-weight: 700; cursor: pointer; padding: 10px; border-radius: 8px;">
+                            <i class="fas fa-sign-out-alt"></i> Sign Out
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Form Area -->
+                <div class="card" style="padding: 35px;">
+                    <h3 style="font-size: 18px; font-weight: 800; color: #064e3b; margin-bottom: 20px;">
+                        <i class="fas fa-id-card text-success"></i> Personal & Banking Information
+                    </h3>
+
+                    <form onsubmit="handleProfileSave(event)">
+                        <div class="grid-2">
+                            <div class="form-group">
+                                <label class="form-label">Full Legal Name</label>
+                                <input type="text" id="profileFullName" class="form-control" value="M. Selvakumar" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Mobile Number</label>
+                                <input type="tel" id="profileMobile" class="form-control" value="+91 98421 11001" required>
+                            </div>
+                        </div>
+
+                        <div class="grid-2">
+                            <div class="form-group">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" id="profileEmail" class="form-control" value="selvakumar.erode@farmer.tn" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Instant UPI ID for Payouts</label>
+                                <input type="text" id="profileUpi" class="form-control" value="selvakumar@oksbi" required>
+                            </div>
+                        </div>
+
+                        <div class="grid-2">
+                            <div class="form-group">
+                                <label class="form-label">Tamil Nadu Home District (தமிழ்நாடு மாவட்டம்)</label>
+                                <select id="profileDistrict" class="form-select tn-district-select" required>
+                                    <option value="Ariyalur">Ariyalur (அரியலூர்)</option>
+                                    <option value="Chengalpattu">Chengalpattu (செங்கல்பட்டு)</option>
+                                    <option value="Chennai">Chennai (சென்னை)</option>
+                                    <option value="Coimbatore">Coimbatore (கோயம்புத்தூர்)</option>
+                                    <option value="Cuddalore">Cuddalore (கடலூர்)</option>
+                                    <option value="Dharmapuri">Dharmapuri (தருமபுரி)</option>
+                                    <option value="Dindigul">Dindigul (திண்டுக்கல்)</option>
+                                    <option value="Erode" selected>Erode (ஈரோடு)</option>
+                                    <option value="Kallakurichi">Kallakurichi (கள்ளக்குறிச்சி)</option>
+                                    <option value="Kanchipuram">Kanchipuram (காஞ்சிபுரம்)</option>
+                                    <option value="Kanyakumari">Kanyakumari (கன்னியாகுமரி)</option>
+                                    <option value="Karur">Karur (கரூர்)</option>
+                                    <option value="Krishnagiri">Krishnagiri (கிருஷ்ணகிரி)</option>
+                                    <option value="Madurai">Madurai (மதுரை)</option>
+                                    <option value="Mayiladuthurai">Mayiladuthurai (மயிலாடுதுறை)</option>
+                                    <option value="Nagapattinam">Nagapattinam (நாகப்பட்டினம்)</option>
+                                    <option value="Namakkal">Namakkal (நாமக்கல்)</option>
+                                    <option value="Nilgiris">Nilgiris (நீலகிரி)</option>
+                                    <option value="Perambalur">Perambalur (பெரம்பலூர்)</option>
+                                    <option value="Pudukkottai">Pudukkottai (புதுக்கோட்டை)</option>
+                                    <option value="Ramanathapuram">Ramanathapuram (இராமநாதபுரம்)</option>
+                                    <option value="Ranipet">Ranipet (ராணிப்பேட்டை)</option>
+                                    <option value="Salem">Salem (சேலம்)</option>
+                                    <option value="Sivaganga">Sivaganga (சிவகங்கை)</option>
+                                    <option value="Tenkasi">Tenkasi (தென்காசி)</option>
+                                    <option value="Thanjavur">Thanjavur (தஞ்சாவூர்)</option>
+                                    <option value="Theni">Theni (தேனி)</option>
+                                    <option value="Thoothukudi">Thoothukudi (தூத்துக்குடி)</option>
+                                    <option value="Tiruchirappalli">Tiruchirappalli (திருச்சிராப்பள்ளி)</option>
+                                    <option value="Tirunelveli">Tirunelveli (திருநெல்வேலி)</option>
+                                    <option value="Tirupathur">Tirupathur (திருப்பத்தூர்)</option>
+                                    <option value="Tiruppur">Tiruppur (திருப்பூர்)</option>
+                                    <option value="Tiruvallur">Tiruvallur (திருவள்ளூர்)</option>
+                                    <option value="Tiruvannamalai">Tiruvannamalai (திருவண்ணாமலை)</option>
+                                    <option value="Tiruvarur">Tiruvarur (திருவாரூர்)</option>
+                                    <option value="Vellore">Vellore (வேலூர்)</option>
+                                    <option value="Villupuram">Villupuram (விழுப்புரம்)</option>
+                                    <option value="Virudhunagar">Virudhunagar (விருதுநகர்)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Patta / Chitta Land Record No. (நில உரிமை எண்)</label>
+                                <input type="text" id="profilePatta" class="form-control" value="TN-ERD-2026-88914" placeholder="e.g. TN-ERD-2026-88914">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Registered Farm Location / Delivery Address</label>
+                            <input type="text" id="profileAddress" class="form-control" value="Semmampalayam Turmeric Complex, Erode District, Tamil Nadu - 638001" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-save"></i> Save Profile Settings
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="fd-footer">
+        <div class="container">
+            <div class="fd-footer-bottom" style="border:none; padding:0;">
+                <div></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        function handleRoleSwitch(role) {
+            FarmDirect.setUserRole(role);
+            if (role === 'farmer') window.location.href = 'farmer-dashboard.html';
+            else if (role === 'consumer') window.location.href = 'consumer-dashboard.html';
+            else if (role === 'bulk') window.location.href = 'bulk-buyers.html';
+            else if (role === 'logistics') window.location.href = 'delivery-management.html';
+        }
+
+        function loadProfile() {
+            const role = FarmDirect.getUserRole() || 'farmer';
+            const user = FarmDirect.getUserProfile() || {};
+            const district = FarmDirect.getUserDistrict() || user.district || 'Erode';
+            const distInfo = FarmDirect.getDistrict(district) || { name: district, tamilName: '' };
+
+            const name = user.name || (role === 'farmer' ? 'M. Selvakumar' : 'Nishwanth');
+            const initials = name ? name.trim().split(/\s+/).filter(Boolean).map(n => n[0]).join('').substring(0, 2).toUpperCase() || 'TN' : 'TN';
+            const phone = user.phone || '+91 98421 11001';
+            const email = user.email || (role === 'farmer' ? 'selvakumar.erode@farmer.tn' : 'nishwanth@gmail.com');
+            const upi = user.upi || `${name.toLowerCase().replace(/[^a-z]/g, '')}@okaxis`;
+            const patta = user.patta || `TN-${district.substring(0, 3).toUpperCase()}-2026-88914`;
+            const address = user.address || `${distInfo.hub || (district + ' Central')}, ${district} District, Tamil Nadu`;
+
+            const avatarEl = document.getElementById('profileAvatar');
+            if (avatarEl) avatarEl.textContent = initials;
+            const nameEl = document.getElementById('profileDisplayName');
+            if (nameEl) nameEl.textContent = name;
+            const locEl = document.getElementById('profileLocationText');
+            if (locEl) locEl.textContent = `${district} (${distInfo.tamilName}), Tamil Nadu`;
+
+            const roleBadge = document.getElementById('profileRoleBadge');
+            if (roleBadge) {
+                const roleLabels = {
+                    farmer: '🌾 Certified Farmer Producer',
+                    consumer: '🛒 Verified Retail Consumer',
+                    bulk: '🏢 Certified B2B Bulk Buyer',
+                    logistics: '🚚 Authorized Reefer Carrier',
+                    admin: '🏛️ Tamil Nadu Agriculture Officer'
+                };
+                roleBadge.innerHTML = `<i class="fas fa-check-circle"></i> ${roleLabels[role] || 'Registered Member'}`;
+            }
+
+            const roleSwitcher = document.getElementById('roleSwitcher');
+            if (roleSwitcher) roleSwitcher.value = role;
+
+            if (document.getElementById('profileFullName')) document.getElementById('profileFullName').value = name;
+            if (document.getElementById('profileMobile')) document.getElementById('profileMobile').value = phone;
+            if (document.getElementById('profileEmail')) document.getElementById('profileEmail').value = email;
+            if (document.getElementById('profileUpi')) document.getElementById('profileUpi').value = upi;
+            if (document.getElementById('profilePatta')) document.getElementById('profilePatta').value = patta;
+            if (document.getElementById('profileAddress')) document.getElementById('profileAddress').value = address;
+
+            const distSelect = document.getElementById('profileDistrict');
+            if (distSelect) distSelect.value = district;
+        }
+
+        async function handleProfileSave(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalHtml = btn ? btn.innerHTML : '<i class="fas fa-save"></i> Save Profile Settings';
+
+            const name = document.getElementById('profileFullName').value.trim();
+            const phone = document.getElementById('profileMobile').value.trim();
+            const email = document.getElementById('profileEmail').value.trim();
+            const upi = document.getElementById('profileUpi').value.trim();
+            const district = document.getElementById('profileDistrict').value;
+            const patta = document.getElementById('profilePatta') ? document.getElementById('profilePatta').value.trim() : '';
+            const address = document.getElementById('profileAddress') ? document.getElementById('profileAddress').value.trim() : '';
+
+            if (name.length < 2) {
+                FarmDirect.showToast('Please enter your full name.', 'error');
+                return;
+            }
+            const cleanPhone = phone.replace(/[^0-9]/g, '');
+            if (cleanPhone.length < 10) {
+                FarmDirect.showToast('Please enter a valid 10-digit mobile number.', 'error');
+                return;
+            }
+
+            if (btn) {
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+                btn.disabled = true;
+            }
+
+            try {
+                await FarmDirect.setUserDistrict(district);
+                await FarmDirect.setUserProfile({
+                    name, phone, email, upi, district, patta, address, role: FarmDirect.getUserRole()
+                });
+
+                loadProfile();
+                if (typeof FarmDirect.updateNavAuthUI === 'function') {
+                    FarmDirect.updateNavAuthUI();
+                }
+                if (btn) {
+                    btn.innerHTML = '<i class="fas fa-check-circle"></i> Submitted successfully!';
+                    btn.style.background = '#059669';
+                }
+                FarmDirect.showToast(`Submitted successfully! Profile updated for ${name}.`, 'success');
+            } catch (err) {
+                console.error('Profile save error:', err);
+                FarmDirect.showToast('Failed to update profile. Please try again.', 'error');
+            } finally {
+                setTimeout(() => {
+                    if (btn) {
+                        btn.innerHTML = originalHtml;
+                        btn.style.background = '';
+                        btn.disabled = false;
+                    }
+                }, 1800);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProfile();
+
+            const distSelect = document.getElementById('profileDistrict');
+            if (distSelect) {
+                distSelect.addEventListener('change', function() {
+                    const distName = this.value;
+                    FarmDirect.setUserDistrict(distName);
+                    const distInfo = FarmDirect.getDistrict(distName) || { name: distName, tamilName: '' };
+                    const locEl = document.getElementById('profileLocationText');
+                    if (locEl) locEl.textContent = `${distName} (${distInfo.tamilName}), Tamil Nadu`;
+                    const addrEl = document.getElementById('profileAddress');
+                    if (addrEl) addrEl.value = `${distInfo.hub || (distName + ' Central')}, ${distName} District, Tamil Nadu`;
+                    const pattaEl = document.getElementById('profilePatta');
+                    if (pattaEl) pattaEl.value = `TN-${distName.substring(0, 3).toUpperCase()}-2026-88914`;
+                });
+            }
+
+            window.addEventListener('fd-district-changed', function(e) {
+                const distName = (e.detail && (e.detail.name || typeof e.detail === 'string')) ? (e.detail.name || e.detail) : null;
+                if (distName) {
+                    const select = document.getElementById('profileDistrict');
+                    if (select) select.value = distName;
+                    loadProfile();
+                }
+            });
+
+            window.addEventListener('fd_district_changed', function(e) {
+                const distName = (e.detail && e.detail.name) ? e.detail.name : null;
+                if (distName) {
+                    const select = document.getElementById('profileDistrict');
+                    if (select) select.value = distName;
+                    loadProfile();
+                }
+            });
+        });
+
+        function handleUserLogout(e) {
+            if (window.FarmDirect && typeof FarmDirect.logoutUser === 'function') {
+                FarmDirect.logoutUser(e);
+            } else {
+                sessionStorage.clear();
+                localStorage.clear();
+                window.location.replace('login.html');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#10b981">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FarmDirect">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <title>Analytical Reports & ESG Statements | FarmDirect</title>
+    <script src="js/auth-guard.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .admin-nav-badge {
+            background: #fee2e2;
+            color: #b91c1c;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sleek Master Navigation for Admin -->
+    <nav class="fd-nav">
+        <div class="container fd-nav-inner">
+            <a href="admin-dashboard.html" class="fd-brand">
+                <span>🌱 FarmDirect</span>
+                <span class="admin-nav-badge"><i class="fas fa-shield-alt"></i> Nodal Command</span>
+            </a>
+
+            <ul class="fd-nav-links">
+                <li class="fd-nav-item"><a href="admin-dashboard.html"><i class="fas fa-chart-line"></i> District Overview</a></li>
+                <li class="fd-nav-item"><a href="admin-dashboard.html#interDistrictSection"><i class="fas fa-satellite-dish"></i> Inter-District Comms</a></li>
+                <li class="fd-nav-item"><a href="admin-dashboard.html#directUserSection"><i class="fas fa-envelope-open-text"></i> Message User</a></li>
+                <li class="fd-nav-item"><a href="admin-users.html"><i class="fas fa-users-cog"></i> 38-District KYC</a></li>
+                <li class="fd-nav-item"><a href="admin-products.html"><i class="fas fa-apple-alt"></i> Produce Catalog</a></li>
+                <li class="fd-nav-item"><a href="admin-orders.html"><i class="fas fa-receipt"></i> Escrow & Orders</a></li>
+                <li class="fd-nav-item"><a href="admin-logistics.html"><i class="fas fa-truck-moving"></i> Logistics Telemetry</a></li>
+                <li class="fd-nav-item"><a href="reports.html" class="active"><i class="fas fa-file-invoice"></i> Reports</a></li>
+            </ul>
+
+            <div class="fd-nav-actions">
+                <span id="navDistrictPill" class="fd-badge fd-badge-green" style="font-size: 12px; padding: 6px 12px; display: inline-flex; align-items: center; gap: 6px;">
+                    <i class="fas fa-user-shield"></i> <span id="adminNavOfficerName">Authenticated Nodal Officer</span>
+                </span>
+                <button type="button" onclick="FarmDirect.adminLogout(event)" class="btn btn-sm" style="background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; font-weight: 700; cursor: pointer;" title="Logout and go to Login page">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <a href="admin-dashboard.html">Admin</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <span>Platform Analytical Reports</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <div>
+                    <h1 class="page-hero-title">Platform Impact & Analytical Reporting Suite</h1>
+                    <p class="page-hero-subtitle">Download verified audit reports for farmer income uplift, carbon emissions avoided, and transaction volumes.</p>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button onclick="downloadReport('Executive_Summary_Q3.pdf')" class="btn btn-primary btn-sm"><i class="fas fa-file-pdf"></i> Export Q3 Audit (PDF)</button>
+                    <button onclick="downloadReport('Farmgate_Transactions_2026.csv')" class="btn btn-secondary btn-sm"><i class="fas fa-file-csv"></i> Export CSV Data</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- 3 Major Impact Pillars -->
+            <div class="grid-3" style="margin-bottom: 35px;">
+                <div class="card" style="border-top: 4px solid #10b981;">
+                    <div class="stat-icon stat-icon-green" style="margin-bottom: 16px;"><i class="fas fa-chart-line"></i></div>
+                    <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 6px;">Farmer Economic Uplift Index</h3>
+                    <div style="font-size: 26px; font-weight: 800; color: #059669; margin-bottom: 10px;">+38.4% Net Income</div>
+                    <p style="font-size: 13px; color: #64748b; line-height: 1.6; margin-bottom: 15px;">
+                        Farmers on FarmDirect realized an additional ₹1.38 Crores in direct farmgate revenue by eliminating mandi commissions and illegal deductions.
+                    </p>
+                    <button onclick="downloadReport('Farmer_Income_Index.pdf')" class="btn btn-outline btn-sm btn-block"><i class="fas fa-download"></i> Download Audit</button>
+                </div>
+
+                <div class="card" style="border-top: 4px solid #3b82f6;">
+                    <div class="stat-icon stat-icon-blue" style="margin-bottom: 16px;"><i class="fas fa-leaf"></i></div>
+                    <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 6px;">ESG & Carbon Offset Statement</h3>
+                    <div style="font-size: 26px; font-weight: 800; color: #0284c7; margin-bottom: 10px;">48.2 MT CO2 Avoided</div>
+                    <p style="font-size: 13px; color: #64748b; line-height: 1.6; margin-bottom: 15px;">
+                        AI Multi-Stop route solver reduced empty reefer return trips and cut total diesel consumption by 22.4% across 148 fleet vehicles.
+                    </p>
+                    <button onclick="downloadReport('ESG_Carbon_Statement.pdf')" class="btn btn-outline btn-sm btn-block"><i class="fas fa-download"></i> Download ESG Report</button>
+                </div>
+
+                <div class="card" style="border-top: 4px solid #8b5cf6;">
+                    <div class="stat-icon stat-icon-purple" style="margin-bottom: 16px;"><i class="fas fa-trash-restore-alt"></i></div>
+                    <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 6px;">Zero Food Waste Achievement</h3>
+                    <div style="font-size: 26px; font-weight: 800; color: #7e22ce; margin-bottom: 10px;">99.62% Produce Preserved</div>
+                    <p style="font-size: 13px; color: #64748b; line-height: 1.6; margin-bottom: 15px;">
+                        Traditional supply chain waste sits at 30-40%. FarmDirect's uninterrupted 4°C cold chain reduced spoilage loss to under 0.38%.
+                    </p>
+                    <button onclick="downloadReport('Food_Waste_Reduction.pdf')" class="btn btn-outline btn-sm btn-block"><i class="fas fa-download"></i> Download Report</button>
+                </div>
+            </div>
+
+            <!-- Available Report Downloads Table -->
+            <div class="card" style="padding: 30px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
+                    <div>
+                        <h3 style="font-size: 18px; font-weight: 800; color: #064e3b;">
+                            <i class="fas fa-file-alt text-success"></i> Tamil Nadu Agricultural Compliance & Audit Statements
+                        </h3>
+                        <p style="font-size: 13px; color: #64748b;">Digitally signed by Tamil Nadu State Nodal Agricultural Directorate & Third-Party Auditors.</p>
+                    </div>
+                    <span class="badge badge-success"><i class="fas fa-shield-alt"></i> NABL & AGMARKNET CERTIFIED</span>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Report / Audit Title</th>
+                                <th>Period / District</th>
+                                <th>Format & Size</th>
+                                <th>Originating Authority</th>
+                                <th>Audit Verification</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <strong>Q3 Tamil Nadu Platform Financial Audit & Escrow Settlement Statement</strong><br>
+                                    <span style="font-size:12px; color:#64748b;">38 Districts Direct Farmer Payouts & UTR Reconciliation</span>
+                                </td>
+                                <td>Q3 2026</td>
+                                <td><span class="badge badge-info">PDF (2.4 MB)</span></td>
+                                <td>Finance & Escrow Operations</td>
+                                <td><span class="badge badge-success">AUDITED & VERIFIED</span></td>
+                                <td><button onclick="downloadReport('TN_Financial_Statement_Q3.pdf')" class="btn btn-primary btn-sm"><i class="fas fa-download"></i> PDF</button></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Tamil Nadu 6-FPO Collective Farmgate Ledger & B2B Volume Index</strong><br>
+                                    <span style="font-size:12px; color:#64748b;">Erode, Thanjavur, Pollachi, Dharmapuri, Theni, Nilgiris FPOs</span>
+                                </td>
+                                <td>Aug 2026</td>
+                                <td><span class="badge badge-success">CSV (840 KB)</span></td>
+                                <td>TNAU & FPO Federation</td>
+                                <td><span class="badge badge-success">VERIFIED</span></td>
+                                <td><button onclick="downloadReport('TN_FPO_Ledger_Aug2026.csv')" class="btn btn-secondary btn-sm"><i class="fas fa-download"></i> CSV</button></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Cold-Chain IoT Temperature SLA Compliance & Reefer Fleet Audit</strong><br>
+                                    <span style="font-size:12px; color:#64748b;">NH544, NH83 & NH181 Corridors • 3.8°C Steady Verification</span>
+                                </td>
+                                <td>Aug 2026</td>
+                                <td><span class="badge badge-purple">PDF (4.1 MB)</span></td>
+                                <td>IoT Telematics Control Tower</td>
+                                <td><span class="badge badge-success">100% SLA COMPLIANT</span></td>
+                                <td><button onclick="downloadReport('TN_Cold_Chain_SLA_Log.pdf')" class="btn btn-primary btn-sm"><i class="fas fa-download"></i> PDF</button></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Geographical Indication (GI) Crop Authenticity & NABL Lab Cert Log</strong><br>
+                                    <span style="font-size:12px; color:#64748b;">Erode Turmeric, Salem Malgova, Madurai Malli, Thanjavur Veena/Paddy</span>
+                                </td>
+                                <td>Jul-Aug 2026</td>
+                                <td><span class="badge badge-info">PDF (3.2 MB)</span></td>
+                                <td>GI Registry & NABL Lab</td>
+                                <td><span class="badge badge-success">100% AUTHENTIC</span></td>
+                                <td><button onclick="downloadReport('GI_Crop_Authenticity_Audit.pdf')" class="btn btn-primary btn-sm"><i class="fas fa-download"></i> PDF</button></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Carbon Abatement & Green EV Reefer Dispatch Impact Statement</strong><br>
+                                    <span style="font-size:12px; color:#64748b;">148 Vehicles • 48.2 Metric Tons CO2 Avoided via Smart Route Optimizer</span>
+                                </td>
+                                <td>Aug 2026</td>
+                                <td><span class="badge badge-success">PDF (1.8 MB)</span></td>
+                                <td>ESG Sustainability Cell</td>
+                                <td><span class="badge badge-success">CARBON VERIFIED</span></td>
+                                <td><button onclick="downloadReport('Carbon_Abatement_Statement.pdf')" class="btn btn-primary btn-sm"><i class="fas fa-download"></i> PDF</button></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Organic Pesticide Residue Zero-Tolerance Laboratory Registry</strong><br>
+                                    <span style="font-size:12px; color:#64748b;">Multi-spectral Brix & chemical test reports across 1,420 farm plots</span>
+                                </td>
+                                <td>Aug 2026</td>
+                                <td><span class="badge badge-info">CSV (1.2 MB)</span></td>
+                                <td>Agronomy Quality Inspection</td>
+                                <td><span class="badge badge-success">ZERO RESIDUE</span></td>
+                                <td><button onclick="downloadReport('Organic_Residue_Registry.csv')" class="btn btn-secondary btn-sm"><i class="fas fa-download"></i> CSV</button></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Direct Consumer Savings & Fair-Price Mandi Index Reconciliation</strong><br>
+                                    <span style="font-size:12px; color:#64748b;">34% average consumer grocery savings vs supermarket MRP</span>
+                                </td>
+                                <td>Q3 2026</td>
+                                <td><span class="badge badge-purple">PDF (2.9 MB)</span></td>
+                                <td>Consumer Protection Desk</td>
+                                <td><span class="badge badge-success">VERIFIED</span></td>
+                                <td><button onclick="downloadReport('Consumer_Savings_Reconciliation.pdf')" class="btn btn-primary btn-sm"><i class="fas fa-download"></i> PDF</button></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Tamil Nadu 38-District Nodal Officer Escalation & e-POD Audit</strong><br>
+                                    <span style="font-size:12px; color:#64748b;">100% digital signature OTP e-POD completion rate</span>
+                                </td>
+                                <td>Aug 2026</td>
+                                <td><span class="badge badge-success">PDF (1.5 MB)</span></td>
+                                <td>Logistics Command Operations</td>
+                                <td><span class="badge badge-success">99.8% ON-TIME</span></td>
+                                <td><button onclick="downloadReport('District_Nodal_ePOD_Audit.pdf')" class="btn btn-primary btn-sm"><i class="fas fa-download"></i> PDF</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="fd-footer">
+        <div class="container">
+            <div class="fd-footer-bottom" style="border:none; padding:0;">
+                <div></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        function downloadReport(filename) {
+            FarmDirect.showToast(`Generating statement: ${filename}...`, 'info');
+            
+            const isCsv = filename.toLowerCase().endsWith('.csv');
+            const district = sessionStorage.getItem('fd_admin_district') || localStorage.getItem('fd_admin_district') || 'Erode';
+            const officerName = sessionStorage.getItem('fd_user_name') || localStorage.getItem('fd_user_name') || 'Thiru. M. Selvam (Joint Director)';
+            const timestamp = new Date().toLocaleString('en-IN');
+            let content = '';
+            let mimeType = 'text/plain';
+
+            if (isCsv) {
+                mimeType = 'text/csv;charset=utf-8;';
+                if (filename.includes('FPO_Ledger')) {
+                    content = "FPO_Lot_ID,FPO_Collective,District,Crop_Name,Member_Farmers,Total_Quantity_MT,Agreed_Price_Kg,Total_Value_INR,Cold_Hub,Status,Audit_Timestamp\n" +
+                        "FPO-ERD-101,Erode Organic Turmeric FPO,Erode,GI Erode Golden Turmeric,48,35.0,185,6475000,Semmampalayam Complex,Contract Locked," + timestamp + "\n" +
+                        "FPO-TNJ-202,Cauvery Delta Uzhavar FPO,Thanjavur,Thanjavur Deluxe Ponni Paddy,92,120.0,68,8160000,Kumbakonam Silos,Bid Open," + timestamp + "\n" +
+                        "FPO-CBE-303,Pollachi Coconut Producer Co.,Coimbatore,Pollachi Tender Coconuts,34,28.0,42,1176000,Pollachi Uzhavar Hub,Direct Pool," + timestamp + "\n" +
+                        "FPO-NIL-404,Nilgiris Hill Vegetable Collective,Nilgiris,Mountain Carrots & Garlic,28,18.5,62,1147000,Ooty Pre-Cooling Bay,Contract Locked," + timestamp + "\n" +
+                        "FPO-MDU-505,Madurai Flower Growers Assn,Madurai,GI Gundu Malli Jasmine,56,4.2,650,2730000,Mattuthavani Terminal,Auction Complete," + timestamp + "\n" +
+                        "FPO-SLM-606,Salem Mango Growers Collective,Salem,Salem Malgova Mangoes,41,22.0,140,3080000,Omalur Logistics Bay,Reserved," + timestamp + "\n" +
+                        "FPO-DPI-707,Dharmapuri Tomato Cluster FPO,Dharmapuri,Hybrid Country Tomatoes,62,55.0,32,1760000,Rayakottai Processing Hub,Active Dispatch," + timestamp + "\n";
+                } else if (filename.includes('Organic_Residue')) {
+                    content = "Sample_ID,Crop,Farmer_Name,District,NABL_Lab_Ref,Organophosphate_PPM,Carbamate_PPM,HeavyMetals,Status,Certification_ID\n" +
+                        "RES-2026-081,GI Erode Turmeric,K. Murugesan,Erode,NABL-CHE-4412,0.000,0.000,NOT_DETECTED,PASS_ORGANIC_A1,TN-NAB-9941\n" +
+                        "RES-2026-082,Ponni Paddy,A. Ramasamy,Thanjavur,NABL-TRZ-1102,0.000,0.000,NOT_DETECTED,PASS_ORGANIC_A1,TN-NAB-9942\n" +
+                        "RES-2026-083,Sirumalai Banana,M. Velusamy,Dindigul,NABL-MDU-7821,0.000,0.001,BELOW_LOD,PASS_ORGANIC_A1,TN-NAB-9943\n" +
+                        "RES-2026-084,Ooty Hill Carrots,P. John Kodaikanal,Nilgiris,NABL-CBE-3390,0.000,0.000,NOT_DETECTED,PASS_ORGANIC_A1,TN-NAB-9944\n" +
+                        "RES-2026-085,Mundu Chillies,S. Karuppan,Ramanathapuram,NABL-MDU-7829,0.000,0.000,NOT_DETECTED,PASS_ORGANIC_A1,TN-NAB-9945\n";
+                } else {
+                    content = "Transaction_Ref,Date,District,Commodity,Producer,Buyer,Weight_Kg,Unit_Rate_INR,Total_Payout_INR,Direct_Escrow_Ref,Nodal_Verification\n" +
+                        "TXN-TN-2026-8801,2026-09-15,Erode,GI Erode Turmeric,M. Selvakumar,Murali Organic Madurai,35,160,5600,ESC-HDFC-99120,VERIFIED_TAMILNADU\n" +
+                        "TXN-TN-2026-8802,2026-09-14,Thanjavur,Ponni Raw Rice,Cauvery Delta FPO,Senthil Veg Chennai,120,60,7200,ESC-SBI-10821,VERIFIED_TAMILNADU\n" +
+                        "TXN-TN-2026-8803,2026-09-13,Dharmapuri,Country Tomatoes,Dharmapuri Uzhavar FPO,Kavitha Supermarket,80,32,2560,ESC-IOB-77192,VERIFIED_TAMILNADU\n" +
+                        "TXN-TN-2026-8804,2026-09-12,Coimbatore,Pollachi Coconut,K. Shanmugam,Tiruchy Fresh Mart,500,38,19000,ESC-HDFC-33019,VERIFIED_TAMILNADU\n" +
+                        "TXN-TN-2026-8805,2026-09-11,Nilgiris,Ooty Mountain Carrots,Nilgiris Hill Farm,Koyambedu Agro,250,58,14500,ESC-CANARA-44012,VERIFIED_TAMILNADU\n" +
+                        "TXN-TN-2026-8806,2026-09-10,Madurai,GI Gundu Malli Jasmine,Madurai Flower Assn,Chennai Perfumers,40,650,26000,ESC-INDIAN-55198,VERIFIED_TAMILNADU\n" +
+                        "TXN-TN-2026-8807,2026-09-09,Salem,Salem Malgova Mangoes,Omalur Orchard FPO,Bengaluru Retail Chain,400,140,56000,ESC-KVB-88127,VERIFIED_TAMILNADU\n";
+                }
+            } else {
+                mimeType = 'text/plain;charset=utf-8;';
+                content = "========================================================================================\n" +
+                    "  GOVERNMENT OF TAMIL NADU - DEPARTMENT OF AGRICULTURE & FARMERS WELFARE\n" +
+                    "  தமிழ்நாடு அரசு - வேளாண்மை மற்றும் உழவர் நலத்துறை\n" +
+                    "  FarmDirect Statewide Agricultural Direct-Trade Network - Official Audit Statement\n" +
+                    "========================================================================================\n\n" +
+                    "REPORT DOCUMENT: " + filename + "\n" +
+                    "GENERATED AT: " + timestamp + "\n" +
+                    "JURISDICTION: " + district + " District Central Mandi Command Tower\n" +
+                    "VERIFYING OFFICER: " + officerName + "\n" +
+                    "SECURITY CLEARANCE: TN-AGR-STATE-LEVEL-VERIFIED\n" +
+                    "----------------------------------------------------------------------------------------\n\n" +
+                    "1. EXECUTIVE HIGHLIGHTS & KEY METRICS (தமிழ்நாடு வேளாண் அறிக்கை):\n" +
+                    "   - Total Statewide Direct Farmgate Transactions: 34,812 Consignments\n" +
+                    "   - Direct Farmer Income Realization: 91.4% (vs 48.2% in Middlemen Conventional Channels)\n" +
+                    "   - Cumulative Farmer Revenue Routed: ₹48.62 Crore\n" +
+                    "   - Consumer Direct Savings Realized: ₹14.85 Crore (Average 22-28% Below Retail Inflation)\n" +
+                    "   - Smart Cold-Chain Telematics Uptime: 99.8% (Target SLA: 2.0°C - 5.5°C)\n" +
+                    "   - Perishable Food Waste Reduction: -72.6% Statewide\n" +
+                    "   - Certified Geographic Indication (GI) Crops Traced: 12 Protected Varieties\n\n" +
+                    "2. 38-DISTRICT COMMAND NODE READINESS:\n" +
+                    "   - Western Agro Zone (Erode, Coimbatore, Tiruppur, Nilgiris, Salem, Namakkal): 100% Active\n" +
+                    "   - Cauvery Delta Grain Corridor (Thanjavur, Tiruvarur, Nagapattinam, Mayiladuthurai, Trichy): 100% Active\n" +
+                    "   - Southern Horticultural Belt (Madurai, Theni, Dindigul, Tirunelveli, Tenkasi, Kanyakumari): 100% Active\n" +
+                    "   - Northern Peri-Urban Grid (Chennai, Tiruvallur, Kanchipuram, Chengalpattu, Vellore): 100% Active\n\n" +
+                    "3. COLD-CHAIN TELEMATICS & TRACEABILITY AUDIT:\n" +
+                    "   - Total Reefer Fleet Monitored: 148 IoT Vehicles\n" +
+                    "   - GPS Pings Logged per Hour: 8,880 Continuous Telemetry Data Points\n" +
+                    "   - Automated Electronic Proof of Delivery (e-POD) OTP Success Rate: 99.7%\n" +
+                    "   - Escrow Settlement Speed: 4 minutes 18 seconds post-delivery confirmation\n\n" +
+                    "4. NODAL CERTIFICATION & DIGITAL ATTESTATION:\n" +
+                    "   This official statement is cryptographically signed and archived under the Tamil Nadu\n" +
+                    "   Agricultural Producers Direct Marketing Act of 2026.\n\n" +
+                    "   Digital Signature Hash: SHA256-TN-" + Math.random().toString(36).substring(2, 12).toUpperCase() + "-" + Date.now() + "\n" +
+                    "   Authorized Signatory: " + officerName + "\n" +
+                    "   Office of the District Collector & District Agriculture Joint Directorate\n" +
+                    "========================================================================================\n";
+            }
+
+            try {
+                const blob = new Blob([content], { type: mimeType });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                setTimeout(() => {
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                }, 500);
+                setTimeout(() => {
+                    FarmDirect.showToast(`Downloaded ${filename} successfully!`, 'success');
+                }, 400);
+            } catch (err) {
+                console.error('Download error:', err);
+                FarmDirect.showToast(`Error preparing ${filename}. Please try again.`, 'error');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const district = sessionStorage.getItem('fd_admin_district') || localStorage.getItem('fd_admin_district') || 'Erode';
+            const officerName = sessionStorage.getItem('fd_user_name') || localStorage.getItem('fd_user_name') || 'Thiru. M. Selvam (Joint Director)';
+            const officerEl = document.getElementById('adminNavOfficerName');
+            if (officerEl) {
+                officerEl.textContent = `${officerName} (${district})`;
+            }
+        });
+    </script>
+</body>
+</html>

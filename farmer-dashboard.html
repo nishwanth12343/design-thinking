@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#10b981">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FarmDirect">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <title>Farmer Home (உழவர் முகப்பு) | FarmDirect</title>
+    <!-- Immediate Authentication Guard: Require sign in before viewing website details -->
+    <script src="js/auth-guard.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Simple, Welcoming Navigation with Everyday Language -->
+    <nav class="fd-nav">
+        <div class="container fd-nav-inner">
+            <a href="index.html" class="fd-brand">
+                <span>🌱 FarmDirect</span>
+                <span class="fd-brand-badge">Farmer Home</span>
+            </a>
+
+            <ul class="fd-nav-links">
+                <li class="fd-nav-item"><a href="index.html"><i class="fas fa-home"></i> Home <span class="tamil-subtext">முகப்பு</span></a></li>
+                <li class="fd-nav-item"><a href="marketplace.html"><i class="fas fa-store"></i> Buy & Sell <span class="tamil-subtext">சந்தை</span></a></li>
+                <li class="fd-nav-item"><a href="farmer-dashboard.html" class="active"><i class="fas fa-tractor"></i> Farmer Home <span class="tamil-subtext">என் முகப்பு</span></a></li>
+                <li class="fd-nav-item"><a href="add-product.html"><i class="fas fa-plus-circle"></i> Sell Your Products <span class="tamil-subtext">விளைபொருளை விற்க</span></a></li>
+                <li class="fd-nav-item"><a href="inventory.html"><i class="fas fa-boxes"></i> My Products <span class="tamil-subtext">என் பொருட்கள்</span></a></li>
+                <li class="fd-nav-item"><a href="farmer-orders.html"><i class="fas fa-clipboard-list"></i> Buyer Orders <span class="tamil-subtext">ஆர்டர்கள்</span></a></li>
+                <li class="fd-nav-item"><a href="logistics.html"><i class="fas fa-truck-moving"></i> Transport Help <span class="tamil-subtext">போக்குவரத்து உதவி</span></a></li>
+            </ul>
+
+            <div class="fd-nav-actions">
+                <a href="notifications.html" class="fd-icon-btn" title="Alerts & Messages"><i class="far fa-bell"></i><span class="fd-badge-count" id="fd-notif-badge" style="display:none;">0</span></a>
+                <a href="profile.html" class="fd-role-pill" style="background:#dcfce7; color:#15803d; border-color:#86efac;">
+                    <i class="fas fa-check-circle"></i> <span id="farmerNavRoleName">Farmer Portal</span>
+                </a>
+                <button type="button" onclick="FarmDirect.logoutUser(event)" class="btn btn-sm" style="background: #fee2e2; color: #dc2626; border: 1.5px solid #fca5a5; font-weight: 700; border-radius: 8px; cursor: pointer; padding: 6px 12px; display: inline-flex; align-items: center; gap: 6px;" title="Sign out of farmer account">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero: Welcoming & Encouraging -->
+    <div class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <span>Farmer Home (உழவர் முகப்பு)</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <div>
+                    <h1 class="page-hero-title">Farmer Home (உழவர் முகப்பு) 🌾</h1>
+                    <p class="page-hero-subtitle" id="farmerHeroSubtitle">
+                        Welcome to your direct farm center. Sell your crops directly to genuine buyers, manage your prices, and receive safe payments.
+                    </p>
+                </div>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <a href="add-product.html" class="btn-farmer btn-farmer-primary"><i class="fas fa-plus-circle"></i> Sell Your Products (பொருளை விற்க)</a>
+                    <a href="farmer-orders.html" class="btn-farmer btn-farmer-outline" style="background: white;"><i class="fas fa-clipboard-list"></i> View Buyer Orders</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Clear Section Tabs for Farmers -->
+    <div class="container">
+        <div class="fd-tabs">
+            <a href="farmer-dashboard.html" class="fd-tab-btn active"><i class="fas fa-tachometer-alt"></i> My Home (முகப்பு)</a>
+            <a href="add-product.html" class="fd-tab-btn"><i class="fas fa-plus-circle"></i> Sell Your Products (விளைபொருளை சேர்க்க)</a>
+            <a href="inventory.html" class="fd-tab-btn"><i class="fas fa-boxes"></i> My Products (என் விளைபொருட்கள்)</a>
+            <a href="farmer-orders.html" class="fd-tab-btn"><i class="fas fa-clipboard-list"></i> Buyer Orders (வாங்குபவர் ஆர்டர்கள்)</a>
+            <a href="farmer-earnings.html" class="fd-tab-btn"><i class="fas fa-wallet"></i> My Sales & Money (என் வருமானம்)</a>
+            <a href="logistics.html" class="fd-tab-btn"><i class="fas fa-truck-moving"></i> Transport Help (போக்குவரத்து உதவி)</a>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- 4 Simple Big Metrics -->
+            <div class="grid-4" style="margin-bottom: 30px;">
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-green"><i class="fas fa-rupee-sign"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-label">Total Money Received (மொத்த வருமானம்)</div>
+                        <div class="stat-value" id="farmerTotalRevenue">₹3,42,800</div>
+                        <div class="stat-trend up"><i class="fas fa-check-circle"></i> Fully paid into bank</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-blue"><i class="fas fa-shopping-bag"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-label">Buyer Orders (வாங்குபவர் ஆர்டர்கள்)</div>
+                        <div class="stat-value" id="farmerActiveOrdersCount">4 Orders</div>
+                        <div style="font-size: 13px; color: #0284c7; font-weight: 600; margin-top: 4px;">
+                            <a href="farmer-orders.html" style="color:#0284c7; text-decoration: underline;">View details &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-purple"><i class="fas fa-seedling"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-label">My Products Listed (விற்பனையில் உள்ளவை)</div>
+                        <div class="stat-value" id="farmerActiveProducts">4 Harvests</div>
+                        <div style="font-size: 13px; color: #7e22ce; font-weight: 600; margin-top: 4px;">
+                            <a href="inventory.html" style="color:#7e22ce; text-decoration: underline;">Manage all &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-amber"><i class="fas fa-star"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-label">Farmer Trust Rating (நம்பகத்தன்மை)</div>
+                        <div class="stat-value" style="color: #d97706;">4.95 / 5.0</div>
+                        <div style="font-size: 13px; color: #16a34a; font-weight: 700; margin-top: 4px;">Verified Direct Farmer</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Columns -->
+            <div class="grid-sidebar" style="grid-template-columns: 1.6fr 1fr; gap: 30px; align-items: start;">
+                <!-- Left Column: Manage Your Crops -->
+                <div>
+                    <!-- Active Produce Listings with Edit and Remove -->
+                    <div class="card" style="margin-bottom: 30px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+                            <div>
+                                <h3 style="font-size: 19px; font-weight: 800; color: #064e3b; margin:0;">
+                                    <i class="fas fa-boxes text-success"></i> My Products (என் விளைபொருட்கள்)
+                                </h3>
+                                <p style="font-size: 13px; color: #64748b; margin: 4px 0 0 0;">
+                                    Here are the crops you listed for sale. You can change prices or remove lots anytime.
+                                </p>
+                            </div>
+                            <a href="add-product.html" class="btn-farmer btn-farmer-primary" style="padding: 9px 18px; font-size: 14px;">
+                                <i class="fas fa-plus"></i> Sell Another Crop
+                            </a>
+                        </div>
+
+                        <div class="table-scroll-hint">
+                            <i class="fas fa-arrows-alt-h"></i> Swipe horizontally on mobile to view all product details and buttons
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Produce (விளைபொருள்)</th>
+                                        <th>Category</th>
+                                        <th>Your Price</th>
+                                        <th>Mandi Price</th>
+                                        <th>Stock Left</th>
+                                        <th style="text-align: right;">Actions (செயல்கள்)</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="farmer-listings-body">
+                                    <!-- Injected via JS with functional Edit & Remove buttons -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Quick Buyer Orders Card -->
+                    <div class="card" style="border-left: 4px solid #16a34a;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <h3 style="font-size: 17px; font-weight: 800; color: #064e3b; margin: 0;">
+                                <i class="fas fa-clipboard-check text-success"></i> Recent Buyer Orders (சமீபத்திய ஆர்டர்கள்)
+                            </h3>
+                            <a href="farmer-orders.html" class="btn-farmer btn-farmer-outline" style="padding: 6px 14px; font-size: 13px;">View All Orders</a>
+                        </div>
+                        <p style="font-size: 13px; color: #475569; margin-bottom: 14px;">
+                            Orders placed by buyers for your farm crops. Follow the simple transport status for each delivery.
+                        </p>
+                        <div id="farmer-recent-orders-list" style="display: flex; flex-direction: column; gap: 10px;">
+                            <!-- Injected dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Weather, Safe Money & Support -->
+                <div>
+                    <!-- Weather & Agronomy Advisory in Everyday Language -->
+                    <div class="card" style="margin-bottom: 25px; border-top: 4px solid #059669;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                            <h3 style="font-size: 16px; font-weight: 800; color: #064e3b; margin:0;">
+                                <i class="fas fa-cloud-sun text-success"></i> Today's Weather & Farm Advice
+                            </h3>
+                            <span class="badge badge-success" id="weatherDistrictBadge">Erode</span>
+                        </div>
+
+                        <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px; padding: 16px; margin-bottom: 14px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="font-size: 28px; font-weight: 800; color: #064e3b;" id="weatherTemp">28°C</div>
+                                    <div style="font-size: 13px; color: #059669; font-weight: 600;" id="weatherCondition">Partly Cloudy • Good for harvesting</div>
+                                </div>
+                                <i class="fas fa-sun" id="weatherIcon" style="font-size: 38px; color: #f59e0b;"></i>
+                            </div>
+                        </div>
+
+                        <div style="font-size: 13.5px; color: #334155; line-height: 1.5;" id="weatherAgronomyAdvisory">
+                            <strong>Today's Tip for Farmers:</strong> Clear weather today in your area. Great time to harvest vegetables and pack them for morning transport pickup.
+                        </div>
+                    </div>
+
+                    <!-- Safe Money / Escrow Protection Card in Everyday Words -->
+                    <div class="card" style="background: linear-gradient(135deg, #064e3b, #04432b); color: white; border-radius: 18px; margin-bottom: 25px; padding: 22px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <span style="font-size: 12px; color: #a7f3d0; font-weight: 700;">
+                                <i class="fas fa-shield-alt"></i> Safe Payment Protection (பாதுகாப்பான பணம்)
+                            </span>
+                            <span style="background: rgba(255,255,255,0.15); padding: 3px 8px; border-radius: 8px; font-size: 11px;">100% Safe</span>
+                        </div>
+                        <div style="font-size: 28px; font-weight: 800; margin-bottom: 4px;">₹14,200</div>
+                        <p style="font-size: 12.5px; color: #e2e8f0; margin-bottom: 14px; line-height: 1.45;">
+                            This payment is safely deposited by buyers. As soon as the delivery is confirmed, it is sent directly to your bank account or UPI.
+                        </p>
+                        <div style="background: rgba(255,255,255,0.08); padding: 10px 14px; border-radius: 10px; font-size: 12px; margin-bottom: 14px;">
+                            <i class="fas fa-university" style="color: #6ee7b7; margin-right: 6px;"></i> Registered Account: <strong>HDFC Bank (Selvakumar)</strong>
+                        </div>
+                        <a href="farmer-earnings.html" class="btn-farmer btn-farmer-primary" style="display:block; text-align:center; background:#22c55e; border-color:#22c55e;">
+                            <i class="fas fa-wallet"></i> View My Sales & Money Report
+                        </a>
+                    </div>
+
+                    <!-- Verified Farm & Land Info -->
+                    <div class="card" style="border-radius: 16px; padding: 20px; border: 1.5px solid #bbf7d0; background: #f0fdf4;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <h4 style="font-size: 14px; font-weight: 800; color: #166534; margin: 0;">
+                                <i class="fas fa-id-card text-success"></i> Verified Farmer Profile
+                            </h4>
+                            <span class="fd-badge fd-badge-green" style="font-size: 11px;"><i class="fas fa-check"></i> Verified</span>
+                        </div>
+                        <div style="font-size: 13px; color: #334155; line-height: 1.5;">
+                            <div><strong>District:</strong> Erode / ஈரோடு</div>
+                            <div><strong>Land Record:</strong> Patta #TN-ERD-142/3B</div>
+                            <div style="font-size: 12px; color: #059669; margin-top: 6px;">
+                                <i class="fas fa-shield-check"></i> Your farm badge gives buyers trust to buy quickly.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="fd-footer">
+        <div class="container">
+            <div class="fd-footer-bottom" style="border:none; padding:10px 0;">
+                <p style="margin:0; font-size: 13px; color: #94a3b8;">
+                    🌱 FarmDirect • Connecting Tamil Nadu Farmers Directly to Buyers • Always Fair Prices
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        function renderFarmerDashboard() {
+            const district = (window.FarmDirect && typeof FarmDirect.getUserDistrict === 'function') ? FarmDirect.getUserDistrict() : 'Erode';
+            const distInfo = (window.FarmDirect && typeof FarmDirect.getDistrict === 'function') ? FarmDirect.getDistrict(district) : null;
+            const subtitleEl = document.getElementById('farmerHeroSubtitle');
+            if (subtitleEl && distInfo) {
+                subtitleEl.innerHTML = `Welcome to <strong>${distInfo.name} (${distInfo.tamilName})</strong> Farmer Center! Sell your ${distInfo.primaryCrop} and other farm crops directly to buyers without middlemen.`;
+            }
+
+            const userProfile = (window.FarmDirect && typeof FarmDirect.getUserProfile === 'function') ? FarmDirect.getUserProfile() : {};
+            const navNameEl = document.getElementById('farmerNavRoleName');
+            if (navNameEl) {
+                navNameEl.textContent = (userProfile && userProfile.name ? userProfile.name : 'Thiru. Selvakumar') + ' (Farmer)';
+            }
+
+            const products = FarmDirect.getProducts();
+            const tbody = document.getElementById('farmer-listings-body');
+            const countElem = document.getElementById('farmerActiveProducts');
+
+            if (tbody) {
+                if (products.length === 0) {
+                    tbody.innerHTML = `
+                        <tr>
+                            <td colspan="6" style="text-align:center; padding: 30px; color: #64748b;">
+                                <i class="fas fa-seedling" style="font-size: 32px; color: #16a34a; margin-bottom: 8px; display:block;"></i>
+                                No crops listed yet.<br>
+                                <a href="add-product.html" class="btn-farmer btn-farmer-primary" style="margin-top: 10px; display:inline-block;">+ Sell Your First Crop</a>
+                            </td>
+                        </tr>
+                    `;
+                } else {
+                    tbody.innerHTML = products.map(p => `
+                        <tr>
+                            <td>
+                                <strong style="font-size: 15px; color: #0f172a;">${p.name}</strong>
+                                ${p.tamilName ? `<br><span style="font-size:12.5px; color:#15803d; font-weight:600;">${p.tamilName}</span>` : ''}
+                                <div style="font-size:11.5px; color:#64748b;">Lot #${p.id} • ${p.district || 'Tamil Nadu'}</div>
+                            </td>
+                            <td><span class="badge badge-purple">${p.category || 'Produce'}</span></td>
+                            <td><strong style="color:#059669; font-size:16px;">₹${p.price}</strong> /${p.unit || 'kg'}</td>
+                            <td style="color:#94a3b8;">₹${p.mandiPrice || Math.round(p.price * 0.85)}</td>
+                            <td><strong>${p.stock}</strong> ${p.unit || 'kg'}s</td>
+                            <td style="text-align: right; white-space: nowrap;">
+                                <button class="btn-farmer-edit" onclick="FarmDirect.showEditProductModal('${p.id}')" title="Change Price or Details">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                                <button class="btn-farmer-remove" onclick="FarmDirect.confirmDeleteProduct('${p.id}')" title="Remove Listing">
+                                    <i class="fas fa-trash-alt"></i> Remove
+                                </button>
+                            </td>
+                        </tr>
+                    `).join('');
+                }
+            }
+
+            if (countElem) countElem.textContent = `${products.length} Crops`;
+
+            const revEl = document.getElementById('farmerTotalRevenue');
+            if (revEl) {
+                let orders = (window.FarmDirect && typeof FarmDirect.getOrders === 'function') ? FarmDirect.getOrders() : [];
+                let totalAmt = 342800;
+                if (orders && orders.length > 0) {
+                    const orderSum = orders.reduce((acc, o) => {
+                        const val = Number(o.total || (o.amount ? String(o.amount).replace(/[^0-9.]/g, '') : 0)) || 0;
+                        return acc + val;
+                    }, 0);
+                    if (orderSum > 0) totalAmt = Math.max(totalAmt, orderSum);
+                }
+                revEl.textContent = '₹' + totalAmt.toLocaleString('en-IN');
+            }
+
+            // Render Recent Buyer Orders Preview
+            renderRecentOrders();
+        }
+
+        function renderRecentOrders() {
+            const container = document.getElementById('farmer-recent-orders-list');
+            if (!container) return;
+
+            let orders = (window.FarmDirect && typeof FarmDirect.getOrders === 'function') ? FarmDirect.getOrders() : [];
+            if (!orders || orders.length === 0) {
+                orders = [
+                    { id: 'ORD-1042', buyer: 'Senthil Veg Stores, Chennai', crop: 'Ponni Raw Rice', qty: '120 kg', amount: '₹7,200', status: 'Waiting for Transport', statusClass: 'fd-status-waiting' },
+                    { id: 'ORD-1039', buyer: 'Kavitha Supermarket, Coimbatore', crop: 'Country Tomatoes', qty: '80 kg', amount: '₹2,560', status: 'On the Way', statusClass: 'fd-status-transit' },
+                    { id: 'ORD-1035', buyer: 'Murali Organic Store, Madurai', crop: 'Erode Turmeric', qty: '35 kg', amount: '₹5,600', status: 'Delivered', statusClass: 'fd-status-delivered' }
+                ];
+            }
+
+            const ordersCountEl = document.getElementById('farmerActiveOrdersCount');
+            if (ordersCountEl) {
+                ordersCountEl.textContent = `${orders.length} Orders`;
+            }
+
+            container.innerHTML = orders.slice(0, 5).map(o => {
+                const cropName = o.crop || (o.items && o.items[0] ? o.items[0].name : 'Farm Produce');
+                const qtyStr = o.qty || (o.items && o.items[0] ? `${o.items[0].qty} ${o.items[0].unit || 'kg'}` : 'Bulk');
+                const buyerName = o.buyer || o.customer || o.buyerName || 'Verified Regional Buyer';
+                const amtStr = o.amount || (o.total ? `₹${Number(o.total).toLocaleString('en-IN')}` : '₹3,400');
+                const statusStr = o.status || 'Active';
+                let statusClass = o.statusClass || 'fd-status-transit';
+                if (statusStr.toLowerCase().includes('deliver')) statusClass = 'fd-status-delivered';
+                else if (statusStr.toLowerCase().includes('wait') || statusStr.toLowerCase().includes('pend')) statusClass = 'fd-status-waiting';
+
+                return `
+                    <div style="display: flex; justify-content: space-between; align-items: center; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 14px; flex-wrap: wrap; gap: 8px;">
+                        <div>
+                            <div style="font-weight: 700; font-size: 13.5px; color: #0f172a;">${cropName} (${qtyStr})</div>
+                            <div style="font-size: 12px; color: #64748b;">Buyer: ${buyerName} • <strong>${amtStr}</strong></div>
+                        </div>
+                        <div>
+                            <span class="fd-status-pill ${statusClass}">${statusStr}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        async function loadLiveFarmerWeather() {
+            const district = (window.FarmDirect && typeof FarmDirect.getUserDistrict === 'function') ? FarmDirect.getUserDistrict() : 'Erode';
+            const badgeEl = document.getElementById('weatherDistrictBadge');
+            const tempEl = document.getElementById('weatherTemp');
+            const condEl = document.getElementById('weatherCondition');
+            const iconEl = document.getElementById('weatherIcon');
+            const advisoryEl = document.getElementById('weatherAgronomyAdvisory');
+
+            if (badgeEl) badgeEl.textContent = `${district}`;
+
+            if (window.FarmDirect && typeof FarmDirect.fetchDistrictLiveWeather === 'function') {
+                const weather = await FarmDirect.fetchDistrictLiveWeather(district);
+                if (weather) {
+                    if (tempEl) tempEl.textContent = `${weather.temperature}°C`;
+                    if (condEl) condEl.textContent = `${weather.condition} • Good for harvesting`;
+                    if (iconEl) iconEl.className = `fas ${weather.icon}`;
+                    
+                    if (advisoryEl) {
+                        advisoryEl.innerHTML = `<strong>Farm Advice (${district}):</strong> Current temperature is ${weather.temperature}°C with ${weather.humidity}% humidity. Clear weather for farm work. Packing early in the morning helps vegetables stay fresh during transit.`;
+                    }
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            renderFarmerDashboard();
+            loadLiveFarmerWeather();
+
+            // Refresh table whenever products are added, edited, or removed
+            window.addEventListener('fd-products-updated', renderFarmerDashboard);
+            window.addEventListener('fd_products_updated', renderFarmerDashboard);
+            window.addEventListener('fd_data_synced', renderFarmerDashboard);
+
+            window.addEventListener('fd_district_changed', function () {
+                loadLiveFarmerWeather();
+                renderFarmerDashboard();
+            });
+        });
+    </script>
+</body>
+</html>
+

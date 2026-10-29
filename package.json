@@ -1,0 +1,37 @@
+{
+  "name": "farmdirect-agrimarketplace",
+  "version": "1.0.0",
+  "description": "Next-Gen AI Agricultural Marketplace, Cold-Chain Logistics, and Demand Forecasting Suite with MongoDB",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "seed": "node seed.js",
+    "check-db": "node verify-mongo.js",
+    "app:init": "npx @capacitor/cli init FarmDirect com.farmdirect.app --web-dir .",
+    "app:android": "npx @capacitor/cli add android && npx @capacitor/cli open android",
+    "app:sync": "npx @capacitor/cli sync"
+  },
+  "keywords": [
+    "agritech",
+    "marketplace",
+    "farmers",
+    "fpo",
+    "cold-chain",
+    "logistics",
+    "ai",
+    "mongodb",
+    "express"
+  ],
+  "author": "FarmDirect Team",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.5.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}

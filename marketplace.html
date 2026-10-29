@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Marketplace | FarmDirect</title>
+    <!-- Immediate Authentication Guard: Require sign in before viewing website details -->
+    <script src="js/auth-guard.js"></script>
+    <meta name="description" content="Browse fresh harvest directly from verified farmers and FPOs.">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#10b981">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Sleek Master Navigation with Rich Dropdowns -->
+    <nav class="fd-nav">
+        <div class="container fd-nav-inner">
+            <a href="index.html" class="fd-brand">
+                <span>🌱 FarmDirect</span>
+                <span class="fd-brand-badge">Marketplace</span>
+            </a>
+
+            <ul class="fd-nav-links">
+                <li class="fd-nav-item"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="marketplace.html" class="active"><i class="fas fa-store"></i> Marketplace <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="marketplace.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-shopping-basket"></i></div>
+                            <div><span class="fd-dropdown-title">Live Produce Catalog</span><span class="fd-dropdown-desc">Direct harvest from verified farmers</span></div>
+                        </a>
+                        <a href="product-quality.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-shield-alt"></i></div>
+                            <div><span class="fd-dropdown-title">AI Quality Scanner</span><span class="fd-dropdown-desc">Computer-vision freshness & Brix test</span></div>
+                        </a>
+                        <a href="price-comparison.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Price Comparison</span><span class="fd-dropdown-desc">Farmgate vs APMC Mandi vs Retail</span></div>
+                        </a>
+                        <a href="offers.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-tags"></i></div>
+                            <div><span class="fd-dropdown-title">Harvest Offers</span><span class="fd-dropdown-desc">Seasonal discounts & promo codes</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="farmer-dashboard.html"><i class="fas fa-tractor"></i> Farmers & FPOs <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="farmer-dashboard.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-tachometer-alt"></i></div>
+                            <div><span class="fd-dropdown-title">Farmer Command Center</span><span class="fd-dropdown-desc">Agronomy weather radar & revenue</span></div>
+                        </a>
+                        <a href="fpo-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-users"></i></div>
+                            <div><span class="fd-dropdown-title">FPO Collective Aggregator</span><span class="fd-dropdown-desc">Pool multi-farmer harvests for B2B</span></div>
+                        </a>
+                        <a href="add-product.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-plus-circle"></i></div>
+                            <div><span class="fd-dropdown-title">List New Produce</span><span class="fd-dropdown-desc">AI Mandi benchmark recommender</span></div>
+                        </a>
+                        <a href="farmer-earnings.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-wallet"></i></div>
+                            <div><span class="fd-dropdown-title">Earnings & UPI Ledger</span><span class="fd-dropdown-desc">Instant OTP escrow bank settlements</span></div>
+                        </a>
+                        <a href="farmer-verification.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-id-card"></i></div>
+                            <div><span class="fd-dropdown-title">Land KYC Verification</span><span class="fd-dropdown-desc">Patta/Chitta Land KYC Verification</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="logistics.html"><i class="fas fa-truck-moving"></i> Logistics <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="live-tracking.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-satellite-dish"></i></div>
+                            <div><span class="fd-dropdown-title">Live GPS Radar</span><span class="fd-dropdown-desc">3.8°C Temperature-Controlled Delivery</span></div>
+                        </a>
+                        <a href="route-optimization.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-route"></i></div>
+                            <div><span class="fd-dropdown-title">AI Route Optimizer</span><span class="fd-dropdown-desc">Smart Multi-Farm Route Optimizer</span></div>
+                        </a>
+                        <a href="delivery-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-tasks"></i></div>
+                            <div><span class="fd-dropdown-title">Dispatch Management</span><span class="fd-dropdown-desc">Vehicle fleet allocations & e-POD</span></div>
+                        </a>
+                        <a href="warehouse.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-warehouse"></i></div>
+                            <div><span class="fd-dropdown-title">Smart Rural Cold Hubs</span><span class="fd-dropdown-desc">Microclimate pre-cooling slots</span></div>
+                        </a>
+                        <a href="inventory.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-rose"><i class="fas fa-boxes"></i></div>
+                            <div><span class="fd-dropdown-title">Inventory Engine</span><span class="fd-dropdown-desc">Batch shelf-life countdowns</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="ai-insights.html"><i class="fas fa-brain"></i> AI Intelligence <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="demand-forecast.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-chart-pie"></i></div>
+                            <div><span class="fd-dropdown-title">Demand Forecasting</span><span class="fd-dropdown-desc">Predictive 30-day ML models</span></div>
+                        </a>
+                        <a href="ai-insights.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-chart-line"></i></div>
+                            <div><span class="fd-dropdown-title">Agricultural Intelligence</span><span class="fd-dropdown-desc">Regional surplus & deficit heatmap</span></div>
+                        </a>
+                        <a href="supply-chain.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-link"></i></div>
+                            <div><span class="fd-dropdown-title">Farm-to-Fork Traceability</span><span class="fd-dropdown-desc">5-stage harvest verification</span></div>
+                        </a>
+                        <a href="price-intelligence.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Mandi Price Index</span><span class="fd-dropdown-desc">Live Government Mandi Prices</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item"><a href="bulk-buyers.html"><i class="fas fa-building"></i> B2B Wholesale</a></li>
+            </ul>
+
+            <div class="fd-nav-actions">
+                <a href="wishlist.html" class="fd-icon-btn" title="Saved Wishlist">
+                    <i class="far fa-heart"></i>
+                    <span class="fd-badge-count" id="fd-wishlist-badge" style="display:none;">0</span>
+                </a>
+                <a href="cart.html" class="fd-icon-btn" title="Shopping Cart">
+                    <i class="fas fa-shopping-basket"></i>
+                    <span class="fd-badge-count" id="fd-cart-badge" style="display:none;">0</span>
+                </a>
+                <a href="notifications.html" class="fd-icon-btn" title="Live Alerts">
+                    <i class="far fa-bell"></i>
+                    <span class="fd-badge-count" id="fd-notif-badge" style="display:none;">0</span>
+                </a>
+                <a href="login.html" class="btn btn-primary btn-sm" style="display: inline-flex; align-items: center; gap: 6px; font-weight: 700;">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
+                <a href="register.html" class="btn btn-secondary btn-sm" style="display: inline-flex; align-items: center; gap: 6px; font-weight: 700;">
+                    <i class="fas fa-user-plus"></i> Register
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i> <span>Live Marketplace</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
+                <div>
+                    <h1 class="page-hero-title">Direct Farm Produce Marketplace</h1>
+                    <p class="page-hero-subtitle">100% Verified Farmgate Harvests. Transparent pricing, cold-chain delivered in 24 hours.</p>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <a href="consumer-savings.html" class="btn btn-accent btn-sm"><i class="fas fa-calculator"></i> Calculate Savings</a>
+                    <a href="bulk-buyers.html" class="btn btn-secondary btn-sm"><i class="fas fa-boxes"></i> Need 500kg+? B2B Bulk</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Marketplace Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="grid-sidebar">
+                <!-- Filters Sidebar -->
+                <aside>
+                    <div class="card" style="position: sticky; top: 95px;">
+                        <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
+                            <span><i class="fas fa-filter text-success"></i> Filter Harvest</span>
+                            <button onclick="resetFilters()" style="background:none; border:none; color:#059669; font-size:12px; cursor:pointer; font-weight:700;">Reset All</button>
+                        </h3>
+
+                        <!-- Search -->
+                        <div class="form-group">
+                            <label class="form-label">Search Produce</label>
+                            <div style="position: relative;">
+                                <input type="text" id="searchInput" class="form-control" placeholder="e.g. Turmeric, Ponni Rice, Mango..." oninput="filterProducts()">
+                            </div>
+                        </div>
+
+                        <!-- Tamil Nadu District Filter -->
+                        <div class="form-group">
+                            <label class="form-label">Tamil Nadu District (மாவட்டம்)</label>
+                            <select id="districtFilter" class="form-select tn-district-select" onchange="filterProducts()">
+                                <option value="all">All 38 Districts (தமிழ்நாடு முழுவதும்)</option>
+                                <option value="Ariyalur">Ariyalur (அரியலூர்)</option>
+                                <option value="Chengalpattu">Chengalpattu (செங்கல்பட்டு)</option>
+                                <option value="Chennai">Chennai (சென்னை)</option>
+                                <option value="Coimbatore">Coimbatore (கோயம்புத்தூர்)</option>
+                                <option value="Cuddalore">Cuddalore (கடலூர்)</option>
+                                <option value="Dharmapuri">Dharmapuri (தருமபுரி)</option>
+                                <option value="Dindigul">Dindigul (திண்டுக்கல்)</option>
+                                <option value="Erode">Erode (ஈரோடு)</option>
+                                <option value="Kallakurichi">Kallakurichi (கள்ளக்குறிச்சி)</option>
+                                <option value="Kanchipuram">Kanchipuram (காஞ்சிபுரம்)</option>
+                                <option value="Kanyakumari">Kanyakumari (கன்னியாகுமரி)</option>
+                                <option value="Karur">Karur (கரூர்)</option>
+                                <option value="Krishnagiri">Krishnagiri (கிருஷ்ணகிரி)</option>
+                                <option value="Madurai">Madurai (மதுரை)</option>
+                                <option value="Mayiladuthurai">Mayiladuthurai (மயிலாடுதுறை)</option>
+                                <option value="Nagapattinam">Nagapattinam (நாகப்பட்டினம்)</option>
+                                <option value="Namakkal">Namakkal (நாமக்கல்)</option>
+                                <option value="Nilgiris">Nilgiris (நீலகிரி)</option>
+                                <option value="Perambalur">Perambalur (பெரம்பலூர்)</option>
+                                <option value="Pudukkottai">Pudukkottai (புதுக்கோட்டை)</option>
+                                <option value="Ramanathapuram">Ramanathapuram (இராமநாதபுரம்)</option>
+                                <option value="Ranipet">Ranipet (ராணிப்பேட்டை)</option>
+                                <option value="Salem">Salem (சேலம்)</option>
+                                <option value="Sivaganga">Sivaganga (சிவகங்கை)</option>
+                                <option value="Tenkasi">Tenkasi (தென்காசி)</option>
+                                <option value="Thanjavur">Thanjavur (தஞ்சாவூர்)</option>
+                                <option value="Theni">Theni (தேனி)</option>
+                                <option value="Thoothukudi">Thoothukudi (தூத்துக்குடி)</option>
+                                <option value="Tiruchirappalli">Tiruchirappalli (திருச்சிராப்பள்ளி)</option>
+                                <option value="Tirunelveli">Tirunelveli (திருநெல்வேலி)</option>
+                                <option value="Tirupathur">Tirupathur (திருப்பத்தூர்)</option>
+                                <option value="Tiruppur">Tiruppur (திருப்பூர்)</option>
+                                <option value="Tiruvallur">Tiruvallur (திருவள்ளூர்)</option>
+                                <option value="Tiruvannamalai">Tiruvannamalai (திருவண்ணாமலை)</option>
+                                <option value="Tiruvarur">Tiruvarur (திருவாரூர்)</option>
+                                <option value="Vellore">Vellore (வேலூர்)</option>
+                                <option value="Villupuram">Villupuram (விழுப்புரம்)</option>
+                                <option value="Virudhunagar">Virudhunagar (விருதுநகர்)</option>
+                            </select>
+                        </div>
+
+                        <!-- Category -->
+                        <div class="form-group">
+                            <label class="form-label">Produce Category</label>
+                            <select id="categoryFilter" class="form-select" onchange="filterProducts()">
+                                <option value="all">All Categories</option>
+                                <option value="Grains">Grains & Rice (அரிசி)</option>
+                                <option value="Spices">Spices & Turmeric (மஞ்சள், மசாலா)</option>
+                                <option value="Vegetables">Farm Vegetables (காய்கறிகள்)</option>
+                                <option value="Fruits">Fresh Fruits (பழங்கள்)</option>
+                                <option value="Millets">Traditional Millets (சிறு தானியங்கள்)</option>
+                                <option value="Farm Inputs">Organic Fertilizers & Inputs (இயற்கை உரம்)</option>
+                                <option value="Floriculture">Floriculture (மலர்கள்)</option>
+                                <option value="Beverages">Beverages & Coconuts (இளநீர்)</option>
+                            </select>
+                        </div>
+
+                        <!-- Max Price Filter -->
+                        <div class="form-group">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                                <label class="form-label" style="margin-bottom:0;">Max Price</label>
+                                <span id="priceVal" style="font-weight: 700; color: #059669; font-size: 13px;">₹500</span>
+                            </div>
+                            <input type="range" id="priceFilter" min="20" max="600" step="10" value="500" style="width: 100%; accent-color: #10b981;" oninput="updatePriceLabel(this.value)">
+                        </div>
+
+                        <!-- Quality Filter -->
+                        <div class="form-group">
+                            <label class="form-label">Min Quality Score</label>
+                            <select id="qualityFilter" class="form-select" onchange="filterProducts()">
+                                <option value="0">All Grades (90%+)</option>
+                                <option value="95">Grade A (95%+)</option>
+                                <option value="98">Grade A+ Export (98%+)</option>
+                            </select>
+                        </div>
+
+                        <!-- Organic Only Checkbox -->
+                        <div style="display: flex; align-items: center; gap: 10px; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border);">
+                            <input type="checkbox" id="organicFilter" onchange="filterProducts()" style="width: 18px; height: 18px; accent-color: #10b981; cursor: pointer;">
+                            <label for="organicFilter" style="font-size: 13px; font-weight: 600; cursor: pointer;">100% Certified Organic Only</label>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Product Catalog Grid -->
+                <section>
+                    <!-- Statewide 38-District Live Harvest & Logistics Pulse Bar -->
+                    <div style="background: linear-gradient(135deg, #064e3b 0%, #0f172a 100%); color: white; border-radius: 16px; padding: 14px 20px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; border: 1.5px solid rgba(16, 185, 129, 0.35); box-shadow: 0 4px 15px rgba(0,0,0,0.06);">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <span class="fd-badge fd-badge-green" style="font-size: 11px; padding: 4px 10px;">
+                                <i class="fas fa-satellite-dish fa-spin"></i> LIVE PULSE
+                            </span>
+                            <div style="font-size: 13px; font-weight: 700; color: #f8fafc;" id="statewidePulseTicker">
+                                🌾 <strong>Thanjavur Delta:</strong> 15,000 kg Deluxe Ponni Paddy arriving at Kumbakonam silo • 🚚 <strong>Erode:</strong> Reefer Van TN-33 holding 3.8°C along NH544
+                            </div>
+                        </div>
+                        <div style="font-size: 12px; color: #34d399; font-weight: 700;">
+                            <i class="fas fa-check-circle"></i> 38 Districts Connected
+                        </div>
+                    </div>
+
+                    <!-- Dynamic District Harvest Offer & Real-Time Stock Banner -->
+                    <div id="marketplaceDistrictBanner" style="display: none; background: linear-gradient(135deg, #064e3b 0%, #065f46 60%, #0f172a 100%); border-radius: 18px; padding: 20px 24px; color: white; margin-bottom: 24px; border: 1.5px solid rgba(52, 211, 153, 0.35); box-shadow: 0 10px 25px rgba(6, 78, 59, 0.25);">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 14px;">
+                            <div>
+                                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap;">
+                                    <span id="mp-district-pill" style="background: rgba(255,255,255,0.2); color: #6ee7b7; padding: 3px 10px; border-radius: 999px; font-size: 11.5px; font-weight: 800;">
+                                        📍 Erode Hub
+                                    </span>
+                                    <span id="mp-discount-badge" style="background: #10b981; color: white; font-size: 11px; font-weight: 800; padding: 3px 9px; border-radius: 20px;">
+                                        15% OFF
+                                    </span>
+                                    <span id="mp-stock-badge" style="background: rgba(0,0,0,0.3); color: #fde047; font-size: 11.5px; font-weight: 700; padding: 3px 8px; border-radius: 6px;">
+                                        <i class="fas fa-cubes"></i> 4,850 kg In Stock
+                                    </span>
+                                </div>
+                                <h3 id="mp-offer-title" style="font-size: 17px; font-weight: 800; margin: 0 0 4px; color: #ffffff;">
+                                    15% OFF on Bhavani Basin GI Golden Turmeric Fingers
+                                </h3>
+                                <div id="mp-offer-desc" style="font-size: 12.5px; color: #cbd5e1; max-width: 600px;">
+                                    High natural curcumin content, naturally sun-dried and direct from Semmampalayam farmer collectives.
+                                </div>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 8px;">
+                                <div style="background: rgba(0,0,0,0.25); border: 1px dashed #34d399; padding: 6px 12px; border-radius: 8px; display: flex; align-items: center; gap: 8px;">
+                                    <span style="font-size: 11px; color: #a7f3d0;">Promo:</span>
+                                    <strong id="mp-promo-code" style="font-family: monospace; color: #ffffff; font-size: 13px;">ERD-TURMERIC-2026</strong>
+                                    <button type="button" onclick="copyMarketPromo()" style="background: #ffffff; color: #064e3b; border: none; padding: 2px 8px; border-radius: 6px; font-size: 11px; font-weight: 800; cursor: pointer;">
+                                        COPY
+                                    </button>
+                                </div>
+                                <button type="button" onclick="showMarketplaceDistrictOffice()" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: #ffffff; padding: 5px 10px; border-radius: 8px; font-size: 11.5px; font-weight: 700; cursor: pointer;">
+                                    <i class="fas fa-building"></i> Nodal Office Info 🏛️
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sort & Result Header -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+                        <div style="font-size: 14px; color: #64748b;">
+                            Showing <strong id="productCount" style="color: #0f172a;">0</strong> fresh harvest lots across Tamil Nadu
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <label style="font-size: 13px; color: #64748b;">Sort by:</label>
+                            <select id="sortFilter" class="form-select" style="width: auto; padding: 6px 12px; font-size: 13px;" onchange="filterProducts()">
+                                <option value="recommended">AI Recommended</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="quality">Quality Score (High to Low)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Products Grid -->
+                    <div id="productsGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px;">
+                        <!-- Products injected dynamically via JS -->
+                    </div>
+
+                    <!-- Empty State -->
+                    <div id="emptyState" style="display: none; text-align: center; padding: 60px 20px; background: white; border-radius: 16px; border: 1px solid var(--border);">
+                        <i class="fas fa-seedling text-muted" style="font-size: 48px; margin-bottom: 16px; color: #cbd5e1;"></i>
+                        <h3 style="font-size: 18px; margin-bottom: 8px;">No produce found</h3>
+                        <p style="color: #64748b; font-size: 14px; margin-bottom: 20px;">Try adjusting your filters, price range, or search term.</p>
+                        <button onclick="resetFilters()" class="btn btn-primary btn-sm">Reset Filters</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="fd-footer">
+        <div class="container">
+            <div class="fd-footer-grid">
+                <div>
+                    <div class="fd-footer-brand"><span>🌱 FarmDirect</span></div>
+                    <p class="fd-footer-desc">Direct agricultural marketplace connecting farmers with households and enterprise buyers.</p>
+                </div>
+                <div>
+                    <h4 class="fd-footer-heading">Marketplace</h4>
+                    <ul class="fd-footer-links">
+                        <li><a href="marketplace.html">Fresh Produce</a></li>
+                        <li><a href="price-comparison.html">Price Comparison</a></li>
+                        <li><a href="offers.html">Deals & Coupons</a></li>
+                        <li><a href="consumer-savings.html">Savings Calculator</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="fd-footer-heading">Portals</h4>
+                    <ul class="fd-footer-links">
+                        <li><a href="farmer-dashboard.html">Farmer Portal</a></li>
+                        <li><a href="bulk-buyers.html">B2B Wholesale</a></li>
+                        <li><a href="live-tracking.html">Cold-Chain Radar</a></li>
+                        <li><a href="fpo-management.html">FPO Management</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="fd-footer-heading">Technology</h4>
+                    <ul class="fd-footer-links">
+                        <li><a href="demand-forecast.html">Demand Forecasting</a></li>
+                        <li><a href="route-optimization.html">Route Optimization</a></li>
+                        <li><a href="product-quality.html">AI Quality Scan</a></li>
+                        <li><a href="supply-chain.html">Traceability</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="fd-footer-heading">Support</h4>
+                    <ul class="fd-footer-links">
+                        <li><a href="support.html">Help Desk</a></li>
+                        <li><a href="feedback.html">Verified Reviews</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="fd-footer-bottom">
+                <div></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        let allProducts = [];
+
+        function renderProducts(products) {
+            const grid = document.getElementById('productsGrid');
+            const empty = document.getElementById('emptyState');
+            const countElem = document.getElementById('productCount');
+
+            if (!grid) return;
+
+            countElem.textContent = products.length;
+
+            if (products.length === 0) {
+                grid.innerHTML = '';
+                empty.style.display = 'block';
+                return;
+            }
+
+            empty.style.display = 'none';
+
+            grid.innerHTML = products.map(p => {
+                const isSaved = FarmDirect.isWishlisted(p.id);
+                const savingsPct = Math.round(((p.retailPrice - p.price) / (p.retailPrice || 1)) * 100);
+                const isOutOfStock = (p.stock || 0) <= 0;
+                const safeFarmer = (p.farmer || 'District Farmer').replace(/'/g, "\\'");
+                const safeName = (p.name || 'Produce').replace(/'/g, "\\'");
+                const safePhone = p.farmerPhone || '+91 98421 99001';
+                const safeDistrict = p.district || 'Erode';
+                const safeLocation = (p.location || (safeDistrict + ', Tamil Nadu')).replace(/'/g, "\\'");
+                const farmerDisplay = (p.farmer || 'District Farmer').length > 28 ? (p.farmer || 'District Farmer').substring(0, 26) + '...' : (p.farmer || 'District Farmer');
+
+                return `
+                    <div class="card card-hover" style="display: flex; flex-direction: column; overflow: hidden; padding: 0; position: relative;">
+                        <!-- Product Image & Badges -->
+                        <div style="position: relative; height: 185px; overflow: hidden; background: #f1f5f9;">
+                            <img src="${p.image || 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?auto=format&fit=crop&w=600&q=80'}" alt="${p.name || 'Produce'}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; ${isOutOfStock ? 'filter: grayscale(0.5); opacity: 0.8;' : ''}" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                            
+                            <button onclick="handleWishlistToggle('${p.id}', this)" class="fd-icon-btn" style="position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; background: rgba(255,255,255,0.9); box-shadow: 0 2px 8px rgba(0,0,0,0.15);" title="Save to Wishlist">
+                                <i class="${isSaved ? 'fas fa-heart text-danger' : 'far fa-heart'}" style="${isSaved ? 'color: #ef4444;' : ''}"></i>
+                            </button>
+
+                            <div style="position: absolute; bottom: 10px; left: 10px; display: flex; gap: 5px; flex-wrap: wrap;">
+                                <span class="badge badge-ai" style="font-size: 10.5px;"><i class="fas fa-shield-alt"></i> ${p.qualityScore || 95}% AI</span>
+                                ${p.giTag ? '<span class="badge" style="background:#fef3c7; color:#b45309; font-weight:800; border:1px solid #fde68a; font-size: 10.5px;">🏷️ GI Tag</span>' : ''}
+                                ${p.adminVerified ? '<span class="badge" style="background:#fef9c3; color:#854d0e; font-weight:800; border:1px solid #facc15; font-size: 10.5px;"><i class="fas fa-crown text-warning"></i> Nodal Certified</span>' : ''}
+                                ${p.organic ? '<span class="badge badge-success" style="font-size: 10.5px;"><i class="fas fa-leaf"></i> Organic</span>' : ''}
+                            </div>
+                        </div>
+
+                        <!-- Card Body -->
+                        <div style="padding: 18px 20px 20px; flex: 1; display: flex; flex-direction: column;">
+                            
+                            <!-- District & Location Link (Click opens District Govt Office modal) -->
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                                <button type="button" onclick="FarmDirect.showDistrictOfficeModal('${safeDistrict}')" style="background:none; border:none; padding:0; color:#059669; font-weight:800; font-size:11.5px; text-transform:uppercase; cursor:pointer; display:inline-flex; align-items:center; gap:4px; text-decoration: underline;" title="Click to view Official Government Office & Navigation">
+                                    <i class="fas fa-building"></i> ${safeDistrict} Command 🏛️
+                                </button>
+                                <span style="font-size: 11px; color: #64748b; font-weight: 600;">${p.category || 'Fresh Harvest'}</span>
+                            </div>
+
+                            <h3 style="font-size: 15.5px; font-weight: 800; color: #064e3b; margin-bottom: 4px; line-height: 1.3;">
+                                <a href="product-details.html?id=${p.id}">${p.name || 'Farm Produce'}</a>
+                                ${p.tamilName ? `<span style="font-size:13px; color:#059669; font-weight:700; display:block; margin-top:2px;">${p.tamilName}</span>` : ''}
+                            </h3>
+
+                            <!-- Farmer Profile Trigger (Click opens Person Profile & Call Simulator) -->
+                            <div style="margin-bottom: 12px;">
+                                <button type="button" onclick="FarmDirect.showPersonProfileModal({ name: '${safeFarmer}', role: 'Farmer / Producer', district: '${safeDistrict}', location: '${safeLocation}', phone: '${safePhone}', rating: ${(p.qualityScore || 95) >= 98 ? '4.95' : '4.85'}, produce: '${safeName}', verified: true })" style="background:none; border:none; padding:0; color:#1e293b; font-size:12px; font-weight:700; cursor:pointer; display:inline-flex; align-items:center; gap:6px;" title="Click to view farmer profile & call">
+                                    <i class="fas fa-user-check text-success"></i> ${farmerDisplay}
+                                    <span style="font-size: 10px; background: #ecfdf5; color: #059669; padding: 2px 6px; border-radius: 4px; font-weight: 800;"><i class="fas fa-phone-alt"></i> Call</span>
+                                </button>
+                                <div style="font-size: 11.5px; color: #64748b; margin-top: 2px;">
+                                    <i class="fas fa-map-marker-alt text-muted"></i> ${p.location || (safeDistrict + ', Tamil Nadu')}
+                                </div>
+                            </div>
+
+                            <!-- Real-Time APMC Mandi Rate vs Farmgate Direct Pricing -->
+                            <div style="margin-top: auto; padding-top: 10px; border-top: 1px solid var(--border); margin-bottom: 12px;">
+                                <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                                    <div>
+                                        <div style="font-size: 11px; color: #94a3b8; text-decoration: line-through;">Supermarket: ₹${p.retailPrice}/${p.unit}</div>
+                                        <div style="font-size: 20px; font-weight: 800; color: #059669;">
+                                            ₹${p.price} <span style="font-size: 12px; color: #64748b; font-weight: 500;">/${p.unit}</span>
+                                        </div>
+                                    </div>
+                                    <span class="badge badge-warning" style="font-weight: 800; font-size: 11px;">-${savingsPct}% SAVE</span>
+                                </div>
+
+                                <div style="font-size: 11px; color: #475569; margin-top: 4px; display: flex; justify-content: space-between; align-items: center; background: #f8fafc; padding: 4px 8px; border-radius: 6px;">
+                                    <span>APMC Mandi Rate: <strong>₹${p.mandiPrice || p.price}/${p.unit}</strong></span>
+                                    ${p.lastPriceChange ? `<span style="color: ${p.lastPriceChange.startsWith('+') ? '#059669' : '#ef4444'}; font-weight: 800; font-size: 10.5px;">${p.lastPriceChange}</span>` : ''}
+                                </div>
+                            </div>
+
+                            <!-- Stock Status & Action Buttons -->
+                            ${isOutOfStock ? `
+                                <div style="display: flex; flex-direction: column; gap: 6px;">
+                                    <div style="background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; font-weight: 800; font-size: 11px; padding: 4px 8px; border-radius: 6px; text-align: center;">
+                                        ❌ Out-of-Stock in ${p.district || 'District'}
+                                    </div>
+                                    <button onclick="FarmDirect.showCrossDistrictStockModal('${p.name.replace(/'/g, "\\'")}', '${p.district || 'Erode'}')" class="btn btn-sm btn-block" style="background: #fef2f2; color: #b91c1c; border: 1.5px solid #f87171; font-size: 12px; font-weight: 800; border-radius: 8px; padding: 7px 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                                        <i class="fas fa-truck-moving"></i> 🔄 Find in Other Districts
+                                    </button>
+                                </div>
+                            ` : `
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 11.5px; color: #059669; font-weight: 700;">
+                                    <span><i class="fas fa-cubes"></i> In Stock: ${p.stock} ${p.unit}</span>
+                                    <span style="color: #64748b; font-weight: 500;"><i class="fas fa-calendar-alt"></i> ${p.harvestDate}</span>
+                                </div>
+                                <div style="display: grid; grid-template-columns: 1fr auto; gap: 8px;">
+                                    <button onclick="FarmDirect.addToCart('${p.id}')" class="btn btn-primary btn-sm">
+                                        <i class="fas fa-cart-plus"></i> Add to Cart
+                                    </button>
+                                    <a href="product-details.html?id=${p.id}" class="btn btn-secondary btn-sm" title="View Full Provenance & Farmer Details">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            `}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        let currentMarketDistrict = 'all';
+
+        function updateMarketplaceDistrictBanner(districtName) {
+            const banner = document.getElementById('marketplaceDistrictBanner');
+            if (!banner || !window.FarmDirect) return;
+
+            if (!districtName || districtName === 'all') {
+                banner.style.display = 'none';
+                return;
+            }
+
+            currentMarketDistrict = districtName;
+            const offer = FarmDirect.getDistrictOffer ? FarmDirect.getDistrictOffer(districtName) : null;
+            const profile = FarmDirect.getDistrictProfileData ? FarmDirect.getDistrictProfileData(districtName) : null;
+            const stockSummary = FarmDirect.getDistrictStockSummary ? FarmDirect.getDistrictStockSummary(districtName) : null;
+
+            if (offer && profile) {
+                banner.style.display = 'block';
+                document.getElementById('mp-district-pill').innerHTML = `📍 ${profile.district} (${profile.tamil || profile.district}) Hub`;
+                document.getElementById('mp-discount-badge').textContent = offer.discount || 'HARVEST SPECIAL';
+                
+                const totalStock = stockSummary ? stockSummary.totalStockKg : (offer.stockKg || 4500);
+                document.getElementById('mp-stock-badge').innerHTML = `<i class="fas fa-cubes"></i> ${totalStock.toLocaleString()} kg In Stock`;
+                document.getElementById('mp-offer-title').textContent = offer.title || `${districtName} Seasonal Harvest Deal`;
+                document.getElementById('mp-offer-desc').textContent = `${offer.desc || ''} Central Storage Hub: ${profile.hub || districtName}. Min Order: ${offer.minOrder || '₹350'}.`;
+                document.getElementById('mp-promo-code').textContent = offer.code || `HARVEST-${districtName.toUpperCase()}`;
+            } else {
+                banner.style.display = 'none';
+            }
+        }
+
+        function copyMarketPromo() {
+            const code = document.getElementById('mp-promo-code')?.textContent?.trim();
+            if (code) {
+                navigator.clipboard.writeText(code);
+                if (window.FarmDirect && typeof FarmDirect.showToast === 'function') {
+                    FarmDirect.showToast(`🎉 Promo code ${code} copied! Auto-discount active.`, 'success');
+                }
+            }
+        }
+
+        function showMarketplaceDistrictOffice() {
+            if (currentMarketDistrict && currentMarketDistrict !== 'all' && window.FarmDirect && typeof FarmDirect.showDistrictOfficeModal === 'function') {
+                FarmDirect.showDistrictOfficeModal(currentMarketDistrict);
+            }
+        }
+
+        function filterProducts() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const district = document.getElementById('districtFilter') ? document.getElementById('districtFilter').value : 'all';
+            const category = document.getElementById('categoryFilter').value;
+            const maxPrice = Number(document.getElementById('priceFilter').value);
+            const minQuality = Number(document.getElementById('qualityFilter').value);
+            const organicOnly = document.getElementById('organicFilter').checked;
+            const sortVal = document.getElementById('sortFilter').value;
+
+            updateMarketplaceDistrictBanner(district);
+
+            let filtered = allProducts.filter(p => {
+                const matchesQuery = p.name.toLowerCase().includes(query) || 
+                    (p.tamilName && p.tamilName.includes(query)) ||
+                    p.farmer.toLowerCase().includes(query) || 
+                    p.location.toLowerCase().includes(query) ||
+                    (p.district && p.district.toLowerCase().includes(query));
+                
+                const matchesDistrict = district === 'all' || (p.district && p.district.toLowerCase() === district.toLowerCase());
+                const matchesCat = category === 'all' || p.category === category;
+                const matchesPrice = p.price <= maxPrice;
+                const matchesQuality = p.qualityScore >= minQuality;
+                const matchesOrganic = !organicOnly || p.organic === true;
+
+                return matchesQuery && matchesDistrict && matchesCat && matchesPrice && matchesQuality && matchesOrganic;
+            });
+
+            // Sorting
+            if (sortVal === 'price-low') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (sortVal === 'price-high') {
+                filtered.sort((a, b) => b.price - a.price);
+            } else if (sortVal === 'quality') {
+                filtered.sort((a, b) => b.qualityScore - a.qualityScore);
+            }
+
+            renderProducts(filtered);
+        }
+
+        function updatePriceLabel(val) {
+            document.getElementById('priceVal').textContent = '₹' + val;
+            filterProducts();
+        }
+
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            if (document.getElementById('districtFilter')) document.getElementById('districtFilter').value = 'all';
+            document.getElementById('categoryFilter').value = 'all';
+            document.getElementById('priceFilter').value = 500;
+            document.getElementById('priceVal').textContent = '₹500';
+            document.getElementById('qualityFilter').value = '0';
+            document.getElementById('organicFilter').checked = false;
+            document.getElementById('sortFilter').value = 'recommended';
+            updateMarketplaceDistrictBanner('all');
+            renderProducts(allProducts);
+        }
+
+        async function handleWishlistToggle(productId, btn) {
+            const isNowSaved = await FarmDirect.toggleWishlist(productId);
+            const icon = btn.querySelector('i');
+            if (icon) {
+                if (isNowSaved) {
+                    icon.className = 'fas fa-heart text-danger';
+                    icon.style.color = '#ef4444';
+                } else {
+                    icon.className = 'far fa-heart';
+                    icon.style.color = '';
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            allProducts = FarmDirect.getProducts();
+
+            // Check URL parameter for district or user profile district
+            const urlParams = new URLSearchParams(window.location.search);
+            const distParam = urlParams.get('district');
+            const userDist = FarmDirect.getUserDistrict ? FarmDirect.getUserDistrict() : null;
+
+            const districtSelect = document.getElementById('districtFilter');
+            if (distParam && districtSelect) {
+                districtSelect.value = distParam;
+                filterProducts();
+            } else if (userDist && userDist !== 'all' && districtSelect) {
+                // If user has a district chosen during login, set it or show all
+                districtSelect.value = userDist;
+                filterProducts();
+            } else {
+                renderProducts(allProducts);
+            }
+
+            // Real-Time Marketplace Live Pulse
+            window.addEventListener('fd_realtime_tick', (e) => {
+                if (e.detail && e.detail.liveProduct) {
+                    const updated = FarmDirect.getProducts();
+                    allProducts = updated;
+                    // Keep existing filter active if user is searching
+                    const searchVal = document.getElementById('searchInput')?.value;
+                    if (!searchVal) {
+                        filterProducts();
+                    }
+                }
+            });
+
+            // Cross-tab and live MongoDB sync
+            const refreshMarketplaceProducts = () => {
+                allProducts = FarmDirect.getProducts();
+                filterProducts();
+            };
+            window.addEventListener('fd_data_synced', refreshMarketplaceProducts);
+            window.addEventListener('fd-products-updated', refreshMarketplaceProducts);
+            window.addEventListener('fd_product_verified', refreshMarketplaceProducts);
+        });
+    </script>
+</body>
+</html>

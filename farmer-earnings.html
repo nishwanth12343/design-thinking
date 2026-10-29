@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#10b981">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FarmDirect">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <title>My Sales & Money (என் வருமானம்) | FarmDirect</title>
+    <!-- Immediate Authentication Guard: Require sign in before viewing website details -->
+    <script src="js/auth-guard.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Simple, Welcoming Navigation with Everyday Language -->
+    <nav class="fd-nav">
+        <div class="container fd-nav-inner">
+            <a href="index.html" class="fd-brand">
+                <span>🌱 FarmDirect</span>
+                <span class="fd-brand-badge">Sales & Money</span>
+            </a>
+
+            <ul class="fd-nav-links">
+                <li class="fd-nav-item"><a href="index.html"><i class="fas fa-home"></i> Home <span class="tamil-subtext">முகப்பு</span></a></li>
+                <li class="fd-nav-item"><a href="marketplace.html"><i class="fas fa-store"></i> Buy & Sell <span class="tamil-subtext">சந்தை</span></a></li>
+                <li class="fd-nav-item"><a href="farmer-dashboard.html"><i class="fas fa-tractor"></i> Farmer Home <span class="tamil-subtext">என் முகப்பு</span></a></li>
+                <li class="fd-nav-item"><a href="add-product.html"><i class="fas fa-plus-circle"></i> Sell Your Products <span class="tamil-subtext">விளைபொருளை விற்க</span></a></li>
+                <li class="fd-nav-item"><a href="inventory.html"><i class="fas fa-boxes"></i> My Products <span class="tamil-subtext">என் பொருட்கள்</span></a></li>
+                <li class="fd-nav-item"><a href="farmer-orders.html"><i class="fas fa-clipboard-list"></i> Buyer Orders <span class="tamil-subtext">ஆர்டர்கள்</span></a></li>
+                <li class="fd-nav-item"><a href="farmer-earnings.html" class="active"><i class="fas fa-wallet"></i> My Sales & Money <span class="tamil-subtext">வருமானம்</span></a></li>
+            </ul>
+
+            <div class="fd-nav-actions">
+                <a href="farmer-dashboard.html" class="btn-farmer btn-farmer-outline" style="padding: 7px 15px; font-size: 13px;">
+                    <i class="fas fa-arrow-left"></i> Farmer Home
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <a href="farmer-dashboard.html">Farmer Home</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <span>My Sales & Money (என் வருமானம்)</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <div>
+                    <h1 class="page-hero-title">My Sales & Money (என் வருமானம்) 💰</h1>
+                    <p class="page-hero-subtitle">
+                        See all the payments you received directly from buyers. Zero middleman cuts. 100% of your earnings deposited directly to your bank account or UPI.
+                    </p>
+                </div>
+                <div>
+                    <button onclick="FarmDirect.showToast('Your sales report is downloaded!', 'success')" class="btn-farmer btn-farmer-outline" style="background: white;">
+                        <i class="fas fa-download"></i> Download Report (அறிக்கை)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Clear Section Tabs for Farmers -->
+    <div class="container">
+        <div class="fd-tabs">
+            <a href="farmer-dashboard.html" class="fd-tab-btn"><i class="fas fa-tachometer-alt"></i> My Home (முகப்பு)</a>
+            <a href="add-product.html" class="fd-tab-btn"><i class="fas fa-plus-circle"></i> Sell Your Products (விளைபொருளை சேர்க்க)</a>
+            <a href="inventory.html" class="fd-tab-btn"><i class="fas fa-boxes"></i> My Products (என் விளைபொருட்கள்)</a>
+            <a href="farmer-orders.html" class="fd-tab-btn"><i class="fas fa-clipboard-list"></i> Buyer Orders (வாங்குபவர் ஆர்டர்கள்)</a>
+            <a href="farmer-earnings.html" class="fd-tab-btn active"><i class="fas fa-wallet"></i> My Sales & Money (என் வருமானம்)</a>
+            <a href="logistics.html" class="fd-tab-btn"><i class="fas fa-truck-moving"></i> Transport Help (போக்குவரத்து உதவி)</a>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- 4 Simple Money Metric Cards -->
+            <div class="grid-4" style="margin-bottom: 30px;">
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-green"><i class="fas fa-rupee-sign"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-label">Total Money Earned (மொத்த வருமானம்)</div>
+                        <div class="stat-value" style="color: #059669;">₹3,42,800</div>
+                        <div class="stat-trend up"><i class="fas fa-check-circle"></i> 100% paid to your bank</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-amber"><i class="fas fa-hand-holding-usd"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-label">Middlemen Commission (தரகர் கட்டணம்)</div>
+                        <div class="stat-value" style="color: #d97706;">₹0</div>
+                        <div style="font-size: 12px; color: #16a34a; font-weight: 700; margin-top: 4px;">You saved ~₹52,000</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-blue"><i class="fas fa-university"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-label">Direct Bank Transfers (வங்கி மாற்றங்கள்)</div>
+                        <div class="stat-value">18 Payments</div>
+                        <div style="font-size: 12px; color: #059669; font-weight: 700; margin-top: 4px;">All successful</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-purple"><i class="fas fa-shield-alt"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-label">Money in Safe Escrow (பாதுகாப்பில் உள்ளவை)</div>
+                        <div class="stat-value" style="color: #7e22ce;">₹14,200</div>
+                        <div style="font-size: 12px; color: #64748b; margin-top: 4px;">Releases upon delivery</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ledger Table in Everyday Words -->
+            <div class="card" style="padding: 28px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+                    <div>
+                        <h3 style="font-size: 18px; font-weight: 800; color: #064e3b; margin: 0;">
+                            <i class="fas fa-receipt text-success"></i> Payment History (பணப் பட்டியல்)
+                        </h3>
+                        <p style="font-size: 13px; color: #64748b; margin: 4px 0 0 0;">
+                            Record of all payments received from buyers for your harvests.
+                        </p>
+                    </div>
+                    <span class="fd-badge fd-badge-green"><i class="fas fa-check"></i> Safe Bank & UPI Transfer Active</span>
+                </div>
+
+                <div class="table-scroll-hint">
+                    <i class="fas fa-arrows-alt-h"></i> Swipe horizontally on mobile to view payment records
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Payment Date (தேதி)</th>
+                                <th>Order # (ஆர்டர்)</th>
+                                <th>Crop (பயிர்)</th>
+                                <th>Buyer (வாங்குபவர்)</th>
+                                <th>Amount You Received (பெற்ற தொகை)</th>
+                                <th>Transfer Method (வங்கி விவரம்)</th>
+                                <th style="text-align: right;">Status (நிலை)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>15 Sep 2026</td>
+                                <td><code>#ORD-1035</code></td>
+                                <td><strong>Erode Turmeric (ஈரோடு மஞ்சள்)</strong></td>
+                                <td>Murali Organic Store, Madurai</td>
+                                <td><strong style="color: #059669; font-size: 16px;">₹5,600</strong></td>
+                                <td><span style="font-size: 12.5px; color:#475569;">UPI / HDFC Bank</span></td>
+                                <td style="text-align: right;"><span class="fd-status-pill fd-status-delivered">Received in Bank</span></td>
+                            </tr>
+                            <tr>
+                                <td>10 Sep 2026</td>
+                                <td><code>#ORD-1028</code></td>
+                                <td><strong>Ponni Raw Rice (பொன்னி அரிசி)</strong></td>
+                                <td>Heritage Hospitality, Chennai</td>
+                                <td><strong style="color: #059669; font-size: 16px;">₹54,000</strong></td>
+                                <td><span style="font-size: 12.5px; color:#475569;">Direct NEFT / Bank</span></td>
+                                <td style="text-align: right;"><span class="fd-status-pill fd-status-delivered">Received in Bank</span></td>
+                            </tr>
+                            <tr>
+                                <td>06 Sep 2026</td>
+                                <td><code>#ORD-1022</code></td>
+                                <td><strong>Country Tomatoes (நாட்டு தக்காளி)</strong></td>
+                                <td>Kavitha Fresh Stores, Coimbatore</td>
+                                <td><strong style="color: #059669; font-size: 16px;">₹6,400</strong></td>
+                                <td><span style="font-size: 12.5px; color:#475569;">UPI Transfer</span></td>
+                                <td style="text-align: right;"><span class="fd-status-pill fd-status-delivered">Received in Bank</span></td>
+                            </tr>
+                            <tr>
+                                <td>01 Sep 2026</td>
+                                <td><code>#ORD-1017</code></td>
+                                <td><strong>Pollachi Coconuts (தேங்காய்)</strong></td>
+                                <td>Senthil Traders, Tiruchirappalli</td>
+                                <td><strong style="color: #059669; font-size: 16px;">₹18,200</strong></td>
+                                <td><span style="font-size: 12.5px; color:#475569;">UPI / HDFC Bank</span></td>
+                                <td style="text-align: right;"><span class="fd-status-pill fd-status-delivered">Received in Bank</span></td>
+                            </tr>
+                            <tr>
+                                <td>Current Batch</td>
+                                <td><code>#ORD-1039</code></td>
+                                <td><strong>Country Tomatoes (நாட்டு தக்காளி)</strong></td>
+                                <td>Kavitha Supermarket, Coimbatore</td>
+                                <td><strong style="color: #0284c7; font-size: 16px;">₹2,560</strong></td>
+                                <td><span style="font-size: 12.5px; color:#475569;">Safe Escrow</span></td>
+                                <td style="text-align: right;"><span class="fd-status-pill fd-status-transit">On the Way (Protected)</span></td>
+                            </tr>
+                            <tr>
+                                <td>Current Batch</td>
+                                <td><code>#ORD-1042</code></td>
+                                <td><strong>Ponni Raw Rice (பொன்னி அரிசி)</strong></td>
+                                <td>Senthil Veg Stores, Chennai</td>
+                                <td><strong style="color: #d97706; font-size: 16px;">₹7,200</strong></td>
+                                <td><span style="font-size: 12.5px; color:#475569;">Safe Escrow</span></td>
+                                <td style="text-align: right;"><span class="fd-status-pill fd-status-waiting">Waiting for Transport</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="fd-footer">
+        <div class="container">
+            <div class="fd-footer-bottom" style="border:none; padding:10px 0;">
+                <p style="margin:0; font-size: 13px; color: #94a3b8;">
+                    🌱 FarmDirect • Direct Farmer to Buyer Platform • Tamil Nadu
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

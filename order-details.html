@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#10b981">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FarmDirect">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <title>Order Invoice & Provenance | FarmDirect</title>
+    <!-- Immediate Authentication Guard: Require sign in before viewing website details -->
+    <script src="js/auth-guard.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Sleek Master Navigation with Rich Dropdowns -->
+    <nav class="fd-nav">
+        <div class="container fd-nav-inner">
+            <a href="index.html" class="fd-brand">
+                <span>🌱 FarmDirect</span>
+                <span class="fd-brand-badge">Order Receipt</span>
+            </a>
+
+            <ul class="fd-nav-links">
+                <li class="fd-nav-item"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="marketplace.html"><i class="fas fa-store"></i> Marketplace <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="marketplace.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-shopping-basket"></i></div>
+                            <div><span class="fd-dropdown-title">Live Produce Catalog</span><span class="fd-dropdown-desc">Direct harvest from verified farmers</span></div>
+                        </a>
+                        <a href="product-quality.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-shield-alt"></i></div>
+                            <div><span class="fd-dropdown-title">AI Quality Scanner</span><span class="fd-dropdown-desc">Computer-vision freshness & Brix test</span></div>
+                        </a>
+                        <a href="price-comparison.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Price Comparison</span><span class="fd-dropdown-desc">Farmgate vs APMC Mandi vs Retail</span></div>
+                        </a>
+                        <a href="offers.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-tags"></i></div>
+                            <div><span class="fd-dropdown-title">Harvest Offers</span><span class="fd-dropdown-desc">Seasonal discounts & promo codes</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="farmer-dashboard.html"><i class="fas fa-tractor"></i> Farmers & FPOs <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="farmer-dashboard.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-tachometer-alt"></i></div>
+                            <div><span class="fd-dropdown-title">Farmer Command Center</span><span class="fd-dropdown-desc">Agronomy weather radar & revenue</span></div>
+                        </a>
+                        <a href="fpo-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-users"></i></div>
+                            <div><span class="fd-dropdown-title">FPO Collective Aggregator</span><span class="fd-dropdown-desc">Pool multi-farmer harvests for B2B</span></div>
+                        </a>
+                        <a href="add-product.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-plus-circle"></i></div>
+                            <div><span class="fd-dropdown-title">List New Produce</span><span class="fd-dropdown-desc">AI Mandi benchmark recommender</span></div>
+                        </a>
+                        <a href="farmer-earnings.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-wallet"></i></div>
+                            <div><span class="fd-dropdown-title">Earnings & UPI Ledger</span><span class="fd-dropdown-desc">Instant OTP escrow bank settlements</span></div>
+                        </a>
+                        <a href="farmer-verification.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-id-card"></i></div>
+                            <div><span class="fd-dropdown-title">Land KYC Verification</span><span class="fd-dropdown-desc">Patta/Chitta Land KYC Verification</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="logistics.html"><i class="fas fa-truck-moving"></i> Logistics <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="live-tracking.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-satellite-dish"></i></div>
+                            <div><span class="fd-dropdown-title">Live GPS Radar</span><span class="fd-dropdown-desc">3.8°C IoT thermal telematics</span></div>
+                        </a>
+                        <a href="route-optimization.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-route"></i></div>
+                            <div><span class="fd-dropdown-title">AI Route Optimizer</span><span class="fd-dropdown-desc">Multi-farm pickup TSP solver</span></div>
+                        </a>
+                        <a href="delivery-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-tasks"></i></div>
+                            <div><span class="fd-dropdown-title">Dispatch Management</span><span class="fd-dropdown-desc">Vehicle fleet allocations & e-POD</span></div>
+                        </a>
+                        <a href="warehouse.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-warehouse"></i></div>
+                            <div><span class="fd-dropdown-title">Smart Rural Cold Hubs</span><span class="fd-dropdown-desc">Microclimate pre-cooling slots</span></div>
+                        </a>
+                        <a href="inventory.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-rose"><i class="fas fa-boxes"></i></div>
+                            <div><span class="fd-dropdown-title">Inventory Engine</span><span class="fd-dropdown-desc">Batch shelf-life countdowns</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="ai-insights.html"><i class="fas fa-brain"></i> AI Intelligence <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="demand-forecast.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-chart-pie"></i></div>
+                            <div><span class="fd-dropdown-title">Demand Forecasting</span><span class="fd-dropdown-desc">Predictive 30-day ML models</span></div>
+                        </a>
+                        <a href="ai-insights.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-chart-line"></i></div>
+                            <div><span class="fd-dropdown-title">Agricultural Intelligence</span><span class="fd-dropdown-desc">Regional surplus & deficit heatmap</span></div>
+                        </a>
+                        <a href="supply-chain.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-link"></i></div>
+                            <div><span class="fd-dropdown-title">Farm-to-Fork Traceability</span><span class="fd-dropdown-desc">5-stage harvest verification</span></div>
+                        </a>
+                        <a href="price-intelligence.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Mandi Price Index</span><span class="fd-dropdown-desc">AGMARKNET live benchmark stream</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item"><a href="bulk-buyers.html"><i class="fas fa-building"></i> B2B Wholesale</a></li>
+            </ul>
+
+            <div class="fd-nav-actions">
+                <a href="live-tracking.html" class="btn btn-ai btn-sm"><i class="fas fa-truck"></i> Live GPS</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-hero" style="padding: 25px 0 30px;">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <a href="consumer-dashboard.html">Consumer Portal</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <span id="order-crumb-id">Order Details</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                <div>
+                    <h1 class="page-hero-title" style="margin-bottom: 4px;" id="order-head-title">Order Confirmed</h1>
+                    <p class="page-hero-subtitle" id="order-date-subtitle">Direct Farm-to-Doorstep Fulfillment</p>
+                </div>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <a href="live-tracking.html" class="btn btn-ai btn-sm"><i class="fas fa-satellite-dish"></i> Live GPS & Cold-Chain Telemetry</a>
+                    <button onclick="window.print()" class="btn btn-secondary btn-sm"><i class="fas fa-print"></i> Print Invoice</button>
+                    <button type="button" onclick="FarmDirect.downloadInvoice(new URLSearchParams(window.location.search).get('id'))" class="btn btn-primary btn-sm" title="Download Official Tax Receipt"><i class="fas fa-download"></i> Download Invoice</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container" id="order-container">
+            <!-- Populated via JS -->
+        </div>
+    </main>
+
+    <footer class="fd-footer">
+        <div class="container">
+            <div class="fd-footer-bottom" style="border:none; padding:0;">
+                <div></div>
+                <a href="marketplace.html" style="color: #6ee7b7;"><i class="fas fa-arrow-left"></i> Back to Marketplace</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const orderId = urlParams.get('id') || 'ORD-98214';
+
+            function renderOrderDetails() {
+                const orders = FarmDirect.getOrders();
+                let order = orders.find(o => o.id === orderId) || orders[0];
+                if (!order) {
+                    order = {
+                        id: orderId || 'ORD-98214',
+                        status: 'In Transit (Cold-Chain Reefer)',
+                        date: 'Today',
+                        deliveryType: 'Express 4-Hour Farmgate Reefer Delivery',
+                        farmer: 'Kongu Organic Farmers Trust',
+                        farmerDistrict: 'Erode',
+                        items: [
+                            { name: 'Dharmapuri Hybrid Red Tomatoes', qty: 25, unit: 'kg', price: 42, farmer: 'M. Selvakumar' }
+                        ],
+                        subtotal: 1050,
+                        deliveryFee: 0,
+                        total: 1050,
+                        address: 'Anna Nagar, Chennai, Tamil Nadu - 600040',
+                        buyerName: 'Consumer Buyer',
+                        buyerPhone: '+91 98401 23456'
+                    };
+                }
+
+                document.getElementById('order-crumb-id').textContent = order.id;
+                document.getElementById('order-head-title').textContent = `Order ${order.id} • ${order.status}`;
+                document.getElementById('order-date-subtitle').textContent = `Placed on ${order.date} via ${order.deliveryType}`;
+
+                const container = document.getElementById('order-container');
+
+            const itemsRows = (order.items || []).map(item => `
+                <tr>
+                    <td>
+                        <strong>${item.name}</strong><br>
+                        <span style="font-size:12px; color:#64748b;">Harvested & Packed by ${item.farmer || 'Verified Farmer'}</span>
+                    </td>
+                    <td>${item.qty} ${item.unit || 'units'}</td>
+                    <td>₹${item.price}</td>
+                    <td style="font-weight: 800; color: #064e3b;">₹${item.price * item.qty}</td>
+                </tr>
+            `).join('');
+
+            container.innerHTML = `
+                <!-- Step Status Timeline -->
+                <div class="card" style="margin-bottom: 30px; padding: 25px;">
+                    <h3 style="font-size: 16px; font-weight: 800; color: #064e3b; margin-bottom: 20px;">
+                        <i class="fas fa-truck text-success"></i> Fulfillment & Cold-Chain Timeline
+                    </h3>
+
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; text-align: center;">
+                        <div style="padding: 12px; background: #ecfdf5; border-radius: 12px; border: 1.5px solid #10b981;">
+                            <i class="fas fa-check-circle text-success" style="font-size: 20px; margin-bottom: 6px;"></i>
+                            <div style="font-size: 13px; font-weight: 700; color: #064e3b;">1. Order Placed</div>
+                            <div style="font-size: 11px; color: #059669;">Payment Escrow Locked</div>
+                        </div>
+
+                        <div style="padding: 12px; background: #ecfdf5; border-radius: 12px; border: 1.5px solid #10b981;">
+                            <i class="fas fa-check-circle text-success" style="font-size: 20px; margin-bottom: 6px;"></i>
+                            <div style="font-size: 13px; font-weight: 700; color: #064e3b;">2. Farm QC & Packing</div>
+                            <div style="font-size: 11px; color: #059669;">Grade A AI Passed</div>
+                        </div>
+
+                        <div style="padding: 12px; background: ${order.statusStep >= 3 ? '#ecfdf5' : '#f8fafc'}; border-radius: 12px; border: 1.5px solid ${order.statusStep >= 3 ? '#10b981' : '#e2e8f0'};">
+                            <i class="fas ${order.statusStep >= 3 ? 'fa-snowflake text-success' : 'fa-clock text-muted'}" style="font-size: 20px; margin-bottom: 6px;"></i>
+                            <div style="font-size: 13px; font-weight: 700; color: #064e3b;">3. Reefer Transit (4°C)</div>
+                            <div style="font-size: 11px; color: #059669;">Vehicle: TN-33-AX-9912</div>
+                        </div>
+
+                        <div style="padding: 12px; background: ${order.statusStep >= 4 ? '#ecfdf5' : '#f8fafc'}; border-radius: 12px; border: 1.5px solid ${order.statusStep >= 4 ? '#10b981' : '#e2e8f0'};">
+                            <i class="fas ${order.statusStep >= 4 ? 'fa-home text-success' : 'fa-home text-muted'}" style="font-size: 20px; margin-bottom: 6px;"></i>
+                            <div style="font-size: 13px; font-weight: 700; color: #064e3b;">4. Doorstep Delivered</div>
+                            <div style="font-size: 11px; color: #64748b;">Instant Payout Release</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-sidebar" style="grid-template-columns: 1.4fr 0.9fr; gap: 30px; align-items: start;">
+                    <!-- Invoice Table -->
+                    <div class="card" style="padding: 30px;">
+                        <h3 style="font-size: 18px; font-weight: 800; color: #064e3b; margin-bottom: 16px;">Produce Line Items</h3>
+                        <div class="table-responsive" style="margin-bottom: 20px;">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Produce Details</th>
+                                        <th>Quantity</th>
+                                        <th>Farmgate Rate</th>
+                                        <th>Line Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${itemsRows}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div style="background: #f8fafc; border-radius: 12px; padding: 20px; border: 1px solid var(--border);">
+                            <div style="display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 8px;">
+                                <span style="color: #64748b;">Produce Subtotal:</span>
+                                <strong>₹${order.total}</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 8px;">
+                                <span style="color: #64748b;">Cold-Chain Express Delivery:</span>
+                                <span style="color: #059669; font-weight: 700;">FREE</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; font-size: 18px; font-weight: 800; color: #064e3b; border-top: 1px solid #cbd5e1; padding-top: 10px;">
+                                <span>Total Paid (Escrow Protected):</span>
+                                <span>₹${order.total}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Destination & Logistics -->
+                    <div>
+                        <div class="card" style="padding: 25px; margin-bottom: 20px;">
+                            <h4 style="font-size: 16px; font-weight: 800; color: #064e3b; margin-bottom: 12px;">Delivery Destination</h4>
+                            <p style="font-size: 14px; color: #475569; line-height: 1.6; margin-bottom: 12px;">
+                                <strong>${order.customer || order.buyerName || 'FarmDirect Verified Buyer'}</strong><br>
+                                ${order.address || 'Direct Delivery Address, Tamil Nadu'}
+                            </p>
+                            <div style="font-size: 13px; color: #059669; font-weight: 700;">
+                                <i class="fas fa-shield-alt"></i> Verification OTP: <span style="background: #dcfce7; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-size: 15px;">8492</span>
+                            </div>
+                            ${(!order.status.includes('Delivered') && !order.status.includes('Transit') && !order.status.includes('Cancelled')) ? `
+                                <div style="margin-top: 15px; padding-top: 12px; border-top: 1px solid #f1f5f9;">
+                                    <button type="button" onclick="cancelCurrentOrder('${order.id}')" class="btn btn-outline btn-block btn-sm" style="border: 1.5px solid #fca5a5; color: #dc2626; font-weight: 700; background: #fff;">
+                                        <i class="fas fa-times-circle"></i> Cancel Order (ரத்து செய்)
+                                    </button>
+                                </div>
+                            ` : ''}
+                        </div>
+
+                        <div class="card" style="padding: 25px; background: #064e3b; color: white;">
+                            <h4 style="font-size: 16px; font-weight: 800; margin-bottom: 10px; color: white;">Need Live Telemetry?</h4>
+                            <p style="font-size: 13px; color: #cbd5e1; margin-bottom: 16px;">
+                                Track vehicle GPS location, real-time refrigeration temperature (3.8°C), and driver contact.
+                            </p>
+                            <a href="live-tracking.html?order=${order.id}" class="btn btn-accent btn-block btn-sm">
+                                <i class="fas fa-satellite-dish"></i> Open Live Cold-Chain Tracker
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            }
+
+            window.cancelCurrentOrder = async function(orderId) {
+                if (!confirm('Are you sure you want to cancel this order? The produce will be returned to farmer stock.')) return;
+                try {
+                    const res = await fetch(`${FarmDirect.API_BASE}/orders/${encodeURIComponent(orderId)}/cancel`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' }
+                    });
+                    const data = await res.json();
+                    if (res.ok) {
+                        FarmDirect.showToast('Order cancelled successfully. Produce stock restored to farmer.', 'success');
+                        const orders = FarmDirect.getOrders();
+                        const idx = orders.findIndex(o => o.id === orderId);
+                        if (idx > -1) {
+                            orders[idx].status = 'Cancelled & Escrow Refunded';
+                            orders[idx].statusStep = 0;
+                        }
+                        renderOrderDetails();
+                    } else {
+                        FarmDirect.showToast(data.error || 'Could not cancel order.', 'error');
+                    }
+                } catch (e) {
+                    FarmDirect.showToast('Network error while cancelling order.', 'error');
+                }
+            };
+
+            renderOrderDetails();
+            window.addEventListener('fd_data_synced', renderOrderDetails);
+        });
+    </script>
+</body>
+</html>

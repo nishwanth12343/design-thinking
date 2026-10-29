@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#10b981">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FarmDirect">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <title>My Products & Stock (என் விளைபொருட்கள்) | FarmDirect</title>
+    <!-- Immediate Authentication Guard: Require sign in before viewing website details -->
+    <script src="js/auth-guard.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Simple, Welcoming Navigation with Everyday Language -->
+    <nav class="fd-nav">
+        <div class="container fd-nav-inner">
+            <a href="index.html" class="fd-brand">
+                <span>🌱 FarmDirect</span>
+                <span class="fd-brand-badge">My Products</span>
+            </a>
+
+            <ul class="fd-nav-links">
+                <li class="fd-nav-item"><a href="index.html"><i class="fas fa-home"></i> Home <span class="tamil-subtext">முகப்பு</span></a></li>
+                <li class="fd-nav-item"><a href="marketplace.html"><i class="fas fa-store"></i> Buy & Sell <span class="tamil-subtext">சந்தை</span></a></li>
+                <li class="fd-nav-item"><a href="farmer-dashboard.html"><i class="fas fa-tractor"></i> Farmer Home <span class="tamil-subtext">என் முகப்பு</span></a></li>
+                <li class="fd-nav-item"><a href="add-product.html"><i class="fas fa-plus-circle"></i> Sell Your Products <span class="tamil-subtext">விளைபொருளை விற்க</span></a></li>
+                <li class="fd-nav-item"><a href="inventory.html" class="active"><i class="fas fa-boxes"></i> My Products <span class="tamil-subtext">என் பொருட்கள்</span></a></li>
+                <li class="fd-nav-item"><a href="farmer-orders.html"><i class="fas fa-clipboard-list"></i> Buyer Orders <span class="tamil-subtext">ஆர்டர்கள்</span></a></li>
+                <li class="fd-nav-item"><a href="logistics.html"><i class="fas fa-truck-moving"></i> Transport Help <span class="tamil-subtext">போக்குவரத்து</span></a></li>
+            </ul>
+
+            <div class="fd-nav-actions">
+                <a href="add-product.html" class="btn-farmer btn-farmer-primary" style="padding: 7px 15px; font-size: 13px;">
+                    <i class="fas fa-plus"></i> Sell Another Crop
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <a href="farmer-dashboard.html">Farmer Home</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <span>My Products (என் விளைபொருட்கள்)</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                <div>
+                    <h1 class="page-hero-title">My Products (என் விளைபொருட்கள்) 📦</h1>
+                    <p class="page-hero-subtitle">
+                        View all your crops listed for sale. You can change your price, update stock, or remove crops anytime with 1 click.
+                    </p>
+                </div>
+                <div>
+                    <a href="add-product.html" class="btn-farmer btn-farmer-primary">
+                        <i class="fas fa-plus-circle"></i> + Sell New Crop (பொருளை சேர்க்க)
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Clear Section Tabs for Farmers -->
+    <div class="container">
+        <div class="fd-tabs">
+            <a href="farmer-dashboard.html" class="fd-tab-btn"><i class="fas fa-tachometer-alt"></i> My Home (முகப்பு)</a>
+            <a href="add-product.html" class="fd-tab-btn"><i class="fas fa-plus-circle"></i> Sell Your Products (விளைபொருளை சேர்க்க)</a>
+            <a href="inventory.html" class="fd-tab-btn active"><i class="fas fa-boxes"></i> My Products (என் விளைபொருட்கள்)</a>
+            <a href="farmer-orders.html" class="fd-tab-btn"><i class="fas fa-clipboard-list"></i> Buyer Orders (வாங்குபவர் ஆர்டர்கள்)</a>
+            <a href="farmer-earnings.html" class="fd-tab-btn"><i class="fas fa-wallet"></i> My Sales & Money (என் வருமானம்)</a>
+            <a href="logistics.html" class="fd-tab-btn"><i class="fas fa-truck-moving"></i> Transport Help (போக்குவரத்து உதவி)</a>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- 4 Simple Clear Status Cards -->
+            <div class="grid-4" style="margin-bottom: 30px;">
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-green"><i class="fas fa-seedling"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-label">Crops Listed (மொத்த பயிர்கள்)</div>
+                        <div class="stat-value" id="totalCropsCount" style="color: #059669;">4</div>
+                        <div class="stat-trend up"><i class="fas fa-check"></i> Live on Marketplace</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-blue"><i class="fas fa-boxes"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-label">Total Stock Available (இருப்பு)</div>
+                        <div class="stat-value" id="totalStockValue">6,700 kg</div>
+                        <div style="font-size: 12px; color: #64748b; margin-top: 4px;">Ready for immediate sale</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-amber"><i class="fas fa-truck-loading"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-label">Ready for Pickup (ஏற்றுமதிக்கு தயார்)</div>
+                        <div class="stat-value" style="color: #d97706;">All Batches</div>
+                        <div style="font-size: 12px; color: #d97706; font-weight: 700; margin-top: 4px;">Transport Available</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-purple"><i class="fas fa-shield-alt"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-label">Middlemen Fee (தரகர் கட்டணம்)</div>
+                        <div class="stat-value" style="color: #7e22ce;">₹0</div>
+                        <div style="font-size: 12px; color: #059669; font-weight: 700; margin-top: 4px;">100% Direct Sale</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Table with Simple Edit and Delete Buttons -->
+            <div class="card" style="padding: 30px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+                    <div>
+                        <h3 style="font-size: 19px; font-weight: 800; color: #064e3b; margin: 0;">
+                            <i class="fas fa-clipboard-list text-success"></i> My Listed Produce (விற்பனை பட்டியல்)
+                        </h3>
+                        <p style="font-size: 13px; color: #64748b; margin: 4px 0 0 0;">
+                            Click <strong>"Edit"</strong> to change price or quantity. Click <strong>"Remove"</strong> to stop selling any item.
+                        </p>
+                    </div>
+                    <a href="add-product.html" class="btn-farmer btn-farmer-primary" style="padding: 9px 18px; font-size: 14px;">
+                        <i class="fas fa-plus"></i> Sell Another Crop
+                    </a>
+                </div>
+
+                <div class="table-scroll-hint">
+                    <i class="fas fa-arrows-alt-h"></i> Swipe horizontally on mobile to view details and action buttons
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Crop (விளைபொருள்)</th>
+                                <th>Category (வகை)</th>
+                                <th>Your Selling Price (விலை)</th>
+                                <th>Stock Remaining (இருப்பு)</th>
+                                <th>District (மாவட்டம்)</th>
+                                <th style="text-align: right;">Actions (செயல்கள்)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inventoryTableBody">
+                            <!-- Populated dynamically via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="fd-footer">
+        <div class="container">
+            <div class="fd-footer-bottom" style="border:none; padding:10px 0;">
+                <p style="margin:0; font-size: 13px; color: #94a3b8;">
+                    🌱 FarmDirect • Direct Farmer to Buyer Platform • Tamil Nadu
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        function renderFarmerInventory() {
+            const products = FarmDirect.getProducts();
+            const tbody = document.getElementById('inventoryTableBody');
+            const totalCropsElem = document.getElementById('totalCropsCount');
+            const totalStockElem = document.getElementById('totalStockValue');
+
+            if (totalCropsElem) totalCropsElem.textContent = products.length;
+
+            let totalStockSum = 0;
+            products.forEach(p => {
+                totalStockSum += (Number(p.stock) || 0);
+            });
+            if (totalStockElem) totalStockElem.textContent = `${totalStockSum.toLocaleString('en-IN')} units`;
+
+            if (tbody) {
+                if (products.length === 0) {
+                    tbody.innerHTML = `
+                        <tr>
+                            <td colspan="6" style="text-align:center; padding: 40px; color: #64748b;">
+                                <i class="fas fa-seedling" style="font-size: 36px; color: #16a34a; margin-bottom: 10px; display:block;"></i>
+                                <h4 style="color:#0f172a; margin-bottom: 6px;">You haven't listed any crops yet</h4>
+                                <p style="font-size: 14px; margin-bottom: 16px;">List your harvested crops so buyers can see and order directly from you.</p>
+                                <a href="add-product.html" class="btn-farmer btn-farmer-primary">+ Sell Your First Crop</a>
+                            </td>
+                        </tr>
+                    `;
+                    return;
+                }
+
+                tbody.innerHTML = products.map(p => `
+                    <tr>
+                        <td>
+                            <strong style="font-size: 15px; color: #0f172a;">${p.name}</strong>
+                            ${p.tamilName ? `<br><span style="font-size:12.5px; color:#15803d; font-weight:600;">${p.tamilName}</span>` : ''}
+                            <div style="font-size:11.5px; color:#64748b;">Lot #${p.id}</div>
+                        </td>
+                        <td><span class="badge badge-purple">${p.category || 'Produce'}</span></td>
+                        <td><strong style="color: #059669; font-size: 16px;">₹${p.price}</strong> /${p.unit || 'kg'}</td>
+                        <td><strong>${p.stock}</strong> ${p.unit || 'kg'}s</td>
+                        <td><span class="badge badge-success">${p.district || 'Tamil Nadu'}</span></td>
+                        <td style="text-align: right; white-space: nowrap;">
+                            <div style="display:inline-flex; gap:6px;">
+                                <a href="product-details.html?id=${p.id}" class="btn-farmer btn-farmer-outline" style="padding: 6px 12px; font-size: 13px;" title="View on Marketplace">
+                                    <i class="fas fa-eye"></i> View
+                                </a>
+                                <button class="btn-farmer-edit" onclick="FarmDirect.showEditProductModal('${p.id}')" title="Edit Price or Details">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                                <button class="btn-farmer-remove" onclick="FarmDirect.confirmDeleteProduct('${p.id}')" title="Remove Crop">
+                                    <i class="fas fa-trash-alt"></i> Remove
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `).join('');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            renderFarmerInventory();
+
+            // Refresh table whenever products are added, edited, or removed
+            window.addEventListener('fd-products-updated', renderFarmerInventory);
+            window.addEventListener('fd_products_updated', renderFarmerInventory);
+            window.addEventListener('fd_data_synced', renderFarmerInventory);
+        });
+    </script>
+</body>
+</html>

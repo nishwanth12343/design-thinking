@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#10b981">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FarmDirect">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <title>Restricted District Nodal Admin Gateway | FarmDirect Tamil Nadu</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: radial-gradient(circle at top right, #064e3b 0%, #0f172a 60%, #020617 100%);
+            min-height: 100vh;
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .admin-glass-card {
+            background: rgba(15, 23, 42, 0.92);
+            backdrop-filter: blur(24px);
+            border: 1.5px solid rgba(16, 185, 129, 0.35);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 35px rgba(16, 185, 129, 0.2);
+            border-radius: 24px;
+            padding: 36px;
+            position: relative;
+            z-index: 100;
+        }
+        .security-badge-pulse {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid #10b981;
+            color: #34d399;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .admin-input {
+            background: rgba(30, 41, 59, 0.92) !important;
+            border: 1.5px solid #334155 !important;
+            color: #ffffff !important;
+            border-radius: 12px !important;
+            padding: 13px 16px !important;
+            font-size: 14px !important;
+            transition: all 0.2s ease !important;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .admin-input:focus {
+            border-color: #10b981 !important;
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.25) !important;
+            outline: none !important;
+        }
+        .profile-grid-box {
+            background: rgba(15, 23, 42, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            padding: 14px;
+        }
+        .stat-badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 6px;
+            background: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+        }
+        /* Custom styled native select */
+        select.admin-district-select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg fill='%2310b981' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>") !important;
+            background-repeat: no-repeat !important;
+            background-position: right 14px center !important;
+            background-size: 20px !important;
+            padding-right: 44px !important;
+            cursor: pointer;
+        }
+        select.admin-district-select option {
+            background: #0f172a;
+            color: #ffffff;
+            padding: 12px 14px;
+            font-size: 14px;
+        }
+        /* Custom smooth scrollbar */
+        #quickDistrictButtonsGrid::-webkit-scrollbar {
+            width: 6px;
+        }
+        #quickDistrictButtonsGrid::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 4px;
+        }
+        #quickDistrictButtonsGrid::-webkit-scrollbar-thumb {
+            background: #10b981;
+            border-radius: 4px;
+        }
+        @media (max-width: 768px) {
+            .admin-glass-card {
+                padding: 20px 16px;
+                border-radius: 18px;
+            }
+            .header-nav-wrap {
+                flex-direction: column;
+                gap: 12px;
+                align-items: flex-start !important;
+            }
+            .showcase-grid-two-col {
+                grid-template-columns: 1fr !important;
+            }
+            .admin-login-form-row {
+                flex-direction: column !important;
+            }
+            .admin-login-form-btn-col {
+                width: 100% !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Restricted Admin Header -->
+    <header style="padding: 18px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08);" class="header-nav-wrap">
+        <div class="fd-brand" style="color: white; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+            <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 20px; font-weight: 800;">🌱 FarmDirect TN</span>
+            </a>
+            <span class="security-badge-pulse" style="font-size: 11px;"><i class="fas fa-shield-alt"></i> Restricted District Admin Gateway</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+            <a href="farmer-dashboard.html" class="btn btn-sm btn-secondary" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #86efac; font-weight: 600; padding: 6px 10px; border-radius: 8px; text-decoration: none; font-size: 11.5px;">
+                <i class="fas fa-tractor"></i> Farmer
+            </a>
+            <a href="consumer-dashboard.html" class="btn btn-sm btn-secondary" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #7dd3fc; font-weight: 600; padding: 6px 10px; border-radius: 8px; text-decoration: none; font-size: 11.5px;">
+                <i class="fas fa-shopping-basket"></i> Consumer
+            </a>
+            <a href="bulk-buyers.html" class="btn btn-sm btn-secondary" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fde047; font-weight: 600; padding: 6px 10px; border-radius: 8px; text-decoration: none; font-size: 11.5px;">
+                <i class="fas fa-building"></i> Buyer
+            </a>
+            <a href="delivery-management.html" class="btn btn-sm btn-secondary" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #d8b4fe; font-weight: 600; padding: 6px 10px; border-radius: 8px; text-decoration: none; font-size: 11.5px;">
+                <i class="fas fa-truck"></i> Logistics
+            </a>
+            <a href="login.html" class="btn btn-sm btn-secondary" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #f8fafc; font-weight: 600; padding: 6px 12px; border-radius: 8px; text-decoration: none; font-size: 12px;">
+                <i class="fas fa-sign-in-alt"></i> Login Hub
+            </a>
+        </div>
+    </header>
+
+    <div class="container" style="max-width: 960px; margin: auto; padding: 25px 16px 60px; position: relative; z-index: 100;">
+        
+        <div class="admin-glass-card">
+            <!-- Header Identity Banner -->
+            <div style="text-align: center; margin-bottom: 24px;">
+                <div style="width: 60px; height: 60px; margin: 0 auto 12px; border-radius: 50%; background: linear-gradient(135deg, #10b981, #047857); display: grid; place-items: center; box-shadow: 0 0 25px rgba(16, 185, 129, 0.5);">
+                    <i class="fas fa-user-shield" style="font-size: 26px; color: white;"></i>
+                </div>
+                <div class="security-badge-pulse" style="margin-bottom: 6px;">
+                    <i class="fas fa-certificate"></i> Government of Tamil Nadu • Agriculture & Mandi Nodal Command
+                </div>
+                <h1 style="font-size: 23px; font-weight: 800; color: #ffffff; margin: 6px 0 4px;">District Administrator Authentication</h1>
+                <p style="font-size: 13.5px; color: #94a3b8; margin: 0;">Each Tamil Nadu district is governed by strictly one official nodal administrator. Select your district to inspect its official admin and territory profile.</p>
+            </div>
+
+            <!-- District Selection Interactive Bar (100% Directly Visible, Highly Accessible & Responsive) -->
+            <div id="districtSelectorContainer" style="background: rgba(30, 41, 59, 0.98); border: 2px solid #10b981; border-radius: 18px; padding: 20px 22px; margin-bottom: 24px; box-shadow: 0 14px 35px rgba(0,0,0,0.6), 0 0 25px rgba(16, 185, 129, 0.25);">
+                <label style="display: flex; justify-content: space-between; align-items: center; font-size: 13.5px; font-weight: 800; color: #e2e8f0; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; flex-wrap: wrap; gap: 8px;">
+                    <span><i class="fas fa-map-marker-alt text-success"></i> Select Tamil Nadu District Jurisdiction (மாவட்டம்)</span>
+                    <span style="background: rgba(16, 185, 129, 0.2); color: #34d399; font-size: 11px; padding: 4px 10px; border-radius: 6px; border: 1px solid #10b981;"><i class="fas fa-check-circle"></i> 38 Districts Covered</span>
+                </label>
+
+                <!-- Search Input for Rapid Filtering -->
+                <div style="margin-bottom: 12px; position: relative;">
+                    <i class="fas fa-search" style="position: absolute; left: 14px; top: 13px; color: #10b981; font-size: 14px;"></i>
+                    <input type="text" id="districtSearchFilterInput" oninput="filterDistrictOptions(this.value)" placeholder="🔍 Type to filter 38 districts (e.g. Erode, Thanjavur, Chennai, Salem, Madurai)..." style="width: 100%; padding: 11px 14px 11px 38px; background: rgba(15, 23, 42, 0.95); border: 1.5px solid #334155; border-radius: 10px; color: #ffffff; font-size: 13.5px; font-weight: 600; outline: none; transition: border-color 0.2s ease; box-sizing: border-box;">
+                </div>
+
+                <!-- Prominent, Always Visible District Select Dropdown -->
+                <div style="margin-bottom: 12px;">
+                    <select id="adminDistrict" class="admin-input admin-district-select" onchange="onDistrictSelected(this.value)" style="font-size: 15px; font-weight: 800; padding: 13px 16px; border: 2px solid #10b981 !important; background-color: #0b1329 !important; color: #ffffff !important; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.4);">
+                        <option value="Erode" selected>Erode (ஈரோடு) • Passcode: TN-ERD-2026 • Semmampalayam Turmeric Complex</option>
+                        <option value="Chennai">Chennai (சென்னை) • Passcode: TN-CHE-2026 • Koyambedu Mega Hub</option>
+                        <option value="Coimbatore">Coimbatore (கோயம்புத்தூர்) • Passcode: TN-COI-2026 • Pollachi Road Cold Hub</option>
+                        <option value="Madurai">Madurai (மதுரை) • Passcode: TN-MAD-2026 • Mattuthavani Agro Terminal</option>
+                        <option value="Salem">Salem (சேலம்) • Passcode: TN-SAL-2026 • Omalur Agro-Logistics Center</option>
+                        <option value="Thanjavur">Thanjavur (தஞ்சாவூர்) • Passcode: TN-THA-2026 • Kumbakonam Delta Paddy Depot</option>
+                        <option value="Dindigul">Dindigul (திண்டுக்கல்) • Passcode: TN-DIN-2026 • Dindigul Storage Vault</option>
+                        <option value="Theni">Theni (தேனி) • Passcode: TN-THE-2026 • Cumbum Valley Pre-Cooling Cell</option>
+                        <option value="Nilgiris">Nilgiris (நீலகிரி) • Passcode: TN-NIL-2026 • Ooty Hill Harvest Bay</option>
+                        <option value="Tirunelveli">Tirunelveli (திருநெல்வேலி) • Passcode: TN-TIR-2026 • Gangaikondan Mega Food Park</option>
+                        <option value="Tiruchirappalli">Tiruchirappalli (திருச்சிராப்பள்ளி) • Passcode: TN-TIR-2026 • Trichy Gandhi Market Vault</option>
+                        <option value="Dharmapuri">Dharmapuri (தர்மபுரி) • Passcode: TN-DHA-2026 • Dharmapuri Tomato Hub</option>
+                        <option value="Krishnagiri">Krishnagiri (கிருஷ்ணகிரி) • Passcode: TN-KRI-2026 • Rayakottai Integrated Cold Hub</option>
+                        <option value="Ramanathapuram">Ramanathapuram (ராமநாதபுரம்) • Passcode: TN-RAM-2026 • Paramakudi Spice Bay</option>
+                        <option value="Namakkal">Namakkal (நாமக்கல்) • Passcode: TN-NAM-2026 • Namakkal Feed & Agro Depot</option>
+                        <option value="Tiruppur">Tiruppur (திருப்பூர்) • Passcode: TN-TIR-2026 • Kangeyam Oilseed Terminal</option>
+                        <option value="Kanchipuram">Kanchipuram (காஞ்சிபுரம்) • Passcode: TN-KAN-2026 • Kanchipuram Agronomy Hub</option>
+                        <option value="Chengalpattu">Chengalpattu (செங்கல்பட்டு) • Passcode: TN-CHE-2026 • Chengalpattu Rural Cold Hub</option>
+                        <option value="Cuddalore">Cuddalore (கடலூர்) • Passcode: TN-CUD-2026 • Panruti Jackfruit & Cashew Depot</option>
+                        <option value="Villupuram">Villupuram (விழுப்புரம்) • Passcode: TN-VIL-2026 • Villupuram Oilseed Terminal</option>
+                        <option value="Kallakurichi">Kallakurichi (கள்ளக்குறிச்சி) • Passcode: TN-KAL-2026 • Kallakurichi Agro Depot</option>
+                        <option value="Vellore">Vellore (வேலூர்) • Passcode: TN-VEL-2026 • Vellore Golden Mandi Vault</option>
+                        <option value="Tirupathur">Tirupathur (திருப்பத்தூர்) • Passcode: TN-TIR-2026 • Tirupathur Agro Hub</option>
+                        <option value="Ranipet">Ranipet (ராணிப்பேட்டை) • Passcode: TN-RAN-2026 • Ranipet Agronomy Bay</option>
+                        <option value="Tiruvallur">Tiruvallur (திருவள்ளூர்) • Passcode: TN-TIR-2026 • Tiruvallur Perishable Terminal</option>
+                        <option value="Tiruvarur">Tiruvarur (திருவாரூர்) • Passcode: TN-TIR-2026 • Mannargudi Grain Storage Silo</option>
+                        <option value="Nagapattinam">Nagapattinam (நாகப்பட்டினம்) • Passcode: TN-NAG-2026 • Nagapattinam Delta Warehouse</option>
+                        <option value="Mayiladuthurai">Mayiladuthurai (மயிலாடுதுறை) • Passcode: TN-MAY-2026 • Mayiladuthurai Grain Vault</option>
+                        <option value="Pudukkottai">Pudukkottai (புதுக்கோட்டை) • Passcode: TN-PUD-2026 • Pudukkottai Oilseed Center</option>
+                        <option value="Sivaganga">Sivaganga (சிவகங்கை) • Passcode: TN-SIV-2026 • Karaikudi Agronomy Hub</option>
+                        <option value="Virudhunagar">Virudhunagar (விருதுநகர்) • Passcode: TN-VIR-2026 • Virudhunagar Commodity Market</option>
+                        <option value="Thoothukudi">Thoothukudi (தூத்துக்குடி) • Passcode: TN-THO-2026 • Tuticorin Maritime Cold Depot</option>
+                        <option value="Tenkasi">Tenkasi (தென்காசி) • Passcode: TN-TEN-2026 • Tenkasi Foothills Cold Hub</option>
+                        <option value="Kanyakumari">Kanyakumari (கன்னியாகுமரி) • Passcode: TN-KAN-2026 • Nagercoil Spice & Fruit Hub</option>
+                        <option value="Karur">Karur (கரூர்) • Passcode: TN-KAR-2026 • Aravakurichi Moringa Terminal</option>
+                        <option value="Ariyalur">Ariyalur (அரியலூர்) • Passcode: TN-ARI-2026 • Ariyalur Dryland Depot</option>
+                        <option value="Perambalur">Perambalur (பெரம்பலூர்) • Passcode: TN-PER-2026 • Perambalur Shallot Cold Vault</option>
+                        <option value="Tiruvannamalai">Tiruvannamalai (திருவண்ணாமலை) • Passcode: TN-TIR-2026 • Arni Rice Mill & Mandi Terminal</option>
+                    </select>
+                </div>
+
+                <!-- Active Selection Live Indicator -->
+                <div style="background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 10px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; flex-wrap: wrap; gap: 8px;">
+                    <div>
+                        <span style="color: #94a3b8;">Selected Jurisdiction:</span>
+                        <strong id="activeSelectedDistrictLabel" style="color: #34d399; margin-left: 6px;">Erode (ஈரோடு)</strong>
+                    </div>
+                    <div>
+                        <span style="color: #94a3b8;">Nodal Security Code:</span>
+                        <code id="activeSelectedPasscodeLabel" style="color: #fde047; font-weight: 800; background: rgba(0,0,0,0.4); padding: 2px 8px; border-radius: 4px; margin-left: 6px;">TN-ERD-2026</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Two-Column Showcase: Detail of the Admin Alone & Detail of that Whole District -->
+            <div class="showcase-grid-two-col" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-bottom: 25px;">
+                
+                <!-- 1. Detail of the District Admin Alone -->
+                <div style="background: linear-gradient(180deg, rgba(6, 78, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%); border: 1.5px solid rgba(16, 185, 129, 0.4); border-radius: 18px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.3);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+                        <span class="stat-badge"><i class="fas fa-id-card"></i> Official Nodal Admin Identity</span>
+                        <span style="font-size: 11px; color: #6ee7b7; font-weight: 700;">STRICT 1-ADMIN POLICY</span>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 16px;">
+                        <div style="width: 50px; height: 50px; border-radius: 50%; background: #10b981; display: grid; place-items: center; font-size: 22px; color: white; flex-shrink: 0;">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div>
+                            <div style="font-size: 11px; color: #94a3b8; font-weight: 700; text-transform: uppercase;">Designated Nodal Administrator</div>
+                            <h3 id="adminNameDisplay" style="font-size: 16.5px; font-weight: 800; color: #ffffff; margin: 2px 0;">Thiru. M. Selvam (Joint Director)</h3>
+                            <div id="adminJurisdictionDisplay" style="font-size: 12px; color: #6ee7b7; font-weight: 600;">Erode District Agriculture & Mandi Nodal Command</div>
+                        </div>
+                    </div>
+
+                    <div style="background: rgba(0,0,0,0.3); padding: 10px 12px; border-radius: 10px; margin-bottom: 10px; font-size: 12px;">
+                        <div style="color: #94a3b8; font-size: 10.5px; font-weight: 700; text-transform: uppercase;">Official Government Complex:</div>
+                        <div id="adminOfficeDisplay" style="color: #e2e8f0; font-weight: 600; margin-top: 2px;">Office of the Joint Director of Agriculture, Collectorate Master Complex, Erode - 638011</div>
+                        <div style="margin-top: 6px;">
+                            <button type="button" onclick="FarmDirect.showDistrictOfficeModal(selectedDistrictName)" class="btn btn-xs btn-ai" style="padding: 3px 10px; font-size: 11px; font-weight: 700;">
+                                <i class="fas fa-map-marked-alt"></i> View Office & GPS Directions
+                            </button>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 9px; font-size: 13px;">
+                        <div style="display: flex; justify-content: space-between; background: rgba(0,0,0,0.3); padding: 9px 12px; border-radius: 8px;">
+                            <span style="color: #94a3b8;"><i class="fas fa-id-badge text-primary"></i> Official Badge ID:</span>
+                            <strong id="adminBadgeDisplay" style="color: #34d399; font-family: monospace; font-size: 13.5px;">TN-NODAL-ERD-01</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; background: rgba(0,0,0,0.3); padding: 9px 12px; border-radius: 8px;">
+                            <span style="color: #94a3b8;"><i class="fas fa-envelope text-success"></i> Official Email:</span>
+                            <span id="adminEmailDisplay" style="color: #f8fafc; font-weight: 600; font-size: 12px;">admin.erode@farmdirect.tn.gov.in</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; background: rgba(0,0,0,0.3); padding: 9px 12px; border-radius: 8px;">
+                            <span style="color: #94a3b8;"><i class="fas fa-phone-alt text-warning"></i> Nodal Hotline:</span>
+                            <span id="adminPhoneDisplay" style="color: #f8fafc; font-weight: 600;">+91 94440 ERD</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; background: rgba(0,0,0,0.3); padding: 9px 12px; border-radius: 8px;">
+                            <span style="color: #94a3b8;"><i class="fas fa-key text-warning"></i> Assigned Passcode:</span>
+                            <strong id="adminPasscodeDisplay" style="color: #fde047; font-family: monospace; font-size: 13.5px;">TN-ERD-2026</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Detail of that Whole District -->
+                <div style="background: rgba(15, 23, 42, 0.85); border: 1.5px solid rgba(59, 130, 246, 0.4); border-radius: 18px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.3);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+                        <span class="stat-badge" style="background: rgba(59, 130, 246, 0.2); color: #60a5fa;"><i class="fas fa-map-marked-alt"></i> Whole District Agronomy Profile</span>
+                        <span id="districtTamilNameDisplay" style="font-size: 14px; color: #93c5fd; font-weight: 800;">ஈரோடு மாவட்டம்</span>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px;">
+                        <div class="profile-grid-box">
+                            <div style="font-size: 10.5px; color: #94a3b8; font-weight: 700; text-transform: uppercase;">Central Storage Hub & Mandi Terminal</div>
+                            <div id="districtHubDisplay" style="font-size: 13px; font-weight: 800; color: #ffffff; margin-top: 2px;">Semmampalayam Turmeric Complex & Mandi Vault</div>
+                        </div>
+
+                        <div class="profile-grid-box">
+                            <div style="font-size: 10.5px; color: #94a3b8; font-weight: 700; text-transform: uppercase;">Core Regional Farm Harvests & GI Heritage</div>
+                            <div id="districtCropsDisplay" style="font-size: 13px; font-weight: 800; color: #34d399; margin-top: 2px;">GI Erode Turmeric (மஞ்சள்), Sugarcane, Tapioca</div>
+                        </div>
+
+                        <div class="profile-grid-box">
+                            <div style="font-size: 10.5px; color: #94a3b8; font-weight: 700; text-transform: uppercase;">Primary Logistics Highway & Reefer Corridor</div>
+                            <div id="districtHighwayDisplay" style="font-size: 12.5px; font-weight: 700; color: #c084fc; margin-top: 2px;">NH544 / NH44 Kongu Highway Link</div>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;">
+                            <div style="background: rgba(0,0,0,0.3); padding: 8px 4px; border-radius: 8px; text-align: center;">
+                                <div style="font-size: 10px; color: #94a3b8;">Farmers</div>
+                                <div id="districtFarmersDisplay" style="font-size: 12.5px; font-weight: 800; color: #ffffff;">1,420</div>
+                            </div>
+                            <div style="background: rgba(0,0,0,0.3); padding: 8px 4px; border-radius: 8px; text-align: center;">
+                                <div style="font-size: 10px; color: #94a3b8;">Cold Vault</div>
+                                <div id="districtColdDisplay" style="font-size: 12.5px; font-weight: 800; color: #38bdf8;">1,200 MT</div>
+                            </div>
+                            <div style="background: rgba(0,0,0,0.3); padding: 8px 4px; border-radius: 8px; text-align: center;">
+                                <div style="font-size: 10px; color: #94a3b8;">GMV</div>
+                                <div id="districtGmvDisplay" style="font-size: 12.5px; font-weight: 800; color: #4ade80;">₹48.2 L</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Admin Auth Mode Selector (Login vs Register) -->
+            <div style="display: flex; justify-content: center; gap: 12px; margin-bottom: 22px; flex-wrap: wrap;">
+                <button type="button" id="tabBtnAdminLogin" onclick="switchAdminAuthMode('login')" style="flex: 1; max-width: 320px; padding: 12px 20px; border-radius: 12px; font-weight: 800; font-size: 14px; border: 1.5px solid #10b981; background: #10b981; color: #ffffff; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35); transition: all 0.2s ease;">
+                    <i class="fas fa-lock"></i> 1. Official Admin Login (உள்நுழைவு)
+                </button>
+                <button type="button" id="tabBtnAdminRegister" onclick="switchAdminAuthMode('register')" style="flex: 1; max-width: 320px; padding: 12px 20px; border-radius: 12px; font-weight: 800; font-size: 14px; border: 1.5px solid #334155; background: rgba(30, 41, 59, 0.8); color: #94a3b8; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s ease;">
+                    <i class="fas fa-user-plus"></i> 2. Admin Register & Accredit (பதிவு)
+                </button>
+            </div>
+
+            <!-- 1. Dedicated Admin Login Form -->
+            <form id="adminSecureLoginForm" onsubmit="handleAdminLoginSubmit(event)" style="background: rgba(15, 23, 42, 0.85); border: 1.5px solid rgba(16, 185, 129, 0.4); border-radius: 18px; padding: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.4);">
+                <div style="margin-bottom: 16px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                        <label style="font-size: 12.5px; font-weight: 700; color: #e2e8f0;">
+                            <i class="fas fa-user-shield text-success"></i> Designated Administrator Name (அதிகாரி பெயர்)
+                        </label>
+                        <span style="font-size: 11px; color: #34d399;"><i class="fas fa-check-circle"></i> Official Credential</span>
+                    </div>
+                    <input type="text" id="adminLoginNameInput" class="admin-input" placeholder="e.g. M. Selvam or your name" value="Thiru. M. Selvam (Joint Director)" required>
+                    <div style="font-size: 11.5px; color: #94a3b8; margin-top: 4px;">
+                        This exact name will be prominently displayed as the official administrator in the Command Tower.
+                    </div>
+                </div>
+
+                <div class="admin-login-form-row" style="display: flex; gap: 15px; align-items: flex-end; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 240px;">
+                        <label style="display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; font-weight: 700; color: #e2e8f0; margin-bottom: 8px; flex-wrap: wrap; gap: 4px;">
+                            <span><i class="fas fa-key text-success"></i> District Official Security Passcode / Password</span>
+                            <span id="activeDistrictBadgeLabel" style="color: #34d399; font-weight: 700;">Erode Nodal Code</span>
+                        </label>
+                        <div style="display: flex; gap: 8px;">
+                            <input type="password" id="adminSecurityCodeInput" class="admin-input" required value="TN-ERD-2026" style="flex: 1; font-size: 15px; font-weight: 800; letter-spacing: 1.5px; text-align: center; color: #34d399 !important; border-color: #10b981 !important;">
+                            <button type="button" onclick="togglePasscodeVisibility('adminSecurityCodeInput')" class="btn btn-sm" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); color: #e2e8f0; padding: 0 12px; border-radius: 10px; cursor: pointer;" title="Toggle show/hide">
+                                <i class="fas fa-eye" id="togglePassEyeIcon"></i>
+                            </button>
+                            <button type="button" onclick="fillAdminPasscode()" class="btn btn-sm" style="background: rgba(16, 185, 129, 0.2); border: 1px solid #10b981; color: #34d399; font-weight: 700; padding: 0 14px; border-radius: 10px; cursor: pointer; white-space: nowrap;">
+                                <i class="fas fa-magic"></i> Auto-Fill
+                            </button>
+                        </div>
+                        <div style="margin-top: 8px; font-size: 12px; color: #94a3b8;">
+                            🔑 Official Passcode: <strong id="adminPasscodeTextDisplay" style="color: #fde047; font-family: monospace;">TN-ERD-2026</strong> <span style="margin: 0 6px;">|</span> Universal: <code style="color: #34d399;">password123</code>
+                        </div>
+                    </div>
+                    <div class="admin-login-form-btn-col" style="width: 260px;">
+                        <button type="submit" id="adminSubmitBtn" class="btn btn-primary btn-block" style="padding: 13px; font-size: 14.5px; font-weight: 800; border-radius: 12px; box-shadow: 0 4px 20px rgba(16, 185, 129, 0.45); cursor: pointer; width: 100%;">
+                            <i class="fas fa-door-open"></i> Login to Command Tower
+                        </button>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 13px; flex-wrap: wrap; gap: 10px;">
+                    <a href="javascript:void(0)" onclick="switchAdminAuthMode('register')" style="color: #34d399; font-weight: 700; text-decoration: none;">
+                        <i class="fas fa-user-plus"></i> New Administrator? Accredit / Register Official Profile ➔
+                    </a>
+                    <a href="index.html" style="color: #94a3b8; font-weight: 600; text-decoration: none;">
+                        <i class="fas fa-home"></i> Return to Homepage
+                    </a>
+                </div>
+            </form>
+
+            <!-- 2. Dedicated Admin Registration Form (In Same Portal) -->
+            <form id="adminSecureRegisterForm" onsubmit="handleAdminRegisterSubmit(event)" style="display: none; background: rgba(15, 23, 42, 0.85); border: 1.5px solid rgba(16, 185, 129, 0.4); border-radius: 18px; padding: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.4);">
+                <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px; margin-bottom: 18px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                    <div>
+                        <h3 style="font-size: 16px; font-weight: 800; color: #ffffff; margin: 0 0 2px;"><i class="fas fa-user-shield text-success"></i> Accredit New District Administrator</h3>
+                        <p style="font-size: 12px; color: #94a3b8; margin: 0;">Register your name as the official nodal administrator for this district command.</p>
+                    </div>
+                    <span class="security-badge-pulse" style="font-size: 10.5px;"><i class="fas fa-id-badge"></i> Sovereign Government Accreditation</span>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-bottom: 14px;">
+                    <div>
+                        <label style="font-size: 12px; font-weight: 700; color: #e2e8f0; display: block; margin-bottom: 6px;">
+                            <i class="fas fa-user-tag text-success"></i> Full Officer Name (அதிகாரி முழு பெயர்) *
+                        </label>
+                        <input type="text" id="adminRegNameInput" class="admin-input" placeholder="e.g. Dr. K. Arulmozhi, IAS or your name" required>
+                    </div>
+                    <div>
+                        <label style="font-size: 12px; font-weight: 700; color: #e2e8f0; display: block; margin-bottom: 6px;">
+                            <i class="fas fa-phone-alt text-warning"></i> Official Mobile / Nodal Hotline *
+                        </label>
+                        <input type="tel" id="adminRegPhoneInput" class="admin-input" placeholder="+91 94440 12345" required>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-bottom: 14px;">
+                    <div>
+                        <label style="font-size: 12px; font-weight: 700; color: #e2e8f0; display: block; margin-bottom: 6px;">
+                            <i class="fas fa-envelope text-primary"></i> Official Government / Nodal Email *
+                        </label>
+                        <input type="email" id="adminRegEmailInput" class="admin-input" placeholder="admin.district@farmdirect.tn.gov.in" required>
+                    </div>
+                    <div>
+                        <label style="font-size: 12px; font-weight: 700; color: #e2e8f0; display: block; margin-bottom: 6px;">
+                            <i class="fas fa-map-marker-alt text-success"></i> Jurisdiction District (மாவட்டம்)
+                        </label>
+                        <select id="adminRegDistrictSelect" class="admin-input admin-district-select" onchange="onDistrictSelected(this.value)">
+                            <!-- 38 Districts -->
+                        </select>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-bottom: 14px;">
+                    <div>
+                        <label style="font-size: 12px; font-weight: 700; color: #e2e8f0; display: block; margin-bottom: 6px;">
+                            <i class="fas fa-building text-info"></i> Department / Jurisdiction
+                        </label>
+                        <input type="text" id="adminRegDeptInput" class="admin-input" value="District Agriculture & Mandi Nodal Command" required>
+                    </div>
+                    <div>
+                        <label style="font-size: 12px; font-weight: 700; color: #e2e8f0; display: block; margin-bottom: 6px;">
+                            <i class="fas fa-id-card text-success"></i> Official Assigned Badge ID
+                        </label>
+                        <input type="text" id="adminRegBadgeInput" class="admin-input" value="TN-NODAL-ERD-01" readonly style="color: #34d399 !important; font-family: monospace; font-weight: 700;">
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 18px;">
+                    <label style="font-size: 12px; font-weight: 700; color: #e2e8f0; display: block; margin-bottom: 6px;">
+                        <i class="fas fa-key text-warning"></i> Set Security Password / Passcode *
+                    </label>
+                    <input type="password" id="adminRegPasswordInput" class="admin-input" placeholder="Create your secret passcode (e.g. TN-ERD-2026 or custom)" required value="TN-ERD-2026">
+                </div>
+
+                <div>
+                    <button type="submit" id="adminRegSubmitBtn" class="btn btn-primary btn-block" style="background: linear-gradient(135deg, #059669, #047857); padding: 14px; font-size: 15px; font-weight: 800; border-radius: 12px; box-shadow: 0 4px 20px rgba(5, 150, 105, 0.45); cursor: pointer; width: 100%;">
+                        <i class="fas fa-shield-alt"></i> Complete Accreditation & Enter Command Tower
+                    </button>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 13px; flex-wrap: wrap; gap: 10px;">
+                    <a href="javascript:void(0)" onclick="switchAdminAuthMode('login')" style="color: #34d399; font-weight: 700; text-decoration: none;">
+                        <i class="fas fa-sign-in-alt"></i> Already accredited? Switch to Sign In ➔
+                    </a>
+                    <a href="index.html" style="color: #94a3b8; font-weight: 600; text-decoration: none;">
+                        <i class="fas fa-home"></i> Return to Homepage
+                    </a>
+                </div>
+            </form>
+
+            <!-- Quick 1-Tap 38-District Switcher Grid -->
+            <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.1);">
+                <div style="font-size: 11.5px; font-weight: 800; color: #94a3b8; text-transform: uppercase; margin-bottom: 10px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px;">
+                    <span>⚡ Quick 1-Tap Select District Command:</span>
+                    <span style="color: #34d399;">Click any district to view & login</span>
+                </div>
+                <div id="quickDistrictButtonsGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; max-height: 160px; overflow-y: auto; padding-right: 4px;">
+                    <!-- Populated Dynamically with all 38 districts -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Security Compliance Footer -->
+    <footer style="margin-top: auto; padding: 20px 0; text-align: center; font-size: 12px; color: #64748b; border-top: 1px solid rgba(255,255,255,0.06);">
+        <div class="container">
+            <div><i class="fas fa-shield-alt text-success"></i> Strictly Encrypted District Administration Infrastructure • Tamil Nadu 38-District Sovereign Agricultural Command</div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        let selectedDistrictName = 'Erode';
+
+        const TN_38_DISTRICTS = [
+            'Ariyalur', 'Chengalpattu', 'Chennai', 'Coimbatore', 'Cuddalore', 'Dharmapuri',
+            'Dindigul', 'Erode', 'Kallakurichi', 'Kanchipuram', 'Kanyakumari', 'Karur',
+            'Krishnagiri', 'Madurai', 'Mayiladuthurai', 'Nagapattinam', 'Namakkal', 'Nilgiris',
+            'Perambalur', 'Pudukkottai', 'Ramanathapuram', 'Ranipet', 'Salem', 'Sivaganga',
+            'Tenkasi', 'Thanjavur', 'Theni', 'Thoothukudi', 'Tiruchirappalli', 'Tirunelveli',
+            'Tirupathur', 'Tiruppur', 'Tiruvallur', 'Tiruvannamalai', 'Tiruvarur', 'Vellore',
+            'Villupuram', 'Virudhunagar'
+        ];
+
+        function getProfileSafely(dist) {
+            if (window.FarmDirect && typeof FarmDirect.getDistrictProfileData === 'function') {
+                return FarmDirect.getDistrictProfileData(dist);
+            }
+            const code = dist.substring(0, 3).toUpperCase();
+            return {
+                district: dist,
+                tamil: dist,
+                adminName: `Thiru. ${dist} District Nodal Officer`,
+                officialBadgeId: `TN-NODAL-${code}-01`,
+                email: `admin.${dist.toLowerCase().replace(/[^a-z]/g, '')}@farmdirect.tn.gov.in`,
+                phone: `+91 94440 ${code}`,
+                passcode: `TN-${code}-2026`,
+                jurisdiction: `${dist} District Agriculture & Mandi Nodal Command`,
+                hub: `${dist} District Agro Hub & Mandi Terminal`,
+                primaryCrop: `${dist} Local Farm Harvests`,
+                highway: 'State Highway Corridor',
+                farmers: '1,200 Farmers',
+                gmv: '₹35.0 Lakhs',
+                coldCapacity: '650 MT'
+            };
+        }
+
+        function filterDistrictOptions(query) {
+            const q = (query || '').toLowerCase().trim();
+            const selectEl = document.getElementById('adminDistrict');
+            const gridEl = document.getElementById('quickDistrictButtonsGrid');
+            if (!selectEl) return;
+
+            selectEl.innerHTML = '';
+            if (gridEl) gridEl.innerHTML = '';
+
+            const filtered = TN_38_DISTRICTS.filter(d => {
+                const p = getProfileSafely(d);
+                return d.toLowerCase().includes(q) || 
+                       (p.tamil && p.tamil.includes(q)) || 
+                       (p.passcode && p.passcode.toLowerCase().includes(q)) ||
+                       (p.primaryCrop && p.primaryCrop.toLowerCase().includes(q)) ||
+                       (p.hub && p.hub.toLowerCase().includes(q));
+            });
+
+            if (filtered.length === 0) {
+                const opt = document.createElement('option');
+                opt.value = '';
+                opt.textContent = `⚠️ No districts found matching "${query}"`;
+                selectEl.appendChild(opt);
+                return;
+            }
+
+            filtered.forEach(dist => {
+                const p = getProfileSafely(dist);
+                
+                // Option
+                const opt = document.createElement('option');
+                opt.value = dist;
+                const hubShort = p.hub ? p.hub.split('&')[0].trim() : '';
+                opt.textContent = `${dist} (${p.tamil}) • Passcode: ${p.passcode} • ${hubShort}`;
+                if (dist === selectedDistrictName) opt.selected = true;
+                selectEl.appendChild(opt);
+
+                // Grid button
+                if (gridEl) {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'btn btn-sm';
+                    const isSelected = (dist === selectedDistrictName);
+                    btn.style.cssText = isSelected
+                        ? 'background: rgba(16, 185, 129, 0.25); color: #34d399; border: 1px solid #10b981; font-size: 11px; font-weight: 700; padding: 6px 8px; border-radius: 8px; text-align: left; cursor: pointer;'
+                        : 'background: rgba(255, 255, 255, 0.05); color: #e2e8f0; border: 1px solid rgba(255,255,255,0.1); font-size: 11px; font-weight: 600; padding: 6px 8px; border-radius: 8px; text-align: left; cursor: pointer;';
+                    btn.innerHTML = `${dist} <span style="font-size:10px; color:#94a3b8;">(${p.tamil})</span>`;
+                    btn.onclick = () => onDistrictSelected(dist);
+                    gridEl.appendChild(btn);
+                }
+            });
+
+            if (!filtered.includes(selectedDistrictName) && filtered.length > 0) {
+                onDistrictSelected(filtered[0]);
+            }
+        }
+
+        function fillAdminPasscode() {
+            const p = getProfileSafely(selectedDistrictName);
+            const codeInput = document.getElementById('adminSecurityCodeInput');
+            if (codeInput && p) {
+                codeInput.value = p.passcode;
+                if (window.FarmDirect && typeof FarmDirect.showToast === 'function') {
+                    FarmDirect.showToast(`Passcode ${p.passcode} auto-filled for ${selectedDistrictName}`, 'success');
+                }
+            }
+        }
+
+        function togglePasscodeVisibility(inputId) {
+            const el = document.getElementById(inputId);
+            const icon = document.getElementById('togglePassEyeIcon');
+            if (el) {
+                if (el.type === 'password') {
+                    el.type = 'text';
+                    if (icon) icon.className = 'fas fa-eye-slash';
+                } else {
+                    el.type = 'password';
+                    if (icon) icon.className = 'fas fa-eye';
+                }
+            }
+        }
+
+        function switchAdminAuthMode(mode) {
+            const loginForm = document.getElementById('adminSecureLoginForm');
+            const regForm = document.getElementById('adminSecureRegisterForm');
+            const tabLogin = document.getElementById('tabBtnAdminLogin');
+            const tabReg = document.getElementById('tabBtnAdminRegister');
+
+            if (mode === 'register') {
+                if (loginForm) loginForm.style.display = 'none';
+                if (regForm) regForm.style.display = 'block';
+
+                if (tabLogin) {
+                    tabLogin.style.background = 'rgba(30, 41, 59, 0.8)';
+                    tabLogin.style.borderColor = '#334155';
+                    tabLogin.style.color = '#94a3b8';
+                    tabLogin.style.boxShadow = 'none';
+                }
+                if (tabReg) {
+                    tabReg.style.background = '#10b981';
+                    tabReg.style.borderColor = '#10b981';
+                    tabReg.style.color = '#ffffff';
+                    tabReg.style.boxShadow = '0 4px 15px rgba(16, 185, 129, 0.35)';
+                }
+
+                const regSelect = document.getElementById('adminRegDistrictSelect');
+                if (regSelect && regSelect.value !== selectedDistrictName) {
+                    regSelect.value = selectedDistrictName;
+                }
+            } else {
+                if (loginForm) loginForm.style.display = 'block';
+                if (regForm) regForm.style.display = 'none';
+
+                if (tabLogin) {
+                    tabLogin.style.background = '#10b981';
+                    tabLogin.style.borderColor = '#10b981';
+                    tabLogin.style.color = '#ffffff';
+                    tabLogin.style.boxShadow = '0 4px 15px rgba(16, 185, 129, 0.35)';
+                }
+                if (tabReg) {
+                    tabReg.style.background = 'rgba(30, 41, 59, 0.8)';
+                    tabReg.style.borderColor = '#334155';
+                    tabReg.style.color = '#94a3b8';
+                    tabReg.style.boxShadow = 'none';
+                }
+            }
+        }
+
+        function initDistrictLogin() {
+            const selectEl = document.getElementById('adminDistrict');
+            const regSelectEl = document.getElementById('adminRegDistrictSelect');
+            const gridEl = document.getElementById('quickDistrictButtonsGrid');
+            
+            // Check if district or mode requested in URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const distParam = urlParams.get('district');
+            const modeParam = urlParams.get('mode');
+
+            if (distParam && TN_38_DISTRICTS.includes(distParam)) {
+                selectedDistrictName = distParam;
+            }
+
+            if (selectEl) selectEl.innerHTML = '';
+            if (regSelectEl) regSelectEl.innerHTML = '';
+            if (gridEl) gridEl.innerHTML = '';
+
+            TN_38_DISTRICTS.forEach(dist => {
+                const p = getProfileSafely(dist);
+                
+                // Add option to main district select
+                if (selectEl) {
+                    const opt = document.createElement('option');
+                    opt.value = dist;
+                    const hubShort = p.hub ? p.hub.split('&')[0].trim() : '';
+                    opt.textContent = `${dist} (${p.tamil}) • Passcode: ${p.passcode} • ${hubShort}`;
+                    if (dist === selectedDistrictName) opt.selected = true;
+                    selectEl.appendChild(opt);
+                }
+
+                // Add option to reg district select
+                if (regSelectEl) {
+                    const regOpt = document.createElement('option');
+                    regOpt.value = dist;
+                    regOpt.textContent = `${dist} (${p.tamil})`;
+                    if (dist === selectedDistrictName) regOpt.selected = true;
+                    regSelectEl.appendChild(regOpt);
+                }
+
+                // Add quick button
+                if (gridEl) {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'btn btn-sm';
+                    btn.style.cssText = dist === selectedDistrictName
+                        ? 'background: rgba(16, 185, 129, 0.25); color: #34d399; border: 1px solid #10b981; font-size: 11px; font-weight: 700; padding: 6px 8px; border-radius: 8px; text-align: left; cursor: pointer;'
+                        : 'background: rgba(255, 255, 255, 0.05); color: #e2e8f0; border: 1px solid rgba(255,255,255,0.1); font-size: 11px; font-weight: 600; padding: 6px 8px; border-radius: 8px; text-align: left; cursor: pointer;';
+                    btn.innerHTML = `${dist} <span style="font-size:10px; color:#94a3b8;">(${p.tamil})</span>`;
+                    btn.onclick = () => onDistrictSelected(dist);
+                    gridEl.appendChild(btn);
+                }
+            });
+
+            onDistrictSelected(selectedDistrictName);
+
+            if (modeParam === 'register') {
+                switchAdminAuthMode('register');
+            }
+        }
+
+        function onDistrictSelected(districtName) {
+            if (!districtName) return;
+            selectedDistrictName = districtName;
+            
+            const selectEl = document.getElementById('adminDistrict');
+            if (selectEl && selectEl.value !== districtName) {
+                selectEl.value = districtName;
+            }
+
+            const regSelectEl = document.getElementById('adminRegDistrictSelect');
+            if (regSelectEl && regSelectEl.value !== districtName) {
+                regSelectEl.value = districtName;
+            }
+
+            const p = getProfileSafely(districtName);
+
+            // Update Active Selection Indicator
+            const activeLabel = document.getElementById('activeSelectedDistrictLabel');
+            if (activeLabel) activeLabel.textContent = `${districtName} (${p.tamil})`;
+            const activePassLabel = document.getElementById('activeSelectedPasscodeLabel');
+            if (activePassLabel) activePassLabel.textContent = p.passcode;
+
+            // Update Admin details alone
+            const office = (window.FarmDirect && typeof FarmDirect.getDistrictOffice === 'function')
+                ? FarmDirect.getDistrictOffice(districtName)
+                : { officeName: 'Office of Joint Director of Agriculture', officeAddress: `${districtName} Collectorate Complex` };
+
+            const savedAdminName = localStorage.getItem('fd_admin_registered_name_' + districtName);
+            const activeDisplayName = savedAdminName || office.officerName || p.adminName;
+
+            const nameEl = document.getElementById('adminNameDisplay');
+            if (nameEl) nameEl.textContent = `${activeDisplayName} (${office.officerDesignation || 'Joint Director'})`;
+            const jurisEl = document.getElementById('adminJurisdictionDisplay');
+            if (jurisEl) jurisEl.textContent = p.jurisdiction;
+            const officeEl = document.getElementById('adminOfficeDisplay');
+            if (officeEl) officeEl.textContent = `${office.officeName}, ${office.officeAddress}`;
+            const badgeEl = document.getElementById('adminBadgeDisplay');
+            if (badgeEl) badgeEl.textContent = p.officialBadgeId;
+            const emailEl = document.getElementById('adminEmailDisplay');
+            if (emailEl) emailEl.textContent = p.email;
+            const phoneEl = document.getElementById('adminPhoneDisplay');
+            if (phoneEl) phoneEl.textContent = office.hotline || p.phone;
+            const passcodeEl = document.getElementById('adminPasscodeDisplay');
+            if (passcodeEl) passcodeEl.textContent = p.passcode;
+            const passcodeTextEl = document.getElementById('adminPasscodeTextDisplay');
+            if (passcodeTextEl) passcodeTextEl.textContent = p.passcode;
+            const activeBadgeEl = document.getElementById('activeDistrictBadgeLabel');
+            if (activeBadgeEl) activeBadgeEl.textContent = `${districtName} Nodal Code`;
+            
+            // Auto update input code and name in login form
+            const codeInput = document.getElementById('adminSecurityCodeInput');
+            if (codeInput) codeInput.value = p.passcode;
+            const loginNameInput = document.getElementById('adminLoginNameInput');
+            if (loginNameInput) loginNameInput.value = activeDisplayName;
+
+            // Auto update registration fields
+            const regNameInput = document.getElementById('adminRegNameInput');
+            if (regNameInput && !regNameInput.value) regNameInput.value = activeDisplayName;
+            const regEmailInput = document.getElementById('adminRegEmailInput');
+            if (regEmailInput) regEmailInput.value = p.email;
+            const regPhoneInput = document.getElementById('adminRegPhoneInput');
+            if (regPhoneInput) regPhoneInput.value = office.hotline || p.phone;
+            const regBadgeInput = document.getElementById('adminRegBadgeInput');
+            if (regBadgeInput) regBadgeInput.value = p.officialBadgeId;
+            const regDeptInput = document.getElementById('adminRegDeptInput');
+            if (regDeptInput) regDeptInput.value = p.jurisdiction;
+            const regPasswordInput = document.getElementById('adminRegPasswordInput');
+            if (regPasswordInput) regPasswordInput.value = p.passcode;
+
+            // Update whole district profile
+            const tamilNameEl = document.getElementById('districtTamilNameDisplay');
+            if (tamilNameEl) tamilNameEl.textContent = `${p.tamil} மாவட்டம்`;
+            const hubEl = document.getElementById('districtHubDisplay');
+            if (hubEl) hubEl.textContent = p.hub;
+            const cropsEl = document.getElementById('districtCropsDisplay');
+            if (cropsEl) cropsEl.textContent = p.primaryCrop;
+            const highwayEl = document.getElementById('districtHighwayDisplay');
+            if (highwayEl) highwayEl.textContent = p.highway;
+            const farmersEl = document.getElementById('districtFarmersDisplay');
+            if (farmersEl) farmersEl.textContent = p.farmers;
+            const coldEl = document.getElementById('districtColdDisplay');
+            if (coldEl) coldEl.textContent = p.coldCapacity || '650 MT';
+            const gmvEl = document.getElementById('districtGmvDisplay');
+            if (gmvEl) gmvEl.textContent = p.gmv;
+
+            // Highlight quick buttons
+            const gridEl = document.getElementById('quickDistrictButtonsGrid');
+            if (gridEl) {
+                Array.from(gridEl.children).forEach(btn => {
+                    if (btn.textContent.includes(districtName)) {
+                        btn.style.background = 'rgba(16, 185, 129, 0.25)';
+                        btn.style.borderColor = '#10b981';
+                        btn.style.color = '#34d399';
+                        btn.style.fontWeight = '700';
+                    } else {
+                        btn.style.background = 'rgba(255, 255, 255, 0.05)';
+                        btn.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                        btn.style.color = '#e2e8f0';
+                        btn.style.fontWeight = '600';
+                    }
+                });
+            }
+        }
+
+        async function handleAdminLoginSubmit(e) {
+            if (e && e.preventDefault) e.preventDefault();
+            const btn = document.getElementById('adminSubmitBtn');
+            if (btn) {
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Entering Command Tower...';
+                btn.disabled = true;
+            }
+
+            const district = selectedDistrictName || 'Erode';
+            const p = getProfileSafely(district);
+            const inputCodeEl = document.getElementById('adminSecurityCodeInput');
+            const inputCode = (inputCodeEl && inputCodeEl.value.trim()) ? inputCodeEl.value.trim() : (p.passcode || 'TN-ERD-2026');
+            const inputNameEl = document.getElementById('adminLoginNameInput');
+            const inputName = (inputNameEl && inputNameEl.value.trim()) ? inputNameEl.value.trim() : p.adminName;
+            const resolvedName = inputName || p.adminName || 'Thiru. M. Selvam (Joint Director)';
+
+            // Synchronously store credentials in both sessionStorage and localStorage
+            const token = 'SECURE_TN_ADMIN_' + district.toUpperCase() + '_' + Date.now();
+            sessionStorage.setItem('fd_user_logged_in', 'true');
+            sessionStorage.setItem('fd_admin_authenticated', 'true');
+            sessionStorage.setItem('fd_admin_token', token);
+            sessionStorage.setItem('fd_is_admin', 'true');
+            sessionStorage.setItem('fd_admin_district', district);
+            sessionStorage.setItem('fd_user_role', 'admin');
+            sessionStorage.setItem('fd_user_name', resolvedName);
+
+            localStorage.setItem('fd_user_logged_in', 'true');
+            localStorage.setItem('fd_admin_authenticated', 'true');
+            localStorage.setItem('fd_is_admin', 'true');
+            localStorage.setItem('fd_user_role', 'admin');
+            localStorage.setItem('fd_admin_district', district);
+            localStorage.setItem('fd_admin_token', token);
+            localStorage.setItem('fd_user_name', resolvedName);
+            localStorage.setItem('fd_admin_registered_name_' + district, resolvedName);
+
+            const adminProf = {
+                name: resolvedName,
+                email: p.email || 'admin.erode@farmdirect.tn.gov.in',
+                role: 'admin',
+                district: district,
+                badgeId: p.officialBadgeId || 'TN-NODAL-ERD-01',
+                jurisdiction: p.jurisdiction || 'District Agriculture & Mandi Nodal Command',
+                securityPasscode: inputCode
+            };
+
+            if (btn) {
+                btn.innerHTML = '<i class="fas fa-check-circle"></i> Submitted successfully!';
+                btn.style.background = '#059669';
+            }
+
+            if (window.FarmDirect) {
+                if (typeof FarmDirect.setUserProfile === 'function') {
+                    try { FarmDirect.setUserProfile(adminProf); } catch(e) {}
+                }
+                if (typeof FarmDirect.setUserDistrict === 'function') {
+                    try { FarmDirect.setUserDistrict(district); } catch(e) {}
+                }
+                if (typeof FarmDirect.setUserRole === 'function') {
+                    try { FarmDirect.setUserRole('admin'); } catch(e) {}
+                }
+                if (typeof FarmDirect.showToast === 'function') {
+                    FarmDirect.showToast(`Submitted successfully! Connected to ${district} Command Tower.`, 'success', true);
+                }
+            }
+
+            // Sync with backend non-blockingly
+            try {
+                fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name: resolvedName, email: p.email, passcode: inputCode, role: 'admin', district })
+                }).catch(() => {});
+            } catch(e) {}
+
+            // Immediate redirect into admin-dashboard.html
+            setTimeout(() => {
+                window.location.href = 'admin-dashboard.html';
+            }, 250);
+        }
+
+        async function handleAdminRegisterSubmit(e) {
+            if (e && e.preventDefault) e.preventDefault();
+            const btn = document.getElementById('adminRegSubmitBtn');
+            if (btn) {
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+                btn.disabled = true;
+            }
+
+            const name = document.getElementById('adminRegNameInput').value.trim();
+            const phone = document.getElementById('adminRegPhoneInput').value.trim();
+            const email = document.getElementById('adminRegEmailInput').value.trim();
+            const district = document.getElementById('adminRegDistrictSelect').value || selectedDistrictName || 'Erode';
+            const department = document.getElementById('adminRegDeptInput').value.trim();
+            const badgeId = document.getElementById('adminRegBadgeInput').value.trim();
+            const password = document.getElementById('adminRegPasswordInput').value.trim();
+
+            const token = 'SECURE_TN_ADMIN_' + district.toUpperCase() + '_' + Date.now();
+            sessionStorage.setItem('fd_user_logged_in', 'true');
+            sessionStorage.setItem('fd_admin_authenticated', 'true');
+            sessionStorage.setItem('fd_admin_token', token);
+            sessionStorage.setItem('fd_is_admin', 'true');
+            sessionStorage.setItem('fd_admin_district', district);
+            sessionStorage.setItem('fd_user_role', 'admin');
+            sessionStorage.setItem('fd_user_name', name);
+
+            localStorage.setItem('fd_user_logged_in', 'true');
+            localStorage.setItem('fd_admin_authenticated', 'true');
+            localStorage.setItem('fd_is_admin', 'true');
+            localStorage.setItem('fd_user_role', 'admin');
+            localStorage.setItem('fd_admin_district', district);
+            localStorage.setItem('fd_admin_token', token);
+            localStorage.setItem('fd_user_name', name);
+            localStorage.setItem('fd_admin_registered_name_' + district, name);
+
+            const adminProf = {
+                name,
+                email,
+                phone,
+                role: 'admin',
+                district,
+                badgeId,
+                jurisdiction: department,
+                securityPasscode: password
+            };
+
+            if (btn) {
+                btn.innerHTML = '<i class="fas fa-check-circle"></i> Submitted successfully!';
+                btn.style.background = '#059669';
+            }
+
+            if (window.FarmDirect) {
+                if (typeof FarmDirect.setUserProfile === 'function') {
+                    try { FarmDirect.setUserProfile(adminProf); } catch(e) {}
+                }
+                if (typeof FarmDirect.setUserDistrict === 'function') {
+                    try { FarmDirect.setUserDistrict(district); } catch(e) {}
+                }
+                if (typeof FarmDirect.setUserRole === 'function') {
+                    try { FarmDirect.setUserRole('admin'); } catch(e) {}
+                }
+                if (typeof FarmDirect.showToast === 'function') {
+                    FarmDirect.showToast(`Submitted successfully! Accredited for ${district} Command.`, 'success', true);
+                }
+            }
+
+            // Sync with backend non-blockingly
+            try {
+                fetch('/api/auth/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(adminProf)
+                }).catch(() => {});
+            } catch(e) {}
+
+            setTimeout(() => {
+                window.location.href = 'admin-dashboard.html';
+            }, 250);
+        }
+
+        document.addEventListener('DOMContentLoaded', initDistrictLogin);
+    </script>
+</body>
+</html>

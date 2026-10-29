@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#10b981">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FarmDirect">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <title>About & End-to-End Workflow | FarmDirect Tamil Nadu</title>
+    <!-- Immediate Authentication Guard: Require sign in before viewing website details -->
+    <script src="js/auth-guard.js"></script>
+    <meta name="description" content="Discover FarmDirect's revolutionary 5-stage agricultural workflow connecting farmers directly with consumers and bulk buyers using AI quality inspection, cold-chain telemetry, and instant escrow settlements.">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .workflow-step-card {
+            background: #ffffff;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 28px;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+        .workflow-step-card:hover {
+            transform: translateY(-5px);
+            border-color: #10b981;
+            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.12);
+        }
+        .step-number-badge {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            font-weight: 800;
+            font-size: 18px;
+            display: grid;
+            place-items: center;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            margin-bottom: 18px;
+        }
+        .workflow-tab-btn {
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 13.5px;
+            border: 1.5px solid #e2e8f0;
+            background: #ffffff;
+            color: #475569;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .workflow-tab-btn.active, .workflow-tab-btn:hover {
+            background: #ecfdf5;
+            border-color: #10b981;
+            color: #065f46;
+        }
+        .workflow-tab-btn.active {
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.15);
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1.5px solid #e2e8f0;
+        }
+        .comparison-table th {
+            padding: 16px 20px;
+            font-weight: 800;
+            font-size: 13.5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .comparison-table td {
+            padding: 16px 20px;
+            font-size: 14px;
+            border-top: 1px solid #f1f5f9;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sleek Master Navigation with Rich Dropdowns -->
+    <nav class="fd-nav">
+        <div class="container fd-nav-inner">
+            <a href="index.html" class="fd-brand">
+                <span>🌱 FarmDirect</span>
+                <span class="fd-brand-badge">Workflow & Mission</span>
+            </a>
+
+            <ul class="fd-nav-links">
+                <li class="fd-nav-item"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="marketplace.html"><i class="fas fa-store"></i> Marketplace <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="marketplace.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-shopping-basket"></i></div>
+                            <div><span class="fd-dropdown-title">Live Produce Catalog</span><span class="fd-dropdown-desc">Direct harvest from verified farmers</span></div>
+                        </a>
+                        <a href="product-quality.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-shield-alt"></i></div>
+                            <div><span class="fd-dropdown-title">AI Quality Scanner</span><span class="fd-dropdown-desc">Computer-vision freshness & Brix test</span></div>
+                        </a>
+                        <a href="price-comparison.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Price Comparison</span><span class="fd-dropdown-desc">Farmgate vs APMC Mandi vs Retail</span></div>
+                        </a>
+                        <a href="offers.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-tags"></i></div>
+                            <div><span class="fd-dropdown-title">Harvest Offers</span><span class="fd-dropdown-desc">Seasonal discounts & promo codes</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="farmer-dashboard.html"><i class="fas fa-tractor"></i> Farmers & FPOs <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="farmer-dashboard.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-tachometer-alt"></i></div>
+                            <div><span class="fd-dropdown-title">Farmer Command Center</span><span class="fd-dropdown-desc">Agronomy weather radar & revenue</span></div>
+                        </a>
+                        <a href="fpo-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-users"></i></div>
+                            <div><span class="fd-dropdown-title">FPO Collective Aggregator</span><span class="fd-dropdown-desc">Pool multi-farmer harvests for B2B</span></div>
+                        </a>
+                        <a href="add-product.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-plus-circle"></i></div>
+                            <div><span class="fd-dropdown-title">List New Produce</span><span class="fd-dropdown-desc">AI Mandi benchmark recommender</span></div>
+                        </a>
+                        <a href="farmer-earnings.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-wallet"></i></div>
+                            <div><span class="fd-dropdown-title">Earnings & UPI Ledger</span><span class="fd-dropdown-desc">Instant OTP escrow bank settlements</span></div>
+                        </a>
+                        <a href="farmer-verification.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-id-card"></i></div>
+                            <div><span class="fd-dropdown-title">Land KYC Verification</span><span class="fd-dropdown-desc">Patta/Chitta Land KYC Verification</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="logistics.html"><i class="fas fa-truck-moving"></i> Logistics <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="live-tracking.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-satellite-dish"></i></div>
+                            <div><span class="fd-dropdown-title">Live GPS Radar</span><span class="fd-dropdown-desc">3.8°C Temperature-Controlled Delivery</span></div>
+                        </a>
+                        <a href="route-optimization.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-route"></i></div>
+                            <div><span class="fd-dropdown-title">AI Route Optimizer</span><span class="fd-dropdown-desc">Smart Multi-Farm Route Optimizer</span></div>
+                        </a>
+                        <a href="delivery-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-tasks"></i></div>
+                            <div><span class="fd-dropdown-title">Dispatch Management</span><span class="fd-dropdown-desc">Vehicle fleet allocations & e-POD</span></div>
+                        </a>
+                        <a href="warehouse.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-warehouse"></i></div>
+                            <div><span class="fd-dropdown-title">Smart Rural Cold Hubs</span><span class="fd-dropdown-desc">Microclimate pre-cooling slots</span></div>
+                        </a>
+                        <a href="inventory.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-rose"><i class="fas fa-boxes"></i></div>
+                            <div><span class="fd-dropdown-title">Inventory Engine</span><span class="fd-dropdown-desc">Batch shelf-life countdowns</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="ai-insights.html"><i class="fas fa-brain"></i> AI Intelligence <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="demand-forecast.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-chart-pie"></i></div>
+                            <div><span class="fd-dropdown-title">Demand Forecasting</span><span class="fd-dropdown-desc">Predictive 30-day ML models</span></div>
+                        </a>
+                        <a href="ai-insights.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-chart-line"></i></div>
+                            <div><span class="fd-dropdown-title">Agricultural Intelligence</span><span class="fd-dropdown-desc">Regional surplus & deficit heatmap</span></div>
+                        </a>
+                        <a href="supply-chain.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-link"></i></div>
+                            <div><span class="fd-dropdown-title">Farm-to-Fork Traceability</span><span class="fd-dropdown-desc">5-stage harvest verification</span></div>
+                        </a>
+                        <a href="price-intelligence.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Mandi Price Index</span><span class="fd-dropdown-desc">Live Government Mandi Prices</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item"><a href="about.html" class="active"><i class="fas fa-info-circle"></i> Workflow & About</a></li>
+            </ul>
+
+            <div class="fd-nav-actions">
+                <a href="marketplace.html" class="btn btn-primary btn-sm"><i class="fas fa-store"></i> Explore Marketplace</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- High-Impact Hero Banner -->
+    <div class="page-hero" style="background: linear-gradient(135deg, #064e3b 0%, #0f172a 100%); padding: 60px 0; color: white;">
+        <div class="container">
+            <div class="breadcrumb" style="color: #6ee7b7; margin-bottom: 15px;">
+                <a href="index.html" style="color: #6ee7b7;">Home</a> <i class="fas fa-chevron-right" style="font-size:10px; margin: 0 6px;"></i>
+                <span>About & Operational Workflow</span>
+            </div>
+            <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(16, 185, 129, 0.2); padding: 6px 16px; border-radius: 9999px; font-weight: 700; font-size: 12px; color: #6ee7b7; margin-bottom: 16px; border: 1px solid rgba(16, 185, 129, 0.4);">
+                <i class="fas fa-network-wired text-success"></i> TAMIL NADU 38-DISTRICT DIRECT FAIR TRADE NETWORK
+            </div>
+            <h1 class="page-hero-title" style="font-size: 42px; font-weight: 800; color: #ffffff; margin-bottom: 14px;">
+                The End-to-End FarmDirect Workflow
+            </h1>
+            <p class="page-hero-subtitle" style="font-size: 17px; color: #cbd5e1; max-width: 820px; line-height: 1.7; margin: 0;">
+                How FarmDirect replaces broken 6-tier middleman supply chains with computer-vision AI quality grading, 3.8°C IoT thermal reefer fleets, and instant OTP escrow settlements across Tamil Nadu.
+            </p>
+        </div>
+    </div>
+
+    <main class="main-content" style="padding: 50px 0 80px;">
+        <div class="container">
+
+            <!-- 5-Stage Visual Workflow Pipeline -->
+            <div style="text-align: center; max-width: 750px; margin: 0 auto 40px;">
+                <div style="font-size: 12px; font-weight: 800; color: #059669; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">
+                    🌱 5-STAGE PRECISION DIRECT TRADE ARCHITECTURE
+                </div>
+                <h2 style="font-size: 32px; font-weight: 800; color: #0f172a; margin: 0 0 12px;">
+                    How Harvests Move From Farmgate to Consumer
+                </h2>
+                <p style="font-size: 15.5px; color: #64748b; line-height: 1.6;">
+                    Every harvest is authenticated through 5 verified phases ensuring guaranteed farmer payments, zero transit spoilage, and certified crop freshness.
+                </p>
+            </div>
+
+            <!-- Workflow Cards Grid -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 60px;">
+                
+                <!-- Stage 1 -->
+                <div class="workflow-step-card" style="border-top: 5px solid #10b981;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <div class="step-number-badge">01</div>
+                        <span style="background: #ecfdf5; color: #059669; font-weight: 800; font-size: 11px; padding: 4px 10px; border-radius: 6px; text-transform: uppercase;">
+                            Farmgate Onboarding
+                        </span>
+                    </div>
+                    <h3 style="font-size: 19px; font-weight: 800; color: #064e3b; margin-bottom: 8px;">
+                        Land KYC & Harvest Listing
+                    </h3>
+                    <div style="font-size: 13px; color: #059669; font-weight: 700; margin-bottom: 12px;">
+                        நிலச் சான்றளிப்பு & விளைபொருள் பதிவு
+                    </div>
+                    <p style="font-size: 14px; color: #64748b; line-height: 1.6; margin-bottom: 18px;">
+                        Farmers verify agricultural acreage with Patta/Chitta and 7/12 land records. Produce is listed with real-time AGMARKNET Mandi benchmark pricing guidance.
+                    </p>
+                    <ul style="font-size: 13px; color: #334155; list-style: none; padding: 0; margin: 0 0 20px; display: flex; flex-direction: column; gap: 8px;">
+                        <li><i class="fas fa-check-circle text-success"></i> Geo-tagged field boundary verification</li>
+                        <li><i class="fas fa-check-circle text-success"></i> FPO collective harvest pooling for B2B</li>
+                        <li><i class="fas fa-check-circle text-success"></i> Automated mandi pricing benchmarks</li>
+                    </ul>
+                    <a href="farmer-verification.html" class="btn btn-secondary btn-sm" style="width: 100%; justify-content: center;">
+                        <i class="fas fa-id-card"></i> Try Land KYC Portal
+                    </a>
+                </div>
+
+                <!-- Stage 2 -->
+                <div class="workflow-step-card" style="border-top: 5px solid #3b82f6;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <div class="step-number-badge" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8);">02</div>
+                        <span style="background: #eff6ff; color: #2563eb; font-weight: 800; font-size: 11px; padding: 4px 10px; border-radius: 6px; text-transform: uppercase;">
+                            AI Vision Lab
+                        </span>
+                    </div>
+                    <h3 style="font-size: 19px; font-weight: 800; color: #1e3a8a; margin-bottom: 8px;">
+                        AI Quality & Brix Inspection
+                    </h3>
+                    <div style="font-size: 13px; color: #2563eb; font-weight: 700; margin-bottom: 12px;">
+                        செயற்கை நுண்ணறிவு தரச் சோதனை
+                    </div>
+                    <p style="font-size: 14px; color: #64748b; line-height: 1.6; margin-bottom: 18px;">
+                        Computer-vision ML algorithms scan produce images for ripeness index, optical surface defects, sugar Brix content, and GI authenticity certification.
+                    </p>
+                    <ul style="font-size: 13px; color: #334155; list-style: none; padding: 0; margin: 0 0 20px; display: flex; flex-direction: column; gap: 8px;">
+                        <li><i class="fas fa-check-circle text-blue"></i> 99.2% accuracy computer vision scoring</li>
+                        <li><i class="fas fa-check-circle text-blue"></i> GI-Tag & pesticide-free badge accreditation</li>
+                        <li><i class="fas fa-check-circle text-blue"></i> Smart QR farm-to-fork batch traceability</li>
+                    </ul>
+                    <a href="product-quality.html" class="btn btn-secondary btn-sm" style="width: 100%; justify-content: center;">
+                        <i class="fas fa-shield-alt"></i> Try AI Quality Scanner
+                    </a>
+                </div>
+
+                <!-- Stage 3 -->
+                <div class="workflow-step-card" style="border-top: 5px solid #f59e0b;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <div class="step-number-badge" style="background: linear-gradient(135deg, #f59e0b, #d97706);">03</div>
+                        <span style="background: #fffbeb; color: #b45309; font-weight: 800; font-size: 11px; padding: 4px 10px; border-radius: 6px; text-transform: uppercase;">
+                            Fair-Trade Engine
+                        </span>
+                    </div>
+                    <h3 style="font-size: 19px; font-weight: 800; color: #78350f; margin-bottom: 8px;">
+                        Zero-Middleman Smart Escrow
+                    </h3>
+                    <div style="font-size: 13px; color: #d97706; font-weight: 700; margin-bottom: 12px;">
+                        நேரடி வர்த்தகம் & வங்கி பாதுகாப்பு
+                    </div>
+                    <p style="font-size: 14px; color: #64748b; line-height: 1.6; margin-bottom: 18px;">
+                        Consumers and B2B wholesale buyers purchase directly at transparent farmgate rates. Order funds are locked in RBI-compliant automated escrow banks.
+                    </p>
+                    <ul style="font-size: 13px; color: #334155; list-style: none; padding: 0; margin: 0 0 20px; display: flex; flex-direction: column; gap: 8px;">
+                        <li><i class="fas fa-check-circle text-warning"></i> 88% revenue directly returned to farmer</li>
+                        <li><i class="fas fa-check-circle text-warning"></i> Zero commission middleman deductions</li>
+                        <li><i class="fas fa-check-circle text-warning"></i> Sovereign AES-256 encrypted trade ledger</li>
+                    </ul>
+                    <a href="marketplace.html" class="btn btn-secondary btn-sm" style="width: 100%; justify-content: center;">
+                        <i class="fas fa-shopping-basket"></i> Browse Live Marketplace
+                    </a>
+                </div>
+
+                <!-- Stage 4 -->
+                <div class="workflow-step-card" style="border-top: 5px solid #8b5cf6;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <div class="step-number-badge" style="background: linear-gradient(135deg, #8b5cf6, #6d28d9);">04</div>
+                        <span style="background: #f5f3ff; color: #6d28d9; font-weight: 800; font-size: 11px; padding: 4px 10px; border-radius: 6px; text-transform: uppercase;">
+                            Cold-Chain Radar
+                        </span>
+                    </div>
+                    <h3 style="font-size: 19px; font-weight: 800; color: #4c1d95; margin-bottom: 8px;">
+                        AI Route & 3.8°C IoT Logistics
+                    </h3>
+                    <div style="font-size: 13px; color: #7c3aed; font-weight: 700; margin-bottom: 12px;">
+                        குளிர்சாதன வழித்தட விநியோகம்
+                    </div>
+                    <p style="font-size: 14px; color: #64748b; line-height: 1.6; margin-bottom: 18px;">
+                        AI Route Optimizer plans multi-farm pickup routes. GPS-tracked temperature-controlled vans maintain strict 3.8°C cooling to eliminate spoilage across highway corridors.
+                    </p>
+                    <ul style="font-size: 13px; color: #334155; list-style: none; padding: 0; margin: 0 0 20px; display: flex; flex-direction: column; gap: 8px;">
+                        <li><i class="fas fa-check-circle text-purple"></i> Multi-stop route optimization engine</li>
+                        <li><i class="fas fa-check-circle text-purple"></i> Live temperature-controlled monitoring (3.8°C)</li>
+                        <li><i class="fas fa-check-circle text-purple"></i> Smart rural aggregation pre-cooling hubs</li>
+                    </ul>
+                    <a href="live-tracking.html" class="btn btn-secondary btn-sm" style="width: 100%; justify-content: center;">
+                        <i class="fas fa-satellite-dish"></i> Launch Live GPS Radar
+                    </a>
+                </div>
+
+                <!-- Stage 5 -->
+                <div class="workflow-step-card" style="border-top: 5px solid #059669;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <div class="step-number-badge" style="background: linear-gradient(135deg, #059669, #064e3b);">05</div>
+                        <span style="background: #ecfdf5; color: #065f46; font-weight: 800; font-size: 11px; padding: 4px 10px; border-radius: 6px; text-transform: uppercase;">
+                            Instant Payout
+                        </span>
+                    </div>
+                    <h3 style="font-size: 19px; font-weight: 800; color: #064e3b; margin-bottom: 8px;">
+                        OTP e-POD & Instant UPI Settlement
+                    </h3>
+                    <div style="font-size: 13px; color: #059669; font-weight: 700; margin-bottom: 12px;">
+                        உடனடி வங்கி & UPI பரிவர்த்தனை
+                    </div>
+                    <p style="font-size: 14px; color: #64748b; line-height: 1.6; margin-bottom: 18px;">
+                        Upon doorstep or warehouse receipt, a one-time password (OTP) verifies digital proof of delivery (e-POD). Escrow funds are instantly credited to the farmer's bank account.
+                    </p>
+                    <ul style="font-size: 13px; color: #334155; list-style: none; padding: 0; margin: 0 0 20px; display: flex; flex-direction: column; gap: 8px;">
+                        <li><i class="fas fa-check-circle text-success"></i> Contactless digital proof of delivery (e-POD)</li>
+                        <li><i class="fas fa-check-circle text-success"></i> Instant UPI / IMPS direct escrow release</li>
+                        <li><i class="fas fa-check-circle text-success"></i> Zero payment hold or debt cycle exploitation</li>
+                    </ul>
+                    <a href="farmer-earnings.html" class="btn btn-secondary btn-sm" style="width: 100%; justify-content: center;">
+                        <i class="fas fa-wallet"></i> View UPI Settlement Ledger
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Interactive Workflow Stage Simulator -->
+            <div class="card" style="padding: 36px; border-radius: 24px; border: 1.5px solid #cbd5e1; margin-bottom: 60px; background: #ffffff;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 24px;">
+                    <div>
+                        <span style="background: rgba(16, 185, 129, 0.15); color: #059669; font-weight: 800; font-size: 11.5px; padding: 4px 10px; border-radius: 6px; text-transform: uppercase;">
+                            Interactive Simulator
+                        </span>
+                        <h3 style="font-size: 24px; font-weight: 800; color: #0f172a; margin: 6px 0 0;">
+                            Simulate the Farm-to-Fork Journey
+                        </h3>
+                    </div>
+                    <div style="font-size: 13px; color: #64748b;">
+                        Click a stage to simulate live operations
+                    </div>
+                </div>
+
+                <!-- Simulator Tab Buttons -->
+                <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px;">
+                    <button type="button" class="workflow-tab-btn active" onclick="switchWorkflowStage(1, this)">
+                        <i class="fas fa-id-card text-success"></i> 1. Land & Crop Listing
+                    </button>
+                    <button type="button" class="workflow-tab-btn" onclick="switchWorkflowStage(2, this)">
+                        <i class="fas fa-shield-alt text-blue"></i> 2. AI Quality Scan
+                    </button>
+                    <button type="button" class="workflow-tab-btn" onclick="switchWorkflowStage(3, this)">
+                        <i class="fas fa-lock text-warning"></i> 3. Escrow Trade
+                    </button>
+                    <button type="button" class="workflow-tab-btn" onclick="switchWorkflowStage(4, this)">
+                        <i class="fas fa-truck text-purple"></i> 4. 3.8°C Reefer Fleet
+                    </button>
+                    <button type="button" class="workflow-tab-btn" onclick="switchWorkflowStage(5, this)">
+                        <i class="fas fa-check-double text-success"></i> 5. e-POD & Payout
+                    </button>
+                </div>
+
+                <!-- Simulator Display Card -->
+                <div id="simulatorDisplayBox" style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 18px; padding: 26px;">
+                    <!-- Injected dynamically by switchWorkflowStage() -->
+                </div>
+            </div>
+
+            <!-- Side-by-Side Comparison: Traditional Mandi vs FarmDirect -->
+            <div style="margin-bottom: 60px;">
+                <div style="text-align: center; max-width: 700px; margin: 0 auto 30px;">
+                    <div style="font-size: 12px; font-weight: 800; color: #059669; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">
+                        ⚖️ IMPACT & EFFICIENCY COMPARISON
+                    </div>
+                    <h2 style="font-size: 28px; font-weight: 800; color: #0f172a; margin: 0 0 8px;">
+                        Traditional APMC Mandi vs. FarmDirect Model
+                    </h2>
+                    <p style="font-size: 14.5px; color: #64748b; margin: 0;">
+                        Quantifiable benchmark improvements delivering tangible prosperity to Tamil Nadu growers and urban families.
+                    </p>
+                </div>
+
+                <div style="overflow-x: auto;">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr style="background: #0f172a; color: white;">
+                                <th>Supply Chain Metric</th>
+                                <th style="background: #991b1b; color: #fecaca;">❌ Traditional Mandi System</th>
+                                <th style="background: #064e3b; color: #6ee7b7;">✅ FarmDirect Next-Gen Model</th>
+                            </tr>
+                        </thead>
+                        <tbody style="background: white;">
+                            <tr>
+                                <td><strong>Farmer Payout Share</strong></td>
+                                <td style="color: #dc2626; font-weight: 700;">30% - 35% of retail price</td>
+                                <td style="color: #059669; font-weight: 800;">85% - 90% direct farmgate return</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Consumer Price Markup</strong></td>
+                                <td style="color: #dc2626; font-weight: 700;">+60% to +120% middleman markups</td>
+                                <td style="color: #059669; font-weight: 800;">25% - 35% average household savings</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Intermediary Layers</strong></td>
+                                <td style="color: #dc2626;">4 to 6 Brokers, Arhatiyas & Traders</td>
+                                <td style="color: #059669; font-weight: 700;">0 Middlemen (100% Direct Fair Trade)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Post-Harvest Spoilage Waste</strong></td>
+                                <td style="color: #dc2626;">30% - 40% losses due to open transit</td>
+                                <td style="color: #059669; font-weight: 800;">&lt; 0.4% (3.8°C IoT cold-chain transit)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Payment Settlement Cycle</strong></td>
+                                <td style="color: #dc2626;">15 to 45 days credit with commission fees</td>
+                                <td style="color: #059669; font-weight: 800;">Instant UPI release upon OTP delivery</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Quality Authentication</strong></td>
+                                <td style="color: #dc2626;">Subjective visual estimation by agents</td>
+                                <td style="color: #059669; font-weight: 700;">AI computer-vision Brix & defect scoring</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Statewide 38-District Network</strong></td>
+                                <td style="color: #dc2626;">Fragmented local physical auctions</td>
+                                <td style="color: #059669; font-weight: 700;">Statewide unified digital agri-grid</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Call to Action Banner -->
+            <div class="card" style="padding: 40px; background: linear-gradient(135deg, #064e3b 0%, #0f172a 100%); color: white; border-radius: 24px; border: none; box-shadow: 0 20px 50px rgba(6, 78, 59, 0.3);">
+                <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                    <div style="font-size: 12px; font-weight: 800; color: #34d399; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">
+                        🌱 JOIN THE AGRICULTURAL REVOLUTION
+                    </div>
+                    <h2 style="font-size: 32px; font-weight: 800; margin-bottom: 14px; color: white;">
+                        Ready to Participate in Direct Fair Trade?
+                    </h2>
+                    <p style="font-size: 16px; color: #cbd5e1; margin-bottom: 30px; line-height: 1.6;">
+                        Whether you are a Tamil Nadu farmer, an FPO leader, an urban family, or an institutional B2B procurement team, FarmDirect empowers your agricultural journey.
+                    </p>
+                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                        <a href="marketplace.html" class="btn btn-primary btn-lg" style="padding: 14px 28px; font-size: 15px;">
+                            <i class="fas fa-shopping-basket"></i> Browse Live Marketplace
+                        </a>
+                        <a href="farmer-verification.html" class="btn btn-secondary btn-lg" style="padding: 14px 28px; font-size: 15px; background: rgba(255,255,255,0.12); color: white; border-color: rgba(255,255,255,0.3);">
+                            <i class="fas fa-tractor"></i> Farmer & Land KYC
+                        </a>
+                        <a href="live-tracking.html" class="btn btn-secondary btn-lg" style="padding: 14px 28px; font-size: 15px; background: rgba(255,255,255,0.12); color: white; border-color: rgba(255,255,255,0.3);">
+                            <i class="fas fa-satellite-dish"></i> Live Logistics Radar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="fd-footer">
+        <div class="container">
+            <div class="fd-footer-grid">
+                <div>
+                    <div class="fd-brand" style="margin-bottom: 15px;">
+                        <span style="color:white;">🌱 FarmDirect</span>
+                        <span class="fd-brand-badge">Direct Trade</span>
+                    </div>
+                    <p style="color: #94a3b8; font-size: 13.5px; line-height: 1.6;">
+                        Tamil Nadu's sovereign direct agricultural trade network. Powered by AI demand forecasting, 3.8°C IoT cold-chain logistics, and instant escrow settlements.
+                    </p>
+                </div>
+                <div>
+                    <h4 style="color: white; font-size: 15px; font-weight: 700; margin-bottom: 14px;">Marketplace & Portals</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 13px;">
+                        <li><a href="marketplace.html" style="color: #94a3b8; text-decoration: none;">Live Produce Catalog</a></li>
+                        <li><a href="product-quality.html" style="color: #94a3b8; text-decoration: none;">AI Quality Scanner</a></li>
+                        <li><a href="price-comparison.html" style="color: #94a3b8; text-decoration: none;">Price Comparison Index</a></li>
+                        <li><a href="offers.html" style="color: #94a3b8; text-decoration: none;">Harvest Offers & Promos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: white; font-size: 15px; font-weight: 700; margin-bottom: 14px;">Logistics & Operations</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 13px;">
+                        <li><a href="live-tracking.html" style="color: #94a3b8; text-decoration: none;">Live GPS Cold Fleet Radar</a></li>
+                        <li><a href="route-optimization.html" style="color: #94a3b8; text-decoration: none;">AI Multi-Farm Route Optimizer</a></li>
+                        <li><a href="warehouse.html" style="color: #94a3b8; text-decoration: none;">Smart Rural Cold Hubs</a></li>
+                        <li><a href="demand-forecast.html" style="color: #94a3b8; text-decoration: none;">Predictive Demand Forecast</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: white; font-size: 15px; font-weight: 700; margin-bottom: 14px;">Institutional & Support</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 13px;">
+                        <li><a href="about.html" style="color: #34d399; text-decoration: none; font-weight: 700;">Workflow & Mission</a></li>
+                        <li><a href="contact.html" style="color: #94a3b8; text-decoration: none;">Contact Agricultural Nodal Command</a></li>
+                        <li><a href="support.html" style="color: #94a3b8; text-decoration: none;">24/7 Farmer Helpdesk</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fd-footer-bottom">
+                <div></div>
+                <div style="display: flex; gap: 20px;">
+                    <a href="privacy.html" style="color: #64748b; text-decoration: none; font-size: 12.5px;">Privacy Policy</a>
+                    <a href="terms.html" style="color: #64748b; text-decoration: none; font-size: 12.5px;">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        const workflowSimulatorData = {
+            1: {
+                title: "Stage 1: Land KYC & Harvest Listing (உழவர் பதிவு)",
+                badge: "LAND & PRODUCER VERIFICATION",
+                color: "#10b981",
+                icon: "fas fa-id-card",
+                summary: "Farmer Thiru. Selvakumar registers 4.5 acres of turmeric farm land in Semmampalayam, Erode. Land registry records (Patta #TN-88219) are verified against the Tamil Nadu Land Records database.",
+                details: [
+                    { label: "Producer Name", val: "M. Selvakumar (Erode Organic Turmeric FPO)" },
+                    { label: "District / Location", val: "Erode, Semmampalayam (NH544 Corridor)" },
+                    { label: "Land Title / Patta", val: "Patta #ERD-2026-8819 (Verified 4.5 Acres)" },
+                    { label: "Crop & Volume", val: "GI Erode Golden Turmeric (4,500 kg)" },
+                    { label: "Mandi Benchmark", val: "APMC Rate: ₹135/kg ➔ Direct Fair Price: ₹185/kg" }
+                ],
+                actionBtn: { text: "Launch Farmer Verification", url: "farmer-verification.html", icon: "fas fa-id-card" }
+            },
+            2: {
+                title: "Stage 2: AI Computer-Vision Quality Assessment (செயற்கை நுண்ணறிவு தரச் சோதனை)",
+                badge: "AI VISION & BRIX INSPECTION",
+                color: "#3b82f6",
+                icon: "fas fa-shield-alt",
+                summary: "Harvest sample photos are processed through the computer-vision quality scoring engine. High natural curcumin content (4.8%) is verified with zero synthetic polish.",
+                details: [
+                    { label: "Quality Score", val: "99 / 100 (Grade A+ Export Standard)" },
+                    { label: "Curcumin Index", val: "4.8% Natural High Bio-Curcumin" },
+                    { label: "Pesticide Residue", val: "100% Certified Chemical-Residue Free" },
+                    { label: "GI Authenticity", val: "GI-Tag #TN-GEO-2019-01 Confirmed" },
+                    { label: "Smart Batch QR", val: "QR-TN-ERD-TUR-9901 (Full Farm-to-Fork Traceability)" }
+                ],
+                actionBtn: { text: "Open AI Quality Scanner", url: "product-quality.html", icon: "fas fa-shield-alt" }
+            },
+            3: {
+                title: "Stage 3: Direct Fair-Trade Smart Escrow (நேரடி விலை & வங்கி பாதுகாப்பு)",
+                badge: "RBI-COMPLIANT SMART ESCROW",
+                color: "#f59e0b",
+                icon: "fas fa-lock",
+                summary: "Buyer orders 200 kg directly from the marketplace. Payment of ₹37,000 is placed in an automated escrow lock. Zero middlemen commission is deducted.",
+                details: [
+                    { label: "Order ID", val: "TN-ORD-2026-9812" },
+                    { label: "Escrow Deposit", val: "₹37,000 (Locked in SBI Escrow Account)" },
+                    { label: "Farmer Return", val: "₹33,300 (90% Direct Farmgate Return)" },
+                    { label: "Middleman Fee", val: "₹0.00 (Zero Brokerage Cut)" },
+                    { label: "Encryption Standard", val: "AES-256 Ledger Token #ENC-AES-99124" }
+                ],
+                actionBtn: { text: "Explore Live Marketplace", url: "marketplace.html", icon: "fas fa-store" }
+            },
+            4: {
+                title: "Stage 4: AI Route & 3.8°C Cold-Chain Transit (குளிர்சாதன விநியோகம்)",
+                badge: "3.8°C IOT REEFER TELEMATICS",
+                color: "#8b5cf6",
+                icon: "fas fa-truck",
+                summary: "Refrigerated vehicle (TN-33-AX-9912) is dispatched on an AI-optimized multi-stop route via NH544 / NH44 corridor with constant thermal monitoring at 3.8°C.",
+                details: [
+                    { label: "Fleet Reefer", val: "Ashok Leyland Dost Reefer (TN-33-AX-9912)" },
+                    { label: "IoT Temperature", val: "3.8°C Steady (Active Cryo Sensor #IOT-881)" },
+                    { label: "Transit Route", val: "Erode Semmampalayam ➔ Koyambedu Mega Terminal (NH544)" },
+                    { label: "ETA Countdown", val: "2 hrs 40 mins (Live GPS Telematics)" },
+                    { label: "Carbon Offset", val: "48.2 kg CO₂ Saved vs Unoptimized Fleet" }
+                ],
+                actionBtn: { text: "Track on Live GPS Radar", url: "live-tracking.html", icon: "fas fa-satellite-dish" }
+            },
+            5: {
+                title: "Stage 5: OTP Delivery & Instant Escrow Settlement (உடனடி வங்கி பரிவர்த்தனை)",
+                badge: "DIGITAL e-POD & INSTANT PAYOUT",
+                color: "#059669",
+                icon: "fas fa-check-double",
+                summary: "Upon delivery verification via 6-digit OTP, the digital proof-of-delivery (e-POD) is generated. Escrow funds are immediately transferred to the farmer's UPI account.",
+                details: [
+                    { label: "Delivery Status", val: "Delivered & Verified via OTP #584912" },
+                    { label: "e-POD Certificate", val: "Digitally Signed e-POD #TN-POD-9910" },
+                    { label: "Escrow Release", val: "₹37,000 Transferred in 1.4 seconds" },
+                    { label: "Farmer UPI", val: "selvakumar@oksbi (Instant Credit Confirmed)" },
+                    { label: "Audit Ledger", val: "AES-256 Ledger Block #TN-LEDGER-88192" }
+                ],
+                actionBtn: { text: "View Farmer Earnings Ledger", url: "farmer-earnings.html", icon: "fas fa-wallet" }
+            }
+        };
+
+        function switchWorkflowStage(stageNum, btn) {
+            document.querySelectorAll('.workflow-tab-btn').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+
+            const data = workflowSimulatorData[stageNum] || workflowSimulatorData[1];
+            const box = document.getElementById('simulatorDisplayBox');
+            if (!box) return;
+
+            box.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 14px;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div style="width: 40px; height: 40px; border-radius: 12px; background: ${data.color}; color: white; display: grid; place-items: center; font-size: 18px;">
+                            <i class="${data.icon}"></i>
+                        </div>
+                        <h4 style="font-size: 18px; font-weight: 800; color: #0f172a; margin: 0;">${data.title}</h4>
+                    </div>
+                    <span style="background: rgba(16, 185, 129, 0.12); color: ${data.color}; font-weight: 800; font-size: 11px; padding: 4px 10px; border-radius: 6px; border: 1px solid ${data.color};">
+                        ${data.badge}
+                    </span>
+                </div>
+
+                <p style="font-size: 14.5px; color: #475569; line-height: 1.6; margin-bottom: 20px;">
+                    ${data.summary}
+                </p>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 24px;">
+                    ${data.details.map(d => `
+                        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px 14px;">
+                            <div style="font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 700; margin-bottom: 4px;">${d.label}</div>
+                            <div style="font-size: 13.5px; font-weight: 800; color: #0f172a;">${d.val}</div>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div style="display: flex; justify-content: flex-end;">
+                    <a href="${data.actionBtn.url}" class="btn btn-primary" style="padding: 10px 20px; font-size: 13.5px;">
+                        <i class="${data.actionBtn.icon}"></i> ${data.actionBtn.text}
+                    </a>
+                </div>
+            `;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            switchWorkflowStage(1, document.querySelector('.workflow-tab-btn'));
+        });
+    </script>
+</body>
+</html>

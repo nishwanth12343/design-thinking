@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | FarmDirect Tamil Nadu</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#10b981">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: radial-gradient(circle at top right, #f0fdf4 0%, #f8fafc 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        .login-card {
+            padding: 34px 36px;
+            border-radius: 24px;
+            box-shadow: 0 20px 45px -4px rgba(0, 0, 0, 0.1), 0 10px 20px -2px rgba(0, 0, 0, 0.04);
+            background: rgba(255, 255, 255, 0.98);
+            border: 1px solid rgba(226, 232, 240, 0.85);
+        }
+
+        .demo-chip {
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            border-radius: 999px;
+            padding: 5px 12px;
+            font-size: 11.5px;
+            font-weight: 600;
+            color: #334155;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .demo-chip:hover {
+            background: #dcfce7;
+            border-color: #10b981;
+            color: #065f46;
+            transform: translateY(-1px);
+        }
+
+        .role-select-btn {
+            transition: all 0.2s ease;
+            font-weight: 600;
+            border-radius: 12px;
+            border: 1.5px solid #e2e8f0;
+            background: #f8fafc;
+            color: #475569;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px;
+            font-size: 12.5px;
+        }
+
+        .role-select-btn:hover {
+            border-color: #10b981;
+            background: #f0fdf4;
+            color: #065f46;
+        }
+
+        .role-select-btn.active {
+            border: 2px solid #10b981 !important;
+            background: #dcfce7 !important;
+            color: #064e3b !important;
+            font-weight: 700 !important;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2) !important;
+        }
+
+        .district-box {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+            border: 1.5px solid #86efac;
+            border-radius: 16px;
+            padding: 16px;
+            margin-top: 14px;
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.08);
+            animation: fadeIn 0.25s ease;
+        }
+
+        .admin-nav-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 16px;
+            border-radius: 999px;
+            border: 1.5px solid #10b981;
+            background: #f0fdf4;
+            color: #065f46;
+            font-weight: 700;
+            font-size: 13px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .admin-nav-pill:hover {
+            background: #10b981;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .admin-security-box {
+            background: linear-gradient(145deg, #064e3b 0%, #0f172a 100%);
+            border: 2px solid #10b981;
+            border-radius: 24px;
+            padding: 28px 30px;
+            color: #f8fafc;
+            margin-top: 24px;
+            box-shadow: 0 20px 45px -5px rgba(0, 0, 0, 0.4), 0 0 35px rgba(16, 185, 129, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .admin-security-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .security-badge-pulse {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid #10b981;
+            color: #34d399;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .direct-portal-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 14px;
+            border-radius: 14px;
+            background: #ffffff;
+            border: 1.5px solid #e2e8f0;
+            text-decoration: none;
+            color: #0f172a;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            margin-bottom: 8px;
+        }
+
+        .direct-portal-card:hover {
+            transform: translateY(-2px);
+            border-color: #10b981;
+            background: #f0fdf4;
+            box-shadow: 0 6px 16px rgba(16, 185, 129, 0.15);
+        }
+
+        .direct-portal-badge {
+            font-size: 10px;
+            font-weight: 800;
+            padding: 2px 7px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 576px) {
+            .login-card {
+                padding: 22px 18px;
+                border-radius: 20px;
+                margin: 12px 10px;
+            }
+
+            .role-grid-container {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 8px !important;
+            }
+
+            .role-select-btn {
+                font-size: 12px !important;
+                padding: 9px 6px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Navigation -->
+    <header class="navbar"
+        style="padding: 14px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #e2e8f0;">
+        <div class="brand">
+            <a href="index.html"
+                style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 8px;">
+                <i class="fas fa-seedling text-success" style="font-size: 24px;"></i>
+                <span style="font-size: 20px; font-weight: 800; color: #064e3b;">FarmDirect TN</span>
+            </a>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <a href="register.html" class="btn btn-secondary btn-sm" style="border-radius: 8px; font-weight: 600;">
+                <i class="fas fa-user-plus"></i> Register
+            </a>
+        </div>
+    </header>
+
+    <div class="container"
+        style="max-width: 600px; margin: 24px auto 50px; position: relative; z-index: 10; width: 100%; box-sizing: border-box; padding: 0 15px;">
+        <div class="login-card">
+
+            <div style="text-align: center; margin-bottom: 20px;">
+                <div
+                    style="margin: 0 auto 10px; width: 52px; height: 52px; display: grid; place-items: center; border-radius: 50%; background: #dcfce7; color: #059669; font-size: 22px;">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h1 style="font-size: 22px; font-weight: 800; color: #064e3b; margin-bottom: 4px;">Sign In to FarmDirect TN</h1>
+                <p style="font-size: 13px; color: #64748b; margin: 0;">Direct agricultural network across all 38 districts of Tamil Nadu</p>
+            </div>
+
+            <!-- Active Session Indicator (if user already authenticated) -->
+            <div id="activeSessionCard" style="display:none; background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 16px; padding: 14px 16px; margin-bottom: 18px; text-align: center;">
+                <div style="font-size: 11px; font-weight: 800; color: #059669; text-transform: uppercase; letter-spacing: 0.5px;">✓ You are already signed in</div>
+                <div style="font-size: 15px; font-weight: 800; color: #064e3b; margin: 3px 0;" id="activeSessionName">Logged-In User</div>
+                <div style="font-size: 12px; color: #475569; margin-bottom: 10px;" id="activeSessionDetail">Tamil Nadu Participant</div>
+                <div style="display: flex; gap: 8px; justify-content: center;">
+                    <a href="index.html" class="btn btn-primary btn-sm" id="continueWebBtn" style="font-weight: 700; border-radius: 8px; font-size: 12px; padding: 6px 14px;">
+                        <i class="fas fa-arrow-right"></i> Open Website
+                    </a>
+                    <button type="button" onclick="handleLoginLogout(event)" class="btn btn-secondary btn-sm" style="font-weight: 700; border-radius: 8px; font-size: 12px; padding: 6px 14px; color: #dc2626; border-color: #fca5a5;">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+
+            <!-- Role Selector (Choose Role to Authenticate) -->
+            <div style="margin-bottom: 18px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <label
+                        style="margin-bottom: 0; font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: #475569;">
+                        1. Select User Account Role (பயனர் வகை)
+                    </label>
+                    <span style="font-size: 11px; color: #059669; font-weight: 700;"><i class="fas fa-shield-alt"></i> Verified Credentials</span>
+                </div>
+                <div class="role-grid-container"
+                    style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+                    <button type="button" onclick="selectRole('farmer', 'farmer-dashboard.html')"
+                        class="role-select-btn active" id="btn-role-farmer">
+                        <i class="fas fa-tractor text-success"></i> Farmer / உழவர்
+                    </button>
+                    <button type="button" onclick="selectRole('consumer', 'consumer-dashboard.html')"
+                        class="role-select-btn" id="btn-role-consumer">
+                        <i class="fas fa-shopping-basket text-success"></i> Consumer / நுகர்வோர்
+                    </button>
+                    <button type="button" onclick="selectRole('bulk', 'bulk-buyers.html')" class="role-select-btn"
+                        id="btn-role-bulk">
+                        <i class="fas fa-building text-blue"></i> Buyer / வாங்குபவர்
+                    </button>
+                    <button type="button" onclick="selectRole('logistics', 'delivery-management.html')"
+                        class="role-select-btn" id="btn-role-logistics">
+                        <i class="fas fa-truck text-purple"></i> Logistics / விநியோகம்
+                    </button>
+                </div>
+            </div>
+
+            <!-- 38 Tamil Nadu Districts Dropdown Selector for All Users -->
+            <div style="margin-bottom: 16px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                    <label for="userDistrictSelect"
+                        style="margin-bottom: 0; font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: #064e3b;">
+                        <i class="fas fa-map-marker-alt text-danger"></i> 2. Select Your District (உங்கள் மாவட்டம்)
+                    </label>
+                    <span id="districtStockBadge" style="font-size: 11.5px; font-weight: 700; color: #059669; background: #ecfdf5; padding: 2px 8px; border-radius: 6px; border: 1px solid #a7f3d0;">
+                        <i class="fas fa-satellite-dish fa-spin"></i> Live Hub Sync
+                    </span>
+                </div>
+                <select id="userDistrictSelect" name="district" onchange="onDistrictChange(this.value)" class="form-control tn-district-select"
+                    style="width: 100%; padding: 11px 14px; font-size: 14px; font-weight: 700; color: #0f172a; border-radius: 12px; border: 2px solid #10b981; background: #f0fdf4; outline: none; cursor: pointer; box-sizing: border-box; display: block !important;">
+                    <option value="Erode" selected>📍 Erode (ஈரோடு) - Semmampalayam Turmeric Complex</option>
+                    <option value="Chennai">📍 Chennai (சென்னை) - Koyambedu Mega Terminal</option>
+                    <option value="Coimbatore">📍 Coimbatore (கோயம்புத்தூர்) - Pollachi Road Uzhavar Hub</option>
+                    <option value="Madurai">📍 Madurai (மதுரை) - Mattuthavani Agro Terminal</option>
+                    <option value="Salem">📍 Salem (சேலம்) - Omalur Agro-Logistics Center</option>
+                    <option value="Thanjavur">📍 Thanjavur (தஞ்சாவூர்) - Kumbakonam Delta Paddy Depot</option>
+                    <option value="Dindigul">📍 Dindigul (திண்டுக்கல்) - Dindigul Central Storage Vault</option>
+                    <option value="Theni">📍 Theni (தேனி) - Cumbum Valley Pre-Cooling Cell</option>
+                    <option value="Nilgiris">📍 Nilgiris (நீலகிரி) - Ooty Hill Harvest Bay</option>
+                    <option value="Tirunelveli">📍 Tirunelveli (திருநெல்வேலி) - Gangaikondan Mega Food Park</option>
+                    <option value="Tiruchirappalli">📍 Tiruchirappalli (திருச்சிராப்பள்ளி) - Trichy Gandhi Market Vault</option>
+                    <option value="Dharmapuri">📍 Dharmapuri (தர்மபுரி) - Dharmapuri Tomato Processing Hub</option>
+                    <option value="Krishnagiri">📍 Krishnagiri (கிருஷ்ணகிரி) - Rayakottai Integrated Cold Hub</option>
+                    <option value="Ramanathapuram">📍 Ramanathapuram (ராமநாதபுரம்) - Paramakudi Spice Bay</option>
+                    <option value="Namakkal">📍 Namakkal (நாமக்கல்) - Namakkal Feed & Agro Depot</option>
+                    <option value="Tiruppur">📍 Tiruppur (திருப்பூர்) - Kangeyam Oilseed Terminal</option>
+                    <option value="Kanchipuram">📍 Kanchipuram (காஞ்சிபுரம்) - Kanchipuram Agronomy Hub</option>
+                    <option value="Chengalpattu">📍 Chengalpattu (செங்கல்பட்டு) - Chengalpattu Rural Cold Logistics</option>
+                    <option value="Cuddalore">📍 Cuddalore (கடலூர்) - Panruti Jackfruit & Cashew Depot</option>
+                    <option value="Villupuram">📍 Villupuram (விழுப்புரம்) - Villupuram Oilseed Terminal</option>
+                    <option value="Kallakurichi">📍 Kallakurichi (கள்ளக்குறிச்சி) - Kallakurichi Agro Depot</option>
+                    <option value="Vellore">📍 Vellore (வேலூர்) - Vellore Golden Mandi Vault</option>
+                    <option value="Tirupathur">📍 Tirupathur (திருப்பத்தூர) - Tirupathur Agro Hub</option>
+                    <option value="Ranipet">📍 Ranipet (ராணிப்பேட்டை) - Ranipet Agronomy Bay</option>
+                    <option value="Tiruvallur">📍 Tiruvallur (திருவள்ளூர்) - Tiruvallur Perishable Terminal</option>
+                    <option value="Tiruvarur">📍 Tiruvarur (திருவாரூர்) - Mannargudi Grain Storage Silo</option>
+                    <option value="Nagapattinam">📍 Nagapattinam (நாகப்பட்டினம்) - Nagapattinam Delta Warehouse</option>
+                    <option value="Mayiladuthurai">📍 Mayiladuthurai (மயிலாடுதுறை) - Mayiladuthurai Grain Vault</option>
+                    <option value="Pudukkottai">📍 Pudukkottai (புதுக்கோட்டை) - Pudukkottai Oilseed Center</option>
+                    <option value="Sivaganga">📍 Sivaganga (சிவகங்கை) - Karaikudi Agronomy Hub</option>
+                    <option value="Virudhunagar">📍 Virudhunagar (விருதுநகர்) - Virudhunagar Commodity Market</option>
+                    <option value="Thoothukudi">📍 Thoothukudi (தூத்துக்குடி) - Tuticorin Maritime Cold Depot</option>
+                    <option value="Tenkasi">📍 Tenkasi (தென்காசி) - Tenkasi Foothills Cold Hub</option>
+                    <option value="Kanyakumari">📍 Kanyakumari (கன்னியாகுமரி) - Nagercoil Spice & Fruit Hub</option>
+                    <option value="Karur">📍 Karur (கரூர்) - Aravakurichi Moringa Terminal</option>
+                    <option value="Ariyalur">📍 Ariyalur (அரியலூர்) - Ariyalur Dryland Depot</option>
+                    <option value="Perambalur">📍 Perambalur (பெரம்பலூர்) - Perambalur Shallot Cold Vault</option>
+                    <option value="Tiruvannamalai">📍 Tiruvannamalai (திருவண்ணாமலை) - Arni Rice Mill & Mandi Terminal</option>
+                </select>
+
+                <!-- Isolated District Details & Dynamic Offer Showcase Card -->
+                <div id="districtDetailCard" class="district-box">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; border-bottom: 1px dashed #bbf7d0; padding-bottom: 8px;">
+                        <div>
+                            <span id="dt-name" style="font-size: 16px; font-weight: 800; color: #064e3b;">Erode (ஈரோடு)</span>
+                            <div id="dt-crops" style="font-size: 12px; color: #475569; font-weight: 600; margin-top: 2px;">
+                                <i class="fas fa-seedling text-success"></i> Primary: GI Erode Turmeric, Sugarcane
+                            </div>
+                        </div>
+                        <span id="dt-offer-badge" style="background: #10b981; color: white; font-size: 11px; font-weight: 800; padding: 3px 9px; border-radius: 20px;">
+                            15% OFF
+                        </span>
+                    </div>
+
+                    <!-- Dynamic District Offer -->
+                    <div style="background: #ffffff; border: 1px solid #dcfce7; border-radius: 10px; padding: 10px 12px; margin-bottom: 10px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div style="font-size: 11px; font-weight: 800; color: #059669; text-transform: uppercase;">
+                                🎁 <span id="dt-offer-title-label">District Harvest Deal:</span>
+                            </div>
+                            <span id="dt-min-order" style="font-size: 11px; color: #64748b; font-weight: 600;">Min ₹400</span>
+                        </div>
+                        <div id="dt-offer-title" style="font-size: 13px; font-weight: 700; color: #0f172a; margin: 3px 0 6px;">
+                            15% OFF on Bhavani Basin GI Golden Turmeric Fingers
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; background: #f8fafc; padding: 6px 10px; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            <span style="font-size: 12px; color: #475569;">Promo Code: <strong id="dt-promo-code" style="font-family: monospace; color: #064e3b; font-size: 13px;">ERD-TURMERIC-2026</strong></span>
+                            <button type="button" onclick="copyDistrictPromo()" style="background: #059669; color: white; border: none; padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer;">
+                                Copy
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Real-Time Stock & Hub Metrics -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 11.5px; color: #334155;">
+                        <div style="background: #ffffff; padding: 8px 10px; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            <span style="color: #64748b; display: block; font-size: 10.5px;">Live Hub Stock:</span>
+                            <strong id="dt-stock" style="color: #059669; font-size: 13px;"><i class="fas fa-cubes"></i> 4,850 kg Available</strong>
+                        </div>
+                        <div style="background: #ffffff; padding: 8px 10px; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            <span style="color: #64748b; display: block; font-size: 10.5px;">Central Storage Hub:</span>
+                            <strong id="dt-hub" style="color: #0f172a; font-size: 11.5px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; display: block;">Semmampalayam Mandi Vault</strong>
+                        </div>
+                    </div>
+
+                    <!-- Government Office & Nodal Officer Info -->
+                    <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #dcfce7; display: flex; justify-content: space-between; align-items: center; font-size: 11.5px; color: #64748b;">
+                        <div>
+                            <i class="fas fa-building text-success"></i> <span id="dt-officer">Thiru. M. Selvam (Joint Director of Agriculture)</span>
+                        </div>
+                        <button type="button" onclick="showSelectedDistrictOfficeModal()" style="background: none; border: none; color: #059669; font-weight: 700; font-size: 11px; text-decoration: underline; cursor: pointer; padding: 0;">
+                            View Office 🏛️
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fast 1-Click Demo Credentials -->
+            <div style="margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #e2e8f0;">
+                <div
+                    style="font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 6px;">
+                    ⚡ Quick 1-Click Test Accounts:
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                    <span class="demo-chip" onclick="quickFillCredentials('farmer')"><i
+                            class="fas fa-tractor text-success"></i> Farmer</span>
+                    <span class="demo-chip" onclick="quickFillCredentials('consumer')"><i
+                            class="fas fa-shopping-basket text-success"></i> Buyer</span>
+                    <span class="demo-chip" onclick="quickFillCredentials('bulk')"><i
+                            class="fas fa-building text-blue"></i> Bulk Buyer</span>
+                    <span class="demo-chip" onclick="quickFillCredentials('logistics')"><i
+                            class="fas fa-truck text-purple"></i> Fleet</span>
+                </div>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div style="margin-bottom: 14px;">
+                    <label id="loginIdLabel"
+                        style="display: block; font-weight: 700; font-size: 13px; color: #1e293b; margin-bottom: 6px;">Mobile
+                        Number or Email ID</label>
+                    <input type="text" id="loginId" class="form-control"
+                        placeholder="e.g. 98421 11223 or farmer@farmdirect.io" value="farmer@farmdirect.io" required
+                        style="width: 100%; padding: 11px 14px; font-size: 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; box-sizing: border-box; outline: none;">
+                </div>
+
+                <div style="margin-bottom: 16px;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                        <label
+                            style="margin-bottom: 0; font-weight: 700; font-size: 13px; color: #1e293b;">Password</label>
+                        <span style="font-size: 11.5px; color: #059669; font-weight: 600;">Default:
+                            <code>password123</code></span>
+                    </div>
+                    <div style="position: relative;">
+                        <input type="password" id="password" class="form-control" placeholder="••••••••" value="password123"
+                            required
+                            style="width: 100%; padding: 11px 42px 11px 14px; font-size: 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; box-sizing: border-box; outline: none;">
+                        <button type="button" onclick="togglePasswordVisibility('password', this)"
+                            style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #64748b; cursor: pointer; padding: 6px; font-size: 14px; display: grid; place-items: center;"
+                            title="Show/Hide Password" aria-label="Toggle password visibility">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div
+                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; font-size: 13px;">
+                    <label
+                        style="display: flex; align-items: center; gap: 6px; cursor: pointer; color: #475569; font-weight: 500;">
+                        <input type="checkbox" checked> Remember this device
+                    </label>
+                    <span style="color: #64748b; font-size: 12px;"><i class="fas fa-shield-alt text-success"></i>
+                        Bank-Grade Security</span>
+                </div>
+
+                <!-- Dynamic Webpage Target Destination Indicator -->
+                <div id="targetWebpagePreview"
+                    style="background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 12px; padding: 10px 14px; margin-bottom: 14px; font-size: 12.5px; color: #064e3b; display: flex; align-items: center; justify-content: space-between;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-arrow-circle-right text-success" style="font-size: 16px;"></i>
+                        <span>Will open webpage: <strong id="redirectTargetLabel" style="color: #065f46; text-decoration: underline;">Farmer Webpage (farmer-dashboard.html)</strong></span>
+                    </div>
+                    <span id="roleBadgeLabel" style="font-size: 10px; font-weight: 800; background: #10b981; color: white; padding: 2px 8px; border-radius: 6px; text-transform: uppercase;">FARMER</span>
+                </div>
+
+                <button type="submit" id="submitLoginBtn" class="btn btn-primary btn-lg btn-block"
+                    style="width: 100%; margin-bottom: 14px; font-weight: 800; padding: 13px; font-size: 15px; border-radius: 12px; cursor: pointer;">
+                    <i class="fas fa-sign-in-alt"></i> Login to Selected Webpage
+                </button>
+            </form>
+
+            <!-- Google Login -->
+            <div style="margin-bottom: 15px;">
+                <button type="button" onclick="handleGoogleLogin()" class="btn btn-block"
+                    style="width: 100%; background: #ffffff; border: 1.5px solid #cbd5e1; color: #1e293b; font-weight: 700; font-size: 13.5px; padding: 10px; border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.04); cursor: pointer;">
+                    <svg width="18" height="18" viewBox="0 0 48 48">
+                        <path fill="#EA4335"
+                            d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
+                        <path fill="#4285F4"
+                            d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z" />
+                        <path fill="#FBBC05"
+                            d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z" />
+                        <path fill="#34A853"
+                            d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
+                    </svg>
+                    Continue with Google
+                </button>
+            </div>
+
+            <div
+                style="text-align: center; font-size: 13px; color: #64748b; padding-top: 14px; border-top: 1px solid #e2e8f0;">
+                New to FarmDirect TN? <a href="register.html"
+                    style="color: #059669; font-weight: 700; text-decoration: none;">Create Free Account</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script>
+        let currentRole = 'farmer';
+        let targetRedirect = 'farmer-dashboard.html';
+        let selectedDistrict = 'Erode';
+
+        const roleDefaultCreds = {
+            farmer: { email: 'farmer@farmdirect.io', url: 'farmer-dashboard.html' },
+            consumer: { email: 'consumer@farmdirect.io', url: 'consumer-dashboard.html' },
+            bulk: { email: 'bulkbuyer@farmdirect.io', url: 'bulk-buyers.html' },
+            logistics: { email: 'fleet@farmdirect.io', url: 'delivery-management.html' },
+            admin: { email: 'admin@farmdirect.tn.gov.in', url: 'admin-dashboard.html' }
+        };
+
+        function togglePasswordVisibility(inputId, btn) {
+            const input = document.getElementById(inputId);
+            if (!input) return;
+            const isPassword = input.type === 'password';
+            input.type = isPassword ? 'text' : 'password';
+            const icon = btn.querySelector('i');
+            if (icon) {
+                icon.className = isPassword ? 'fas fa-eye-slash' : 'fas fa-eye';
+            }
+        }
+
+        function selectRole(role, redirectUrl) {
+            currentRole = role;
+            targetRedirect = redirectUrl || (roleDefaultCreds[role] ? roleDefaultCreds[role].url : 'index.html');
+
+            document.querySelectorAll('.role-select-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            const activeBtn = document.getElementById(`btn-role-${role}`);
+            if (activeBtn) {
+                activeBtn.classList.add('active');
+            }
+
+            const loginId = document.getElementById('loginId');
+            const password = document.getElementById('password');
+
+            if (roleDefaultCreds[role]) {
+                if (loginId) loginId.value = roleDefaultCreds[role].email;
+                if (password) password.value = 'password123';
+            }
+
+            // Update destination webpage preview
+            const targetLabel = document.getElementById('redirectTargetLabel');
+            const roleBadge = document.getElementById('roleBadgeLabel');
+            const roleNames = {
+                farmer: 'Farmer Webpage (farmer-dashboard.html)',
+                consumer: 'Consumer Webpage (consumer-dashboard.html)',
+                bulk: 'Buyer Webpage (bulk-buyers.html)',
+                logistics: 'Logistics Webpage (delivery-management.html)',
+                admin: 'Admin Command Webpage (admin-dashboard.html)'
+            };
+            if (targetLabel) targetLabel.textContent = roleNames[role] || `${role.toUpperCase()} (${targetRedirect})`;
+            if (roleBadge) roleBadge.textContent = role.toUpperCase();
+        }
+
+        const fallbackDistrictsList = [
+            { name: 'Erode', tamilName: 'ஈரோடு', primaryCrop: 'GI Erode Turmeric, Sugarcane' },
+            { name: 'Chennai', tamilName: 'சென்னை', primaryCrop: 'Urban Agro Depot & Logistics' },
+            { name: 'Coimbatore', tamilName: 'கோயம்புத்தூர்', primaryCrop: 'Pollachi Coconut, Vegetables' },
+            { name: 'Madurai', tamilName: 'மதுரை', primaryCrop: 'Madurai Malli, Paddy' },
+            { name: 'Salem', tamilName: 'சேலம்', primaryCrop: 'Malgova Mangoes, Sago' },
+            { name: 'Thanjavur', tamilName: 'தஞ்சாவூர்', primaryCrop: 'Ponni Rice, Delta Pulses' },
+            { name: 'Dindigul', tamilName: 'திண்டுக்கல்', primaryCrop: 'Sirumalai Hill Banana' },
+            { name: 'Theni', tamilName: 'தேனி', primaryCrop: 'Cumbum Valley Grapes' },
+            { name: 'Nilgiris', tamilName: 'நீலகிரி', primaryCrop: 'Ooty Mountain Carrots, Tea' },
+            { name: 'Tirunelveli', tamilName: 'திருநெல்வேலி', primaryCrop: 'Nendran Plantain, Wheat' },
+            { name: 'Tiruchirappalli', tamilName: 'திருச்சிராப்பள்ளி', primaryCrop: 'Poovan Banana, Rice' },
+            { name: 'Dharmapuri', tamilName: 'தர்மபுரி', primaryCrop: 'Hybrid Red Tomatoes' },
+            { name: 'Krishnagiri', tamilName: 'கிருஷ்ணகிரி', primaryCrop: 'Totapuri Mango Pulp, Roses' },
+            { name: 'Ramanathapuram', tamilName: 'ராமநாதபுரம்', primaryCrop: 'GI Mundu Chilli' },
+            { name: 'Namakkal', tamilName: 'நாமக்கல்', primaryCrop: 'Maize, Tapioca' },
+            { name: 'Tiruppur', tamilName: 'திருப்பூர்', primaryCrop: 'Kangeyam Coconut, Cotton' },
+            { name: 'Kanchipuram', tamilName: 'காஞ்சிபுரம்', primaryCrop: 'Organic Rice, Greens' },
+            { name: 'Chengalpattu', tamilName: 'செங்கல்பட்டு', primaryCrop: 'Horticulture, Floriculture' },
+            { name: 'Cuddalore', tamilName: 'கடலூர்', primaryCrop: 'Cashew, Panruti Jackfruit' },
+            { name: 'Villupuram', tamilName: 'விழுப்புரம்', primaryCrop: 'Groundnut, Sugarcane' },
+            { name: 'Kallakurichi', tamilName: 'கள்ளக்குறிச்சி', primaryCrop: 'Paddy, Sugarcane' },
+            { name: 'Vellore', tamilName: 'வேலூர்', primaryCrop: 'Spiny Brinjal, Banana' },
+            { name: 'Tirupathur', tamilName: 'திருப்பத்தூர்', primaryCrop: 'Yelagiri Hill Spices' },
+            { name: 'Ranipet', tamilName: 'ராணிப்பேட்டை', primaryCrop: 'Paddy, Vegetables' },
+            { name: 'Tiruvallur', tamilName: 'திருவள்ளூர்', primaryCrop: 'Paddy, Guava, Watermelon' },
+            { name: 'Tiruvarur', tamilName: 'திருவாரூர்', primaryCrop: 'Cauvery Delta Samba Paddy' },
+            { name: 'Nagapattinam', tamilName: 'நாகப்பட்டினம்', primaryCrop: 'Coastal Paddy, Pulses' },
+            { name: 'Mayiladuthurai', tamilName: 'மயிலாடுதுறை', primaryCrop: 'Seeraga Samba Rice' },
+            { name: 'Pudukkottai', tamilName: 'புதுக்கோட்டை', primaryCrop: 'Groundnut, Cashew' },
+            { name: 'Sivaganga', tamilName: 'சிவகங்கை', primaryCrop: 'Dryland Millets, Chillies' },
+            { name: 'Virudhunagar', tamilName: 'விருதுநகர்', primaryCrop: 'Sattur Chilli, Cotton' },
+            { name: 'Thoothukudi', tamilName: 'தூத்துக்குடி', primaryCrop: 'Palmyra Products, Salt' },
+            { name: 'Tenkasi', tamilName: 'தென்காசி', primaryCrop: 'Courtallam Hill Fruits' },
+            { name: 'Kanyakumari', tamilName: 'கன்னியாகுமரி', primaryCrop: 'Matti Banana, Honey' },
+            { name: 'Karur', tamilName: 'கரூர்', primaryCrop: 'Moringa, Banana, Cotton' },
+            { name: 'Ariyalur', tamilName: 'அரியலூர்', primaryCrop: 'Cashew, Groundnut' },
+            { name: 'Perambalur', tamilName: 'பெரம்பலூர்', primaryCrop: 'Small Onion / Shallots' },
+            { name: 'Tiruvannamalai', tamilName: 'திருவண்ணாமலை', primaryCrop: 'Paddy, Groundnut' }
+        ];
+
+        function populateDistrictDropdown() {
+            const select = document.getElementById('userDistrictSelect');
+            if (!select) return;
+
+            const districts = (window.FarmDirect && typeof FarmDirect.getDistricts === 'function') 
+                ? FarmDirect.getDistricts() 
+                : fallbackDistrictsList;
+
+            const savedDistrict = (window.FarmDirect && typeof FarmDirect.getUserDistrict === 'function') 
+                ? FarmDirect.getUserDistrict() 
+                : 'Erode';
+            selectedDistrict = savedDistrict;
+
+            // Only rebuild options if select is empty
+            if (select.options.length < 30) {
+                select.innerHTML = districts.map(d => `
+                    <option value="${d.name}" ${d.name === savedDistrict ? 'selected' : ''}>
+                        📍 ${d.name} (${d.tamilName || d.name}) - ${(d.primaryCrop || '').split(',')[0]}
+                    </option>
+                `).join('');
+            } else {
+                select.value = savedDistrict;
+            }
+
+            updateDistrictShowcase(selectedDistrict);
+        }
+
+        function onDistrictChange(districtName) {
+            selectedDistrict = districtName;
+            if (window.FarmDirect && typeof FarmDirect.setUserDistrict === 'function') {
+                FarmDirect.setUserDistrict(districtName);
+            }
+            updateDistrictShowcase(districtName);
+            if (window.FarmDirect && typeof FarmDirect.showToast === 'function') {
+                FarmDirect.showToast(`📍 Selected ${districtName} District Hub & Harvest Deals`, 'info');
+            }
+        }
+
+        function updateDistrictShowcase(districtName) {
+            if (!window.FarmDirect) return;
+
+            const profile = FarmDirect.getDistrictProfileData ? FarmDirect.getDistrictProfileData(districtName) : null;
+            const offer = FarmDirect.getDistrictOffer ? FarmDirect.getDistrictOffer(districtName) : null;
+            const stockSummary = FarmDirect.getDistrictStockSummary ? FarmDirect.getDistrictStockSummary(districtName) : null;
+
+            const nameEl = document.getElementById('dt-name');
+            const cropsEl = document.getElementById('dt-crops');
+            const badgeEl = document.getElementById('dt-offer-badge');
+            const offerTitleEl = document.getElementById('dt-offer-title');
+            const minOrderEl = document.getElementById('dt-min-order');
+            const promoEl = document.getElementById('dt-promo-code');
+            const stockEl = document.getElementById('dt-stock');
+            const hubEl = document.getElementById('dt-hub');
+            const officerEl = document.getElementById('dt-officer');
+
+            if (profile) {
+                if (nameEl) nameEl.textContent = `${profile.district} (${profile.tamil || profile.district})`;
+                if (cropsEl) cropsEl.innerHTML = `<i class="fas fa-seedling text-success"></i> Primary: ${profile.primaryCrop || 'Farmgate Harvest'}`;
+                if (hubEl) hubEl.textContent = profile.hub || `${districtName} Agro Terminal`;
+                if (officerEl) officerEl.textContent = profile.adminName || `Nodal Office (${profile.district})`;
+            }
+
+            if (offer) {
+                if (badgeEl) badgeEl.textContent = offer.discount || 'SPECIAL OFFER';
+                if (offerTitleEl) offerTitleEl.textContent = offer.title || `${districtName} Seasonal Harvest Deal`;
+                if (minOrderEl) minOrderEl.textContent = `Min ${offer.minOrder || '₹350'}`;
+                if (promoEl) promoEl.textContent = offer.code || `HARVEST-${districtName.toUpperCase()}`;
+            }
+
+            if (stockSummary && stockEl) {
+                stockEl.innerHTML = `<i class="fas fa-cubes"></i> ${stockSummary.totalStockKg.toLocaleString()} kg Available (${stockSummary.productCount} Commodities)`;
+            } else if (offer && stockEl) {
+                stockEl.innerHTML = `<i class="fas fa-cubes"></i> ${(offer.stockKg || 4500).toLocaleString()} kg Available`;
+            }
+        }
+
+        function copyDistrictPromo() {
+            const promoEl = document.getElementById('dt-promo-code');
+            if (promoEl) {
+                const code = promoEl.textContent.trim();
+                navigator.clipboard.writeText(code);
+                if (window.FarmDirect && typeof FarmDirect.showToast === 'function') {
+                    FarmDirect.showToast(`🎉 Coupon ${code} copied! Auto-discount active.`, 'success');
+                }
+            }
+        }
+
+        function showSelectedDistrictOfficeModal() {
+            if (window.FarmDirect && typeof FarmDirect.showDistrictOfficeModal === 'function') {
+                FarmDirect.showDistrictOfficeModal(selectedDistrict);
+            }
+        }
+
+        function goToAdminSecurityGateway() {
+            window.location.href = 'admin-login.html';
+        }
+
+        function quickFillCredentials(role) {
+            if (role === 'admin') {
+                window.location.href = 'admin-login.html';
+                return;
+            }
+            if (roleDefaultCreds[role]) {
+                selectRole(role, roleDefaultCreds[role].url);
+                if (window.FarmDirect && typeof FarmDirect.showToast === 'function') {
+                    FarmDirect.showToast(`Selected ${role.toUpperCase()} test credentials. Enter password and click Login.`, 'info');
+                }
+            }
+        }
+
+        async function handleGoogleLogin() {
+            sessionStorage.setItem('fd_user_logged_in', 'true');
+            localStorage.setItem('fd_user_logged_in', 'true');
+
+            if (window.FarmDirect && typeof FarmDirect.showToast === 'function') {
+                FarmDirect.showToast('Submitted successfully! Connecting with Google...', 'success', true);
+            }
+
+            const cleanGoogleName = `${currentRole.toUpperCase()} Google User`;
+            sessionStorage.setItem('fd_user_name', cleanGoogleName);
+            localStorage.setItem('fd_user_name', cleanGoogleName);
+            sessionStorage.setItem('fd_user_role', currentRole);
+            localStorage.setItem('fd_user_role', currentRole);
+            sessionStorage.setItem('fd_user_district', selectedDistrict);
+            localStorage.setItem('fd_user_district', selectedDistrict);
+
+            if (window.FarmDirect && typeof FarmDirect.signInWithGoogle === 'function') {
+                const res = await FarmDirect.signInWithGoogle({ role: currentRole, district: selectedDistrict });
+                if (res && res.success) {
+                    if (res.user && res.user.name) {
+                        sessionStorage.setItem('fd_user_name', res.user.name);
+                        localStorage.setItem('fd_user_name', res.user.name);
+                    }
+                    setTimeout(() => {
+                        window.location.href = targetRedirect;
+                    }, 350);
+                    return;
+                }
+            }
+
+            const googleProf = {
+                email: `google_${currentRole}@farmdirect.io`,
+                role: currentRole,
+                name: cleanGoogleName,
+                district: selectedDistrict
+            };
+
+            if (window.FarmDirect) {
+                if (typeof FarmDirect.setUserRole === 'function') {
+                    FarmDirect.setUserRole(currentRole);
+                }
+                if (typeof FarmDirect.setUserDistrict === 'function') {
+                    FarmDirect.setUserDistrict(selectedDistrict);
+                }
+                if (typeof FarmDirect.setUserProfile === 'function') {
+                    await FarmDirect.setUserProfile(googleProf);
+                }
+            }
+
+            window.location.href = targetRedirect;
+        }
+
+        async function handleLogin(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitLoginBtn');
+            const originalBtnHtml = '<i class="fas fa-sign-in-alt"></i> Login to Selected Webpage';
+
+            const loginId = document.getElementById('loginId').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            if (!loginId) {
+                if (window.FarmDirect) FarmDirect.showToast('Please enter your mobile number or email.', 'error');
+                return;
+            }
+            if (!password) {
+                if (window.FarmDirect) FarmDirect.showToast('Please enter your password.', 'error');
+                return;
+            }
+
+            if (btn) {
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+                btn.disabled = true;
+            }
+
+            // Store active district & user role
+            if (window.FarmDirect && typeof FarmDirect.setUserDistrict === 'function') {
+                FarmDirect.setUserDistrict(selectedDistrict);
+            }
+
+            try {
+                const apiBase = (window.FarmDirect && FarmDirect.API_BASE) ? FarmDirect.API_BASE : '/api';
+                const res = await fetch(`${apiBase}/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: loginId, loginId, password, role: currentRole, district: selectedDistrict })
+                });
+                const data = await res.json();
+                if (!res.ok) {
+                    if (window.FarmDirect && typeof FarmDirect.showToast === 'function') {
+                        FarmDirect.showToast(data.error || 'Authentication failed. Please verify your credentials.', 'error');
+                    }
+                    if (btn) {
+                        btn.innerHTML = originalBtnHtml;
+                        btn.disabled = false;
+                    }
+                    return;
+                }
+
+                if (data.user) {
+                    const cleanName = data.user.name || (data.user.email ? data.user.email.split('@')[0].replace(/[._]/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) : 'TN Participant');
+                    const userObj = { ...data.user, name: cleanName, district: selectedDistrict, role: data.user.role || currentRole };
+                    
+                    sessionStorage.setItem('fd_user_logged_in', 'true');
+                    localStorage.setItem('fd_user_logged_in', 'true');
+                    sessionStorage.setItem('fd_user_name', cleanName);
+                    localStorage.setItem('fd_user_name', cleanName);
+                    sessionStorage.setItem('fd_user_district', selectedDistrict);
+                    localStorage.setItem('fd_user_district', selectedDistrict);
+                    sessionStorage.setItem('fd_user_role', userObj.role);
+                    localStorage.setItem('fd_user_role', userObj.role);
+
+                    if (userObj.role === 'admin' || currentRole === 'admin') {
+                        sessionStorage.setItem('fd_admin_authenticated', 'true');
+                        sessionStorage.setItem('fd_is_admin', 'true');
+                        sessionStorage.setItem('fd_admin_district', selectedDistrict);
+                        sessionStorage.setItem('fd_user_role', 'admin');
+                        if (data.token) sessionStorage.setItem('fd_admin_token', data.token);
+
+                        localStorage.setItem('fd_admin_authenticated', 'true');
+                        localStorage.setItem('fd_is_admin', 'true');
+                        localStorage.setItem('fd_admin_district', selectedDistrict);
+                        localStorage.setItem('fd_user_role', 'admin');
+                        localStorage.setItem('fd_admin_registered_name_' + selectedDistrict, cleanName);
+                        if (data.token) localStorage.setItem('fd_admin_token', data.token);
+                        targetRedirect = 'admin-dashboard.html';
+                    } else {
+                        // Clear any previous admin flags so standard users never see admin commands
+                        sessionStorage.removeItem('fd_admin_authenticated');
+                        sessionStorage.removeItem('fd_is_admin');
+                        sessionStorage.removeItem('fd_admin_token');
+                        localStorage.removeItem('fd_admin_authenticated');
+                        localStorage.removeItem('fd_is_admin');
+                        localStorage.removeItem('fd_admin_token');
+                    }
+                    if (window.FarmDirect) {
+                        if (typeof FarmDirect.setUserRole === 'function') FarmDirect.setUserRole(userObj.role);
+                        if (typeof FarmDirect.setUserDistrict === 'function') FarmDirect.setUserDistrict(selectedDistrict);
+                        if (typeof FarmDirect.setUserProfile === 'function') await FarmDirect.setUserProfile(userObj);
+                        if (typeof FarmDirect.updateNavAuthUI === 'function') FarmDirect.updateNavAuthUI();
+                    }
+
+                    if (btn) {
+                        btn.innerHTML = '<i class="fas fa-check-circle"></i> Submitted successfully!';
+                        btn.style.background = '#059669';
+                    }
+                    if (window.FarmDirect && typeof FarmDirect.showToast === 'function') {
+                        FarmDirect.showToast(`Submitted successfully! Logged in as ${userObj.name} (${userObj.role.toUpperCase()})`, 'success', true);
+                    }
+                }
+            } catch (err) {
+                console.error('Login network error:', err);
+                if (btn) {
+                    btn.innerHTML = originalBtnHtml;
+                    btn.disabled = false;
+                }
+                if (window.FarmDirect && typeof FarmDirect.showToast === 'function') {
+                    FarmDirect.showToast('Unable to connect to FarmDirect server. Please check backend connection at http://localhost:5000.', 'error');
+                }
+                return;
+            }
+
+            if (window.FarmDirect && typeof FarmDirect.addNotification === 'function') {
+                try {
+                    await FarmDirect.addNotification({
+                        title: `Submitted successfully!`,
+                        msg: `Successfully logged in to ${selectedDistrict} Hub as ${currentRole.toUpperCase()}!`,
+                        type: 'success',
+                        time: 'Just now'
+                    }, true);
+                } catch (notifErr) { }
+            }
+
+            const storedRedirect = sessionStorage.getItem('fd_login_redirect');
+            sessionStorage.removeItem('fd_login_redirect');
+            let finalRedirect = targetRedirect;
+            if (storedRedirect && storedRedirect !== 'index.html' && storedRedirect !== '/' && storedRedirect !== 'login.html') {
+                finalRedirect = storedRedirect;
+            }
+            setTimeout(() => {
+                window.location.href = finalRedirect;
+            }, 300);
+        }
+
+        function checkActiveSession() {
+            const banner = document.getElementById('activeSessionCard');
+            const isLoggedIn = window.FarmDirect && typeof FarmDirect.isUserLoggedIn === 'function' && FarmDirect.isUserLoggedIn();
+            const sName = (sessionStorage.getItem('fd_user_name') || localStorage.getItem('fd_user_name') || '').trim();
+
+            if (isLoggedIn && sName && sName !== 'null' && sName !== 'undefined') {
+                const sRole = (sessionStorage.getItem('fd_user_role') || localStorage.getItem('fd_user_role') || 'User').toUpperCase();
+                const sDist = sessionStorage.getItem('fd_user_district') || localStorage.getItem('fd_user_district') || 'Tamil Nadu';
+                const nameEl = document.getElementById('activeSessionName');
+                const detEl = document.getElementById('activeSessionDetail');
+                const webBtn = document.getElementById('continueWebBtn');
+                if (banner && nameEl) {
+                    nameEl.textContent = sName;
+                    if (detEl) detEl.textContent = `${sRole} • ${sDist} District`;
+                    if (webBtn) {
+                        const target = (sRole === 'FARMER') ? 'farmer-dashboard.html'
+                            : (sRole === 'BULK') ? 'bulk-buyers.html'
+                            : (sRole === 'LOGISTICS') ? 'delivery-management.html'
+                            : (sRole === 'ADMIN') ? 'admin-dashboard.html'
+                            : 'index.html';
+                        webBtn.href = target;
+                    }
+                    banner.style.display = 'block';
+                }
+            } else {
+                if (banner) banner.style.display = 'none';
+            }
+        }
+
+        function handleLoginLogout(e) {
+            if (window.FarmDirect && typeof FarmDirect.logoutUser === 'function') {
+                FarmDirect.logoutUser(e);
+            } else if (typeof window.logoutUser === 'function') {
+                window.logoutUser(e);
+            } else {
+                try { sessionStorage.clear(); } catch(e) {}
+                try {
+                    const allLocalKeys = Object.keys(localStorage);
+                    allLocalKeys.forEach(k => {
+                        if (k.startsWith('fd_') || k.includes('user') || k.includes('admin') || k.includes('profile') || k.includes('cart') || k.includes('token') || k.includes('auth')) {
+                            localStorage.removeItem(k);
+                        }
+                    });
+                } catch(e) {}
+                window.location.reload();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            populateDistrictDropdown();
+            checkActiveSession();
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const roleParam = urlParams.get('role');
+            const districtParam = urlParams.get('district');
+
+            if (districtParam) {
+                const select = document.getElementById('userDistrictSelect');
+                if (select) {
+                    select.value = districtParam;
+                    onDistrictChange(districtParam);
+                }
+            }
+
+            if (roleParam && roleDefaultCreds[roleParam]) {
+                selectRole(roleParam, roleDefaultCreds[roleParam].url);
+            } else {
+                selectRole('farmer', 'farmer-dashboard.html');
+            }
+        });
+
+        // Immediate run and window load fallback
+        populateDistrictDropdown();
+        window.addEventListener('load', () => {
+            populateDistrictDropdown();
+            checkActiveSession();
+        });
+    </script>
+</body>
+
+</html>

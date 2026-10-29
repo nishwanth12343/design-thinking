@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#10b981">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FarmDirect">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <title>Produce Provenance Details | FarmDirect</title>
+    <!-- Immediate Authentication Guard: Require sign in before viewing website details -->
+    <script src="js/auth-guard.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Sleek Master Navigation with Rich Dropdowns -->
+    <nav class="fd-nav">
+        <div class="container fd-nav-inner">
+            <a href="index.html" class="fd-brand">
+                <span>🌱 FarmDirect</span>
+                <span class="fd-brand-badge">Direct Trade</span>
+            </a>
+
+            <ul class="fd-nav-links">
+                <li class="fd-nav-item"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="marketplace.html"><i class="fas fa-store"></i> Marketplace <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="marketplace.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-shopping-basket"></i></div>
+                            <div><span class="fd-dropdown-title">Live Produce Catalog</span><span class="fd-dropdown-desc">Direct harvest from verified farmers</span></div>
+                        </a>
+                        <a href="product-quality.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-shield-alt"></i></div>
+                            <div><span class="fd-dropdown-title">AI Quality Scanner</span><span class="fd-dropdown-desc">Computer-vision freshness & Brix test</span></div>
+                        </a>
+                        <a href="price-comparison.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Price Comparison</span><span class="fd-dropdown-desc">Farmgate vs APMC Mandi vs Retail</span></div>
+                        </a>
+                        <a href="offers.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-tags"></i></div>
+                            <div><span class="fd-dropdown-title">Harvest Offers</span><span class="fd-dropdown-desc">Seasonal discounts & promo codes</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="farmer-dashboard.html"><i class="fas fa-tractor"></i> Farmers & FPOs <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="farmer-dashboard.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-tachometer-alt"></i></div>
+                            <div><span class="fd-dropdown-title">Farmer Command Center</span><span class="fd-dropdown-desc">Agronomy weather radar & revenue</span></div>
+                        </a>
+                        <a href="fpo-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-users"></i></div>
+                            <div><span class="fd-dropdown-title">FPO Collective Aggregator</span><span class="fd-dropdown-desc">Pool multi-farmer harvests for B2B</span></div>
+                        </a>
+                        <a href="add-product.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-plus-circle"></i></div>
+                            <div><span class="fd-dropdown-title">List New Produce</span><span class="fd-dropdown-desc">AI Mandi benchmark recommender</span></div>
+                        </a>
+                        <a href="farmer-earnings.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-wallet"></i></div>
+                            <div><span class="fd-dropdown-title">Earnings & UPI Ledger</span><span class="fd-dropdown-desc">Instant OTP escrow bank settlements</span></div>
+                        </a>
+                        <a href="farmer-verification.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-id-card"></i></div>
+                            <div><span class="fd-dropdown-title">Land KYC Verification</span><span class="fd-dropdown-desc">Patta/Chitta Land KYC Verification</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="logistics.html"><i class="fas fa-truck-moving"></i> Logistics <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="live-tracking.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-satellite-dish"></i></div>
+                            <div><span class="fd-dropdown-title">Live GPS Radar</span><span class="fd-dropdown-desc">3.8°C IoT thermal telematics</span></div>
+                        </a>
+                        <a href="route-optimization.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-route"></i></div>
+                            <div><span class="fd-dropdown-title">AI Route Optimizer</span><span class="fd-dropdown-desc">Multi-farm pickup TSP solver</span></div>
+                        </a>
+                        <a href="delivery-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-tasks"></i></div>
+                            <div><span class="fd-dropdown-title">Dispatch Management</span><span class="fd-dropdown-desc">Vehicle fleet allocations & e-POD</span></div>
+                        </a>
+                        <a href="warehouse.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-warehouse"></i></div>
+                            <div><span class="fd-dropdown-title">Smart Rural Cold Hubs</span><span class="fd-dropdown-desc">Microclimate pre-cooling slots</span></div>
+                        </a>
+                        <a href="inventory.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-rose"><i class="fas fa-boxes"></i></div>
+                            <div><span class="fd-dropdown-title">Inventory Engine</span><span class="fd-dropdown-desc">Batch shelf-life countdowns</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="ai-insights.html"><i class="fas fa-brain"></i> AI Intelligence <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="demand-forecast.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-chart-pie"></i></div>
+                            <div><span class="fd-dropdown-title">Demand Forecasting</span><span class="fd-dropdown-desc">Predictive 30-day ML models</span></div>
+                        </a>
+                        <a href="ai-insights.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-chart-line"></i></div>
+                            <div><span class="fd-dropdown-title">Agricultural Intelligence</span><span class="fd-dropdown-desc">Regional surplus & deficit heatmap</span></div>
+                        </a>
+                        <a href="supply-chain.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-link"></i></div>
+                            <div><span class="fd-dropdown-title">Farm-to-Fork Traceability</span><span class="fd-dropdown-desc">5-stage harvest verification</span></div>
+                        </a>
+                        <a href="price-intelligence.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Mandi Price Index</span><span class="fd-dropdown-desc">AGMARKNET live benchmark stream</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item"><a href="bulk-buyers.html"><i class="fas fa-building"></i> B2B Wholesale</a></li>
+            </ul>
+
+            <div class="fd-nav-actions">
+                <a href="wishlist.html" class="fd-icon-btn"><i class="far fa-heart"></i><span class="fd-badge-count" id="fd-wishlist-badge" style="display:none;">0</span></a>
+                <a href="cart.html" class="fd-icon-btn"><i class="fas fa-shopping-basket"></i><span class="fd-badge-count" id="fd-cart-badge" style="display:none;">0</span></a>
+                <a href="notifications.html" class="fd-icon-btn"><i class="far fa-bell"></i><span class="fd-badge-count" id="fd-notif-badge" style="display:none;">0</span></a>
+                <a href="login.html" class="btn btn-primary btn-sm"><i class="fas fa-user-circle"></i> Portal</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-hero" style="padding: 25px 0 30px;">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <a href="marketplace.html">Marketplace</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <span id="breadcrumb-title">Product Details</span>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container" id="product-container">
+            <!-- Dynamic Content via JS -->
+        </div>
+    </main>
+
+    <footer class="fd-footer">
+        <div class="container">
+            <div class="fd-footer-bottom" style="border:none; padding:0;">
+                <div></div>
+                <a href="marketplace.html" style="color: #6ee7b7;"><i class="fas fa-arrow-left"></i> Back to Marketplace</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id') || 'TN-101';
+            
+            function renderProductDetails() {
+                const products = FarmDirect.getProducts() || [];
+                let p = products.find(item => item.id === productId) || products[0];
+                if (!p) {
+                    p = {
+                        id: productId || 'TN-101',
+                        name: 'Organic Farm Fresh Produce',
+                        tamilName: 'இயற்கை காய்கறி',
+                        category: 'Vegetables',
+                        price: 45,
+                        mandiPrice: 55,
+                        mandiBenchmark: 55,
+                        retailPrice: 75,
+                        unit: 'kg',
+                        stock: 500,
+                        farmer: 'Kongu Organic Farmers Trust',
+                        farmerPhone: '+91 94432 12345',
+                        district: 'Erode',
+                        location: 'Erode, Tamil Nadu',
+                        grade: 'A+ Export Grade',
+                        qualityScore: 94,
+                        harvestDate: 'Today',
+                        shelfLife: '7 Days',
+                        coldChainTransit: '2.5 Hours',
+                        moisture: '88%',
+                        brix: '6.4° Brix',
+                        pesticideFree: '100% Residue Free',
+                        adminVerified: true,
+                        image: 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=800',
+                        description: 'Direct farmgate freshly harvested produce transported under continuous cold-chain reefer telemetry.'
+                    };
+                }
+
+                document.title = `${p.name} | FarmDirect Details`;
+                const breadcrumbEl = document.getElementById('breadcrumb-title');
+                if (breadcrumbEl) breadcrumbEl.textContent = p.name;
+
+                const container = document.getElementById('product-container');
+                if (!container) return;
+                const savingsPerUnit = p.retailPrice ? Math.max(0, p.retailPrice - p.price) : 0;
+                const savingsPct = (p.retailPrice && p.retailPrice > p.price) ? Math.round(((p.retailPrice - p.price) / p.retailPrice) * 100) : 0;
+                const isOutOfStock = p.stock <= 0;
+
+            container.innerHTML = `
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px;" class="prod-details-grid">
+                    <!-- Image & Badges -->
+                    <div>
+                        <div style="height: 440px; border-radius: 20px; background: url('${p.image}') center/cover; position: relative; box-shadow: var(--shadow-lg);">
+                            <span class="badge badge-success" style="position: absolute; top: 16px; left: 16px; font-size: 14px; padding: 6px 14px;">
+                                ${p.grade}
+                            </span>
+                            <span class="badge badge-ai" style="position: absolute; bottom: 16px; left: 16px; font-size: 14px; padding: 6px 14px;">
+                                <i class="fas fa-brain"></i> AI Quality Score: ${p.qualityScore}/100
+                            </span>
+                            ${p.adminVerified ? '<span class="badge" style="position: absolute; top: 16px; right: 16px; background:#fef9c3; color:#854d0e; font-weight:800; border:1px solid #facc15; font-size: 12px; padding: 6px 12px;"><i class="fas fa-crown text-warning"></i> Nodal Certified</span>' : ''}
+                        </div>
+
+                        <!-- Verification Badges -->
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 18px;">
+                            <div class="card" style="padding: 14px; text-align: center; background: #f0fdf4; border-color: #bbf7d0;">
+                                <i class="fas fa-leaf text-success" style="font-size: 20px; margin-bottom: 6px;"></i>
+                                <div style="font-size: 12px; font-weight: 700; color: #166534;">${p.pesticideFree}</div>
+                            </div>
+                            <div class="card" style="padding: 14px; text-align: center; background: #f0fdf4; border-color: #bbf7d0;">
+                                <i class="fas fa-snowflake text-success" style="font-size: 20px; margin-bottom: 6px;"></i>
+                                <div style="font-size: 12px; font-weight: 700; color: #166534;">Cold-Chain 3.8°C</div>
+                            </div>
+                            <div class="card" style="padding: 14px; text-align: center; background: #f0fdf4; border-color: #bbf7d0;">
+                                <i class="fas fa-qrcode text-success" style="font-size: 20px; margin-bottom: 6px;"></i>
+                                <div style="font-size: 12px; font-weight: 700; color: #166534;">Nodal Verified</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Details Column -->
+                    <div>
+                        <div style="display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; align-items: center;">
+                            <span class="badge badge-purple">${p.category}</span>
+                            ${p.giTag ? '<span class="fd-badge fd-badge-green"><i class="fas fa-certificate"></i> Certified GI Tagged</span>' : ''}
+                            
+                            <!-- Clickable District Office Link -->
+                            <button type="button" onclick="FarmDirect.showDistrictOfficeModal('${p.district || 'Erode'}')" class="fd-badge fd-badge-blue" style="cursor: pointer; border: 1px solid #3b82f6; font-family: inherit;" title="Click to view Official Government Office & Navigation">
+                                <i class="fas fa-building"></i> 🏛️ ${p.district || 'Tamil Nadu'} Command
+                            </button>
+
+                            <span class="badge badge-warning"><i class="fas fa-truck"></i> Reefer Corridor Active</span>
+                        </div>
+
+                        <h1 style="font-size: 28px; font-weight: 800; color: #064e3b; margin-bottom: 4px; line-height: 1.3;">
+                            ${p.name}
+                            ${p.tamilName ? `<span style="font-size: 20px; color: #059669; font-weight: 700; margin-left: 8px;">(${p.tamilName})</span>` : ''}
+                        </h1>
+
+                        <!-- Farmer Profile Link & Click-to-Call -->
+                        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px; font-size: 14px; flex-wrap: wrap;">
+                            <button type="button" onclick="FarmDirect.showPersonProfileModal({ name: '${(p.farmer || 'Verified Farmer').replace(/'/g, "\\'")}', role: 'Farmer / Producer', district: '${p.district || 'Erode'}', location: '${p.location || 'Tamil Nadu'}', phone: '${p.farmerPhone || '+91 98421 99001'}', rating: ${(p.qualityScore || 95) >= 98 ? '4.95' : '4.85'}, produce: '${(p.name || 'Farm Produce').replace(/'/g, "\\'")}', verified: true })" style="background: #f0fdf4; border: 1px solid #86efac; border-radius: 8px; padding: 6px 12px; color: #064e3b; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;" title="View farmer profile and call">
+                                <i class="fas fa-user-check text-success"></i> ${p.farmer || 'Verified Farmer'}
+                                <span style="font-size: 11px; background: #059669; color: white; padding: 2px 7px; border-radius: 6px;"><i class="fas fa-phone-alt"></i> 📞 Call Farmer</span>
+                            </button>
+
+                            <button type="button" onclick="FarmDirect.showDistrictOfficeModal('${p.district || 'Erode'}')" style="background: none; border: none; color: #64748b; font-size: 13.5px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; text-decoration: underline;">
+                                <i class="fas fa-map-marker-alt text-danger"></i> ${p.location || (p.district + ', Tamil Nadu')}
+                            </button>
+                        </div>
+
+                        <!-- Price Comparison Box -->
+                        <div style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 20px; margin-bottom: 25px;">
+                            <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 10px;">
+                                <div>
+                                    <span style="font-size: 34px; font-weight: 800; color: #059669;">₹${p.price}</span>
+                                    <span style="font-size: 15px; color: #64748b;"> / ${p.unit}</span>
+                                </div>
+                                <div style="text-align: right;">
+                                    <div style="font-size: 14px; text-decoration: line-through; color: #94a3b8;">Supermarket Retail: ₹${p.retailPrice}</div>
+                                    <div style="font-size: 13px; font-weight: 700; color: #d97706;">Save ₹${savingsPerUnit} (${savingsPct}% Direct Saving)</div>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; justify-content: space-between; align-items: center; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 8px 12px; margin-bottom: 10px; font-size: 13px;">
+                                <span style="color: #475569;"><i class="fas fa-chart-line text-primary"></i> APMC Mandi Benchmark:</span>
+                                <strong style="color: #0f172a; font-size: 14px;">₹${p.mandiPrice || p.price} / ${p.unit}</strong>
+                            </div>
+
+                            <div style="font-size: 12px; color: #166534; background: #dcfce7; padding: 8px 12px; border-radius: 8px;">
+                                <i class="fas fa-hand-holding-usd"></i> <strong>Farmer gets ₹${Math.round(p.price * 0.88)}</strong> (88% direct share vs traditional 35% mandi realization)
+                            </div>
+                        </div>
+
+                        <p style="color: #475569; font-size: 15px; line-height: 1.7; margin-bottom: 25px;">
+                            ${p.description}
+                        </p>
+
+                        <!-- Quantity Selector & Actions -->
+                        ${isOutOfStock ? `
+                            <div style="background: #fef2f2; border: 1.5px solid #f87171; border-radius: 16px; padding: 20px; margin-bottom: 25px;">
+                                <div style="font-size: 16px; font-weight: 800; color: #991b1b; margin-bottom: 6px;">
+                                    ❌ Currently Out of Stock in ${p.district || 'this district'}
+                                </div>
+                                <p style="font-size: 13.5px; color: #7f1d1d; margin-bottom: 14px;">
+                                    This produce is available in other connected Tamil Nadu districts with cold-chain transit delivery.
+                                </p>
+                                <button onclick="FarmDirect.showCrossDistrictStockModal('${p.name.replace(/'/g, "\\'")}', '${p.district || 'Erode'}')" class="btn btn-primary btn-block" style="background: #b91c1c; border-color: #991b1b; font-size: 15px; padding: 12px 18px;">
+                                    <i class="fas fa-truck-moving"></i> 🔄 Find in Other 37 Districts & Deliver
+                                </button>
+                            </div>
+                        ` : `
+                            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 25px; flex-wrap: wrap;">
+                                <div style="display: flex; align-items: center; border: 1.5px solid var(--border); border-radius: 12px; overflow: hidden; background: white;">
+                                    <button onclick="changeQty(-1)" style="padding: 12px 18px; border: none; background: none; font-size: 18px; cursor: pointer; font-weight: bold;">-</button>
+                                    <input type="number" id="buyQty" value="1" min="1" max="${p.stock}" style="width: 60px; text-align: center; border: none; font-size: 16px; font-weight: 700;" readonly>
+                                    <button onclick="changeQty(1)" style="padding: 12px 18px; border: none; background: none; font-size: 18px; cursor: pointer; font-weight: bold;">+</button>
+                                </div>
+
+                                <button onclick="handleAddToCart('${p.id}')" class="btn btn-primary btn-lg" style="flex: 1; min-width: 200px;">
+                                    <i class="fas fa-cart-plus"></i> Add to Cart (<span id="btn-total-calc">₹${p.price}</span>)
+                                </button>
+
+                                <button onclick="handleProductWishlistToggle('${p.id}', this)" class="btn btn-secondary btn-lg" title="Save to Wishlist">
+                                    <i class="${FarmDirect.isWishlisted(p.id) ? 'fas fa-heart text-danger' : 'far fa-heart'}" style="${FarmDirect.isWishlisted(p.id) ? 'color: #ef4444;' : ''}"></i>
+                                </button>
+                            </div>
+                        `}
+
+                        <!-- Produce Specifications Table -->
+                        <div class="card" style="padding: 20px;">
+                            <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 14px;">Traceability & Harvest Specs</h3>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 13px;">
+                                <div><span style="color:#64748b;">Harvest Date:</span> <strong>${p.harvestDate}</strong></div>
+                                <div><span style="color:#64748b;">Shelf Life:</span> <strong>${p.shelfLife}</strong></div>
+                                <div><span style="color:#64748b;">Current Stock:</span> <strong>${p.stock} ${p.unit}s available</strong></div>
+                                <div><span style="color:#64748b;">Mandi APMC Benchmark:</span> <strong>₹${p.mandiPrice || p.price}/${p.unit}</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            }
+
+            renderProductDetails();
+            window.addEventListener('fd-products-updated', renderProductDetails);
+            window.addEventListener('fd_data_synced', renderProductDetails);
+        });
+
+        function changeQty(delta) {
+            const input = document.getElementById('buyQty');
+            if (!input) return;
+            let current = parseInt(input.value) + delta;
+            if (current < 1) current = 1;
+            input.value = current;
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id') || 'TN-101';
+            const products = FarmDirect.getProducts() || [];
+            const product = products.find(p => p.id === productId) || products[0] || { price: 45 };
+            const calcEl = document.getElementById('btn-total-calc');
+            if (calcEl) {
+                calcEl.textContent = '₹' + ((product.price || 45) * current);
+            }
+        }
+
+        function handleAddToCart(id) {
+            const qty = parseInt(document.getElementById('buyQty').value) || 1;
+            FarmDirect.addToCart(id, qty);
+        }
+
+        async function handleProductWishlistToggle(productId, btn) {
+            const isNowSaved = await FarmDirect.toggleWishlist(productId);
+            const icon = btn.querySelector('i');
+            if (icon) {
+                if (isNowSaved) {
+                    icon.className = 'fas fa-heart text-danger';
+                    icon.style.color = '#ef4444';
+                } else {
+                    icon.className = 'far fa-heart';
+                    icon.style.color = '';
+                }
+            }
+        }
+    </script>
+</body>
+</html>

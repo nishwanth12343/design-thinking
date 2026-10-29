@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#10b981">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FarmDirect">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <title>Admin Executive Control Tower | FarmDirect Tamil Nadu</title>
+    <script src="js/auth-guard.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .admin-nav-badge {
+            background: #fee2e2;
+            color: #b91c1c;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .comms-district-item {
+            padding: 12px 14px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+            margin-bottom: 6px;
+        }
+        .comms-district-item:hover {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+        }
+        .comms-district-item.active {
+            background: #f0fdf4;
+            border-color: #10b981;
+        }
+        .memo-bubble {
+            border-radius: 16px;
+            padding: 16px 18px;
+            margin-bottom: 14px;
+            position: relative;
+        }
+        .memo-sent {
+            background: #f0fdf4;
+            border: 1.5px solid #86efac;
+            margin-left: 20px;
+        }
+        .memo-received {
+            background: #ffffff;
+            border: 1.5px solid #e2e8f0;
+            margin-right: 20px;
+        }
+        .badge-emergency { background: #fee2e2; color: #991b1b; border: 1px solid #f87171; }
+        .badge-urgent { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+        .badge-normal { background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc; }
+    </style>
+</head>
+<body>
+
+    <!-- Sleek Master Navigation for Admin -->
+    <nav class="fd-nav">
+        <div class="container fd-nav-inner">
+            <a href="admin-dashboard.html" class="fd-brand">
+                <span>🌱 FarmDirect</span>
+                <span class="admin-nav-badge"><i class="fas fa-shield-alt"></i> Nodal Command</span>
+            </a>
+
+            <ul class="fd-nav-links">
+                <li class="fd-nav-item"><a href="admin-dashboard.html" class="active"><i class="fas fa-chart-line"></i> District Overview</a></li>
+                <li class="fd-nav-item"><a href="#interDistrictSection"><i class="fas fa-satellite-dish"></i> Inter-District Comms</a></li>
+                <li class="fd-nav-item"><a href="#directUserSection"><i class="fas fa-envelope-open-text"></i> Message User</a></li>
+                <li class="fd-nav-item"><a href="admin-users.html"><i class="fas fa-users-cog"></i> 38-District KYC</a></li>
+                <li class="fd-nav-item"><a href="admin-products.html"><i class="fas fa-apple-alt"></i> Produce Catalog</a></li>
+                <li class="fd-nav-item"><a href="admin-orders.html"><i class="fas fa-receipt"></i> Escrow & Orders</a></li>
+                <li class="fd-nav-item"><a href="admin-logistics.html"><i class="fas fa-truck-moving"></i> Logistics Telemetry</a></li>
+                <li class="fd-nav-item"><a href="reports.html"><i class="fas fa-file-invoice"></i> Reports</a></li>
+            </ul>
+
+            <div class="fd-nav-actions">
+                <span id="navDistrictPill" class="fd-badge fd-badge-green" style="font-size: 12px; padding: 6px 12px; display: inline-flex; align-items: center; gap: 6px;">
+                    <i class="fas fa-user-shield"></i> <span id="adminNavOfficerName">Authenticated Nodal Officer</span>
+                </span>
+                <button type="button" onclick="FarmDirect.adminLogout(event)" class="btn btn-sm" style="background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; font-weight: 700; cursor: pointer;" title="Logout and go to Login page">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <span>Restricted Gateway</span> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <span id="heroDistrictBreadcrumb">Erode District Command Tower</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <div>
+                    <h1 class="page-hero-title" id="dashMainTitle">District Nodal Control Tower 🛡️</h1>
+                    <p class="page-hero-subtitle">Single-admin district governance, inter-district administrative grid communications, direct citizen dispatches, and real-time mandi telemetry.</p>
+                    <div id="heroOfficerGreeting" style="font-size: 13.5px; color: #6ee7b7; font-weight: 700; margin-top: 6px; display: inline-flex; align-items: center; gap: 8px; background: rgba(16, 185, 129, 0.15); padding: 4px 12px; border-radius: 9999px; border: 1px solid rgba(16, 185, 129, 0.4);">
+                        <i class="fas fa-user-shield"></i> Officer Command: <strong>Authenticated Nodal Officer</strong>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                    <a href="#interDistrictSection" class="btn btn-primary btn-sm"><i class="fas fa-comments"></i> Inter-District Grid (37 Admins)</a>
+                    <a href="#directUserSection" class="btn btn-secondary btn-sm"><i class="fas fa-paper-plane"></i> Message Specific User</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+
+            <!-- Admin Nodal Identification Banner (Detail of the Admin Alone) -->
+            <div id="adminNodalProfileBanner" style="background: linear-gradient(135deg, #064e3b 0%, #0f172a 100%); color: white; padding: 24px 28px; border-radius: 20px; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px; border: 1.5px solid rgba(16, 185, 129, 0.4); box-shadow: 0 12px 30px rgba(0,0,0,0.25);">
+                <div style="display: flex; align-items: center; gap: 18px;">
+                    <div style="width: 58px; height: 58px; border-radius: 50%; background: #10b981; display: grid; place-items: center; font-size: 26px; color: white; box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div>
+                        <div style="font-size: 11.5px; font-weight: 800; color: #6ee7b7; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 8px;">
+                            <span>🏛️ TAMIL NADU DESIGNATED DISTRICT ADMIN (ALONE)</span>
+                            <span id="activeDistrictBadgeLabel" style="background: rgba(16, 185, 129, 0.25); color: #34d399; padding: 2px 8px; border-radius: 6px; font-size: 11px;">ERODE DISTRICT</span>
+                        </div>
+                        <h3 id="adminNodalTitle" style="font-size: 20px; font-weight: 800; margin: 3px 0 2px; color: #ffffff;">
+                            Thiru. M. Selvam (District Nodal Officer)
+                        </h3>
+                        <div id="nodalOfficeAddressText" style="font-size: 12px; color: #94a3b8; margin: 2px 0 4px;">
+                            <i class="fas fa-building text-primary"></i> Office of the Joint Director of Agriculture, Collectorate Master Plan Complex, Erode - 638011
+                        </div>
+                        <div id="adminNodalDetailsBar" style="font-size: 12.5px; color: #cbd5e1; display: flex; flex-wrap: wrap; gap: 12px; margin-top: 5px;">
+                            <span><i class="fas fa-envelope text-success"></i> <span id="nodalEmailText">admin.erode@farmdirect.tn.gov.in</span></span>
+                            <span>•</span>
+                            <span><i class="fas fa-id-badge text-primary"></i> Badge: <code id="nodalBadgeText" style="color: #6ee7b7; font-weight: 700;">TN-NODAL-ERD-01</code></span>
+                            <span>•</span>
+                            <span><i class="fas fa-phone-alt text-warning"></i> Hotline: <span id="nodalPhoneText">+91 94440 ERD</span></span>
+                            <span>•</span>
+                            <span><i class="fas fa-key text-warning"></i> Passcode: <code id="nodalPasscodeText" style="color: #fde047; font-weight: 700;">TN-ERD-2026</code></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 8px; align-items: flex-end;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 12px; color: #94a3b8; font-weight: 700;">Active Jurisdiction:</span>
+                        <select id="dashDistrictSwitcher" onchange="switchDashboardDistrict(this.value)" style="background: #1e293b; color: white; border: 1.5px solid #10b981; border-radius: 8px; padding: 7px 12px; font-size: 12.5px; font-weight: 700; cursor: pointer;">
+                            <!-- 38 Districts -->
+                        </select>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <button onclick="FarmDirect.showDistrictOfficeModal(currentDistrict)" class="btn btn-xs btn-ai" style="padding: 5px 12px; font-size: 11.5px; font-weight: 700;">
+                            <i class="fas fa-map-marked-alt"></i> Office GPS Directions
+                        </button>
+                        <button onclick="openCurrentOfficerProfile()" class="btn btn-xs btn-primary" style="padding: 5px 12px; font-size: 11.5px; font-weight: 700;">
+                            <i class="fas fa-phone-alt"></i> Call Officer
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sovereign AES-256 Encrypted Ledger Control Bar -->
+            <div class="crypto-master-bar">
+                <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+                    <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(16, 185, 129, 0.2); border: 1.5px solid #10b981; display: grid; place-items: center; font-size: 20px; color: #34d399;">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <div style="font-size: 11px; font-weight: 800; color: #6ee7b7; text-transform: uppercase; letter-spacing: 0.5px;">
+                            Sovereign Military-Grade Data Security
+                        </div>
+                        <h4 style="font-size: 15px; font-weight: 800; margin: 2px 0 0; color: #ffffff;">
+                            AES-256 Encrypted Agricultural Ledger & Confidential Comms
+                        </h4>
+                    </div>
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                    <span id="globalCryptoStatusLabel" class="fd-badge fd-badge-green" style="font-size: 11.5px; padding: 6px 12px;">
+                        <i class="fas fa-lock"></i> 🔒 AES-256 ENCRYPTED LEDGER (MAX SECURITY)
+                    </span>
+                    <button type="button" id="btnMasterDecryptToggle" onclick="toggleDashboardDecryption()" class="btn btn-sm crypto-btn-action" style="background: rgba(16, 185, 129, 0.25); border: 1.5px solid #10b981; color: #34d399; font-weight: 800; padding: 7px 14px; border-radius: 10px; cursor: pointer;">
+                        <i class="fas fa-key"></i> <span>🔓 Decrypt All Records</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Detail of that Whole District (Agronomy & Logistics Strip) -->
+            <div id="districtAgronomyStrip" style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 18px; padding: 20px 24px; margin-bottom: 30px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+                <div>
+                    <div style="font-size: 11.5px; font-weight: 800; color: #64748b; text-transform: uppercase;">Central Storage & Mandi Hub</div>
+                    <div id="distHubName" style="font-size: 14.5px; font-weight: 800; color: #064e3b; margin-top: 2px;">Semmampalayam Turmeric Complex</div>
+                    <div style="font-size: 12px; color: #059669;" id="distColdCapacity">1,200 MT Pre-Cooling Capacity</div>
+                </div>
+                <div>
+                    <div style="font-size: 11.5px; font-weight: 800; color: #64748b; text-transform: uppercase;">Core District Farm Harvests</div>
+                    <div id="distCropName" style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-top: 2px;">GI Erode Turmeric, Sugarcane</div>
+                    <div style="font-size: 12px; color: #64748b;">Organic & APMC Benchmark</div>
+                </div>
+                <div>
+                    <div style="font-size: 11.5px; font-weight: 800; color: #64748b; text-transform: uppercase;">Active Freight Highway</div>
+                    <div id="distHighwayName" style="font-size: 14.5px; font-weight: 800; color: #7e22ce; margin-top: 2px;">NH544 / NH44 Corridor</div>
+                    <div style="font-size: 12px; color: #64748b;" id="distReeferCount">18 Active Reefer Vans</div>
+                </div>
+                <div>
+                    <div style="font-size: 11.5px; font-weight: 800; color: #64748b; text-transform: uppercase;">Registered District Farmers & GMV</div>
+                    <div id="distFarmersCount" style="font-size: 14.5px; font-weight: 800; color: #059669; margin-top: 2px;">1,420 Farmers</div>
+                    <div style="font-size: 12px; color: #166534;" id="distGmvAmount">₹48.2 Lakhs Traded GMV</div>
+                </div>
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- SECTION 1: Inter-District Admin Secure Communication Grid (Admin <-> Other District Admins Alone) -->
+            <!-- ========================================================================= -->
+            <div id="interDistrictSection" class="card" style="padding: 28px; border-radius: 20px; margin-bottom: 35px; border: 1.5px solid #93c5fd; background: #f8fafc;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+                    <div>
+                        <span class="fd-badge fd-badge-blue"><i class="fas fa-satellite-dish"></i> RESTRICTED INTER-DISTRICT ADMIN COMMS GRID</span>
+                        <h2 style="font-size: 21px; font-weight: 800; color: #1e3a8a; margin-top: 6px;">
+                            <i class="fas fa-network-wired text-primary"></i> Inter-District Admin-to-Admin Secure Communications Desk
+                        </h2>
+                        <p style="font-size: 13.5px; color: #3b82f6; margin: 0;">Coordinate buffer storage, inter-district produce transfers, shared reefer fleets, and APMC mandi parity exclusively with other 37 District Nodal Administrators.</p>
+                    </div>
+                    <div style="background: #eff6ff; border: 1px solid #bfdbfe; padding: 6px 14px; border-radius: 10px; font-size: 12.5px; font-weight: 700; color: #1e40af;">
+                        <i class="fas fa-user-check text-success"></i> Sender: <span id="commsSenderBadgeSpan">TN-NODAL-ERD-01 (Erode)</span>
+                    </div>
+                </div>
+
+                <!-- Two-Panel Inter-District Communication Layout -->
+                <div style="display: grid; grid-template-columns: 320px 1fr; gap: 20px; background: white; border: 1.5px solid #e2e8f0; border-radius: 18px; padding: 18px; box-shadow: 0 4px 20px rgba(0,0,0,0.04);">
+                    
+                    <!-- Left Panel: 37 Other District Admins Directory -->
+                    <div style="border-right: 1px solid #e2e8f0; padding-right: 14px; display: flex; flex-direction: column;">
+                        <div style="margin-bottom: 12px;">
+                            <label style="font-size: 12px; font-weight: 800; color: #475569; text-transform: uppercase;">Select Target District Admin:</label>
+                            <input type="text" id="commsSearchDistrict" oninput="filterAdminDirectory(this.value)" placeholder="🔍 Search district or crop..." class="form-control form-control-sm" style="margin-top: 6px; font-size: 12.5px;">
+                        </div>
+
+                        <div id="otherDistrictAdminsList" style="flex: 1; max-height: 480px; overflow-y: auto; padding-right: 4px;">
+                            <!-- Populated with other 37 districts -->
+                        </div>
+                    </div>
+
+                    <!-- Right Panel: Conversation Stream & Memo Composer -->
+                    <div style="display: flex; flex-direction: column;">
+                        <!-- Active Recipient Admin Header -->
+                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px 18px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <div style="width: 40px; height: 40px; border-radius: 50%; background: #3b82f6; display: grid; place-items: center; color: white; font-size: 18px;">
+                                    <i class="fas fa-building-columns"></i>
+                                </div>
+                                <div>
+                                    <div style="font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase;">Target Recipient Command</div>
+                                    <h4 id="activeRecipientAdminTitle" style="font-size: 15px; font-weight: 800; margin: 0; color: #0f172a;">
+                                        Thiru. K. Rajendran • Thanjavur District Nodal Admin
+                                    </h4>
+                                    <div id="activeRecipientAdminSub" style="font-size: 11.5px; color: #059669; font-weight: 600;">
+                                        Badge: TN-NODAL-TNJ-01 • Kumbakonam Delta Paddy Depot
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="fd-badge fd-badge-green" style="font-size: 11px;"><i class="fas fa-circle" style="font-size: 7px;"></i> Direct Link Nominal</span>
+                        </div>
+
+                        <!-- Messages Thread History -->
+                        <div id="interDistrictMessagesThread" style="flex: 1; min-height: 240px; max-height: 320px; overflow-y: auto; padding: 12px 6px; background: #fafafa; border-radius: 12px; border: 1px solid #f1f5f9; margin-bottom: 15px;">
+                            <!-- Dynamic messages -->
+                        </div>
+
+                        <!-- Inter-District Memo Composer -->
+                        <form id="sendDistrictMemoForm" onsubmit="handleSendDistrictMemo(event)" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px;">
+                            <div class="grid-3" style="gap: 12px; margin-bottom: 10px;">
+                                <div>
+                                    <label class="form-label" style="font-size: 11.5px; margin-bottom: 4px;">Subject / Topic</label>
+                                    <input type="text" id="memoSubject" class="form-control form-control-sm" placeholder="e.g. Shared Reefer Transport Request" required>
+                                </div>
+                                <div>
+                                    <label class="form-label" style="font-size: 11.5px; margin-bottom: 4px;">Topic Category</label>
+                                    <select id="memoCategory" class="form-select form-select-sm">
+                                        <option value="produce_exchange">🌾 Produce Exchange & Transfer</option>
+                                        <option value="cold_storage">❄️ Cold Storage & Vault Allocation</option>
+                                        <option value="transport">🚚 Reefer Fleet & Highway Logistics</option>
+                                        <option value="mandi_pricing">📈 APMC Mandi Price Parity</option>
+                                        <option value="weather_alert">⚠️ Weather & Monsoon Early Warning</option>
+                                        <option value="general">ℹ️ General District Coordination</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="form-label" style="font-size: 11.5px; margin-bottom: 4px;">Priority Classification</label>
+                                    <select id="memoPriority" class="form-select form-select-sm">
+                                        <option value="normal">Normal Memo</option>
+                                        <option value="urgent">⚠️ Urgent Attention</option>
+                                        <option value="emergency">🚨 Emergency State Directive</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom: 12px;">
+                                <textarea id="memoMessage" class="form-control form-control-sm" rows="3" placeholder="Type official administrative memo to be transmitted to target district administrator..." required></textarea>
+                            </div>
+
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div style="font-size: 11.5px; color: #64748b;">
+                                    <i class="fas fa-lock text-success"></i> Transmitted over secure encrypted state administrative network
+                                </div>
+                                <button type="submit" id="sendMemoBtn" class="btn btn-primary btn-sm" style="padding: 8px 18px; font-weight: 700;">
+                                    <i class="fas fa-paper-plane"></i> Transmit Memo to District Admin
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- SECTION 2: Admin-to-Specific-User Targeted Direct Communicator -->
+            <!-- ========================================================================= -->
+            <div id="directUserSection" class="card" style="padding: 28px; border-radius: 20px; margin-bottom: 35px; border: 1.5px solid #bbf7d0; background: #f0fdf4;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; flex-wrap: wrap; gap: 10px;">
+                    <div>
+                        <span class="fd-badge fd-badge-green"><i class="fas fa-user-tag"></i> DIRECT-TO-USER DISPATCH INTERFACE</span>
+                        <h2 style="font-size: 21px; font-weight: 800; color: #064e3b; margin-top: 6px;">
+                            <i class="fas fa-envelope-open-text text-success"></i> Direct Citizen / Farmer Administrative Communicator
+                        </h2>
+                        <p style="font-size: 13.5px; color: #166534; margin: 0;">Send targeted official directives, KYC land verification notices, or personalized order resolutions directly to a specific registered user.</p>
+                    </div>
+                </div>
+
+                <div style="background: white; border: 1.5px solid #e2e8f0; border-radius: 18px; padding: 22px;">
+                    <form id="directUserMessageForm" onsubmit="handleSendUserDirectMessage(event)">
+                        
+                        <div class="grid-3" style="gap: 15px; margin-bottom: 15px;">
+                            <!-- User Selection Dropdown -->
+                            <div>
+                                <label class="form-label" style="font-size: 12.5px;">Select Specific Registered User</label>
+                                <select id="targetUserSelect" onchange="onTargetUserSelected(this)" class="form-select" required>
+                                    <option value="">-- Choose specific user to contact --</option>
+                                    <!-- Populated dynamically -->
+                                </select>
+                            </div>
+                            <!-- Subject -->
+                            <div>
+                                <label class="form-label" style="font-size: 12.5px;">Directive Subject / Title</label>
+                                <input type="text" id="userMsgSubject" class="form-control" placeholder="e.g. Patta / Chitta Land Verification Clarification" required>
+                            </div>
+                            <!-- Priority -->
+                            <div>
+                                <label class="form-label" style="font-size: 12.5px;">Directive Priority</label>
+                                <select id="userMsgPriority" class="form-select">
+                                    <option value="normal">Normal Notice</option>
+                                    <option value="urgent">⚠️ Urgent Action Required</option>
+                                    <option value="emergency">🚨 Immediate Regulatory Order</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Selected User Information Strip -->
+                        <div id="selectedUserPreviewStrip" style="display: none; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 16px; margin-bottom: 15px; font-size: 12.5px;">
+                            <span style="color: #64748b;">Recipient Details:</span>
+                            <strong id="previewUserName" style="color: #0f172a; margin-left: 6px;">M. Selvakumar</strong>
+                            <span id="previewUserRole" class="fd-badge fd-badge-green" style="font-size: 10.5px; margin-left: 8px;">FARMER</span>
+                            <span style="color: #64748b; margin-left: 10px;"><i class="fas fa-envelope"></i> <span id="previewUserEmail">selvakumar.erode@farmer.tn</span></span>
+                            <span style="color: #64748b; margin-left: 10px;"><i class="fas fa-map-marker-alt"></i> <span id="previewUserDistrict">Erode (Perundurai)</span></span>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 15px;">
+                            <label class="form-label" style="font-size: 12.5px;">Official Direct Message / Instructions for User</label>
+                            <textarea id="userMsgBody" class="form-control" rows="3" placeholder="Enter personalized administrative instruction, resolution directive, or compliance request to be sent straight to this specific user's notification stream..." required></textarea>
+                        </div>
+
+                        <button type="submit" id="sendUserMsgBtn" class="btn btn-primary btn-block" style="padding: 12px; font-size: 14.5px; font-weight: 700;">
+                            <i class="fas fa-paper-plane"></i> Dispatch Direct Message to Specific User
+                        </button>
+                    </form>
+
+                    <!-- Recent Dispatched Direct User Messages Log -->
+                    <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid #e2e8f0;">
+                        <h4 style="font-size: 14px; font-weight: 800; color: #064e3b; margin-bottom: 12px;">
+                            <i class="fas fa-history"></i> Dispatched User Messages Audit Log
+                        </h4>
+                        <div id="dispatchedUserMessagesList" style="display: flex; flex-direction: column; gap: 8px; max-height: 200px; overflow-y: auto;">
+                            <!-- Log of sent user messages -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- SECTION 3: District Produce Verification & Agmarknet Benchmark Certification -->
+            <!-- ========================================================================= -->
+            <div class="card" style="padding: 28px; border-radius: 20px; margin-bottom: 35px; border: 1.5px solid #fde047; background: #fffdf0;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; flex-wrap: wrap; gap: 12px;">
+                    <div>
+                        <span class="fd-badge fd-badge-amber"><i class="fas fa-certificate"></i> MANDI ACCREDITATION & QUALITY CERTIFICATION</span>
+                        <h2 style="font-size: 21px; font-weight: 800; color: #854d0e; margin-top: 6px;">
+                            <i class="fas fa-award text-warning"></i> Nodal Officer Produce Accreditation Queue
+                        </h2>
+                        <p style="font-size: 13.5px; color: #a16207; margin: 0;">Review farmgate produce listings in your district, compare against live Agmarknet APMC benchmarks, and grant the official 👑 Nodal Officer Certified seal.</p>
+                    </div>
+                    <button onclick="renderProduceVerificationQueue()" class="btn btn-sm btn-secondary" style="font-size: 12px;">
+                        <i class="fas fa-sync-alt"></i> Refresh Catalog
+                    </button>
+                </div>
+
+                <div style="background: white; border: 1.5px solid #fef08a; border-radius: 16px; overflow-x: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 13px; text-align: left;">
+                        <thead>
+                            <tr style="background: #fefce8; border-bottom: 1.5px solid #fef08a; color: #713f12; font-size: 12px; text-transform: uppercase;">
+                                <th style="padding: 14px 16px;">Produce Item</th>
+                                <th style="padding: 14px 16px;">Farmer / FPO</th>
+                                <th style="padding: 14px 16px;">District / Origin</th>
+                                <th style="padding: 14px 16px;">Farmgate Price</th>
+                                <th style="padding: 14px 16px;">APMC Mandi Benchmark</th>
+                                <th style="padding: 14px 16px;">Accreditation Status</th>
+                                <th style="padding: 14px 16px; text-align: right;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="produceVerificationTableBody">
+                            <!-- Populated with dynamic products -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- SECTION 4: Cross-District Buffer Stock & Transfer Logistics Requests -->
+            <!-- ========================================================================= -->
+            <div class="card" style="padding: 28px; border-radius: 20px; margin-bottom: 35px; border: 1.5px solid #c084fc; background: #faf5ff;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; flex-wrap: wrap; gap: 12px;">
+                    <div>
+                        <span class="fd-badge fd-badge-purple"><i class="fas fa-truck-ramp-box"></i> 38-DISTRICT FULFILLMENT GRID</span>
+                        <h2 style="font-size: 21px; font-weight: 800; color: #581c87; margin-top: 6px;">
+                            <i class="fas fa-boxes-packing text-purple"></i> Inter-District Transfer Requests & Buffer Dispatch
+                        </h2>
+                        <p style="font-size: 13.5px; color: #7e22ce; margin: 0;">Cross-district stock rebalancing requests dispatched when local district stocks are depleted.</p>
+                    </div>
+                </div>
+
+                <div id="crossDistrictTransfersLog" style="display: flex; flex-direction: column; gap: 10px;">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+
+            <!-- Quick Navigation Admin Modules -->
+            <div class="grid-4" style="margin-bottom: 40px;">
+                <a href="admin-users.html" class="card card-hover" style="text-align: center; padding: 25px; border-radius: 18px;">
+                    <div class="stat-icon stat-icon-green" style="margin: 0 auto 12px;"><i class="fas fa-users-cog"></i></div>
+                    <h4 style="font-size: 16px; font-weight: 800;">38 Districts & KYC</h4>
+                    <p style="font-size: 12px; color: #64748b; margin-top: 4px;">Nodal Admins & Patta Records</p>
+                </a>
+
+                <a href="admin-products.html" class="card card-hover" style="text-align: center; padding: 25px; border-radius: 18px;">
+                    <div class="stat-icon stat-icon-blue" style="margin: 0 auto 12px;"><i class="fas fa-apple-alt"></i></div>
+                    <h4 style="font-size: 16px; font-weight: 800;">Produce Catalog</h4>
+                    <p style="font-size: 12px; color: #64748b; margin-top: 4px;">GI Tags & Mandi Prices</p>
+                </a>
+
+                <a href="admin-orders.html" class="card card-hover" style="text-align: center; padding: 25px; border-radius: 18px;">
+                    <div class="stat-icon stat-icon-amber" style="margin: 0 auto 12px;"><i class="fas fa-receipt"></i></div>
+                    <h4 style="font-size: 16px; font-weight: 800;">Orders & Escrow</h4>
+                    <p style="font-size: 12px; color: #64748b; margin-top: 4px;">UPI Escrow Payouts</p>
+                </a>
+
+                <a href="reports.html" class="card card-hover" style="text-align: center; padding: 25px; border-radius: 18px;">
+                    <div class="stat-icon stat-icon-purple" style="margin: 0 auto 12px;"><i class="fas fa-file-invoice-dollar"></i></div>
+                    <h4 style="font-size: 16px; font-weight: 800;">State Financial Audits</h4>
+                    <p style="font-size: 12px; color: #64748b; margin-top: 4px;">Escrow Ledger & Settlements</p>
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="fd-footer">
+        <div class="container">
+            <div class="fd-footer-bottom" style="border:none; padding:0;">
+                <div></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        const TN_38_DISTRICTS = [
+            'Ariyalur', 'Chengalpattu', 'Chennai', 'Coimbatore', 'Cuddalore', 'Dharmapuri',
+            'Dindigul', 'Erode', 'Kallakurichi', 'Kanchipuram', 'Kanyakumari', 'Karur',
+            'Krishnagiri', 'Madurai', 'Mayiladuthurai', 'Nagapattinam', 'Namakkal', 'Nilgiris',
+            'Perambalur', 'Pudukkottai', 'Ramanathapuram', 'Ranipet', 'Salem', 'Sivaganga',
+            'Tenkasi', 'Thanjavur', 'Theni', 'Thoothukudi', 'Tiruchirappalli', 'Tirunelveli',
+            'Tirupathur', 'Tiruppur', 'Tiruvallur', 'Tiruvannamalai', 'Tiruvarur', 'Vellore',
+            'Villupuram', 'Virudhunagar'
+        ];
+
+        let currentDistrict = (window.FarmDirect && typeof FarmDirect.getUserDistrict === 'function') ? FarmDirect.getUserDistrict() : 'Erode';
+        let activeRecipientDistrict = 'Thanjavur';
+        let registeredUsersList = [];
+
+        function renderDistrictData(district) {
+            currentDistrict = district;
+            const p = FarmDirect.getDistrictProfileData(district);
+            const office = FarmDirect.getDistrictOffice(district);
+
+            // Update Header & District Identity with Registered Admin Name
+            const registeredAdminName = sessionStorage.getItem('fd_user_name') || 
+                                        localStorage.getItem('fd_admin_registered_name_' + district) || 
+                                        (window.FarmDirect && typeof FarmDirect.getUserProfile === 'function' && FarmDirect.getUserProfile() ? FarmDirect.getUserProfile().name : null);
+            const activeOfficerName = (registeredAdminName && registeredAdminName.trim()) ? registeredAdminName.trim() : (office.officerName || p.adminName);
+
+            document.getElementById('adminNodalTitle').textContent = `${activeOfficerName} (${office.officerDesignation || 'District Nodal Officer'})`;
+            document.getElementById('activeDistrictBadgeLabel').textContent = `${district.toUpperCase()} DISTRICT`;
+            
+            const officeAddrEl = document.getElementById('nodalOfficeAddressText');
+            if (officeAddrEl) {
+                officeAddrEl.innerHTML = `<i class="fas fa-building text-primary"></i> ${office.officeName}, ${office.officeAddress}`;
+            }
+
+            document.getElementById('nodalEmailText').textContent = p.email;
+            document.getElementById('nodalBadgeText').textContent = p.officialBadgeId;
+            document.getElementById('nodalPhoneText').textContent = office.hotline || p.phone;
+            document.getElementById('nodalPasscodeText').textContent = p.passcode;
+            document.getElementById('heroDistrictBreadcrumb').textContent = `${district} District Command Tower`;
+            document.getElementById('navDistrictPill').innerHTML = `<i class="fas fa-user-shield"></i> <span id="adminNavOfficerName">${activeOfficerName}</span> • ${district}`;
+            document.getElementById('commsSenderBadgeSpan').textContent = `${p.officialBadgeId} (${district})`;
+
+            const heroGreetingEl = document.getElementById('heroOfficerGreeting');
+            if (heroGreetingEl) {
+                heroGreetingEl.innerHTML = `<i class="fas fa-user-shield"></i> Officer Command: <strong>${activeOfficerName}</strong> • ${district} Agronomy Master Command`;
+            }
+
+            // Update Whole District Info
+            document.getElementById('distHubName').textContent = p.hub;
+            document.getElementById('distColdCapacity').textContent = `${p.coldCapacity || '800 MT'} Pre-Cooling Capacity`;
+            document.getElementById('distCropName').textContent = p.primaryCrop;
+            document.getElementById('distHighwayName').textContent = p.highway;
+            document.getElementById('distReeferCount').textContent = `${p.reefers} Active Reefer Fleet`;
+            document.getElementById('distFarmersCount').textContent = p.farmers;
+            document.getElementById('distGmvAmount').textContent = `${p.gmv} Traded GMV`;
+
+            // Update Switcher dropdown
+            const switcher = document.getElementById('dashDistrictSwitcher');
+            if (switcher) switcher.value = district;
+
+            // Refresh Inter-District list for other 37 districts
+            renderOtherDistrictAdminsList();
+            loadInterDistrictThread();
+            renderProduceVerificationQueue();
+            renderCrossDistrictTransfersLog();
+        }
+
+        function openCurrentOfficerProfile() {
+            const p = FarmDirect.getDistrictProfileData(currentDistrict);
+            const off = FarmDirect.getDistrictOffice(currentDistrict);
+            const registeredAdminName = sessionStorage.getItem('fd_user_name') || 
+                                        localStorage.getItem('fd_admin_registered_name_' + currentDistrict) || 
+                                        (window.FarmDirect && typeof FarmDirect.getUserProfile === 'function' && FarmDirect.getUserProfile() ? FarmDirect.getUserProfile().name : null);
+            const activeOfficerName = (registeredAdminName && registeredAdminName.trim()) ? registeredAdminName.trim() : (off.officerName || p.adminName);
+            FarmDirect.showPersonProfileModal({
+                name: activeOfficerName,
+                role: `${off.officerDesignation || 'Joint Director of Agriculture'} (${currentDistrict})`,
+                phone: off.hotline || p.phone,
+                district: currentDistrict,
+                rating: 5.0,
+                verified: true
+            });
+        }
+
+        function renderProduceVerificationQueue() {
+            const tableBody = document.getElementById('produceVerificationTableBody');
+            if (!tableBody) return;
+
+            const products = FarmDirect.getProducts();
+            tableBody.innerHTML = '';
+
+            products.forEach(p => {
+                const tr = document.createElement('tr');
+                tr.style.borderBottom = '1px solid #f1f5f9';
+
+                const mandiDiff = (p.mandiBenchmark && p.price) ? (p.price - p.mandiBenchmark) : 0;
+                const diffColor = mandiDiff <= 0 ? '#059669' : '#dc2626';
+                const diffLabel = mandiDiff <= 0 ? `₹${Math.abs(mandiDiff)} below Mandi` : `+₹${mandiDiff} above Mandi`;
+
+                tr.innerHTML = `
+                    <td style="padding: 12px 16px;">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <img src="${p.image}" style="width: 44px; height: 44px; border-radius: 8px; object-fit: cover;">
+                            <div>
+                                <strong style="color: #0f172a; font-size: 13.5px;">${p.name}</strong>
+                                <div style="font-size: 11px; color: #64748b;">${p.category || 'Produce'} • Grade A</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="padding: 12px 16px;">
+                        <span style="cursor: pointer; color: #059669; font-weight: 600;" onclick="FarmDirect.showPersonProfileModal({ name: '${p.farmer}', role: 'Certified Farmer', phone: '${p.farmerPhone || '+91 94432 00000'}', district: '${p.location || 'Tamil Nadu'}', rating: ${p.rating || 4.9} })">
+                            <i class="fas fa-user-check text-success"></i> ${p.farmer} <i class="fas fa-phone-alt" style="font-size: 10px;"></i>
+                        </span>
+                    </td>
+                    <td style="padding: 12px 16px;">
+                        <span style="cursor: pointer; color: #2563eb; font-weight: 600;" onclick="FarmDirect.showDistrictOfficeModal('${p.location || 'Erode'}')">
+                            <i class="fas fa-map-marker-alt"></i> ${p.location}
+                        </span>
+                    </td>
+                    <td style="padding: 12px 16px; font-weight: 800; color: #064e3b;">
+                        ₹${p.price} / ${p.unit}
+                    </td>
+                    <td style="padding: 12px 16px;">
+                        <div style="font-weight: 700; color: #475569;">₹${p.mandiBenchmark || p.price} / ${p.unit}</div>
+                        <span style="font-size: 11px; color: ${diffColor}; font-weight: 700;">${diffLabel}</span>
+                    </td>
+                    <td style="padding: 12px 16px;">
+                        ${(p.adminVerified || p.verified) 
+                            ? '<span class="fd-badge fd-badge-green" style="font-size: 11px;"><i class="fas fa-crown text-warning"></i> Nodal Certified</span>' 
+                            : '<span class="fd-badge fd-badge-amber" style="font-size: 11px;"><i class="fas fa-clock"></i> Pending Audit</span>'}
+                    </td>
+                    <td style="padding: 12px 16px; text-align: right;">
+                        <button onclick="toggleProductCertification('${p.id}', ${!(p.adminVerified || p.verified)})" class="btn btn-xs ${(p.adminVerified || p.verified) ? 'btn-secondary' : 'btn-ai'}" style="padding: 5px 12px; font-size: 11.5px; font-weight: 700;">
+                            ${(p.adminVerified || p.verified) ? '<i class="fas fa-times"></i> Revoke' : '<i class="fas fa-award"></i> 👑 Grant Seal'}
+                        </button>
+                    </td>
+                `;
+                tableBody.appendChild(tr);
+            });
+        }
+
+        async function toggleProductCertification(productId, verifyStatus) {
+            await FarmDirect.verifyProductByAdmin(productId, verifyStatus);
+            renderProduceVerificationQueue();
+        }
+
+        function renderCrossDistrictTransfersLog() {
+            const container = document.getElementById('crossDistrictTransfersLog');
+            if (!container) return;
+
+            const transfers = (window.FarmDirect && typeof FarmDirect.getCrossDistrictTransfers === 'function') ? FarmDirect.getCrossDistrictTransfers() : [];
+            
+            if (transfers.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 24px; color: #94a3b8; background: white; border-radius: 12px; border: 1px solid #e9d5ff;">
+                        <i class="fas fa-truck-ramp-box" style="font-size: 28px; margin-bottom: 8px; color: #c084fc;"></i>
+                        <div style="font-weight: 700; color: #6b21a8; font-size: 13.5px;">No Active Cross-District Transfer Dispatches</div>
+                        <div style="font-size: 12px; color: #7e22ce;">When any district inventory depletes, alternative shipments from other 37 districts will appear here.</div>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = '';
+            transfers.slice(-6).reverse().forEach(t => {
+                const item = document.createElement('div');
+                const origDist = t.originDistrict || t.fromDistrict || 'Origin';
+                const destDist = t.targetDistrict || t.toDistrict || 'Destination';
+                item.style.cssText = 'background: white; border: 1.5px solid #e9d5ff; border-radius: 14px; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.03);';
+                item.innerHTML = `
+                    <div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span class="fd-badge fd-badge-purple" style="font-size: 11px;">🚚 ${t.transferId || 'TN-TRF-001'}</span>
+                            <strong style="font-size: 14px; color: #1e1b4b;">${t.productName || t.cropName}</strong>
+                            <span style="font-size: 12px; color: #6b21a8; font-weight: 700;">(${t.quantity} transfer)</span>
+                        </div>
+                        <div style="font-size: 12.5px; color: #64748b; margin-top: 4px;">
+                            <strong>${origDist} Hub</strong> ➔ <strong>${destDist} Consumer Zone</strong> • Transit Corridor: <span style="color: #7e22ce; font-weight: 600;">${t.corridor || 'NH Highway Reefer'}</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span class="fd-badge fd-badge-green" style="font-size: 11px;"><i class="fas fa-snowflake"></i> 3.8°C Cold-Chain Verified</span>
+                        <button onclick="FarmDirect.showDistrictOfficeModal('${origDist}')" class="btn btn-xs btn-secondary" style="font-size: 11px;">
+                            <i class="fas fa-building"></i> Origin Nodal
+                        </button>
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        function switchDashboardDistrict(district) {
+            if (window.FarmDirect && typeof FarmDirect.setUserDistrict === 'function') {
+                FarmDirect.setUserDistrict(district);
+            }
+            sessionStorage.setItem('fd_admin_district', district);
+            if (activeRecipientDistrict === district) {
+                activeRecipientDistrict = district === 'Erode' ? 'Thanjavur' : 'Erode';
+            }
+            renderDistrictData(district);
+            FarmDirect.showToast(`Switched active command to ${district} District!`, 'success');
+        }
+
+        function populateDistrictSwitcherDropdown() {
+            const switcher = document.getElementById('dashDistrictSwitcher');
+            switcher.innerHTML = '';
+            TN_38_DISTRICTS.forEach(d => {
+                const p = FarmDirect.getDistrictProfileData(d);
+                const opt = document.createElement('option');
+                opt.value = d;
+                opt.textContent = `${d} (${p.tamil})`;
+                if (d === currentDistrict) opt.selected = true;
+                switcher.appendChild(opt);
+            });
+        }
+
+        // ==========================================
+        // Inter-District Admin Communications Handlers
+        // ==========================================
+        function renderOtherDistrictAdminsList(filterTerm = '') {
+            const container = document.getElementById('otherDistrictAdminsList');
+            container.innerHTML = '';
+
+            const otherDistricts = TN_38_DISTRICTS.filter(d => d.toLowerCase() !== currentDistrict.toLowerCase());
+            
+            const filtered = filterTerm 
+                ? otherDistricts.filter(d => {
+                    const p = FarmDirect.getDistrictProfileData(d);
+                    return d.toLowerCase().includes(filterTerm.toLowerCase()) || 
+                           p.tamil.includes(filterTerm) || 
+                           p.primaryCrop.toLowerCase().includes(filterTerm.toLowerCase());
+                })
+                : otherDistricts;
+
+            filtered.forEach(d => {
+                const p = FarmDirect.getDistrictProfileData(d);
+                const isActive = d === activeRecipientDistrict;
+                
+                const item = document.createElement('div');
+                item.className = `comms-district-item ${isActive ? 'active' : ''}`;
+                item.onclick = () => selectRecipientDistrict(d);
+                item.innerHTML = `
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <strong style="font-size:13px; color:#0f172a;">${d} (${p.tamil})</strong>
+                        <span style="font-size:10.5px; font-family:monospace; color:#059669; font-weight:700;">${p.officialBadgeId}</span>
+                    </div>
+                    <div style="font-size:11.5px; color:#64748b; margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                        ${p.primaryCrop}
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        function filterAdminDirectory(query) {
+            renderOtherDistrictAdminsList(query);
+        }
+
+        function selectRecipientDistrict(district) {
+            activeRecipientDistrict = district;
+            const p = FarmDirect.getDistrictProfileData(district);
+
+            document.getElementById('activeRecipientAdminTitle').textContent = `${p.adminName} • ${district} District Command`;
+            document.getElementById('activeRecipientAdminSub').textContent = `Badge: ${p.officialBadgeId} • ${p.hub}`;
+
+            renderOtherDistrictAdminsList();
+            loadInterDistrictThread();
+        }
+
+        async function loadInterDistrictThread() {
+            const threadEl = document.getElementById('interDistrictMessagesThread');
+            threadEl.innerHTML = '<div style="text-align:center; padding:20px; color:#94a3b8;"><i class="fas fa-spinner fa-spin"></i> Loading secure memos...</div>';
+
+            const messages = await FarmDirect.getDistrictAdminMessages(currentDistrict, activeRecipientDistrict);
+            
+            if (!messages || messages.length === 0) {
+                threadEl.innerHTML = `
+                    <div style="text-align:center; padding:30px; color:#94a3b8;">
+                        <i class="fas fa-satellite-dish" style="font-size:28px; margin-bottom:8px; color:#cbd5e1;"></i>
+                        <div style="font-size:13px; font-weight:700; color:#64748b;">No previous memos between ${currentDistrict} and ${activeRecipientDistrict}</div>
+                        <div style="font-size:12px;">Use the form below to transmit an official inter-district memo.</div>
+                    </div>
+                `;
+                return;
+            }
+
+            threadEl.innerHTML = '';
+            messages.forEach(m => {
+                const isMine = m.senderDistrict.toLowerCase() === currentDistrict.toLowerCase();
+                const bubble = document.createElement('div');
+                bubble.className = `memo-bubble ${isMine ? 'memo-sent' : 'memo-received'}`;
+                
+                let badgeClass = 'badge-normal';
+                if (m.priority === 'urgent') badgeClass = 'badge-urgent';
+                if (m.priority === 'emergency') badgeClass = 'badge-emergency';
+
+                const isDecryptedGlobal = window.isGlobalDecryptedState || false;
+                const cryptoRendered = FarmDirect.crypto && typeof FarmDirect.crypto.renderField === 'function'
+                    ? FarmDirect.crypto.renderField(m.message, 'Memo Body', 'memo_' + (m.id ? m.id.replace(/[^a-zA-Z0-9]/g, '') : Math.random().toString(36).substr(2, 6)))
+                    : `<div style="font-size:12.5px; color:#334155;">${m.message}</div>`;
+
+                bubble.innerHTML = `
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap; gap:6px;">
+                        <div style="display:flex; align-items:center; gap:6px;">
+                            <strong style="font-size:12.5px; color:${isMine ? '#065f46' : '#1e3a8a'};">
+                                ${isMine ? '📤 Transmitted by You (' + m.senderBadge + ')' : '📥 Received from ' + m.senderName}
+                            </strong>
+                        </div>
+                        <div style="display:flex; gap:6px; align-items:center;">
+                            <span class="fd-badge ${badgeClass}" style="font-size:10px; text-transform:uppercase;">${m.priority || 'Normal'}</span>
+                            <span style="font-size:11px; color:#94a3b8;">${new Date(m.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                        </div>
+                    </div>
+                    <div style="font-size:13px; font-weight:800; color:#0f172a; margin-bottom:6px; display:flex; justify-content:space-between; align-items:center;">
+                        <span><i class="fas fa-file-contract text-primary" style="font-size:11px;"></i> ${m.subject}</span>
+                    </div>
+                    <div style="margin-top:4px;">
+                        ${cryptoRendered}
+                    </div>
+                `;
+                threadEl.appendChild(bubble);
+            });
+
+            threadEl.scrollTop = threadEl.scrollHeight;
+        }
+
+        let isGlobalDecryptedState = false;
+
+        function toggleDashboardDecryption() {
+            isGlobalDecryptedState = !isGlobalDecryptedState;
+            window.isGlobalDecryptedState = isGlobalDecryptedState;
+
+            if (FarmDirect.crypto && typeof FarmDirect.crypto.toggleAllFields === 'function') {
+                FarmDirect.crypto.toggleAllFields(isGlobalDecryptedState);
+            }
+
+            const btn = document.getElementById('btnMasterDecryptToggle');
+            if (btn) {
+                btn.innerHTML = isGlobalDecryptedState
+                    ? '<i class="fas fa-lock"></i> <span>🔒 Re-Encrypt All Records</span>'
+                    : '<i class="fas fa-key"></i> <span>🔓 Decrypt All Records</span>';
+                btn.style.background = isGlobalDecryptedState ? 'rgba(239, 68, 68, 0.2)' : 'rgba(16, 185, 129, 0.25)';
+                btn.style.borderColor = isGlobalDecryptedState ? '#f87171' : '#10b981';
+                btn.style.color = isGlobalDecryptedState ? '#ef4444' : '#34d399';
+            }
+        }
+
+        async function handleSendDistrictMemo(e) {
+            e.preventDefault();
+            const btn = document.getElementById('sendMemoBtn');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Transmitting...';
+            btn.disabled = true;
+
+            const subject = document.getElementById('memoSubject').value;
+            const category = document.getElementById('memoCategory').value;
+            const priority = document.getElementById('memoPriority').value;
+            const message = document.getElementById('memoMessage').value;
+
+            const senderProfile = FarmDirect.getDistrictProfileData(currentDistrict);
+            const savedAdminName = sessionStorage.getItem('fd_user_name') || 
+                                    localStorage.getItem('fd_admin_registered_name_' + currentDistrict);
+            const senderName = (savedAdminName && savedAdminName.trim()) ? savedAdminName.trim() : senderProfile.adminName;
+
+            const payload = {
+                senderDistrict: currentDistrict,
+                recipientDistrict: activeRecipientDistrict,
+                senderName: senderName,
+                senderBadge: senderProfile.officialBadgeId,
+                category,
+                priority,
+                subject,
+                message
+            };
+
+            const res = await FarmDirect.sendDistrictAdminMessage(payload);
+
+            if (btn) {
+                btn.innerHTML = '<i class="fas fa-check-circle"></i> Submitted successfully!';
+                btn.style.background = '#059669';
+            }
+
+            if (res && res.success) {
+                document.getElementById('memoSubject').value = '';
+                document.getElementById('memoMessage').value = '';
+                if (window.FarmDirect && typeof FarmDirect.addNotification === 'function') {
+                    await FarmDirect.addNotification({
+                        title: `Submitted successfully!`,
+                        msg: `Official memo transmitted to ${activeRecipientDistrict} Admin!`,
+                        type: 'info',
+                        time: 'Just now'
+                    });
+                }
+                FarmDirect.showToast(`Submitted successfully! Official memo transmitted to ${activeRecipientDistrict} Admin.`, 'success');
+                loadInterDistrictThread();
+            }
+
+            setTimeout(() => {
+                if (btn) {
+                    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Transmit Memo to District Admin';
+                    btn.style.background = '';
+                    btn.disabled = false;
+                }
+            }, 1800);
+        }
+
+        // ==========================================
+        // Admin-to-Specific-User Handlers
+        // ==========================================
+        async function loadUsersForDirectMessage() {
+            registeredUsersList = await FarmDirect.getAdminUsersList();
+            const selectEl = document.getElementById('targetUserSelect');
+            selectEl.innerHTML = '<option value="">-- Choose specific user to contact --</option>';
+
+            registeredUsersList.forEach((u, idx) => {
+                const opt = document.createElement('option');
+                opt.value = idx;
+                opt.textContent = `${u.name} (${u.role.toUpperCase()}) • ${u.email} [${u.district}]`;
+                selectEl.appendChild(opt);
+            });
+
+            await renderDispatchedUserMessagesLog();
+        }
+
+        function onTargetUserSelected(selectEl) {
+            const idx = selectEl.value;
+            const previewStrip = document.getElementById('selectedUserPreviewStrip');
+            
+            if (idx === '') {
+                previewStrip.style.display = 'none';
+                return;
+            }
+
+            const u = registeredUsersList[idx];
+            document.getElementById('previewUserName').textContent = u.name;
+            document.getElementById('previewUserRole').textContent = u.role.toUpperCase();
+            document.getElementById('previewUserEmail').textContent = u.email;
+            document.getElementById('previewUserDistrict').textContent = `${u.district} (${u.taluk || 'Main'})`;
+            previewStrip.style.display = 'block';
+        }
+
+        async function handleSendUserDirectMessage(e) {
+            e.preventDefault();
+            const selectEl = document.getElementById('targetUserSelect');
+            if (selectEl.value === '') {
+                FarmDirect.showToast('Please select a specific registered user first.', 'warning');
+                return;
+            }
+
+            const u = registeredUsersList[selectEl.value];
+            const subject = document.getElementById('userMsgSubject').value;
+            const priority = document.getElementById('userMsgPriority').value;
+            const message = document.getElementById('userMsgBody').value;
+
+            const btn = document.getElementById('sendUserMsgBtn');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Dispatching directive...';
+            btn.disabled = true;
+
+            const senderProfile = FarmDirect.getDistrictProfileData(currentDistrict);
+            const savedAdminName = sessionStorage.getItem('fd_user_name') || 
+                                    localStorage.getItem('fd_admin_registered_name_' + currentDistrict);
+            const senderName = (savedAdminName && savedAdminName.trim()) ? savedAdminName.trim() : senderProfile.adminName;
+
+            const payload = {
+                senderDistrict: currentDistrict,
+                senderName: senderName,
+                senderBadge: senderProfile.officialBadgeId,
+                recipientUserEmail: u.email,
+                recipientUserName: u.name,
+                subject,
+                priority,
+                message
+            };
+
+            const res = await FarmDirect.sendUserDirectMessage(payload);
+
+            if (btn) {
+                btn.innerHTML = '<i class="fas fa-check-circle"></i> Submitted successfully!';
+                btn.style.background = '#059669';
+            }
+
+            if (res && res.success) {
+                document.getElementById('userMsgSubject').value = '';
+                document.getElementById('userMsgBody').value = '';
+                if (window.FarmDirect && typeof FarmDirect.addNotification === 'function') {
+                    await FarmDirect.addNotification({
+                        title: `Submitted successfully!`,
+                        msg: `Official administrative directive sent to ${u.email} (${u.role.toUpperCase()}).`,
+                        type: 'info',
+                        time: 'Just now'
+                    });
+                }
+                FarmDirect.showToast(`Submitted successfully! Directive dispatched directly to ${u.name}.`, 'success');
+                await renderDispatchedUserMessagesLog();
+            }
+
+            setTimeout(() => {
+                if (btn) {
+                    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Dispatch Direct Message to Specific User';
+                    btn.style.background = '';
+                    btn.disabled = false;
+                }
+            }, 1800);
+        }
+
+        async function renderDispatchedUserMessagesLog() {
+            const logEl = document.getElementById('dispatchedUserMessagesList');
+            const messages = (window.FarmDirect && typeof FarmDirect.getUserDirectMessages === 'function')
+                ? await FarmDirect.getUserDirectMessages()
+                : [];
+            const messageList = Array.isArray(messages) ? messages : [];
+            
+            if (messageList.length === 0) {
+                logEl.innerHTML = '<div style="font-size:12px; color:#94a3b8;">No direct user directives dispatched yet.</div>';
+                return;
+            }
+
+            logEl.innerHTML = '';
+            messageList.slice(-5).reverse().forEach(m => {
+                const item = document.createElement('div');
+                item.style.cssText = 'background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center; font-size:12.5px;';
+                item.innerHTML = `
+                    <div>
+                        <strong style="color:#0f172a;">To: ${m.recipientUserName} (${m.recipientUserEmail})</strong>
+                        <div style="font-size:11.5px; color:#64748b;">${m.subject} • <span style="color:#059669;">${m.message.substring(0, 60)}...</span></div>
+                    </div>
+                    <span class="fd-badge fd-badge-green" style="font-size:10px;"><i class="fas fa-check"></i> Dispatched</span>
+                `;
+                logEl.appendChild(item);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            populateDistrictSwitcherDropdown();
+            renderDistrictData(currentDistrict);
+            loadUsersForDirectMessage();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#10b981">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FarmDirect">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <title>Farm-to-Fork Traceability Pipeline | FarmDirect</title>
+    <!-- Immediate Authentication Guard: Require sign in before viewing website details -->
+    <script src="js/auth-guard.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Sleek Master Navigation with Rich Dropdowns -->
+    <nav class="fd-nav">
+        <div class="container fd-nav-inner">
+            <a href="index.html" class="fd-brand">
+                <span>🌱 FarmDirect</span>
+                <span class="fd-brand-badge">Traceability</span>
+            </a>
+
+            <ul class="fd-nav-links">
+                <li class="fd-nav-item"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="marketplace.html"><i class="fas fa-store"></i> Marketplace <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="marketplace.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-shopping-basket"></i></div>
+                            <div><span class="fd-dropdown-title">Live Produce Catalog</span><span class="fd-dropdown-desc">Direct harvest from verified farmers</span></div>
+                        </a>
+                        <a href="product-quality.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-shield-alt"></i></div>
+                            <div><span class="fd-dropdown-title">AI Quality Scanner</span><span class="fd-dropdown-desc">Computer-vision freshness & Brix test</span></div>
+                        </a>
+                        <a href="price-comparison.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Price Comparison</span><span class="fd-dropdown-desc">Farmgate vs APMC Mandi vs Retail</span></div>
+                        </a>
+                        <a href="offers.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-tags"></i></div>
+                            <div><span class="fd-dropdown-title">Harvest Offers</span><span class="fd-dropdown-desc">Seasonal discounts & promo codes</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="farmer-dashboard.html"><i class="fas fa-tractor"></i> Farmers & FPOs <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="farmer-dashboard.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-tachometer-alt"></i></div>
+                            <div><span class="fd-dropdown-title">Farmer Command Center</span><span class="fd-dropdown-desc">Agronomy weather radar & revenue</span></div>
+                        </a>
+                        <a href="fpo-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-users"></i></div>
+                            <div><span class="fd-dropdown-title">FPO Collective Aggregator</span><span class="fd-dropdown-desc">Pool multi-farmer harvests for B2B</span></div>
+                        </a>
+                        <a href="add-product.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-plus-circle"></i></div>
+                            <div><span class="fd-dropdown-title">List New Produce</span><span class="fd-dropdown-desc">AI Mandi benchmark recommender</span></div>
+                        </a>
+                        <a href="farmer-earnings.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-wallet"></i></div>
+                            <div><span class="fd-dropdown-title">Earnings & UPI Ledger</span><span class="fd-dropdown-desc">Instant OTP escrow bank settlements</span></div>
+                        </a>
+                        <a href="farmer-verification.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-id-card"></i></div>
+                            <div><span class="fd-dropdown-title">Land KYC Verification</span><span class="fd-dropdown-desc">Patta/Chitta Land KYC Verification</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="logistics.html"><i class="fas fa-truck-moving"></i> Logistics <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="live-tracking.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-satellite-dish"></i></div>
+                            <div><span class="fd-dropdown-title">Live GPS Radar</span><span class="fd-dropdown-desc">3.8°C Temperature-Controlled Delivery</span></div>
+                        </a>
+                        <a href="route-optimization.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-route"></i></div>
+                            <div><span class="fd-dropdown-title">AI Route Optimizer</span><span class="fd-dropdown-desc">Smart Multi-Farm Route Optimizer</span></div>
+                        </a>
+                        <a href="delivery-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-tasks"></i></div>
+                            <div><span class="fd-dropdown-title">Dispatch Management</span><span class="fd-dropdown-desc">Vehicle fleet allocations & e-POD</span></div>
+                        </a>
+                        <a href="warehouse.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-warehouse"></i></div>
+                            <div><span class="fd-dropdown-title">Smart Rural Cold Hubs</span><span class="fd-dropdown-desc">Microclimate pre-cooling slots</span></div>
+                        </a>
+                        <a href="inventory.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-rose"><i class="fas fa-boxes"></i></div>
+                            <div><span class="fd-dropdown-title">Inventory Engine</span><span class="fd-dropdown-desc">Batch shelf-life countdowns</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="ai-insights.html" class="active"><i class="fas fa-brain"></i> AI Intelligence <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="demand-forecast.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-chart-pie"></i></div>
+                            <div><span class="fd-dropdown-title">Demand Forecasting</span><span class="fd-dropdown-desc">Predictive 30-day ML models</span></div>
+                        </a>
+                        <a href="ai-insights.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-chart-line"></i></div>
+                            <div><span class="fd-dropdown-title">Agricultural Intelligence</span><span class="fd-dropdown-desc">Regional surplus & deficit heatmap</span></div>
+                        </a>
+                        <a href="supply-chain.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-link"></i></div>
+                            <div><span class="fd-dropdown-title">Farm-to-Fork Traceability</span><span class="fd-dropdown-desc">5-stage harvest verification</span></div>
+                        </a>
+                        <a href="price-intelligence.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Mandi Price Index</span><span class="fd-dropdown-desc">Live Government Mandi Prices</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item"><a href="bulk-buyers.html"><i class="fas fa-building"></i> B2B Wholesale</a></li>
+            </ul>
+
+            <div class="fd-nav-actions">
+                <a href="marketplace.html" class="btn btn-secondary btn-sm"><i class="fas fa-shopping-basket"></i> Shop Traceable Produce</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <a href="ai-insights.html">AI Intelligence</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <span>Farm-to-Fork Traceability</span>
+            </div>
+            <h1 class="page-hero-title">End-to-End Farm-to-Fork Supply Chain Traceability 🔗</h1>
+            <p class="page-hero-subtitle">Every crate and package is cryptographically verified from the exact Tamil Nadu farm plot where it was grown to your kitchen table.</p>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container" style="max-width: 1000px;">
+            <!-- Interactive Batch Search -->
+            <div class="card" style="padding: 30px; margin-bottom: 30px;">
+                <h3 style="font-size: 18px; font-weight: 800; color: #064e3b; margin-bottom: 15px;">
+                    <i class="fas fa-qrcode text-success"></i> Verify Produce Batch by Lot Code
+                </h3>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 15px;">
+                    <input type="text" id="lotInput" class="form-control" placeholder="Enter Batch Lot ID (e.g. TN-101, TN-102, TN-103)" value="TN-101" style="flex: 1; font-family: monospace; font-size: 15px;">
+                    <button onclick="renderTracePipeline()" class="btn btn-primary"><i class="fas fa-search"></i> Verify Provenance</button>
+                </div>
+
+                <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 12px; color: #64748b;">
+                    <span>Quick Sample Lots:</span>
+                    <button onclick="selectLot('TN-101')" class="badge badge-success" style="cursor: pointer; border: none;">TN-101 (Erode Turmeric)</button>
+                    <button onclick="selectLot('TN-102')" class="badge badge-info" style="cursor: pointer; border: none;">TN-102 (Thanjavur Rice)</button>
+                    <button onclick="selectLot('TN-103')" class="badge badge-warning" style="cursor: pointer; border: none;">TN-103 (Salem Mango)</button>
+                    <button onclick="selectLot('TN-104')" class="badge badge-purple" style="cursor: pointer; border: none;">TN-104 (Nilgiris Carrot)</button>
+                    <button onclick="selectLot('TN-105')" class="badge badge-success" style="cursor: pointer; border: none;">TN-105 (Madurai Malli)</button>
+                </div>
+            </div>
+
+            <!-- Traceability Pipeline Stepper Card -->
+            <div class="card" style="padding: 35px; margin-bottom: 30px;" id="traceabilityCard">
+                <!-- Dynamically populated via JS -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="fd-footer">
+        <div class="container">
+            <div class="fd-footer-bottom" style="border:none; padding:0;">
+                <div></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        function selectLot(lotId) {
+            document.getElementById('lotInput').value = lotId;
+            renderTracePipeline();
+        }
+
+        function renderTracePipeline() {
+            const lotId = document.getElementById('lotInput').value.trim();
+            const products = FarmDirect.getProducts();
+            const product = products.find(p => p.id.toUpperCase() === lotId.toUpperCase()) || products[0];
+
+            const card = document.getElementById('traceabilityCard');
+            if (!card) return;
+
+            const farmerPayout = Math.round(product.price * 0.88);
+
+            card.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 1px solid var(--border); padding-bottom: 15px; flex-wrap: wrap; gap: 10px;">
+                    <div>
+                        <span class="badge badge-success"><i class="fas fa-check-double"></i> 100% VERIFIED AUTHENTIC</span>
+                        <h2 style="font-size: 22px; font-weight: 800; color: #064e3b; margin-top: 6px;">
+                            Batch #${product.id}: ${product.name} ${product.tamilName ? `(${product.tamilName})` : ''}
+                        </h2>
+                    </div>
+                    <span style="font-size: 13px; color: #64748b;"><i class="fas fa-calendar-check"></i> Harvested: ${product.harvestDate || '01 Sep 2026'}</span>
+                </div>
+
+                <!-- 5 Steps Pipeline -->
+                <div style="display: flex; flex-direction: column; gap: 24px; position: relative;">
+                    <!-- Step 1 -->
+                    <div style="display: flex; gap: 20px; align-items: flex-start;">
+                        <div class="stat-icon stat-icon-green" style="width: 48px; height: 48px; border-radius: 50%;"><i class="fas fa-seedling"></i></div>
+                        <div style="flex: 1; background: #f8fafc; padding: 18px; border-radius: 14px; border: 1px solid var(--border);">
+                            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                                <h4 style="font-size: 16px; font-weight: 800; color: #064e3b;">1. Farmgate Harvest & Plot Geotagging</h4>
+                                <span class="badge badge-success">Harvest Completed</span>
+                            </div>
+                            <p style="font-size: 13.5px; color: #475569; margin: 6px 0;">
+                                Cultivated and harvested at <strong>${product.location}</strong> by certified producer <strong>${product.farmer}</strong>. Patta verified & 100% chemical residue free.
+                            </p>
+                            <div style="font-size: 12px; color: #059669; font-weight: 700;">
+                                <i class="fas fa-map-pin"></i> GPS Coordinates: ${product.district || 'Tamil Nadu'} Agricultural Zone (11.3410° N, 77.7172° E)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div style="display: flex; gap: 20px; align-items: flex-start;">
+                        <div class="stat-icon stat-icon-blue" style="width: 48px; height: 48px; border-radius: 50%;"><i class="fas fa-shield-alt"></i></div>
+                        <div style="flex: 1; background: #f8fafc; padding: 18px; border-radius: 14px; border: 1px solid var(--border);">
+                            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                                <h4 style="font-size: 16px; font-weight: 800; color: #064e3b;">2. AI Computer-Vision QA Grading & Lab Residue Test</h4>
+                                <span class="badge badge-success">Grade A (${product.qualityScore}/100)</span>
+                            </div>
+                            <p style="font-size: 13.5px; color: #475569; margin: 6px 0;">
+                                Multi-spectral scan passed at <strong>${product.qualityScore}/100 Quality Score</strong>. NABL laboratory multi-spectral chemical residue report: <strong>Zero synthetic chemicals detected</strong>.
+                            </p>
+                            <div style="font-size: 12px; color: #0284c7; font-weight: 700;">
+                                <i class="fas fa-file-contract"></i> Lab Cert ID: #NABL-TN-QC-${product.id} • ${product.pesticideFree}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div style="display: flex; gap: 20px; align-items: flex-start;">
+                        <div class="stat-icon stat-icon-purple" style="width: 48px; height: 48px; border-radius: 50%;"><i class="fas fa-snowflake"></i></div>
+                        <div style="flex: 1; background: #f8fafc; padding: 18px; border-radius: 14px; border: 1px solid var(--border);">
+                            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                                <h4 style="font-size: 16px; font-weight: 800; color: #064e3b;">3. Pre-Cooling & Aggregation Hub Intake</h4>
+                                <span class="badge badge-success">Field Heat Removed (3.8°C)</span>
+                            </div>
+                            <p style="font-size: 13.5px; color: #475569; margin: 6px 0;">
+                                Pre-cooled down to <strong>3.8°C</strong> within 60 minutes at <strong>${product.district || 'Erode'} Rural Cold Hub</strong>. Individual crates barcoded with RFID lot tracking.
+                            </p>
+                            <div style="font-size: 12px; color: #7e22ce; font-weight: 700;">
+                                <i class="fas fa-thermometer-half"></i> Pre-Cooling Chamber: 3.8°C Steady • 88% Relative Humidity
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div style="display: flex; gap: 20px; align-items: flex-start;">
+                        <div class="stat-icon stat-icon-amber" style="width: 48px; height: 48px; border-radius: 50%;"><i class="fas fa-truck-moving"></i></div>
+                        <div style="flex: 1; background: #f8fafc; padding: 18px; border-radius: 14px; border: 1px solid var(--border);">
+                            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                                <h4 style="font-size: 16px; font-weight: 800; color: #064e3b;">4. Refrigerated Highway Cold-Chain Dispatch</h4>
+                                <span class="badge badge-warning">Active Telematics</span>
+                            </div>
+                            <p style="font-size: 13.5px; color: #475569; margin: 6px 0;">
+                                Loaded onto Smart Reefer Carrier <strong>TN-33-EA-8801</strong>. Active temperature sensors continuously monitor cooling along Tamil Nadu highway corridors (NH544 / NH83).
+                            </p>
+                            <div style="font-size: 12px; color: #d97706; font-weight: 700;">
+                                <i class="fas fa-route"></i> Route: ${product.district || 'Erode'} Hub ➔ Chennai / Coimbatore Consumer Terminal (0 Spoilage Breaches)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div style="display: flex; gap: 20px; align-items: flex-start;">
+                        <div class="stat-icon stat-icon-green" style="width: 48px; height: 48px; border-radius: 50%;"><i class="fas fa-home"></i></div>
+                        <div style="flex: 1; background: #ecfdf5; padding: 18px; border-radius: 14px; border: 1.5px solid #a7f3d0;">
+                            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                                <h4 style="font-size: 16px; font-weight: 800; color: #064e3b;">5. Doorstep Delivery & Direct Farmer UPI Settlement</h4>
+                                <span class="badge badge-success">Escrow Protected</span>
+                            </div>
+                            <p style="font-size: 13.5px; color: #065f46; margin: 6px 0;">
+                                On consumer delivery OTP verification, <strong>₹${farmerPayout} (${product.price}/unit realization)</strong> is released directly into ${product.farmer}'s registered bank UPI account with zero middleman deductions.
+                            </p>
+                            <div style="font-size: 12px; color: #059669; font-weight: 800;">
+                                <i class="fas fa-hand-holding-usd"></i> 88% Direct Farmgate Share • 100% Fair Trade Traceability
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            FarmDirect.showToast(`Verified Lot ${product.id} (${product.name})! 100% Provenance verified across 5 stages.`, 'success');
+        }
+
+        document.addEventListener('DOMContentLoaded', renderTracePipeline);
+    </script>
+</body>
+</html>

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmDirect | Next-Gen AI Agricultural Marketplace & Logistics</title>
+    <!-- Immediate Authentication Guard: Require sign in before viewing website details -->
+    <script src="js/auth-guard.js"></script>
+    <meta name="description"
+        content="Connecting farmers and FPOs directly with consumers and bulk buyers with AI demand forecasting, cold-chain logistics, and zero middleman exploitation.">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#10b981">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Sleek Master Navigation with Simplified Farmer-Friendly Names -->
+    <nav class="fd-nav">
+        <div class="container fd-nav-inner">
+            <a href="index.html" class="fd-brand">
+                <span>🌱 FarmDirect</span>
+                <span class="fd-brand-badge" style="background:#dcfce7; color:#15803d; border-color:#86efac;">Direct Farm Trade • நேரடி சந்தை</span>
+            </a>
+
+            <ul class="fd-nav-links">
+                <li class="fd-nav-item"><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="marketplace.html"><i class="fas fa-shopping-basket"></i> Buy and Sell <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="marketplace.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-shopping-basket"></i></div>
+                            <div><span class="fd-dropdown-title">All Farm Products</span><span class="fd-dropdown-desc">Direct harvest from verified farmers</span></div>
+                        </a>
+                        <a href="price-comparison.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Compare Prices</span><span class="fd-dropdown-desc">Farm price vs Mandi price</span></div>
+                        </a>
+                        <a href="offers.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-tags"></i></div>
+                            <div><span class="fd-dropdown-title">Special Offers</span><span class="fd-dropdown-desc">Seasonal harvest discounts</span></div>
+                        </a>
+                        <a href="product-quality.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-shield-alt"></i></div>
+                            <div><span class="fd-dropdown-title">Quality Check</span><span class="fd-dropdown-desc">Verified freshness & grading</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="farmer-dashboard.html"><i class="fas fa-tractor"></i> For Farmers <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="farmer-dashboard.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-home"></i></div>
+                            <div><span class="fd-dropdown-title">Farmer Home (Overview)</span><span class="fd-dropdown-desc">My sales, active orders & weather</span></div>
+                        </a>
+                        <a href="add-product.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-plus-circle"></i></div>
+                            <div><span class="fd-dropdown-title">Sell Your Products</span><span class="fd-dropdown-desc">Put your fresh harvest up for sale</span></div>
+                        </a>
+                        <a href="inventory.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-rose"><i class="fas fa-boxes"></i></div>
+                            <div><span class="fd-dropdown-title">My Products</span><span class="fd-dropdown-desc">View, edit, and update your listed crops</span></div>
+                        </a>
+                        <a href="farmer-orders.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-receipt"></i></div>
+                            <div><span class="fd-dropdown-title">Buyer Orders</span><span class="fd-dropdown-desc">View orders received from buyers</span></div>
+                        </a>
+                        <a href="farmer-earnings.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-wallet"></i></div>
+                            <div><span class="fd-dropdown-title">My Sales & Money</span><span class="fd-dropdown-desc">Bank payments and sales reports</span></div>
+                        </a>
+                        <a href="fpo-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-users"></i></div>
+                            <div><span class="fd-dropdown-title">Farmer Groups (FPO)</span><span class="fd-dropdown-desc">Sell together for larger orders</span></div>
+                        </a>
+                        <a href="farmer-verification.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-id-card"></i></div>
+                            <div><span class="fd-dropdown-title">Farmer Verification</span><span class="fd-dropdown-desc">Simple Patta / Land verification</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="logistics.html"><i class="fas fa-truck-moving"></i> Transport Help <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="logistics.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-truck-loading"></i></div>
+                            <div><span class="fd-dropdown-title">Delivery Support</span><span class="fd-dropdown-desc">Vehicle pickup and delivery steps</span></div>
+                        </a>
+                        <a href="live-tracking.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-map-marker-alt"></i></div>
+                            <div><span class="fd-dropdown-title">Track Delivery</span><span class="fd-dropdown-desc">See where your produce is right now</span></div>
+                        </a>
+                        <a href="delivery-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-tasks"></i></div>
+                            <div><span class="fd-dropdown-title">Delivery Details</span><span class="fd-dropdown-desc">Pickup and drop schedule</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item"><a href="demand-forecast.html"><i class="fas fa-chart-line"></i> What Buyers Need</a></li>
+                <li class="fd-nav-item"><a href="bulk-buyers.html"><i class="fas fa-building"></i> Bulk Buyers</a></li>
+            </ul>
+
+            <div class="fd-nav-actions">
+                <a href="wishlist.html" class="fd-icon-btn" title="Saved Items">
+                    <i class="far fa-heart"></i>
+                    <span class="fd-badge-count" id="fd-wishlist-badge" style="display:none;">0</span>
+                </a>
+                <a href="cart.html" class="fd-icon-btn" title="Shopping Basket">
+                    <i class="fas fa-shopping-basket"></i>
+                    <span class="fd-badge-count" id="fd-cart-badge" style="display:none;">0</span>
+                </a>
+                <a href="notifications.html" class="fd-icon-btn" title="Alerts">
+                    <i class="far fa-bell"></i>
+                    <span class="fd-badge-count" id="fd-notif-badge" style="display:none;">0</span>
+                </a>
+                <a href="login.html" class="btn btn-primary btn-sm"
+                    style="display: inline-flex; align-items: center; gap: 6px; font-weight: 700;">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
+                <a href="register.html" class="btn btn-secondary btn-sm"
+                    style="display: inline-flex; align-items: center; gap: 6px; font-weight: 700;">
+                    <i class="fas fa-user-plus"></i> Register
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Real-Time Statewide Agri-Ticker -->
+    <div id="liveAgriTickerBar"
+        style="background: #0f172a; color: #f8fafc; padding: 9px 0; font-size: 13px; font-weight: 600; border-bottom: 2px solid #10b981; overflow: hidden; white-space: nowrap;">
+        <div class="container" style="display: flex; align-items: center; justify-content: space-between; gap: 15px;">
+            <div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;">
+                <span
+                    style="display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: #10b981; box-shadow: 0 0 10px #10b981;"></span>
+                <strong style="color: #34d399; font-size: 12px; letter-spacing: 0.5px;">TAMIL NADU TODAY:</strong>
+            </div>
+            <div id="realtimeTickerContent"
+                style="display: flex; gap: 24px; overflow-x: auto; scrollbar-width: none; font-size: 12.5px; color: #cbd5e1;">
+                <span>🌿 <strong style="color:white;">Erode Turmeric (மஞ்சள்):</strong> <span id="tick-erode"
+                        style="color:#34d399;">₹185/kg</span></span>
+                <span>🌾 <strong style="color:white;">Thanjavur Ponni Rice (அரிசி):</strong> <span id="tick-thanjavur"
+                        style="color:#34d399;">₹68/kg</span></span>
+                <span>🥭 <strong style="color:white;">Salem Malgova Mango (மாம்பழம்):</strong> <span id="tick-salem"
+                        style="color:#fde047;">₹240/kg</span></span>
+                <span>🌸 <strong style="color:white;">Madurai Malli (மல்லி):</strong> <span id="tick-madurai"
+                        style="color:#34d399;">₹420/kg</span></span>
+                <span>🥥 <strong style="color:white;">Pollachi Coconut (தேங்காய்):</strong> <span id="tick-pollachi"
+                        style="color:#cbd5e1;">₹35/pc</span></span>
+                <span>🚚 <strong style="color:white;">Delivery Vehicles Active:</strong> <span id="tick-fleet"
+                        style="color:#38bdf8;">All 38 Districts Covered</span></span>
+            </div>
+            <div style="flex-shrink: 0; font-size: 11.5px; color: #94a3b8;">
+                <i class="fas fa-check-circle text-success"></i> <span>Live Prices</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Farmer-Friendly Clear Hero Section -->
+    <section
+        style="background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 50%, #f0fdf4 100%); padding: 60px 0 70px; position: relative; overflow: hidden; border-bottom: 1px solid var(--border);">
+        <div class="container fd-hero-grid"
+            style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 40px; align-items: center;">
+            <div>
+                <div
+                    style="display: inline-flex; align-items: center; gap: 8px; background: #dcfce7; padding: 8px 18px; border-radius: 9999px; font-weight: 800; font-size: 13px; color: #166534; margin-bottom: 20px; border: 1.5px solid #86efac;">
+                    <i class="fas fa-leaf text-success"></i> 100% DIRECT FROM FARM • ZERO MIDDLEMAN COMMISSION
+                </div>
+                
+                <h1 style="font-size: 42px; font-weight: 800; line-height: 1.2; color: #064e3b; margin-bottom: 15px;">
+                    Sell Your Farm Products Directly to Buyers
+                </h1>
+                <h2 style="font-size: 26px; font-weight: 700; color: #15803d; line-height: 1.3; margin-bottom: 20px;">
+                    Buy Fresh Farm Products at Fair Prices
+                </h2>
+                
+                <p style="font-size: 17px; color: #475569; line-height: 1.65; margin-bottom: 30px;">
+                    FarmDirect connects farmers directly with families, local shops, and buyers across all 38 districts of Tamil Nadu. Get clear prices, sell in minutes, and get full transport support straight from your farm.
+                </p>
+
+                <!-- 3 Required Clear Action Buttons -->
+                <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 35px;">
+                    <a href="farmer-dashboard.html" class="btn-farmer btn-farmer-primary" style="font-size: 16px; padding: 14px 26px;">
+                        <i class="fas fa-tractor" style="font-size: 20px;"></i> I am a Farmer (உழவர்)
+                    </a>
+                    <a href="marketplace.html" class="btn-farmer btn-farmer-outline" style="font-size: 16px; padding: 14px 26px;">
+                        <i class="fas fa-shopping-basket" style="font-size: 20px;"></i> I want to Buy (வாங்குபவர்)
+                    </a>
+                    <a href="marketplace.html" class="btn btn-secondary btn-lg" style="font-size: 15px; padding: 14px 22px; font-weight: 700;">
+                        <i class="fas fa-search"></i> Explore Products
+                    </a>
+                </div>
+
+                <!-- 3 Simple Highlights -->
+                <div
+                    style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; border-top: 2px solid #e2e8f0; padding-top: 22px;">
+                    <div>
+                        <div style="font-size: 28px; font-weight: 800; color: #15803d;">+38%</div>
+                        <div style="font-size: 13.5px; color: #334155; font-weight: 700;">More Money for Farmer</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 28px; font-weight: 800; color: #0284c7;">-30%</div>
+                        <div style="font-size: 13.5px; color: #334155; font-weight: 700;">Lower Price for Buyer</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 28px; font-weight: 800; color: #7e22ce;">24 Hours</div>
+                        <div style="font-size: 13.5px; color: #334155; font-weight: 700;">Farm-to-Door Delivery</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Produce Showcase Card -->
+            <div>
+                <div class="card" style="padding: 26px; border: 2px solid #bbf7d0; box-shadow: 0 14px 30px rgba(0,0,0,0.06); background: white;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                        <div>
+                            <span class="badge badge-success" style="font-size: 12px; font-weight: 700;"><i class="fas fa-check-circle"></i> FRESH FROM FARM</span>
+                            <h3 style="font-size: 20px; font-weight: 800; color: #064e3b; margin-top: 6px;">Salem Sweet Malgova Mangoes</h3>
+                            <span style="font-size: 13px; color: #64748b;">Farmer: K. Selvam • Salem District</span>
+                        </div>
+                        <div style="text-align: right;">
+                            <span style="font-size: 26px; font-weight: 800; color: #15803d;">₹240</span>
+                            <span style="font-size: 13px; color: #64748b;">/ kg</span>
+                        </div>
+                    </div>
+
+                    <img src="https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=600&q=80"
+                        alt="Salem Sweet Malgova Mangoes"
+                        style="width: 100%; height: 210px; object-fit: cover; border-radius: 14px; margin-bottom: 18px;">
+
+                    <!-- Quick Details -->
+                    <div
+                        style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; background: #f8fafc; padding: 12px; border-radius: 12px; font-size: 12.5px; border: 1px solid var(--border); margin-bottom: 20px; text-align: center;">
+                        <div><strong style="color: #64748b; display: block; font-size: 11px;">QUALITY</strong> <span style="color:#15803d; font-weight:800;">Grade A+ Fresh</span></div>
+                        <div><strong style="color: #64748b; display: block; font-size: 11px;">STOCK LEFT</strong> <span style="color:#0284c7; font-weight:800;">450 kg</span></div>
+                        <div><strong style="color: #64748b; display: block; font-size: 11px;">PAYMENT</strong> <span style="color:#7e22ce; font-weight:800;">Direct to Farmer</span></div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr auto; gap: 10px;">
+                        <button onclick="FarmDirect.addToCart('TN-103')" class="btn btn-primary btn-block" style="font-size: 15px; font-weight: 800; padding: 12px;">
+                            <i class="fas fa-cart-plus"></i> Buy Now / Add to Basket
+                        </button>
+                        <a href="product-details.html?id=TN-103" class="btn btn-secondary" title="View Full Details" style="font-size: 14px; font-weight: 700; padding: 12px 18px; display: inline-flex; align-items: center; gap: 6px;">
+                            <i class="fas fa-eye"></i> Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4 Clear Benefits for Farmers and Buyers -->
+    <section style="padding: 60px 0; background: #ffffff;">
+        <div class="container">
+            <div style="text-align: center; max-width: 700px; margin: 0 auto 40px;">
+                <span class="fd-badge fd-badge-green" style="margin-bottom: 10px; font-size: 12.5px;">WHY CHOOSE FARMDIRECT</span>
+                <h2 style="font-size: 32px; font-weight: 800; color: #064e3b; margin-bottom: 10px;">
+                    Simple, Fair & Honest Farming for Everyone
+                </h2>
+                <p style="color: #64748b; font-size: 16px;">Everything you need to sell your crops or buy fresh produce without stress.</p>
+            </div>
+
+            <div class="grid-4" style="gap: 24px;">
+                <!-- Benefit 1: Better Connection -->
+                <div class="farmer-step-card">
+                    <div class="farmer-step-num"><i class="fas fa-handshake"></i></div>
+                    <h3 style="font-size: 19px; margin-bottom: 8px; color: #064e3b;">1. Direct Connection</h3>
+                    <p style="font-size: 14px; color: #475569; line-height: 1.6;">
+                        Connect directly with real buyers and families. No agents, middlemen, or commission cuts taking away your profit.
+                    </p>
+                    <span class="tamil-subtext">நேரடி தொடர்பு • இடைத்தரகர் இல்லை</span>
+                </div>
+
+                <!-- Benefit 2: Clear Product Prices -->
+                <div class="farmer-step-card">
+                    <div class="farmer-step-num" style="background:#0284c7;"><i class="fas fa-rupee-sign"></i></div>
+                    <h3 style="font-size: 19px; margin-bottom: 8px; color: #064e3b;">2. Clear Product Prices</h3>
+                    <p style="font-size: 14px; color: #475569; line-height: 1.6;">
+                        Transparent prices for every crop. See today's market rate before you sell so you always receive a fair return for your hard work.
+                    </p>
+                    <span class="tamil-subtext" style="color:#0284c7;">வெளிப்படையான நியாயமான விலை</span>
+                </div>
+
+                <!-- Benefit 3: Easier Selling -->
+                <div class="farmer-step-card">
+                    <div class="farmer-step-num" style="background:#d97706;"><i class="fas fa-mobile-alt"></i></div>
+                    <h3 style="font-size: 19px; margin-bottom: 8px; color: #064e3b;">3. Easier Selling</h3>
+                    <p style="font-size: 14px; color: #475569; line-height: 1.6;">
+                        Simple 2-minute product listing right from your phone. Type your crop name, price, and quantity to start getting orders immediately.
+                    </p>
+                    <span class="tamil-subtext" style="color:#d97706;">எளிதான விற்பனை முறை</span>
+                </div>
+
+                <!-- Benefit 4: Transport Support -->
+                <div class="farmer-step-card">
+                    <div class="farmer-step-num" style="background:#7e22ce;"><i class="fas fa-truck"></i></div>
+                    <h3 style="font-size: 19px; margin-bottom: 8px; color: #064e3b;">4. Transport Support</h3>
+                    <p style="font-size: 14px; color: #475569; line-height: 1.6;">
+                        Pickup vehicles collect your produce right at your farm and deliver directly to the buyer on time, keeping crops fresh.
+                    </p>
+                    <span class="tamil-subtext" style="color:#7e22ce;">விநியோக போக்குவரத்து உதவி</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works in 3 Simple Steps -->
+    <section style="background: #f0fdf4; padding: 60px 0; border-top: 1px solid #bbf7d0; border-bottom: 1px solid #bbf7d0;">
+        <div class="container">
+            <div style="text-align: center; max-width: 700px; margin: 0 auto 35px;">
+                <h2 style="font-size: 30px; font-weight: 800; color: #064e3b; margin-bottom: 8px;">
+                    How FarmDirect Works in 3 Easy Steps
+                </h2>
+                <p style="color: #475569; font-size: 15.5px;">Simple steps for farmers to sell and buyers to purchase fresh harvest.</p>
+            </div>
+
+            <div class="grid-3" style="gap: 25px;">
+                <div class="card" style="padding: 24px; text-align: center; border-top: 4px solid #15803d;">
+                    <div style="width: 56px; height: 56px; border-radius: 50%; background: #dcfce7; color: #15803d; font-size: 24px; display: grid; place-items: center; margin: 0 auto 16px;">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <h3 style="font-size: 18px; color: #064e3b; margin-bottom: 8px;">Step 1: Farmer Lists Crop</h3>
+                    <p style="font-size: 14px; color: #475569; line-height: 1.6;">
+                        Enter crop name, quantity, price, and district. Takes only 2 minutes from any mobile phone.
+                    </p>
+                </div>
+
+                <div class="card" style="padding: 24px; text-align: center; border-top: 4px solid #0284c7;">
+                    <div style="width: 56px; height: 56px; border-radius: 50%; background: #e0f2fe; color: #0284c7; font-size: 24px; display: grid; place-items: center; margin: 0 auto 16px;">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3 style="font-size: 18px; color: #064e3b; margin-bottom: 8px;">Step 2: Buyer Places Order</h3>
+                    <p style="font-size: 14px; color: #475569; line-height: 1.6;">
+                        Buyers browse fresh produce, compare fair rates, and order directly from verified local farmers.
+                    </p>
+                </div>
+
+                <div class="card" style="padding: 24px; text-align: center; border-top: 4px solid #16a34a;">
+                    <div style="width: 56px; height: 56px; border-radius: 50%; background: #dcfce7; color: #16a34a; font-size: 24px; display: grid; place-items: center; margin: 0 auto 16px;">
+                        <i class="fas fa-truck-loading"></i>
+                    </div>
+                    <h3 style="font-size: 18px; color: #064e3b; margin-bottom: 8px;">Step 3: Transport & Payment</h3>
+                    <p style="font-size: 14px; color: #475569; line-height: 1.6;">
+                        Delivery truck picks up produce from farm. Money is sent safely to the farmer's bank account or UPI.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Call to action bar -->
+            <div style="text-align: center; margin-top: 40px;">
+                <div style="display: inline-flex; gap: 14px; flex-wrap: wrap; justify-content: center;">
+                    <a href="farmer-dashboard.html" class="btn-farmer btn-farmer-primary" style="font-size: 15px;">
+                        <i class="fas fa-plus-circle"></i> Sell Your Products Now (விற்பனை செய்ய)
+                    </a>
+                    <a href="marketplace.html" class="btn btn-secondary btn-lg" style="font-size: 15px; font-weight: 700;">
+                        <i class="fas fa-shopping-basket"></i> Browse Available Products (பொருட்களை பார்க்க)
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Footer -->
+    <footer class="fd-footer">
+        <div class="container">
+            <div class="fd-footer-grid">
+                <div>
+                    <div class="fd-footer-brand"><span>🌱 FarmDirect Tamil Nadu</span></div>
+                    <p class="fd-footer-desc">Direct agricultural direct-trade platform connecting farmers and buyers across all 38 districts of Tamil Nadu.</p>
+                </div>
+                <div>
+                    <h4 class="fd-footer-heading">Buy and Sell</h4>
+                    <ul class="fd-footer-links">
+                        <li><a href="marketplace.html">Fresh Farm Produce</a></li>
+                        <li><a href="price-comparison.html">Compare Prices</a></li>
+                        <li><a href="offers.html">Special Harvest Deals</a></li>
+                        <li><a href="bulk-buyers.html">Bulk Orders</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="fd-footer-heading">For Farmers</h4>
+                    <ul class="fd-footer-links">
+                        <li><a href="farmer-dashboard.html">Farmer Home (Overview)</a></li>
+                        <li><a href="add-product.html">Sell Your Products</a></li>
+                        <li><a href="inventory.html">My Products</a></li>
+                        <li><a href="farmer-orders.html">Buyer Orders</a></li>
+                        <li><a href="farmer-earnings.html">My Sales & Money</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="fd-footer-heading">Transport & Help</h4>
+                    <ul class="fd-footer-links">
+                        <li><a href="logistics.html">Transport Help</a></li>
+                        <li><a href="live-tracking.html">Track Delivery</a></li>
+                        <li><a href="support.html">Help & Support</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="fd-footer-heading">Account & Details</h4>
+                    <ul class="fd-footer-links">
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="register.html">Create Account</a></li>
+                        <li><a href="profile.html">My Details</a></li>
+                        <li><a href="terms.html">Terms</a></li>
+                        <li><a href="privacy.html">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="fd-footer-bottom">
+                <div>© 2026 FarmDirect Tamil Nadu • Direct Trade for Farmers and Buyers</div>
+                <div>100% Direct Payouts • Safe Bank Transfers • Quality Checked</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        window.addEventListener('fd_realtime_tick', (e) => {
+            const timeEl = document.getElementById('liveTimestamp');
+            if (timeEl) timeEl.textContent = new Date().toLocaleTimeString();
+
+            if (e.detail && e.detail.activeShipments && e.detail.activeShipments[0]) {
+                const s = e.detail.activeShipments[0];
+                const fleetEl = document.getElementById('tick-fleet');
+                if (fleetEl) fleetEl.textContent = `${s.id} (${s.temp} • ${s.humidity})`;
+            }
+
+            if (e.detail && e.detail.liveProduct) {
+                const p = e.detail.liveProduct;
+                if (p.district === 'Erode') {
+                    const el = document.getElementById('tick-erode');
+                    if (el) el.textContent = `₹${p.mandiPrice || p.price}/kg (${p.lastPriceChange || 'Live'})`;
+                } else if (p.district === 'Thanjavur') {
+                    const el = document.getElementById('tick-thanjavur');
+                    if (el) el.textContent = `₹${p.mandiPrice || p.price}/kg (${p.lastPriceChange || 'Live'})`;
+                } else if (p.district === 'Salem') {
+                    const el = document.getElementById('tick-salem');
+                    if (el) el.textContent = `₹${p.mandiPrice || p.price}/kg (${p.lastPriceChange || 'Live'})`;
+                } else if (p.district === 'Madurai') {
+                    const el = document.getElementById('tick-madurai');
+                    if (el) el.textContent = `₹${p.mandiPrice || p.price}/kg (${p.lastPriceChange || 'Live'})`;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

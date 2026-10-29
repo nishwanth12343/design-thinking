@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#10b981">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FarmDirect">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <title>Buyer Orders (வாங்குபவர் ஆர்டர்கள்) | FarmDirect</title>
+    <!-- Immediate Authentication Guard: Require sign in before viewing website details -->
+    <script src="js/auth-guard.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Simple, Welcoming Navigation with Everyday Language -->
+    <nav class="fd-nav">
+        <div class="container fd-nav-inner">
+            <a href="index.html" class="fd-brand">
+                <span>🌱 FarmDirect</span>
+                <span class="fd-brand-badge">Buyer Orders</span>
+            </a>
+
+            <ul class="fd-nav-links">
+                <li class="fd-nav-item"><a href="index.html"><i class="fas fa-home"></i> Home <span class="tamil-subtext">முகப்பு</span></a></li>
+                <li class="fd-nav-item"><a href="marketplace.html"><i class="fas fa-store"></i> Buy & Sell <span class="tamil-subtext">சந்தை</span></a></li>
+                <li class="fd-nav-item"><a href="farmer-dashboard.html"><i class="fas fa-tractor"></i> Farmer Home <span class="tamil-subtext">என் முகப்பு</span></a></li>
+                <li class="fd-nav-item"><a href="add-product.html"><i class="fas fa-plus-circle"></i> Sell Your Products <span class="tamil-subtext">விளைபொருளை விற்க</span></a></li>
+                <li class="fd-nav-item"><a href="inventory.html"><i class="fas fa-boxes"></i> My Products <span class="tamil-subtext">என் பொருட்கள்</span></a></li>
+                <li class="fd-nav-item"><a href="farmer-orders.html" class="active"><i class="fas fa-clipboard-list"></i> Buyer Orders <span class="tamil-subtext">ஆர்டர்கள்</span></a></li>
+                <li class="fd-nav-item"><a href="logistics.html"><i class="fas fa-truck-moving"></i> Transport Help <span class="tamil-subtext">போக்குவரத்து</span></a></li>
+            </ul>
+
+            <div class="fd-nav-actions">
+                <a href="farmer-dashboard.html" class="btn-farmer btn-farmer-outline" style="padding: 7px 15px; font-size: 13px;">
+                    <i class="fas fa-arrow-left"></i> Farmer Home
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <a href="farmer-dashboard.html">Farmer Home</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <span>Buyer Orders (வாங்குபவர் ஆர்டர்கள்)</span>
+            </div>
+            <h1 class="page-hero-title">Buyer Orders (வாங்குபவர் ஆர்டர்கள்) 📋</h1>
+            <p class="page-hero-subtitle">
+                View orders placed by buyers for your harvest. Follow each delivery step from transport pickup to payment release.
+            </p>
+        </div>
+    </div>
+
+    <!-- Clear Section Tabs for Farmers -->
+    <div class="container">
+        <div class="fd-tabs">
+            <a href="farmer-dashboard.html" class="fd-tab-btn"><i class="fas fa-tachometer-alt"></i> My Home (முகப்பு)</a>
+            <a href="add-product.html" class="fd-tab-btn"><i class="fas fa-plus-circle"></i> Sell Your Products (விளைபொருளை சேர்க்க)</a>
+            <a href="inventory.html" class="fd-tab-btn"><i class="fas fa-boxes"></i> My Products (என் விளைபொருட்கள்)</a>
+            <a href="farmer-orders.html" class="fd-tab-btn active"><i class="fas fa-clipboard-list"></i> Buyer Orders (வாங்குபவர் ஆர்டர்கள்)</a>
+            <a href="farmer-earnings.html" class="fd-tab-btn"><i class="fas fa-wallet"></i> My Sales & Money (என் வருமானம்)</a>
+            <a href="logistics.html" class="fd-tab-btn"><i class="fas fa-truck-moving"></i> Transport Help (போக்குவரத்து உதவி)</a>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+
+            <!-- 4 Standardized Delivery Steps Visual Banner -->
+            <div class="card" style="margin-bottom: 25px; padding: 20px; border-top: 4px solid #16a34a;">
+                <h4 style="font-size: 15px; font-weight: 800; color: #064e3b; margin: 0 0 12px 0;">
+                    <i class="fas fa-info-circle text-success"></i> 4 Simple Delivery Steps (விநியோக நிலைகள்):
+                </h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;">
+                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px; text-align: center;">
+                        <span class="fd-status-pill fd-status-sent" style="margin-bottom: 6px; display:inline-block;">1. Request Sent</span>
+                        <div style="font-size: 12px; color: #64748b;">கோரிக்கை அனுப்பப்பட்டது</div>
+                    </div>
+                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px; text-align: center;">
+                        <span class="fd-status-pill fd-status-waiting" style="margin-bottom: 6px; display:inline-block;">2. Waiting for Transport</span>
+                        <div style="font-size: 12px; color: #64748b;">வாகனத்திற்கு காத்திருக்கிறது</div>
+                    </div>
+                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px; text-align: center;">
+                        <span class="fd-status-pill fd-status-transit" style="margin-bottom: 6px; display:inline-block;">3. On the Way</span>
+                        <div style="font-size: 12px; color: #64748b;">வழியில் உள்ளது</div>
+                    </div>
+                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px; text-align: center;">
+                        <span class="fd-status-pill fd-status-delivered" style="margin-bottom: 6px; display:inline-block;">4. Delivered</span>
+                        <div style="font-size: 12px; color: #64748b;">டெலிவரி செய்யப்பட்டது</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div style="display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;">
+                <button class="btn-farmer btn-farmer-primary" onclick="filterFarmerOrders('all', this)">All Orders (அனைத்தும்)</button>
+                <button class="btn-farmer btn-farmer-outline" onclick="filterFarmerOrders('waiting', this)">Waiting for Transport</button>
+                <button class="btn-farmer btn-farmer-outline" onclick="filterFarmerOrders('transit', this)">On the Way</button>
+                <button class="btn-farmer btn-farmer-outline" onclick="filterFarmerOrders('delivered', this)">Delivered</button>
+            </div>
+
+            <!-- Orders Table -->
+            <div class="card" style="padding: 25px;">
+                <div class="table-scroll-hint">
+                    <i class="fas fa-arrows-alt-h"></i> Swipe horizontally on mobile to view buyer details and actions
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Order ID & Date</th>
+                                <th>Buyer & Destination (வாங்குபவர்)</th>
+                                <th>Produce Items (பொருட்கள்)</th>
+                                <th>Your Payment (உங்கள் பணம்)</th>
+                                <th>Delivery Status (விநியோக நிலை)</th>
+                                <th style="text-align: right;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="farmer-orders-tbody">
+                            <!-- Populated via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="fd-footer">
+        <div class="container">
+            <div class="fd-footer-bottom" style="border:none; padding:10px 0;">
+                <p style="margin:0; font-size: 13px; color: #94a3b8;">
+                    🌱 FarmDirect • Helping Farmers Sell Directly at Fair Prices
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        function getFriendlyStatusInfo(order) {
+            // Map status step to the 4 standardized farmer statuses
+            const step = order.statusStep || 2;
+            if (step <= 1) {
+                return { label: 'Request Sent', cls: 'fd-status-sent', tamil: 'கோரிக்கை அனுப்பப்பட்டது' };
+            } else if (step === 2) {
+                return { label: 'Waiting for Transport', cls: 'fd-status-waiting', tamil: 'வாகனத்திற்கு காத்திருக்கிறது' };
+            } else if (step === 3) {
+                return { label: 'On the Way', cls: 'fd-status-transit', tamil: 'வழியில் உள்ளது' };
+            } else {
+                return { label: 'Delivered', cls: 'fd-status-delivered', tamil: 'டெலிவரி செய்யப்பட்டது' };
+            }
+        }
+
+        function renderFarmerOrders(orders) {
+            const tbody = document.getElementById('farmer-orders-tbody');
+            if (!tbody) return;
+
+            if (!orders || orders.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" style="text-align:center; padding: 40px; color: #64748b;">
+                            <i class="fas fa-shopping-basket" style="font-size: 32px; color: #16a34a; margin-bottom: 8px; display:block;"></i>
+                            No orders found in this category.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tbody.innerHTML = orders.map(o => {
+                const farmerPayout = Math.round(o.total || 1200);
+                const statusInfo = getFriendlyStatusInfo(o);
+
+                return `
+                    <tr>
+                        <td>
+                            <strong style="color:#0f172a;">${o.id}</strong><br>
+                            <span style="font-size:12px; color:#64748b;">${o.date || 'Today'}</span>
+                        </td>
+                        <td>
+                            <strong style="color:#0f172a;">${o.customer || 'Tamil Nadu Buyer'}</strong><br>
+                            <span style="font-size:12.5px; color:#64748b;"><i class="fas fa-map-marker-alt text-danger"></i> ${o.address || 'Chennai'}</span>
+                        </td>
+                        <td>
+                            ${(o.items || []).map(i => `<span style="font-weight:600; color:#064e3b; display:inline-block; margin-bottom:2px;"><i class="fas fa-check text-success"></i> ${i.qty} ${i.unit || 'kg'} ${i.name}</span>`).join('<br>')}
+                        </td>
+                        <td>
+                            <strong style="color:#059669; font-size:16px;">₹${farmerPayout.toLocaleString('en-IN')}</strong><br>
+                            <span style="font-size:11.5px; color:#16a34a; font-weight:600;"><i class="fas fa-shield-alt"></i> Safe in Escrow</span>
+                        </td>
+                        <td>
+                            <span class="fd-status-pill ${statusInfo.cls}">${statusInfo.label}</span>
+                            <div style="font-size: 11px; color: #64748b; margin-top: 3px;">${statusInfo.tamil}</div>
+                        </td>
+                        <td style="text-align: right; white-space: nowrap;">
+                            ${(o.statusStep || 1) <= 2 ? `
+                                <button type="button" onclick="advanceFarmerOrderStatus('${o.id}', 3, 'In Transit via Cold-Chain Reefer')" class="btn-farmer btn-farmer-primary" style="padding: 6px 10px; font-size: 11.5px; margin-right: 4px;">
+                                    <i class="fas fa-check-circle"></i> Ready (தயார்)
+                                </button>
+                            ` : ''}
+                            <a href="live-tracking.html?order=${o.id}" class="btn-farmer btn-farmer-outline" style="padding: 6px 10px; font-size: 11.5px;">
+                                <i class="fas fa-truck"></i> Track
+                            </a>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        async function advanceFarmerOrderStatus(orderId, nextStep, statusText) {
+            try {
+                const res = await fetch(`${FarmDirect.API_BASE}/orders/${encodeURIComponent(orderId)}/status`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ status: statusText, statusStep: nextStep })
+                });
+                if (res.ok) {
+                    FarmDirect.showToast(`Order #${orderId} marked: ${statusText}`, 'success');
+                    const orders = FarmDirect.getOrders();
+                    const ord = orders.find(o => o.id === orderId);
+                    if (ord) {
+                        ord.status = statusText;
+                        ord.statusStep = nextStep;
+                    }
+                    renderFarmerOrders(FarmDirect.getOrders());
+                }
+            } catch(e) {
+                FarmDirect.showToast('Could not update order status.', 'error');
+            }
+        }
+
+        function filterFarmerOrders(type, btn) {
+            document.querySelectorAll('.btn-farmer').forEach(b => {
+                if (b.innerText.includes('All') || b.innerText.includes('Waiting') || b.innerText.includes('On the Way') || b.innerText.includes('Delivered')) {
+                    b.className = 'btn-farmer btn-farmer-outline';
+                }
+            });
+            if (btn) btn.className = 'btn-farmer btn-farmer-primary';
+
+            const allOrders = FarmDirect.getOrders();
+            if (type === 'waiting') {
+                renderFarmerOrders(allOrders.filter(o => (o.statusStep || 2) <= 2));
+            } else if (type === 'transit') {
+                renderFarmerOrders(allOrders.filter(o => o.statusStep === 3));
+            } else if (type === 'delivered') {
+                renderFarmerOrders(allOrders.filter(o => o.statusStep >= 4));
+            } else {
+                renderFarmerOrders(allOrders);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            renderFarmerOrders(FarmDirect.getOrders());
+            window.addEventListener('fd_data_synced', function() {
+                renderFarmerOrders(FarmDirect.getOrders());
+            });
+        });
+    </script>
+</body>
+</html>

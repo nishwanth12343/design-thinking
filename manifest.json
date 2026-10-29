@@ -1,0 +1,75 @@
+{
+  "id": "/?source=pwa",
+  "name": "FarmDirect - Tamil Nadu Direct-Trade Farm Network",
+  "short_name": "FarmDirect",
+  "description": "Connecting farmers, FPOs, consumers, and bulk buyers directly across 38 districts of Tamil Nadu with fair prices and cold-chain logistics.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "window-controls-overlay", "minimal-ui"],
+  "background_color": "#f8fafc",
+  "theme_color": "#10b981",
+  "orientation": "portrait-primary",
+  "lang": "ta-IN",
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "categories": ["business", "shopping", "food", "agriculture"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Marketplace (சந்தை)",
+      "short_name": "Market",
+      "url": "/marketplace.html",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Sell Produce (பொருள் விற்க)",
+      "short_name": "Sell",
+      "url": "/add-product.html",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Track Delivery (கண்காணிப்பு)",
+      "short_name": "Track",
+      "url": "/live-tracking.html",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Cold Storage (கிடங்கு)",
+      "short_name": "Warehouse",
+      "url": "/warehouse.html",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

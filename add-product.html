@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#10b981">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FarmDirect">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <title>Sell Your Products (விளைபொருளை விற்க) | FarmDirect</title>
+    <!-- Immediate Authentication Guard: Require sign in before viewing website details -->
+    <script src="js/auth-guard.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Simple, Welcoming Navigation with Everyday Language -->
+    <nav class="fd-nav">
+        <div class="container fd-nav-inner">
+            <a href="index.html" class="fd-brand">
+                <span>🌱 FarmDirect</span>
+                <span class="fd-brand-badge">Sell Products</span>
+            </a>
+
+            <ul class="fd-nav-links">
+                <li class="fd-nav-item"><a href="index.html"><i class="fas fa-home"></i> Home <span class="tamil-subtext">முகப்பு</span></a></li>
+                <li class="fd-nav-item"><a href="marketplace.html"><i class="fas fa-store"></i> Buy & Sell <span class="tamil-subtext">சந்தை</span></a></li>
+                <li class="fd-nav-item"><a href="farmer-dashboard.html"><i class="fas fa-tractor"></i> Farmer Home <span class="tamil-subtext">என் முகப்பு</span></a></li>
+                <li class="fd-nav-item"><a href="add-product.html" class="active"><i class="fas fa-plus-circle"></i> Sell Your Products <span class="tamil-subtext">விளைபொருளை விற்க</span></a></li>
+                <li class="fd-nav-item"><a href="inventory.html"><i class="fas fa-boxes"></i> My Products <span class="tamil-subtext">என் பொருட்கள்</span></a></li>
+                <li class="fd-nav-item"><a href="farmer-orders.html"><i class="fas fa-clipboard-list"></i> Buyer Orders <span class="tamil-subtext">ஆர்டர்கள்</span></a></li>
+                <li class="fd-nav-item"><a href="logistics.html"><i class="fas fa-truck-moving"></i> Transport Help <span class="tamil-subtext">போக்குவரத்து</span></a></li>
+            </ul>
+
+            <div class="fd-nav-actions">
+                <a href="farmer-dashboard.html" class="btn-farmer btn-farmer-outline" style="padding: 7px 15px; font-size: 13px;">
+                    <i class="fas fa-arrow-left"></i> Farmer Home
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <a href="farmer-dashboard.html">Farmer Home</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <span>Sell Your Products (விளைபொருளை விற்க)</span>
+            </div>
+            <h1 class="page-hero-title">Sell Your Products (விளைபொருளை விற்பனைக்கு சேர்க்க) 🌾</h1>
+            <p class="page-hero-subtitle">
+                Fill in simple details about your crop. Set your own fair price. Genuine buyers across Tamil Nadu can see and purchase your harvest directly!
+            </p>
+        </div>
+    </div>
+
+    <!-- Clear Section Tabs for Farmers -->
+    <div class="container">
+        <div class="fd-tabs">
+            <a href="farmer-dashboard.html" class="fd-tab-btn"><i class="fas fa-tachometer-alt"></i> My Home (முகப்பு)</a>
+            <a href="add-product.html" class="fd-tab-btn active"><i class="fas fa-plus-circle"></i> Sell Your Products (விளைபொருளை சேர்க்க)</a>
+            <a href="inventory.html" class="fd-tab-btn"><i class="fas fa-boxes"></i> My Products (என் விளைபொருட்கள்)</a>
+            <a href="farmer-orders.html" class="fd-tab-btn"><i class="fas fa-clipboard-list"></i> Buyer Orders (வாங்குபவர் ஆர்டர்கள்)</a>
+            <a href="farmer-earnings.html" class="fd-tab-btn"><i class="fas fa-wallet"></i> My Sales & Money (என் வருமானம்)</a>
+            <a href="logistics.html" class="fd-tab-btn"><i class="fas fa-truck-moving"></i> Transport Help (போக்குவரத்து உதவி)</a>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container" style="max-width: 860px;">
+
+            <!-- Quick 1-Click Popular Crop Presets for Farmers -->
+            <div class="card" style="margin-bottom: 25px; border-top: 4px solid #16a34a; padding: 22px;">
+                <h3 style="font-size: 16px; font-weight: 800; color: #064e3b; margin-bottom: 8px;">
+                    <i class="fas fa-bolt text-warning"></i> Quick Choice: Popular Crops (விரைவுத் தேர்வு)
+                </h3>
+                <p style="font-size: 13px; color: #64748b; margin-bottom: 14px;">
+                    Click any common crop below to fill in details instantly, or type your own below:
+                </p>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                    <button type="button" class="crop-preset-chip" onclick="applyCropPreset('tomato')">
+                        🍅 Country Tomatoes (தக்காளி)
+                    </button>
+                    <button type="button" class="crop-preset-chip" onclick="applyCropPreset('rice')">
+                        🌾 Ponni Raw Rice (பொன்னி அரிசி)
+                    </button>
+                    <button type="button" class="crop-preset-chip" onclick="applyCropPreset('turmeric')">
+                        🌿 Erode Turmeric (ஈரோடு மஞ்சள்)
+                    </button>
+                    <button type="button" class="crop-preset-chip" onclick="applyCropPreset('mango')">
+                        🥭 Malgova Mango (மாம்பழம்)
+                    </button>
+                    <button type="button" class="crop-preset-chip" onclick="applyCropPreset('onion')">
+                        🧅 Small Onions (சின்ன வெங்காயம்)
+                    </button>
+                    <button type="button" class="crop-preset-chip" onclick="applyCropPreset('coconut')">
+                        🥥 Pollachi Coconut (தேங்காய்)
+                    </button>
+                </div>
+            </div>
+
+            <div class="card" style="padding: 35px 30px;">
+                <form id="addProductForm" onsubmit="handleProduceSubmit(event)">
+                    
+                    <h3 style="font-size: 18px; font-weight: 800; color: #064e3b; margin-bottom: 18px;">
+                        <i class="fas fa-seedling text-success"></i> 1. Crop Information (பயிர் விவரம்)
+                    </h3>
+
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label class="form-label" style="font-weight: 700;">Produce Name in English (பயிர் பெயர் ஆங்கிலத்தில்) *</label>
+                            <input type="text" id="prodName" class="form-control" placeholder="e.g. Country Tomatoes, Ponni Rice" value="Country Tomatoes" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" style="font-weight: 700;">Crop Name in Tamil (பயிர் பெயர் தமிழில்)</label>
+                            <input type="text" id="prodTamilName" class="form-control" placeholder="e.g. நாட்டு தக்காளி" value="நாட்டு தக்காளி">
+                        </div>
+                    </div>
+
+                    <div class="grid-3">
+                        <div class="form-group">
+                            <label class="form-label" style="font-weight: 700;">Your District (உங்கள் மாவட்டம்) *</label>
+                            <select id="prodDistrict" class="form-select tn-district-select" required>
+                                <option value="Ariyalur">Ariyalur (அரியலூர்)</option>
+                                <option value="Chengalpattu">Chengalpattu (செங்கல்பட்டு)</option>
+                                <option value="Chennai">Chennai (சென்னை)</option>
+                                <option value="Coimbatore">Coimbatore (கோயம்புத்தூர்)</option>
+                                <option value="Cuddalore">Cuddalore (கடலூர்)</option>
+                                <option value="Dharmapuri">Dharmapuri (தருமபுரி)</option>
+                                <option value="Dindigul">Dindigul (திண்டுக்கல்)</option>
+                                <option value="Erode" selected>Erode (ஈரோடு)</option>
+                                <option value="Kallakurichi">Kallakurichi (கள்ளக்குறிச்சி)</option>
+                                <option value="Kanchipuram">Kanchipuram (காஞ்சிபுரம்)</option>
+                                <option value="Kanyakumari">Kanyakumari (கன்னியாகுமரி)</option>
+                                <option value="Karur">Karur (கரூர்)</option>
+                                <option value="Krishnagiri">Krishnagiri (கிருஷ்ணகிரி)</option>
+                                <option value="Madurai">Madurai (மதுரை)</option>
+                                <option value="Mayiladuthurai">Mayiladuthurai (மயிலாடுதுறை)</option>
+                                <option value="Nagapattinam">Nagapattinam (நாகப்பட்டினம்)</option>
+                                <option value="Namakkal">Namakkal (நாமக்கல்)</option>
+                                <option value="Nilgiris">Nilgiris (நீலகிரி)</option>
+                                <option value="Perambalur">Perambalur (பெரம்பலூர்)</option>
+                                <option value="Pudukkottai">Pudukkottai (புதுக்கோட்டை)</option>
+                                <option value="Ramanathapuram">Ramanathapuram (இராமநாதபுரம்)</option>
+                                <option value="Ranipet">Ranipet (ராணிப்பேட்டை)</option>
+                                <option value="Salem">Salem (சேலம்)</option>
+                                <option value="Sivaganga">Sivaganga (சிவகங்கை)</option>
+                                <option value="Tenkasi">Tenkasi (தென்காசி)</option>
+                                <option value="Thanjavur">Thanjavur (தஞ்சாவூர்)</option>
+                                <option value="Theni">Theni (தேனி)</option>
+                                <option value="Thoothukudi">Thoothukudi (தூத்துக்குடி)</option>
+                                <option value="Tiruchirappalli">Tiruchirappalli (திருச்சிராப்பள்ளி)</option>
+                                <option value="Tirunelveli">Tirunelveli (திருநெல்வேலி)</option>
+                                <option value="Tirupathur">Tirupathur (திருப்பத்தூர்)</option>
+                                <option value="Tiruppur">Tiruppur (திருப்பூர்)</option>
+                                <option value="Tiruvallur">Tiruvallur (திருவள்ளூர்)</option>
+                                <option value="Tiruvannamalai">Tiruvannamalai (திருவண்ணாமலை)</option>
+                                <option value="Tiruvarur">Tiruvarur (திருவாரூர்)</option>
+                                <option value="Vellore">Vellore (வேலூர்)</option>
+                                <option value="Villupuram">Villupuram (விழுப்புரம்)</option>
+                                <option value="Virudhunagar">Virudhunagar (விருதுநகர்)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" style="font-weight: 700;">Category (வகை) *</label>
+                            <select id="prodCategory" class="form-select" required>
+                                <option value="Vegetables" selected>Vegetables (காய்கறிகள்)</option>
+                                <option value="Grains">Grains & Rice (தானியங்கள் & அரிசி)</option>
+                                <option value="Fruits">Fruits (பழங்கள்)</option>
+                                <option value="Organic & Specialty">Spices & Organic (மசாலா & இயற்கை)</option>
+                                <option value="Pulses">Pulses (பருப்பு வகைகள்)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" style="font-weight: 700;">Harvest Date (அறுவடை நாள்)</label>
+                            <input type="date" id="prodHarvestDate" class="form-control" value="2026-09-18" required>
+                        </div>
+                    </div>
+
+                    <h3 style="font-size: 18px; font-weight: 800; color: #064e3b; margin: 28px 0 18px;">
+                        <i class="fas fa-tag text-success"></i> 2. Quantity & Selling Price (அளவும் விலையும்)
+                    </h3>
+
+                    <div class="grid-3">
+                        <div class="form-group">
+                            <label class="form-label" style="font-weight: 700;">Total Quantity Available (இருப்பு) *</label>
+                            <input type="number" id="prodStock" class="form-control" placeholder="e.g. 500" value="500" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" style="font-weight: 700;">Unit (அளவீடு) *</label>
+                            <select id="prodUnit" class="form-select" required>
+                                <option value="kg" selected>kg (கிலோ)</option>
+                                <option value="quintal">quintal (100kg மூட்டை)</option>
+                                <option value="box">Crate / Box (பெட்டி)</option>
+                                <option value="piece">Piece (எண்ணிக்கை)</option>
+                                <option value="ton">Metric Ton (டன்)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" style="font-weight: 700;">Your Selling Price in ₹ (உங்கள் விலை) *</label>
+                            <input type="number" id="prodPrice" class="form-control" placeholder="e.g. 32" value="32" min="1" required oninput="calculateMarginPreview(this.value)">
+                        </div>
+                    </div>
+
+                    <!-- Clear Profit Note for Farmer -->
+                    <div style="background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 12px; padding: 14px 18px; margin-bottom: 22px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                        <div>
+                            <span style="font-size: 14px; font-weight: 700; color: #166534;">
+                                <i class="fas fa-check-circle text-success"></i> 100% Direct to You:
+                            </span>
+                            <span style="font-size: 13.5px; color: #334155;">
+                                Buyers will pay <strong id="preview-price" style="color: #16a34a; font-size: 16px;">₹32</strong> per unit directly to you. No commission is deducted.
+                            </span>
+                        </div>
+                    </div>
+
+                    <h3 style="font-size: 18px; font-weight: 800; color: #064e3b; margin: 28px 0 18px;">
+                        <i class="fas fa-image text-success"></i> 3. Photo & Note (படம் & குறிப்பு)
+                    </h3>
+
+                    <div class="form-group">
+                        <label class="form-label" style="font-weight: 700;">Crop Photo URL (விளைபொருள் படம்)</label>
+                        <input type="url" id="prodImage" class="form-control" value="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=600&q=80" required>
+                        <small style="color: #64748b; font-size: 12px;">Standard photo selected automatically. You can keep this image or paste another photo link.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" style="font-weight: 700;">Short Note for Buyers (வாங்குபவர்களுக்கு குறிப்பு)</label>
+                        <textarea id="prodDesc" class="form-control" rows="3" placeholder="e.g. Freshly harvested country produce, clean and sorted, ready for direct transport pickup.">Freshly harvested country tomatoes. Clean, firm, and sorted. Ready for immediate transport pickup.</textarea>
+                    </div>
+
+                    <div style="margin-top: 25px;">
+                        <button type="submit" class="btn-farmer btn-farmer-primary" style="width: 100%; font-size: 18px; padding: 15px; border-radius: 12px; justify-content: center;">
+                            <i class="fas fa-check-circle"></i> Save & Publish Product (விளைபொருளை சேர்க்க)
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="fd-footer">
+        <div class="container">
+            <div class="fd-footer-bottom" style="border:none; padding:10px 0;">
+                <p style="margin:0; font-size: 13px; color: #94a3b8;">
+                    🌱 FarmDirect • Helping Farmers Sell Directly at Fair Prices
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        function calculateMarginPreview(val) {
+            document.getElementById('preview-price').textContent = '₹' + (val || '0');
+        }
+
+        const PRESETS = {
+            tomato: {
+                name: 'Country Tomatoes',
+                tamilName: 'நாட்டு தக்காளி',
+                category: 'Vegetables',
+                price: 32,
+                stock: 400,
+                unit: 'kg',
+                image: 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=600&q=80',
+                desc: 'Freshly harvested country tomatoes. Clean, firm, and sorted. Ready for immediate transport pickup.'
+            },
+            rice: {
+                name: 'Ponni Raw Rice',
+                tamilName: 'பொன்னி பச்சரிசி',
+                category: 'Grains',
+                price: 60,
+                stock: 25,
+                unit: 'quintal',
+                image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80',
+                desc: 'Aged Ponni Raw Rice, cleaned and packed in 100kg jute bags. 100% genuine Kaveri basin paddy.'
+            },
+            turmeric: {
+                name: 'Erode Golden Turmeric',
+                tamilName: 'ஈரோடு மஞ்சள்',
+                category: 'Organic & Specialty',
+                price: 145,
+                stock: 1200,
+                unit: 'kg',
+                image: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=600&q=80',
+                desc: 'GI Tagged Erode Turmeric with 4.8% Curcumin. High natural aroma and zero chemical pesticides.'
+            },
+            mango: {
+                name: 'Salem Malgova Mangoes',
+                tamilName: 'சேலம் மல்கோவா மாம்பழம்',
+                category: 'Fruits',
+                price: 120,
+                stock: 350,
+                unit: 'kg',
+                image: 'https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=600&q=80',
+                desc: 'Tree-ripened authentic Malgova mangoes from Salem orchards. Naturally sweetened without carbide.'
+            },
+            onion: {
+                name: 'Dindigul Small Onions (Shallots)',
+                tamilName: 'திண்டுக்கல் சின்ன வெங்காயம்',
+                category: 'Vegetables',
+                price: 48,
+                stock: 600,
+                unit: 'kg',
+                image: 'https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?auto=format&fit=crop&w=600&q=80',
+                desc: 'Crisp, pungent small shallots harvested from Dindigul red soil. Sun-dried and graded.'
+            },
+            coconut: {
+                name: 'Pollachi Matured Coconuts',
+                tamilName: 'பொள்ளாச்சி தேங்காய்',
+                category: 'Organic & Specialty',
+                price: 28,
+                stock: 1500,
+                unit: 'piece',
+                image: 'https://images.unsplash.com/photo-1544378730-8b5104b18790?auto=format&fit=crop&w=600&q=80',
+                desc: 'Large Pollachi coconuts rich in water and thick copra kernel. Directly collected from groves.'
+            }
+        };
+
+        function applyCropPreset(key) {
+            const preset = PRESETS[key];
+            if (!preset) return;
+
+            document.getElementById('prodName').value = preset.name;
+            document.getElementById('prodTamilName').value = preset.tamilName;
+            document.getElementById('prodCategory').value = preset.category;
+            document.getElementById('prodPrice').value = preset.price;
+            document.getElementById('prodStock').value = preset.stock;
+            document.getElementById('prodUnit').value = preset.unit;
+            document.getElementById('prodImage').value = preset.image;
+            document.getElementById('prodDesc').value = preset.desc;
+
+            calculateMarginPreview(preset.price);
+            FarmDirect.showToast(`Selected "${preset.tamilName || preset.name}". Details filled!`, 'success');
+        }
+
+        async function handleProduceSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalBtnHtml = btn ? btn.innerHTML : '<i class="fas fa-check-circle"></i> Save & Publish Product';
+
+            const prodName = document.getElementById('prodName').value.trim();
+            const prodPrice = Number(document.getElementById('prodPrice').value);
+            const prodStock = Number(document.getElementById('prodStock').value);
+
+            if (!prodName || prodName.length < 2) {
+                FarmDirect.showToast('Please enter the crop name.', 'error');
+                return;
+            }
+            if (!prodPrice || prodPrice <= 0) {
+                FarmDirect.showToast('Please enter a valid price greater than ₹0.', 'error');
+                return;
+            }
+            if (!prodStock || prodStock <= 0) {
+                FarmDirect.showToast('Please enter available quantity.', 'error');
+                return;
+            }
+
+            if (btn) {
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving your product...';
+                btn.disabled = true;
+            }
+
+            try {
+                const districtName = document.getElementById('prodDistrict').value || 'Erode';
+                const distObj = (window.FarmDirect && typeof FarmDirect.getDistrict === 'function') 
+                    ? FarmDirect.getDistrict(districtName) 
+                    : { name: 'Erode', tamilName: 'ஈரோடு', lat: 11.3410, lng: 77.7172 };
+
+                const userProfile = (window.FarmDirect && typeof FarmDirect.getUserProfile === 'function') ? FarmDirect.getUserProfile() : null;
+                const farmerName = (userProfile && userProfile.name) 
+                    ? userProfile.name 
+                    : 'Thiru. Selvakumar';
+
+                const newProduct = {
+                    id: 'FD-TN-' + Math.floor(1000 + Math.random() * 9000),
+                    name: prodName,
+                    tamilName: document.getElementById('prodTamilName').value || prodName,
+                    category: document.getElementById('prodCategory').value,
+                    farmer: farmerName,
+                    farmerId: 'F-TN-' + Math.floor(1000 + Math.random() * 9000),
+                    farmerPhone: userProfile?.phone || '+91 98421 99001',
+                    district: distObj.name,
+                    location: `${distObj.name}, Tamil Nadu (${distObj.tamilName})`,
+                    lat: distObj.lat,
+                    lng: distObj.lng,
+                    price: prodPrice,
+                    mandiPrice: Math.round(prodPrice * 0.85),
+                    retailPrice: Math.round(prodPrice * 1.30),
+                    unit: document.getElementById('prodUnit').value,
+                    stock: prodStock,
+                    qualityScore: 98,
+                    harvestDate: document.getElementById('prodHarvestDate').value,
+                    organic: true,
+                    giTag: false,
+                    grade: 'Grade A Quality',
+                    image: document.getElementById('prodImage').value,
+                    description: document.getElementById('prodDesc').value,
+                    shelfLife: '30 Days',
+                    adminVerified: true
+                };
+
+                const products = FarmDirect.getProducts();
+                products.unshift(newProduct);
+                await FarmDirect.saveProducts(products);
+
+                if (btn) {
+                    btn.innerHTML = '<i class="fas fa-check-circle"></i> Crop Published Successfully!';
+                    btn.style.background = '#15803d';
+                }
+
+                FarmDirect.showToast(`Crop "${newProduct.name}" saved! Buyers can now buy it.`, 'success', true);
+
+                setTimeout(() => {
+                    window.location.href = 'inventory.html';
+                }, 400);
+            } catch (err) {
+                console.error('Produce saving error:', err);
+                if (btn) {
+                    btn.innerHTML = originalBtnHtml;
+                    btn.disabled = false;
+                }
+                FarmDirect.showToast('Could not save your crop. Please check details and try again.', 'error');
+            }
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#10b981">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FarmDirect">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <title>Secure Checkout | FarmDirect</title>
+    <!-- Immediate Authentication Guard: Require sign in before viewing website details -->
+    <script src="js/auth-guard.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Master Navigation -->
+    <nav class="fd-nav">
+        <div class="container fd-nav-inner">
+            <a href="index.html" class="fd-brand">
+                <span>🌱 FarmDirect</span>
+                <span class="fd-brand-badge">Secure Payment</span>
+            </a>
+
+            <div style="font-size: 13px; color: #059669; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                <i class="fas fa-shield-alt"></i> 100% SECURE ESCROW CHECKOUT
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-hero" style="padding: 25px 0 30px;">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <a href="cart.html">Cart</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <span>Final Checkout</span>
+            </div>
+            <h1 class="page-hero-title">Confirm Delivery & Direct Farmgate Payment</h1>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+            <form id="checkoutForm" onsubmit="processOrder(event)">
+                <div class="grid-sidebar" style="grid-template-columns: 1.4fr 0.9fr; gap: 30px; align-items: start;">
+                    
+                    <!-- Form Columns -->
+                    <div>
+                        <!-- 1. Delivery Address -->
+                        <div class="card" style="margin-bottom: 24px; padding: 25px;">
+                            <h3 style="font-size: 18px; font-weight: 800; color: #064e3b; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">
+                                <span class="badge badge-success" style="width: 24px; height: 24px; border-radius: 50%; padding: 0; justify-content: center;">1</span>
+                                <span>Delivery Address</span>
+                            </h3>
+
+                            <div class="grid-2">
+                                <div class="form-group">
+                                    <label class="form-label">Recipient Name</label>
+                                    <input type="text" id="custName" class="form-control" value="Ananya Sundaram" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Phone Number (for driver delivery OTP)</label>
+                                    <input type="tel" id="custPhone" class="form-control" value="+91 98840 55005" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Complete Street Address / Apartment</label>
+                                <input type="text" id="custAddress" class="form-control" value="Plot 42, Cauvery Green Agro Residency, Erode, Tamil Nadu - 638001" required>
+                            </div>
+                        </div>
+
+                        <!-- 2. Cold-Chain Delivery Slot -->
+                        <div class="card" style="margin-bottom: 24px; padding: 25px;">
+                            <h3 style="font-size: 18px; font-weight: 800; color: #064e3b; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">
+                                <span class="badge badge-success" style="width: 24px; height: 24px; border-radius: 50%; padding: 0; justify-content: center;">2</span>
+                                <span>Cold-Chain Delivery Slot (4°C Reefer)</span>
+                            </h3>
+
+                            <div class="grid-2">
+                                <label class="card" style="padding: 16px; cursor: pointer; border: 2px solid var(--primary); background: #f0fdf4;">
+                                    <input type="radio" name="delivery_slot" checked style="accent-color: #10b981; margin-right: 8px;">
+                                    <strong style="color: #064e3b;">Tomorrow Morning (7:00 AM - 10:00 AM)</strong>
+                                    <div style="font-size: 12px; color: #059669; margin-top: 4px;">Harvested tonight at farmgate</div>
+                                </label>
+
+                                <label class="card" style="padding: 16px; cursor: pointer; border: 1.5px solid var(--border);">
+                                    <input type="radio" name="delivery_slot" style="accent-color: #10b981; margin-right: 8px;">
+                                    <strong style="color: #1e293b;">Tomorrow Evening (5:00 PM - 8:00 PM)</strong>
+                                    <div style="font-size: 12px; color: #64748b; margin-top: 4px;">Direct transit via Urban Hub</div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- 3. Payment Method -->
+                        <div class="card" style="padding: 25px;">
+                            <h3 style="font-size: 18px; font-weight: 800; color: #064e3b; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">
+                                <span class="badge badge-success" style="width: 24px; height: 24px; border-radius: 50%; padding: 0; justify-content: center;">3</span>
+                                <span>Payment Method</span>
+                            </h3>
+
+                            <div style="display: flex; flex-direction: column; gap: 12px;">
+                                <label class="card" style="padding: 16px; cursor: pointer; border: 2px solid var(--primary); background: #f0fdf4; display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="display: flex; align-items: center; gap: 12px;">
+                                        <input type="radio" name="payment_method" value="UPI" checked style="accent-color: #10b981;">
+                                        <div>
+                                            <strong style="color: #064e3b;"><i class="fas fa-qrcode text-success"></i> Instant UPI (GPay / PhonePe / Paytm / BHIM)</strong>
+                                            <div style="font-size: 12px; color: #059669;">Instant escrow release upon delivery OTP verification</div>
+                                        </div>
+                                    </div>
+                                    <span class="badge badge-success">FASTEST</span>
+                                </label>
+
+                                <label class="card" style="padding: 16px; cursor: pointer; border: 1.5px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="display: flex; align-items: center; gap: 12px;">
+                                        <input type="radio" name="payment_method" value="Card" style="accent-color: #10b981;">
+                                        <div>
+                                            <strong style="color: #1e293b;"><i class="fas fa-credit-card text-muted"></i> Credit / Debit Cards & NetBanking</strong>
+                                            <div style="font-size: 12px; color: #64748b;">Visa, MasterCard, RuPay, Corporate Cards</div>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <label class="card" style="padding: 16px; cursor: pointer; border: 1.5px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="display: flex; align-items: center; gap: 12px;">
+                                        <input type="radio" name="payment_method" value="COD" style="accent-color: #10b981;">
+                                        <div>
+                                            <strong style="color: #1e293b;"><i class="fas fa-money-bill-wave text-muted"></i> Cash on Delivery (COD)</strong>
+                                            <div style="font-size: 12px; color: #64748b;">Pay cash or UPI at doorstep after quality check</div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Summary -->
+                    <div>
+                        <div class="card" style="padding: 25px; position: sticky; top: 95px;">
+                            <h3 style="font-size: 18px; font-weight: 800; color: #064e3b; margin-bottom: 16px;">Order Basket</h3>
+                            <div id="checkout-items-list" style="margin-bottom: 20px; max-height: 240px; overflow-y: auto;">
+                                <!-- Rendered via JS -->
+                            </div>
+
+                            <div style="border-top: 1px solid var(--border); padding-top: 15px; margin-bottom: 20px;">
+                                <div style="display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 8px; color: #64748b;">
+                                    <span>Produce Subtotal:</span>
+                                    <strong id="chk-subtotal" style="color: #0f172a;">₹0</strong>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 8px; color: #64748b;">
+                                    <span>Cold-Chain Reefer:</span>
+                                    <span id="chk-delivery" style="color: #059669; font-weight: 700;">FREE</span>
+                                </div>
+                                <div id="chk-discount-row" style="display: none; justify-content: space-between; font-size: 14px; margin-bottom: 8px; color: #059669; font-weight: 700;">
+                                    <span>Promo Discount (<span id="chk-coupon-code">OFFER</span>):</span>
+                                    <span id="chk-discount">-₹0</span>
+                                </div>
+                                <div id="chk-tip-row" style="display: none; justify-content: space-between; font-size: 14px; margin-bottom: 8px; color: #059669; font-weight: 700;">
+                                    <span>Farmer Direct Tip:</span>
+                                    <span id="chk-tip">+₹0</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; font-size: 20px; font-weight: 800; color: #064e3b; padding-top: 10px; border-top: 1px dashed var(--border);">
+                                    <span>Total Payable:</span>
+                                    <span id="chk-total">₹0</span>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-lg btn-block" id="payBtn">
+                                <i class="fas fa-lock"></i> Place Order & Pay (<span id="btn-amt">₹0</span>)
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="fd-footer">
+        <div class="container">
+            <div class="fd-footer-bottom" style="border:none; padding:0;">
+                <div></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        let orderTotal = 0;
+        let cartItems = [];
+        let appliedDiscount = 0;
+        let appliedTip = 0;
+        let appliedCoupon = '';
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Pre-fill profile fields
+            const userProfile = (window.FarmDirect && typeof FarmDirect.getUserProfile === 'function' ? FarmDirect.getUserProfile() : null) || {};
+            const userDist = (window.FarmDirect && typeof FarmDirect.getUserDistrict === 'function') ? FarmDirect.getUserDistrict() : 'Erode';
+
+            const nameInput = document.getElementById('custName');
+            const phoneInput = document.getElementById('custPhone');
+            const addrInput = document.getElementById('custAddress');
+
+            if (nameInput && userProfile.name) nameInput.value = userProfile.name;
+            if (phoneInput && userProfile.phone) phoneInput.value = userProfile.phone;
+            if (addrInput) {
+                if (userProfile.address) {
+                    addrInput.value = userProfile.address;
+                } else {
+                    addrInput.value = `Plot 42, Cauvery Green Agro Residency, ${userDist}, Tamil Nadu - 638001`;
+                }
+            }
+
+            cartItems = FarmDirect.getCart();
+            if (cartItems.length === 0) {
+                const defaultProd = FarmDirect.getProducts()[0];
+                cartItems = [{
+                    id: defaultProd.id,
+                    name: defaultProd.name,
+                    price: defaultProd.price,
+                    retailPrice: defaultProd.retailPrice,
+                    unit: defaultProd.unit,
+                    image: defaultProd.image,
+                    farmer: defaultProd.farmer,
+                    qty: 2
+                }];
+                FarmDirect.saveCart(cartItems);
+            }
+
+            let sub = 0;
+            const itemsList = document.getElementById('checkout-items-list');
+            itemsList.innerHTML = cartItems.map(item => {
+                sub += item.price * item.qty;
+                return `
+                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 13px; margin-bottom: 10px;">
+                        <div>
+                            <strong>${item.name}</strong> <br>
+                            <span style="color:#64748b;">${item.qty} ${item.unit} × ₹${item.price}</span>
+                        </div>
+                        <span style="font-weight:700; color:#064e3b;">₹${item.price * item.qty}</span>
+                    </div>
+                `;
+            }).join('');
+
+            // Read discounts & tip from cart state
+            appliedDiscount = parseInt(sessionStorage.getItem('fd_cart_discount') || '0', 10);
+            appliedTip = parseInt(sessionStorage.getItem('fd_cart_tip') || '0', 10);
+            appliedCoupon = sessionStorage.getItem('fd_cart_coupon') || '';
+
+            if (appliedDiscount > 0) {
+                const discRow = document.getElementById('chk-discount-row');
+                const discVal = document.getElementById('chk-discount');
+                const codeEl = document.getElementById('chk-coupon-code');
+                if (discRow) discRow.style.display = 'flex';
+                if (discVal) discVal.textContent = `-₹${appliedDiscount}`;
+                if (codeEl) codeEl.textContent = appliedCoupon || 'PROMO';
+            }
+
+            if (appliedTip > 0) {
+                const tipRow = document.getElementById('chk-tip-row');
+                const tipVal = document.getElementById('chk-tip');
+                if (tipRow) tipRow.style.display = 'flex';
+                if (tipVal) tipVal.textContent = `+₹${appliedTip}`;
+            }
+
+            const deliveryFee = sub >= 800 ? 0 : 50;
+            const delivEl = document.getElementById('chk-delivery');
+            if (delivEl) delivEl.textContent = deliveryFee === 0 ? 'FREE' : '₹50';
+
+            orderTotal = Math.max(0, sub + deliveryFee + appliedTip - appliedDiscount);
+
+            document.getElementById('chk-subtotal').textContent = '₹' + sub;
+            document.getElementById('chk-total').textContent = '₹' + orderTotal;
+            document.getElementById('btn-amt').textContent = '₹' + orderTotal;
+        });
+
+        async function processOrder(e) {
+            e.preventDefault();
+            const btn = document.getElementById('payBtn');
+            const originalBtnHtml = `<i class="fas fa-lock"></i> Place Order & Pay (<span id="btn-amt">₹${orderTotal}</span>)`;
+
+            const address = document.getElementById('custAddress') ? document.getElementById('custAddress').value.trim() : '';
+            const nameFromForm = document.getElementById('custName') ? document.getElementById('custName').value.trim() : '';
+            const phoneFromForm = document.getElementById('custPhone') ? document.getElementById('custPhone').value.trim() : '';
+
+            if (!nameFromForm || nameFromForm.length < 2) {
+                FarmDirect.showToast('Please enter customer full name.', 'error');
+                return;
+            }
+            const cleanPhone = phoneFromForm.replace(/[^0-9]/g, '');
+            if (cleanPhone.length < 10) {
+                FarmDirect.showToast('Please enter a valid 10-digit delivery phone number.', 'error');
+                return;
+            }
+            if (!address || address.length < 6) {
+                FarmDirect.showToast('Please provide a complete delivery address.', 'error');
+                return;
+            }
+
+            if (btn) {
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Placing your order...';
+                btn.disabled = true;
+            }
+
+            try {
+                const orderId = 'TN-ORD-' + Math.floor(1000 + Math.random() * 9000);
+                const orders = FarmDirect.getOrders();
+
+                const userProfile = (window.FarmDirect && typeof FarmDirect.getUserProfile === 'function') ? FarmDirect.getUserProfile() : null;
+                const customerName = nameFromForm || ((userProfile && userProfile.name) 
+                    ? `${userProfile.name} (${(userProfile.role || 'consumer').toUpperCase()})` 
+                    : 'Customer');
+                const customerEmail = (userProfile && userProfile.email) ? userProfile.email : 'consumer@farmdirect.io';
+
+                const newOrder = {
+                    id: orderId,
+                    date: new Date().toLocaleString(),
+                    customer: customerName,
+                    customerPhone: phoneFromForm,
+                    customerEmail: customerEmail,
+                    address: address,
+                    items: cartItems,
+                    total: orderTotal,
+                    discount: appliedDiscount,
+                    coupon: appliedCoupon,
+                    tip: appliedTip,
+                    retailComparison: Math.round(orderTotal * 1.4),
+                    savings: Math.round(orderTotal * 0.4) + appliedDiscount,
+                    status: 'Order Placed & Scheduled for Delivery',
+                    statusStep: 1,
+                    trackingId: 'TRK-CC-' + Math.floor(100 + Math.random() * 900),
+                    deliveryType: 'Fresh Farmgate Delivery'
+                };
+
+                orders.unshift(newOrder);
+                await FarmDirect.saveOrders(orders);
+                if (typeof FarmDirect.clearCart === 'function') {
+                    await FarmDirect.clearCart();
+                } else {
+                    await FarmDirect.saveCart([]);
+                }
+
+                // Clean session cart adjustments
+                sessionStorage.removeItem('fd_cart_discount');
+                sessionStorage.removeItem('fd_cart_coupon');
+
+                if (btn) {
+                    btn.innerHTML = '<i class="fas fa-check-circle"></i> Submitted successfully!';
+                    btn.style.background = '#059669';
+                }
+
+                if (window.FarmDirect && typeof FarmDirect.addNotification === 'function') {
+                    await FarmDirect.addNotification({
+                        title: 'Submitted successfully!',
+                        msg: `Order #${orderId} confirmed for ₹${orderTotal}. Your harvest delivery has been scheduled.`,
+                        type: 'order',
+                        persist: true
+                    });
+                }
+                FarmDirect.showToast(`Submitted successfully! Order #${orderId} confirmed.`, 'success', true);
+
+                setTimeout(() => {
+                    window.location.href = `order-details.html?id=${orderId}`;
+                }, 400);
+            } catch (err) {
+                console.error('Failed to process order:', err);
+                if (btn) {
+                    btn.disabled = false;
+                    btn.innerHTML = originalBtnHtml;
+                }
+                if (window.FarmDirect && typeof FarmDirect.showToast === 'function') {
+                    FarmDirect.showToast('Failed to place order. Please try again.', 'error');
+                }
+            }
+        }
+    </script>
+</body>
+</html>

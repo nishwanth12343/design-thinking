@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#10b981">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FarmDirect">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <title>Request for Quote (RFQ) | FarmDirect B2B</title>
+    <!-- Immediate Authentication Guard: Require sign in before viewing website details -->
+    <script src="js/auth-guard.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Sleek Master Navigation with Rich Dropdowns -->
+    <nav class="fd-nav">
+        <div class="container fd-nav-inner">
+            <a href="index.html" class="fd-brand">
+                <span>🌱 FarmDirect</span>
+                <span class="fd-brand-badge">B2B RFQ</span>
+            </a>
+
+            <ul class="fd-nav-links">
+                <li class="fd-nav-item"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="marketplace.html"><i class="fas fa-store"></i> Marketplace <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="marketplace.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-shopping-basket"></i></div>
+                            <div><span class="fd-dropdown-title">Live Produce Catalog</span><span class="fd-dropdown-desc">Direct harvest from verified farmers</span></div>
+                        </a>
+                        <a href="product-quality.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-shield-alt"></i></div>
+                            <div><span class="fd-dropdown-title">AI Quality Scanner</span><span class="fd-dropdown-desc">Computer-vision freshness & Brix test</span></div>
+                        </a>
+                        <a href="price-comparison.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Price Comparison</span><span class="fd-dropdown-desc">Farmgate vs APMC Mandi vs Retail</span></div>
+                        </a>
+                        <a href="offers.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-tags"></i></div>
+                            <div><span class="fd-dropdown-title">Harvest Offers</span><span class="fd-dropdown-desc">Seasonal discounts & promo codes</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="farmer-dashboard.html"><i class="fas fa-tractor"></i> Farmers & FPOs <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="farmer-dashboard.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-tachometer-alt"></i></div>
+                            <div><span class="fd-dropdown-title">Farmer Command Center</span><span class="fd-dropdown-desc">Agronomy weather radar & revenue</span></div>
+                        </a>
+                        <a href="fpo-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-users"></i></div>
+                            <div><span class="fd-dropdown-title">FPO Collective Aggregator</span><span class="fd-dropdown-desc">Pool multi-farmer harvests for B2B</span></div>
+                        </a>
+                        <a href="add-product.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-plus-circle"></i></div>
+                            <div><span class="fd-dropdown-title">List New Produce</span><span class="fd-dropdown-desc">AI Mandi benchmark recommender</span></div>
+                        </a>
+                        <a href="farmer-earnings.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-wallet"></i></div>
+                            <div><span class="fd-dropdown-title">Earnings & UPI Ledger</span><span class="fd-dropdown-desc">Instant OTP escrow bank settlements</span></div>
+                        </a>
+                        <a href="farmer-verification.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-id-card"></i></div>
+                            <div><span class="fd-dropdown-title">Land KYC Verification</span><span class="fd-dropdown-desc">Patta/Chitta Land KYC Verification</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="logistics.html"><i class="fas fa-truck-moving"></i> Logistics <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="live-tracking.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-satellite-dish"></i></div>
+                            <div><span class="fd-dropdown-title">Live GPS Radar</span><span class="fd-dropdown-desc">3.8°C IoT thermal telematics</span></div>
+                        </a>
+                        <a href="route-optimization.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-route"></i></div>
+                            <div><span class="fd-dropdown-title">AI Route Optimizer</span><span class="fd-dropdown-desc">Multi-farm pickup TSP solver</span></div>
+                        </a>
+                        <a href="delivery-management.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-tasks"></i></div>
+                            <div><span class="fd-dropdown-title">Dispatch Management</span><span class="fd-dropdown-desc">Vehicle fleet allocations & e-POD</span></div>
+                        </a>
+                        <a href="warehouse.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-warehouse"></i></div>
+                            <div><span class="fd-dropdown-title">Smart Rural Cold Hubs</span><span class="fd-dropdown-desc">Microclimate pre-cooling slots</span></div>
+                        </a>
+                        <a href="inventory.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-rose"><i class="fas fa-boxes"></i></div>
+                            <div><span class="fd-dropdown-title">Inventory Engine</span><span class="fd-dropdown-desc">Batch shelf-life countdowns</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item fd-dropdown">
+                    <a href="ai-insights.html"><i class="fas fa-brain"></i> AI Intelligence <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="fd-dropdown-menu">
+                        <a href="demand-forecast.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-purple"><i class="fas fa-chart-pie"></i></div>
+                            <div><span class="fd-dropdown-title">Demand Forecasting</span><span class="fd-dropdown-desc">Predictive 30-day ML models</span></div>
+                        </a>
+                        <a href="ai-insights.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-blue"><i class="fas fa-chart-line"></i></div>
+                            <div><span class="fd-dropdown-title">Agricultural Intelligence</span><span class="fd-dropdown-desc">Regional surplus & deficit heatmap</span></div>
+                        </a>
+                        <a href="supply-chain.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-green"><i class="fas fa-link"></i></div>
+                            <div><span class="fd-dropdown-title">Farm-to-Fork Traceability</span><span class="fd-dropdown-desc">5-stage harvest verification</span></div>
+                        </a>
+                        <a href="price-intelligence.html" class="fd-dropdown-item">
+                            <div class="fd-dropdown-icon stat-icon-amber"><i class="fas fa-balance-scale"></i></div>
+                            <div><span class="fd-dropdown-title">Mandi Price Index</span><span class="fd-dropdown-desc">AGMARKNET live benchmark stream</span></div>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="fd-nav-item"><a href="bulk-buyers.html" class="active"><i class="fas fa-building"></i> B2B Wholesale</a></li>
+            </ul>
+
+            <div class="fd-nav-actions">
+                <a href="bulk-buyers.html" class="btn btn-secondary btn-sm"><i class="fas fa-arrow-left"></i> Wholesale Catalog</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <a href="bulk-buyers.html">Bulk Buyers</a> <i class="fas fa-chevron-right" style="font-size:10px;"></i>
+                <span>Custom Request for Quote (RFQ)</span>
+            </div>
+            <h1 class="page-hero-title">Create B2B Wholesale Request for Quote (RFQ)</h1>
+            <p class="page-hero-subtitle">Broadcast your volume procurement needs to 200+ certified FPO collectives and receive competitive direct farm bids.</p>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container" style="max-width: 900px;">
+            <div class="card" style="padding: 40px;">
+                <form id="rfqForm" onsubmit="handleRFQSubmit(event)">
+                    
+                    <h3 style="font-size: 18px; font-weight: 800; color: #064e3b; margin-bottom: 20px;">
+                        <i class="fas fa-building text-success"></i> 1. Buyer & Corporate Information
+                    </h3>
+
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Enterprise / Company Name</label>
+                            <input type="text" id="rfqCompany" class="form-control" value="Metro Fresh Supermarkets Pvt. Ltd." required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">GSTIN / Corporate Registration No.</label>
+                            <input type="text" id="rfqGstin" class="form-control" value="33AABCM9012F1Z8" required>
+                        </div>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Destination Tamil Nadu District (மாவட்டம்)</label>
+                            <select id="rfqDistrict" class="form-select tn-district-select" required>
+                                <option value="Ariyalur">Ariyalur (அரியலூர்)</option>
+                                <option value="Chengalpattu">Chengalpattu (செங்கல்பட்டு)</option>
+                                <option value="Chennai" selected>Chennai (சென்னை)</option>
+                                <option value="Coimbatore">Coimbatore (கோயம்புத்தூர்)</option>
+                                <option value="Cuddalore">Cuddalore (கடலூர்)</option>
+                                <option value="Dharmapuri">Dharmapuri (தருமபுரி)</option>
+                                <option value="Dindigul">Dindigul (திண்டுக்கல்)</option>
+                                <option value="Erode">Erode (ஈரோடு)</option>
+                                <option value="Kallakurichi">Kallakurichi (கள்ளக்குறிச்சி)</option>
+                                <option value="Kanchipuram">Kanchipuram (காஞ்சிபுரம்)</option>
+                                <option value="Kanyakumari">Kanyakumari (கன்னியாகுமரி)</option>
+                                <option value="Karur">Karur (கரூர்)</option>
+                                <option value="Krishnagiri">Krishnagiri (கிருஷ்ணகிரி)</option>
+                                <option value="Madurai">Madurai (மதுரை)</option>
+                                <option value="Mayiladuthurai">Mayiladuthurai (மயிலாடுதுறை)</option>
+                                <option value="Nagapattinam">Nagapattinam (நாகப்பட்டினம்)</option>
+                                <option value="Namakkal">Namakkal (நாமக்கல்)</option>
+                                <option value="Nilgiris">Nilgiris (நீலகிரி)</option>
+                                <option value="Perambalur">Perambalur (பெரம்பலூர்)</option>
+                                <option value="Pudukkottai">Pudukkottai (புதுக்கோட்டை)</option>
+                                <option value="Ramanathapuram">Ramanathapuram (இராமநாதபுரம்)</option>
+                                <option value="Ranipet">Ranipet (ராணிப்பேட்டை)</option>
+                                <option value="Salem">Salem (சேலம்)</option>
+                                <option value="Sivaganga">Sivaganga (சிவகங்கை)</option>
+                                <option value="Tenkasi">Tenkasi (தென்காசி)</option>
+                                <option value="Thanjavur">Thanjavur (தஞ்சாவூர்)</option>
+                                <option value="Theni">Theni (தேனி)</option>
+                                <option value="Thoothukudi">Thoothukudi (தூத்துக்குடி)</option>
+                                <option value="Tiruchirappalli">Tiruchirappalli (திருச்சிராப்பள்ளி)</option>
+                                <option value="Tirunelveli">Tirunelveli (திருநெல்வேலி)</option>
+                                <option value="Tirupathur">Tirupathur (திருப்பத்தூர்)</option>
+                                <option value="Tiruppur">Tiruppur (திருப்பூர்)</option>
+                                <option value="Tiruvallur">Tiruvallur (திருவள்ளூர்)</option>
+                                <option value="Tiruvannamalai">Tiruvannamalai (திருவண்ணாமலை)</option>
+                                <option value="Tiruvarur">Tiruvarur (திருவாரூர்)</option>
+                                <option value="Vellore">Vellore (வேலூர்)</option>
+                                <option value="Villupuram">Villupuram (விழுப்புரம்)</option>
+                                <option value="Virudhunagar">Virudhunagar (விருதுநகர்)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Procurement Officer Contact</label>
+                            <input type="text" id="rfqContact" class="form-control" value="procurement@metrofresh.in (+91 98421 11984)" required>
+                        </div>
+                    </div>
+
+                    <h3 style="font-size: 18px; font-weight: 800; color: #064e3b; margin: 30px 0 20px;">
+                        <i class="fas fa-cubes text-success"></i> 2. Commodity Requirements & Volume
+                    </h3>
+
+                    <div class="grid-3">
+                        <div class="form-group">
+                            <label class="form-label">Produce Commodity</label>
+                            <select id="rfqCrop" class="form-select" required>
+                                <option value="GI Erode Golden Turmeric">GI Erode Golden Turmeric (Erode)</option>
+                                <option value="Thanjavur Traditional Deluxe Ponni Rice">Thanjavur Traditional Deluxe Ponni Rice (Thanjavur)</option>
+                                <option value="Dharmapuri Hybrid Tomatoes">Dharmapuri Hybrid Red Tomatoes (Dharmapuri)</option>
+                                <option value="Salem Malgova Mangoes">Salem Malgova Mangoes (Salem)</option>
+                                <option value="Pollachi Tender Coconuts">Pollachi Sweet Tender Coconuts (Coimbatore)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Required Tonnage (MT)</label>
+                            <input type="number" id="rfqTonnage" class="form-control" value="15" min="1" max="500" required oninput="calculateEstimates()">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Target Max Price (₹ / kg)</label>
+                            <input type="number" id="rfqTargetPrice" class="form-control" value="24" required oninput="calculateEstimates()">
+                        </div>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Delivery Schedule Cadence</label>
+                            <select id="rfqCadence" class="form-select">
+                                <option value="spot">Single Spot Consignment (Within 48 hrs)</option>
+                                <option value="weekly">Weekly Recurring Dispatches (1 Month Contract)</option>
+                                <option value="seasonal">Full Harvest Season Contract (3-6 Months)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Cold-Chain Specification</label>
+                            <select id="rfqColdChain" class="form-select">
+                                <option value="reefer">Reefer Truck (2°C - 6°C Required)</option>
+                                <option value="ambient">Ambient Ventilated Dry Freight</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- AI Estimated Total Value Banner -->
+                    <div style="background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 14px; padding: 20px; margin-bottom: 25px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <span class="badge badge-ai" style="margin-bottom: 6px;"><i class="fas fa-brain"></i> AI Pricing & FPO Matching</span>
+                                <div style="font-size: 14px; color: #166534;">
+                                    Estimated Contract Value: <strong id="rfq-total-est" style="font-size: 18px; color: #064e3b;">₹3,60,000</strong>
+                                </div>
+                                <div style="font-size: 12px; color: #059669; margin-top: 4px;">
+                                    <strong>4 FPO Collectives</strong> in Erode & Coimbatore match your criteria with available inventory.
+                                </div>
+                            </div>
+                            <span class="badge badge-success">READY FOR BROADCAST</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">
+                        <i class="fas fa-paper-plane"></i> Submit Wholesale RFQ & Receive Bids
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="fd-footer">
+        <div class="container">
+            <div class="fd-footer-bottom" style="border:none; padding:0;">
+                <div></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        function calculateEstimates() {
+            const tonnage = Number(document.getElementById('rfqTonnage').value) || 1;
+            const price = Number(document.getElementById('rfqTargetPrice').value) || 1;
+            const totalKg = tonnage * 1000;
+            const total = totalKg * price;
+            document.getElementById('rfq-total-est').textContent = '₹' + total.toLocaleString('en-IN');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const user = (window.FarmDirect && typeof FarmDirect.getUserProfile === 'function') ? FarmDirect.getUserProfile() : null;
+            if (user) {
+                if (user.companyName && document.getElementById('rfqCompany')) {
+                    document.getElementById('rfqCompany').value = user.companyName;
+                }
+                if (user.gstin && document.getElementById('rfqGstin')) {
+                    document.getElementById('rfqGstin').value = user.gstin;
+                }
+                if (user.phone && document.getElementById('rfqContact')) {
+                    document.getElementById('rfqContact').value = `${user.name || 'Procurement Manager'} (${user.phone})`;
+                }
+                if (user.district && document.getElementById('rfqDistrict')) {
+                    document.getElementById('rfqDistrict').value = user.district;
+                }
+            }
+        });
+
+        async function handleRFQSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const origHtml = btn ? btn.innerHTML : '<i class="fas fa-paper-plane"></i> Submit Wholesale RFQ Request';
+
+            const company = document.getElementById('rfqCompany')?.value.trim();
+            const contact = document.getElementById('rfqContact')?.value.trim();
+            const tonnage = Number(document.getElementById('rfqTonnage')?.value);
+            const targetPrice = Number(document.getElementById('rfqTargetPrice')?.value);
+            const gstin = document.getElementById('rfqGstin')?.value.trim() || '33AABCM9012F1Z8';
+            const hub = document.getElementById('rfqDistrict')?.value || 'Chennai';
+            const crop = document.getElementById('rfqCrop')?.value || 'GI Erode Golden Turmeric';
+            const cadence = document.getElementById('rfqCadence')?.value || 'weekly';
+            const coldChain = document.getElementById('rfqColdChain')?.value || 'reefer';
+
+            if (!company || company.length < 2) {
+                FarmDirect.showToast('Please enter the corporate enterprise name.', 'error');
+                return;
+            }
+            if (!contact || contact.length < 5) {
+                FarmDirect.showToast('Please provide valid procurement officer contact details.', 'error');
+                return;
+            }
+            if (!tonnage || tonnage <= 0) {
+                FarmDirect.showToast('Please specify a positive required tonnage.', 'error');
+                return;
+            }
+            if (!targetPrice || targetPrice <= 0) {
+                FarmDirect.showToast('Please specify a valid target price per kg.', 'error');
+                return;
+            }
+
+            if (btn) {
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting request...';
+                btn.disabled = true;
+            }
+
+            const estimatedTotal = tonnage * 1000 * targetPrice;
+
+            const rfqData = {
+                id: 'RFQ-TN-' + Math.floor(100 + Math.random() * 900),
+                company,
+                gstin,
+                hub: `${hub} Perishable Agribusiness Hub`,
+                contact,
+                crop,
+                tonnage,
+                targetPrice,
+                cadence,
+                coldChain,
+                estimatedTotal,
+                status: 'Broadcasted to FPO Collectives'
+            };
+
+            try {
+                if (window.FarmDirect && typeof FarmDirect.submitRFQ === 'function') {
+                    await FarmDirect.submitRFQ(rfqData);
+                } else {
+                    await fetch('/api/rfqs', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(rfqData)
+                    });
+                }
+
+                if (btn) {
+                    btn.innerHTML = '<i class="fas fa-check-circle"></i> Submitted successfully!';
+                    btn.style.background = '#059669';
+                }
+
+                if (window.FarmDirect && typeof FarmDirect.addNotification === 'function') {
+                    await FarmDirect.addNotification({
+                        title: 'Submitted successfully!',
+                        msg: `Wholesale contract request for ${tonnage} MT of ${crop} sent to verified farmers and FPOs.`,
+                        type: 'success',
+                        persist: true
+                    });
+                }
+                FarmDirect.showToast('Submitted successfully! Wholesale quote request broadcasted.', 'success', true);
+
+                setTimeout(() => {
+                    window.location.href = 'bulk-buyers.html';
+                }, 400);
+            } catch (err) {
+                console.error('RFQ submit error:', err);
+                if (btn) {
+                    btn.innerHTML = origHtml;
+                    btn.disabled = false;
+                }
+                FarmDirect.showToast('Could not submit request. Please try again.', 'error');
+            }
+        }
+    </script>
+</body>
+</html>
